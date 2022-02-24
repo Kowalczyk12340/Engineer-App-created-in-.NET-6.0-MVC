@@ -1,8 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Text;
 
 namespace EngineerApplication.Entities
 {
@@ -14,16 +11,16 @@ namespace EngineerApplication.Entities
     public int OrderHeaderId { get; set; }
 
     [ForeignKey("OrderHeaderId")]
-    public OrderHeader OrderHeader { get; set; }
+    public OrderHeader? OrderHeader { get; set; }
 
     [Required]
     public int CommodityId { get; set; }
 
     [ForeignKey("CommodityId")]
-    public Commodity Commodity { get; set; }
+    public Commodity? Commodity { get; set; }
 
     [Required]
-    public string CommodityName { get; set; }
+    public string? CommodityName { get; set; }
 
     [Required]
     public double Price { get; set; }

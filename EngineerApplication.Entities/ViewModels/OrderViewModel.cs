@@ -4,9 +4,9 @@ using System.Text;
 
 namespace EngineerApplication.Entities.ViewModels
 {
-    public class OrderViewModel
-    {
-        public OrderHeader OrderHeader { get; set; }
-        public IEnumerable<OrderDetails> OrderDetails { get; set; }
-    }
+  public class OrderViewModel
+  {
+    public OrderHeader? OrderHeader { get; set; }
+    public IEnumerable<OrderDetails>? OrderDetails { get; set; }
+  }
 }

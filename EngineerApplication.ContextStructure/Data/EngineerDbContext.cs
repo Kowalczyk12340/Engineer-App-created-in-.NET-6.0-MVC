@@ -10,12 +10,12 @@ namespace EngineerApplication.ContextStructure.Data
         : base(options)
     {
     }
-    public DbSet<Category> Category { get; set; }
-    public DbSet<Frequency> Frequency { get; set; }
-    public DbSet<Commodity> Commodity { get; set; }
-    public DbSet<WebImages> WebImages { get; set; }
-    public DbSet<ApplicationUser> ApplicationUser { get; set; }
-    public DbSet<OrderHeader> OrderHeader { get; set; }
-    public DbSet<OrderDetails> OrderDetails { get; set; }
+    public DbSet<Category>? Category { get; set; }
+    public DbSet<Frequency>? Frequency { get; set; }
+    public DbSet<Commodity>? Commodity { get; set; }
+    public DbSet<WebImages>? WebImages { get; set; }
+    public DbSet<ApplicationUser>? ApplicationUser { get; set; }
+    public DbSet<OrderHeader>? OrderHeader { get; set; }
+    public DbSet<OrderDetails>? OrderDetails { get; set; }
   }
 }

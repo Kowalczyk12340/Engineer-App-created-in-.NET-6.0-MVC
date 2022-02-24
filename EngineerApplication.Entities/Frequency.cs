@@ -6,16 +6,16 @@ using System.Text;
 namespace EngineerApplication.Entities
 {
 
-    public class Frequency
-    {
-        [Key]
-        public int Id { get; set; }
+  public class Frequency
+  {
+    [Key]
+    public int Id { get; set; }
 
-        [Required]
-        public int FrequencyCount { get; set; }
+    [Required]
+    public int FrequencyCount { get; set; }
 
-        [Required]
-        [Display(Name = "Frequency Name")]
-        public string Name { get; set; }
-    }
+    [Required]
+    [Display(Name = "Frequency Name")]
+    public string? Name { get; set; }
+  }
 }

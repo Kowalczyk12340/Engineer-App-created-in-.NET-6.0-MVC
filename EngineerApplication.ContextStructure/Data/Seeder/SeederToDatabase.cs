@@ -30,9 +30,9 @@ namespace EngineerApplication.ContextStructure.Data.Initializer
           _db.Database.Migrate();
         }
       }
-      catch (Exception ex)
+      catch (Exception)
       {
-        var message = ex.Message;
+        throw new Exception();
       }
 
       if (_db.Roles.Any(r => r.Name == UsefulConsts.Admin)) return;
@@ -58,10 +58,10 @@ namespace EngineerApplication.ContextStructure.Data.Initializer
 
       }, "Marcingrafik1#").GetAwaiter().GetResult();
 
-      ApplicationUser user = _db.ApplicationUser.Where(u => u.Email == "marcinkowalczyk24.7@gmail.com").FirstOrDefault();
+      ApplicationUser? user = _db.ApplicationUser?.Where(u => u.Email == "marcinkowalczyk24.7@gmail.com").FirstOrDefault();
       _userManager.AddToRoleAsync(user, UsefulConsts.Admin).GetAwaiter().GetResult();
 
-      ApplicationUser user1 = _db.ApplicationUser.Where(u => u.Email == "marcinkowalczyk24.5@wp.pl").FirstOrDefault();
+      ApplicationUser? user1 = _db.ApplicationUser?.Where(u => u.Email == "marcinkowalczyk24.5@wp.pl").FirstOrDefault();
       _userManager.AddToRoleAsync(user1, UsefulConsts.Employee).GetAwaiter().GetResult();
 
     }

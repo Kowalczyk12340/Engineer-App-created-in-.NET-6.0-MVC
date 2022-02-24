@@ -6,37 +6,35 @@ using System.Text;
 
 namespace EngineerApplication.Entities
 {
-    public class Commodity
-    {
-        [Key]
-        public int Id { get; set; }
+  public class Commodity
+  {
+    [Key]
+    public int Id { get; set; }
 
-        [Required]
-        [Display(Name ="Commodity Name")]
-        public string Name { get; set; }
+    [Required]
+    [Display(Name = "Commodity Name")]
+    public string? Name { get; set; }
 
-        [Required]
-        public double Price { get; set; }
+    [Required]
+    public double Price { get; set; }
 
-        [Display(Name ="Description")]
-        public string LongDesc { get; set; }
+    [Display(Name = "Description")]
+    public string? LongDesc { get; set; }
 
-        [DataType(DataType.ImageUrl)]
-        [Display(Name ="Image")]
-        public string ImageUrl { get; set; }
+    [DataType(DataType.ImageUrl)]
+    [Display(Name = "Image")]
+    public string? ImageUrl { get; set; }
 
-        [Required]
-        public int CategoryId { get; set; }
+    [Required]
+    public int CategoryId { get; set; }
 
-        [ForeignKey("CategoryId")]
-        public Category Category { get; set; }
+    [ForeignKey("CategoryId")]
+    public Category? Category { get; set; }
 
-        [Required]
-        public int FrequencyId { get; set; }
+    [Required]
+    public int FrequencyId { get; set; }
 
-        [ForeignKey("FrequencyId")]
-        public Frequency Frequency { get; set; }
-
-
-    }
+    [ForeignKey("FrequencyId")]
+    public Frequency? Frequency { get; set; }
+  }
 }
