@@ -6,13 +6,13 @@ using System.Text;
 
 namespace EngineerApplication.Entities
 {
-    public class Service
+    public class Commodity
     {
         [Key]
         public int Id { get; set; }
 
         [Required]
-        [Display(Name ="Serivce Name")]
+        [Display(Name ="Commodity Name")]
         public string Name { get; set; }
 
         [Required]

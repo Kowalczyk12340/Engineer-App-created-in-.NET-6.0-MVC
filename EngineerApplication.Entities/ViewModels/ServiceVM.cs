@@ -5,9 +5,9 @@ using System.Text;
 
 namespace EngineerApplication.Entities.ViewModels
 {
-    public class ServiceVM
+    public class CommodityVM
     {
-        public Service Service {get;set;}
+        public Commodity Commodity {get;set;}
         public IEnumerable<SelectListItem> CategoryList { get; set; }
         public IEnumerable<SelectListItem> FrequencyList { get; set; }
     }

@@ -6,9 +6,8 @@ using EngineerApplication.Entities;
 
 namespace EngineerApplication.ContextStructure.Data.Repository.IRepository
 {
-    public interface IServiceService : IRepository<Service>
-    {
-
-        void Update(Service service);
-    }
+  public interface ICommodityService : IRepository<Commodity>
+  {
+    void Update(Commodity Commodity);
+  }
 }

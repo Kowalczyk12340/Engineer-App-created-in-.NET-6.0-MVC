@@ -26,7 +26,7 @@ namespace EngineerApplication.Areas.Customer.Controllers
             CartVM = new CartViewModel()
             {
                 OrderHeader = new Entities.OrderHeader(),
-                ServiceList = new List<Service>()
+                CommodityList = new List<Commodity>()
             };
         }
 
@@ -35,9 +35,9 @@ namespace EngineerApplication.Areas.Customer.Controllers
             if(HttpContext.Session.GetObject<List<int>>(UsefulConsts.SessionCart)!=null)
             {
                 List<int> sessionList = HttpContext.Session.GetObject<List<int>>(UsefulConsts.SessionCart);
-                foreach(int serviceId in sessionList)
+                foreach(int CommodityId in sessionList)
                 {
-                    CartVM.ServiceList.Add(_unitOfWork.Service.GetFirstOrDefault(u => u.Id == serviceId, includeProperties: "Frequency,Category"));
+                    CartVM.CommodityList.Add(_unitOfWork.Commodity.GetFirstOrDefault(u => u.Id == CommodityId, includeProperties: "Frequency,Category"));
                 }
             }
                 return View(CartVM);
@@ -49,9 +49,9 @@ namespace EngineerApplication.Areas.Customer.Controllers
             if (HttpContext.Session.GetObject<List<int>>(UsefulConsts.SessionCart) != null)
             {
                 List<int> sessionList = HttpContext.Session.GetObject<List<int>>(UsefulConsts.SessionCart);
-                foreach (int serviceId in sessionList)
+                foreach (int CommodityId in sessionList)
                 {
-                    CartVM.ServiceList.Add(_unitOfWork.Service.GetFirstOrDefault(u => u.Id == serviceId, includeProperties: "Frequency,Category"));
+                    CartVM.CommodityList.Add(_unitOfWork.Commodity.GetFirstOrDefault(u => u.Id == CommodityId, includeProperties: "Frequency,Category"));
                 }
             }
             return View(CartVM);
@@ -65,10 +65,10 @@ namespace EngineerApplication.Areas.Customer.Controllers
             if (HttpContext.Session.GetObject<List<int>>(UsefulConsts.SessionCart) != null)
             {
                 List<int> sessionList = HttpContext.Session.GetObject<List<int>>(UsefulConsts.SessionCart);
-                CartVM.ServiceList = new List<Service>();
-                foreach (int serviceId in sessionList)
+                CartVM.CommodityList = new List<Commodity>();
+                foreach (int CommodityId in sessionList)
                 {
-                    CartVM.ServiceList.Add(_unitOfWork.Service.Get(serviceId));
+                    CartVM.CommodityList.Add(_unitOfWork.Commodity.Get(CommodityId));
                 }
             }
 
@@ -80,17 +80,17 @@ namespace EngineerApplication.Areas.Customer.Controllers
             {
                 CartVM.OrderHeader.OrderDate = DateTime.Now;
                 CartVM.OrderHeader.Status = UsefulConsts.StatusSubmitted;
-                CartVM.OrderHeader.ServiceCount = CartVM.ServiceList.Count;
+                CartVM.OrderHeader.CommodityCount = CartVM.CommodityList.Count;
                 _unitOfWork.OrderHeader.Add(CartVM.OrderHeader);
                 _unitOfWork.Save();
 
-                foreach(var item in CartVM.ServiceList)
+                foreach(var item in CartVM.CommodityList)
                 {
                     OrderDetails orderDetails = new()
                     {
-                        ServiceId = item.Id,
+                        CommodityId = item.Id,
                         OrderHeaderId = CartVM.OrderHeader.Id,
-                        ServiceName = item.Name,
+                        CommodityName = item.Name,
                         Price = item.Price
                     };
 
@@ -109,10 +109,10 @@ namespace EngineerApplication.Areas.Customer.Controllers
         }
 
 
-        public IActionResult Remove(int serviceId)
+        public IActionResult Remove(int CommodityId)
         {
             List<int> sessionList = HttpContext.Session.GetObject<List<int>>(UsefulConsts.SessionCart);
-            sessionList.Remove(serviceId);
+            sessionList.Remove(CommodityId);
             HttpContext.Session.SetObject(UsefulConsts.SessionCart, sessionList);
 
             return RedirectToAction(nameof(Index));

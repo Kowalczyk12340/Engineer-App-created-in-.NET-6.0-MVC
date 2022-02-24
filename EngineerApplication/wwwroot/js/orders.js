@@ -17,7 +17,6 @@ $(document).ready(function () {
 });
 
 function loadDataTable(url) {
-    
     dataTable = $('#tblData').DataTable({
         "ajax": {
             "url": "/admin/order/" + url,
@@ -28,7 +27,7 @@ function loadDataTable(url) {
             { "data": "name", "width": "20%" },
             { "data": "phone", "width": "20%" },
             { "data": "email", "width": "15%" },
-            { "data": "serviceCount", "width": "15%" },
+            { "data": "CommodityCount", "width": "15%" },
             { "data": "status", "width": "15%" },
             {
                 "data": "id",
@@ -37,8 +36,6 @@ function loadDataTable(url) {
                                 <a href="/Admin/order/Details/${data}" class='btn btn-success text-white' style='cursor:pointer; width:100px;'>
                                     <i class='far fa-edit'></i> Details
                                 </a>
-                                
-                                
                             </div>
                             `;
                 }, "width": "15%"

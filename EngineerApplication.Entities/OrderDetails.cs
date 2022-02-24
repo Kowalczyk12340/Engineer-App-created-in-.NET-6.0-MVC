@@ -6,28 +6,27 @@ using System.Text;
 
 namespace EngineerApplication.Entities
 {
-    public class OrderDetails
-    {
-        public int Id { get; set; }
+  public class OrderDetails
+  {
+    public int Id { get; set; }
 
-        [Required]
-        public int OrderHeaderId { get; set; }
+    [Required]
+    public int OrderHeaderId { get; set; }
 
-        [ForeignKey("OrderHeaderId")]
-        public OrderHeader OrderHeader { get; set; }
+    [ForeignKey("OrderHeaderId")]
+    public OrderHeader OrderHeader { get; set; }
 
+    [Required]
+    public int CommodityId { get; set; }
 
-        [Required]
-        public int ServiceId { get; set; }
+    [ForeignKey("CommodityId")]
+    public Commodity Commodity { get; set; }
 
-        [ForeignKey("ServiceId")]
-        public Service Service { get; set; }
+    [Required]
+    public string CommodityName { get; set; }
 
-        [Required]
-        public string ServiceName { get; set; }
+    [Required]
+    public double Price { get; set; }
 
-        [Required]
-        public double Price { get; set; }
-
-    }
+  }
 }

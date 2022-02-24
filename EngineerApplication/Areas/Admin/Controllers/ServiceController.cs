@@ -8,15 +8,15 @@ namespace EngineerApplication.Areas.Admin.Controllers
 {
     [Area("Admin")]
     [Authorize]
-    public class ServiceController : Controller
+    public class CommodityController : Controller
     {
         private readonly IUnitOfWork _unitOfWork;
         private readonly IWebHostEnvironment _hostEnvironment;
 
         [BindProperty]
-        public ServiceVM ServVM { get; set; }
+        public CommodityVM ServVM { get; set; }
 
-        public ServiceController(IUnitOfWork unitOfWork, IWebHostEnvironment hostEnvironment)
+        public CommodityController(IUnitOfWork unitOfWork, IWebHostEnvironment hostEnvironment)
         {
             _unitOfWork = unitOfWork;
             _hostEnvironment = hostEnvironment;
@@ -29,15 +29,15 @@ namespace EngineerApplication.Areas.Admin.Controllers
 
         public IActionResult Upsert(int? id)
         {
-            ServVM = new ServiceVM()
+            ServVM = new CommodityVM()
             {
-                Service = new Entities.Service(),
+                Commodity = new Entities.Commodity(),
                 CategoryList = _unitOfWork.Category.GetCategoryListForDropDown(),
                 FrequencyList = _unitOfWork.Frequency.GetFrequencyListForDropDown(),
             };
             if (id != null)
             {
-                ServVM.Service = _unitOfWork.Service.Get(id.GetValueOrDefault());
+                ServVM.Commodity = _unitOfWork.Commodity.Get(id.GetValueOrDefault());
             }
 
             return View(ServVM);
@@ -51,32 +51,32 @@ namespace EngineerApplication.Areas.Admin.Controllers
             {
                 string webRootPath = _hostEnvironment.WebRootPath;
                 var files = HttpContext.Request.Form.Files;
-                if (ServVM.Service.Id == 0)
+                if (ServVM.Commodity.Id == 0)
                 {
-                    //New Service
+                    //New Commodity
                     string fileName = Guid.NewGuid().ToString();
-                    var uploads = Path.Combine(webRootPath, @"images\services");
+                    var uploads = Path.Combine(webRootPath, @"images\Services");
                     var extension = Path.GetExtension(files[0].FileName);
 
                     using (var fileStreams = new FileStream(Path.Combine(uploads, fileName + extension), FileMode.Create))
                     {
                         files[0].CopyTo(fileStreams);
                     }
-                    ServVM.Service.ImageUrl = @"\images\services\" + fileName + extension;
+                    ServVM.Commodity.ImageUrl = @"\images\Services\" + fileName + extension;
 
-                    _unitOfWork.Service.Add(ServVM.Service);
+                    _unitOfWork.Commodity.Add(ServVM.Commodity);
                 }
                 else
                 {
-                    //Edit Service
-                    var serviceFromDb = _unitOfWork.Service.Get(ServVM.Service.Id);
+                    //Edit Commodity
+                    var CommodityFromDb = _unitOfWork.Commodity.Get(ServVM.Commodity.Id);
                     if (files.Count > 0)
                     {
                         string fileName = Guid.NewGuid().ToString();
-                        var uploads = Path.Combine(webRootPath, @"images\services");
+                        var uploads = Path.Combine(webRootPath, @"images\Services");
                         var extension_new = Path.GetExtension(files[0].FileName);
 
-                        var imagePath = Path.Combine(webRootPath, serviceFromDb.ImageUrl.TrimStart('\\'));
+                        var imagePath = Path.Combine(webRootPath, CommodityFromDb.ImageUrl.TrimStart('\\'));
                         if (System.IO.File.Exists(imagePath))
                         {
                             System.IO.File.Delete(imagePath);
@@ -86,14 +86,14 @@ namespace EngineerApplication.Areas.Admin.Controllers
                         {
                             files[0].CopyTo(fileStreams);
                         }
-                        ServVM.Service.ImageUrl = @"\images\services\" + fileName + extension_new;
+                        ServVM.Commodity.ImageUrl = @"\images\Services\" + fileName + extension_new;
                     }
                     else
                     {
-                        ServVM.Service.ImageUrl = serviceFromDb.ImageUrl;
+                        ServVM.Commodity.ImageUrl = CommodityFromDb.ImageUrl;
                     }
 
-                    _unitOfWork.Service.Update(ServVM.Service);
+                    _unitOfWork.Commodity.Update(ServVM.Commodity);
                 }
                 _unitOfWork.Save();
                 return RedirectToAction(nameof(Index));
@@ -111,26 +111,26 @@ namespace EngineerApplication.Areas.Admin.Controllers
         #region API Calls
         public IActionResult GetAll()
         {
-            return Json(new { data = _unitOfWork.Service.GetAll(includeProperties: "Category,Frequency") });
+            return Json(new { data = _unitOfWork.Commodity.GetAll(includeProperties: "Category,Frequency") });
         }
 
         [HttpDelete]
         public IActionResult Delete(int id)
         {
-            var serviceFromDb = _unitOfWork.Service.Get(id);
+            var CommodityFromDb = _unitOfWork.Commodity.Get(id);
             string webRootPath = _hostEnvironment.WebRootPath;
-            var imagePath = Path.Combine(webRootPath, serviceFromDb.ImageUrl.TrimStart('\\'));
+            var imagePath = Path.Combine(webRootPath, CommodityFromDb.ImageUrl.TrimStart('\\'));
             if (System.IO.File.Exists(imagePath))
             {
                 System.IO.File.Delete(imagePath);
             }
 
-            if (serviceFromDb is null)
+            if (CommodityFromDb is null)
             {
                 return Json(new { success = false, message = "Error while deleting." });
             }
 
-            _unitOfWork.Service.Remove(serviceFromDb);
+            _unitOfWork.Commodity.Remove(CommodityFromDb);
             _unitOfWork.Save();
             return Json(new { success = true, message = "Deleted Successfully." });
         }

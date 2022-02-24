@@ -29,7 +29,7 @@ namespace EngineerApplication.Controllers
             HomeVM = new HomeViewModel()
             {
                 CategoryList = _unitOfWork.Category.GetAll(),
-                ServiceList = _unitOfWork.Service.GetAll(includeProperties: "Frequency")
+                CommodityList = _unitOfWork.Commodity.GetAll(includeProperties: "Frequency")
             };
 
             return View(HomeVM);
@@ -37,25 +37,25 @@ namespace EngineerApplication.Controllers
 
         public IActionResult Details(int id)
         {
-            var serviceFromDb = _unitOfWork.Service.GetFirstOrDefault(includeProperties: "Category,Frequency", filter: c => c.Id == id);
-            return View(serviceFromDb);
+            var CommodityFromDb = _unitOfWork.Commodity.GetFirstOrDefault(includeProperties: "Category,Frequency", filter: c => c.Id == id);
+            return View(CommodityFromDb);
         }
 
 
-        public IActionResult AddToCart(int serviceId)
+        public IActionResult AddToCart(int CommodityId)
         {
-            List<int> sessionList = new List<int>();
+            List<int> sessionList = new();
             if (string.IsNullOrEmpty(HttpContext.Session.GetString(UsefulConsts.SessionCart)))
             {
-                sessionList.Add(serviceId);
+                sessionList.Add(CommodityId);
                 HttpContext.Session.SetObject(UsefulConsts.SessionCart, sessionList);
             }
             else
             {
                 sessionList = HttpContext.Session.GetObject<List<int>>(UsefulConsts.SessionCart);
-                if (!sessionList.Contains(serviceId))
+                if (!sessionList.Contains(CommodityId))
                 {
-                    sessionList.Add(serviceId);
+                    sessionList.Add(CommodityId);
                     HttpContext.Session.SetObject(UsefulConsts.SessionCart, sessionList);
                 }
             }

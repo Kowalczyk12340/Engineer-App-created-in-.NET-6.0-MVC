@@ -1,4 +1,4 @@
-﻿var  dataTable;
+﻿var dataTable;
 
 $(document).ready(function () {
     loadDataTable();
@@ -19,7 +19,7 @@ function loadDataTable() {
                 "data": "id",
                 "render": function (data) {
 
-                    return `<div class="text-center"> 
+                    return `<div class="text-center">
                             <a href="/Admin/frequency/Upsert/${data}" class='btn btn-success text-white' style='cursor:pointer; width:100px;' >
                                 <i class='far fa-edit'></i> Edit
                             </a>

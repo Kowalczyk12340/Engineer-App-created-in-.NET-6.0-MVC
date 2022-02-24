@@ -1,7 +1,7 @@
-﻿@model EngineerApplication.Entities.ViewModels.ServiceVM
+﻿@model EngineerApplication.Entities.ViewModels.CommodityVM
 
 @{
-    var title = "Create Service";
+    var title = "Create Commodity";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
@@ -9,10 +9,10 @@
 
     <div class="row px-2 mx-2 backgroundWhite border">
         <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-        @if (Model.Service.Id != 0)
+        @if (Model.Commodity.Id != 0)
         {
-            <input type="hidden" asp-for="Service.Id" />
-            title = "Edit Service";
+            <input type="hidden" asp-for="Commodity.Id" />
+            title = "Edit Commodity";
         }
 
         <div class="col-12">
@@ -22,34 +22,34 @@
         <div class="col-9">
             <div class="form-group row">
                 <div class="col-4">
-                    <label asp-for="Service.Name"></label>
+                    <label asp-for="Commodity.Name"></label>
                 </div>
                 <div class="col-8">
-                    <input asp-for="Service.Name" class="form-control" />
-                    <span asp-validation-for="Service.Name" class="text-danger"></span>
+                    <input asp-for="Commodity.Name" class="form-control" />
+                    <span asp-validation-for="Commodity.Name" class="text-danger"></span>
                 </div>
             </div>
             <div class="form-group row">
                 <div class="col-4">
-                    <label asp-for="Service.Price"></label>
+                    <label asp-for="Commodity.Price"></label>
                 </div>
                 <div class="col-8">
-                    <input asp-for="Service.Price" id="txtPrice" class="form-control" />
-                    <span asp-validation-for="Service.Price" class="text-danger"></span>
+                    <input asp-for="Commodity.Price" id="txtPrice" class="form-control" />
+                    <span asp-validation-for="Commodity.Price" class="text-danger"></span>
                 </div>
             </div>
             <div class="form-group row">
                 <div class="col-4">
-                    <label asp-for="Service.LongDesc"></label>
+                    <label asp-for="Commodity.LongDesc"></label>
                 </div>
                 <div class="col-8">
-                    <textarea asp-for="Service.LongDesc" class="form-control" style="height:300px;"></textarea>
-                    <span asp-validation-for="Service.LongDesc" class="text-danger"></span>
+                    <textarea asp-for="Commodity.LongDesc" class="form-control" style="height:300px;"></textarea>
+                    <span asp-validation-for="Commodity.LongDesc" class="text-danger"></span>
                 </div>
             </div>
             <div class="form-group row">
                 <div class="col-4">
-                    <label asp-for="Service.ImageUrl"></label>
+                    <label asp-for="Commodity.ImageUrl"></label>
                 </div>
                 <div class="col-8">
                     <input type="file" name="files" id="uploadBox" multiple class="form-control" />
@@ -57,28 +57,28 @@
             </div>
             <div class="form-group row">
                 <div class="col-4">
-                    <label asp-for="Service.FrequencyId"></label>
+                    <label asp-for="Commodity.FrequencyId"></label>
                 </div>
                 <div class="col-8">
-                    @Html.DropDownListFor(m => m.Service.FrequencyId, Model.FrequencyList,
+                    @Html.DropDownListFor(m => m.Commodity.FrequencyId, Model.FrequencyList,
                                             "- Please select a Frequceny-", new { @class = "form-control" })
                 </div>
             </div>
             <div class="form-group row">
                 <div class="col-4">
-                    <label asp-for="Service.CategoryId"></label>
+                    <label asp-for="Commodity.CategoryId"></label>
                 </div>
                 <div class="col-8">
-                    @Html.DropDownListFor(m => m.Service.CategoryId, Model.CategoryList,
+                    @Html.DropDownListFor(m => m.Commodity.CategoryId, Model.CategoryList,
                                             "- Please select a Category-", new { @class = "form-control" })
                 </div>
             </div>
             <div class="form-group row">
                 <div class="col-8 offset-4">
-                    @if (Model.Service.Id != 0)
+                    @if (Model.Commodity.Id != 0)
                     {
                         //Edit button and back to list
-                        <partial name="_EditAndBackToListButton" model="Model.Service.Id" />
+                        <partial name="_EditAndBackToListButton" model="Model.Commodity.Id" />
                     }
                     else
                     {
@@ -94,10 +94,10 @@
                 </div>
             </div>
         </div>
-        @if (Model.Service.Id != 0)
+        @if (Model.Commodity.Id != 0)
         {
             <div class="col-3">
-                <img src="@Model.Service.ImageUrl" width="100%" style="border-radius:5px; border:1px solid #bbb9b9" />
+                <img src="@Model.Commodity.ImageUrl" width="100%" style="border-radius:5px; border:1px solid #bbb9b9" />
             </div>
         }
     </div>

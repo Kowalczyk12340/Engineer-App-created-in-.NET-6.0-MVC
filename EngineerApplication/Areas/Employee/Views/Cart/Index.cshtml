@@ -5,7 +5,7 @@
 }
 
 <form method="post">
-    @if (Model.ServiceList.Count > 0)
+    @if (Model.CommodityList.Count > 0)
     {
         <br />
         <div class="backgroundWhite container">
@@ -23,7 +23,7 @@
                         var orderTotal = 0.0;
                     }
 
-                    @foreach (var item in Model.ServiceList)
+                    @foreach (var item in Model.CommodityList)
                     {
                         orderTotal += (item.Price * item.Frequency.FrequencyCount);
                         <div class="row">
@@ -32,7 +32,7 @@
                             </div>
                             <div class="col-12 col-md-5 text-md-left pt-3">
                                 <h5><strong class="text-primary">@item.Name</strong></h5>
-                                <h5 class="text-secondary">$@item.Price per service</h5>
+                                <h5 class="text-secondary">$@item.Price per Commodity</h5>
                                 <h5 class="text-secondary"><small>@item.Frequency.Name</small></h5>
                             </div>
                             <div class="col-12 col-md-5 row pt-3">
@@ -40,7 +40,7 @@
                                     <h6><strong class="text-danger">@((item.Price * item.Frequency.FrequencyCount).ToString("c"))</strong></h6>
                                 </div>
                                 <div class="col-6 text-right">
-                                    <button type="submit" class="btn btn-outline-danger" asp-action="remove" asp-route-serviceId="@item.Id">
+                                    <button type="submit" class="btn btn-outline-danger" asp-action="remove" asp-route-CommodityId="@item.Id">
                                         <i class="fas fa-trash"></i>
                                     </button>
                                 </div>

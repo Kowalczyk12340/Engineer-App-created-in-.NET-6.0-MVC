@@ -8,7 +8,7 @@ $(document).ready(function () {
 function loadDataTable() {
     dataTable = $('#tblData').DataTable({
         "ajax": {
-            "url": "/admin/service/GetAll",
+            "url": "/admin/Commodity/GetAll",
             "type": "GET",
             "datatype": "json"
         },
@@ -22,11 +22,11 @@ function loadDataTable() {
                 "render": function (data) {
 
                     return `<div class="text-center"> 
-                            <a href="/Admin/service/Upsert/${data}" class='btn btn-success text-white' style='cursor:pointer; width:100px;' >
+                            <a href="/Admin/Commodity/Upsert/${data}" class='btn btn-success text-white' style='cursor:pointer; width:100px;' >
                                 <i class='far fa-edit'></i> Edit
                             </a>
                             &nbsp;
-                            <a class='btn btn-danger text-white' style='cursor:pointer; width:100px;' onclick=Delete('/admin/service/Delete/'+${data})>
+                            <a class='btn btn-danger text-white' style='cursor:pointer; width:100px;' onclick=Delete('/admin/Commodity/Delete/'+${data})>
                                <i class='far fa-trash-alt'></i> Delete
                             </a></div>
                         `;

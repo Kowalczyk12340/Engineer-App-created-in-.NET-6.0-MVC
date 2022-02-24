@@ -6,10 +6,10 @@ using EngineerApplication.Entities;
 
 namespace EngineerApplication.ContextStructure.Data.Repository.IRepository
 {
-    public interface IFrequencyService : IRepository<Frequency>
-    {
-        IEnumerable<SelectListItem> GetFrequencyListForDropDown();
+  public interface IFrequencyService : IRepository<Frequency>
+  {
+    IEnumerable<SelectListItem> GetFrequencyListForDropDown();
 
-        void Update(Frequency frequency);
-    }
+    void Update(Frequency frequency);
+  }
 }

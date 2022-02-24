@@ -5,7 +5,7 @@
 }
 
 <form method="post">
-    @if (Model.ServiceList.Count > 0)
+    @if (Model.CommodityList.Count > 0)
     {
         <br />
         <div class="backgroundWhite container">
@@ -90,7 +90,7 @@
                               <ul class="list-group mb-3">
                                   @{ var total = 0.0;}
 
-                                  @foreach(var details in Model.ServiceList)
+                                  @foreach(var details in Model.CommodityList)
                                   {
                                       <li class="list-group-item d-flex justify-content-between">
                                           <div>
