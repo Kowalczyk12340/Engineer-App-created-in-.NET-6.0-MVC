@@ -76,7 +76,7 @@ namespace EngineerApplication
       {
         endpoints.MapControllerRoute(
                   name: "default",
-                  pattern: "{area=Customer}/{controller=Home}/{action=Index}/{id?}");
+                  pattern: "{area=Employee}/{controller=Home}/{action=Index}/{id?}");
         endpoints.MapRazorPages();
       });
     }

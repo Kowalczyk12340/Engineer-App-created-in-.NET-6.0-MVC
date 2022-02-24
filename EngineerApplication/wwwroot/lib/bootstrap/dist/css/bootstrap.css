@@ -3338,7 +3338,7 @@ fieldset:disabled a.btn {
 
 .btn-link {
     font-weight: 400;
-    color: #008cba;
+    color: #32CD32;
     text-decoration: none;
 }
 
@@ -3646,7 +3646,7 @@ input[type="button"].btn-block {
     .dropdown-item.active, .dropdown-item:active {
         color: #fff;
         text-decoration: none;
-        background-color: #008cba;
+        background-color: #32CD32;
     }
 
     .dropdown-item.disabled, .dropdown-item:disabled {
@@ -4034,8 +4034,8 @@ input[type="button"].btn-block {
 
     .custom-control-input:checked ~ .custom-control-label::before {
         color: #fff;
-        border-color: #008cba;
-        background-color: #008cba;
+        border-color: #32CD32;
+        background-color: #32CD32;
     }
 
     .custom-control-input:focus ~ .custom-control-label::before {
@@ -4100,8 +4100,8 @@ input[type="button"].btn-block {
 }
 
 .custom-checkbox .custom-control-input:indeterminate ~ .custom-control-label::before {
-    border-color: #008cba;
-    background-color: #008cba;
+    border-color: #32CD32;
+    background-color: #32CD32;
 }
 
 .custom-checkbox .custom-control-input:indeterminate ~ .custom-control-label::after {
@@ -4334,7 +4334,7 @@ input[type="button"].btn-block {
         width: 1rem;
         height: 1rem;
         margin-top: -0.25rem;
-        background-color: #008cba;
+        background-color: #32CD32;
         border: 0;
         border-radius: 1rem;
         -webkit-transition: background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, -webkit-box-shadow 0.15s ease-in-out;
@@ -4369,7 +4369,7 @@ input[type="button"].btn-block {
 .custom-range::-moz-range-thumb {
     width: 1rem;
     height: 1rem;
-    background-color: #008cba;
+    background-color: #32CD32;
     border: 0;
     border-radius: 1rem;
     -webkit-transition: background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, -webkit-box-shadow 0.15s ease-in-out;
@@ -4407,7 +4407,7 @@ input[type="button"].btn-block {
     margin-top: 0;
     margin-right: 0.2rem;
     margin-left: 0.2rem;
-    background-color: #008cba;
+    background-color: #32CD32;
     border: 0;
     border-radius: 1rem;
     -webkit-transition: background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, -webkit-box-shadow 0.15s ease-in-out;
@@ -4557,7 +4557,7 @@ input[type="button"].btn-block {
     .nav-pills .nav-link.active,
     .nav-pills .show > .nav-link {
         color: #fff;
-        background-color: #008cba;
+        background-color: #32CD32;
     }
 
 .nav-fill .nav-item {
@@ -5416,7 +5416,7 @@ input[type="button"].btn-block {
 .page-item.active .page-link {
     z-index: 1;
     color: #fff;
-    background-color: #008cba;
+    background-color: #32CD32;
     border-color: #0079a1;
 }
 
@@ -5504,7 +5504,7 @@ a.badge:hover, a.badge:focus {
 
 .badge-primary {
     color: #fff;
-    background-color: #008cba;
+    background-color: #32CD32;
 }
 
 a.badge-primary:hover, a.badge-primary:focus {
@@ -5834,7 +5834,7 @@ a.badge-dark:focus, a.badge-dark.focus {
     color: #fff;
     text-align: center;
     white-space: nowrap;
-    background-color: #008cba;
+    background-color: #32CD32;
     -webkit-transition: width 0.6s ease;
     transition: width 0.6s ease;
 }
@@ -5937,8 +5937,8 @@ a.badge-dark:focus, a.badge-dark.focus {
     .list-group-item.active {
         z-index: 2;
         color: #fff;
-        background-color: #008cba;
-        border-color: #008cba;
+        background-color: #32CD32;
+        border-color: #32CD32;
     }
 
 .list-group-horizontal {
@@ -7136,7 +7136,7 @@ a.close.disabled {
 }
 
 .bg-primary {
-    background-color: #008cba !important;
+    background-color: #32CD32 !important;
 }
 
 a.bg-primary:hover, a.bg-primary:focus,
@@ -7264,7 +7264,7 @@ button.bg-dark:focus {
 }
 
 .border-primary {
-    border-color: #008cba !important;
+    border-color: #32CD32 !important;
 }
 
 .border-secondary {
@@ -11137,7 +11137,7 @@ button.bg-dark:focus {
 }
 
 .text-primary {
-    color: #008cba !important;
+    color: #32CD32 !important;
 }
 
 a.text-primary:hover, a.text-primary:focus {
@@ -11350,7 +11350,7 @@ a.text-dark:hover, a.text-dark:focus {
 }
 
 .bg-primary .dropdown-menu {
-    background-color: #008cba;
+    background-color: #32CD32;
 }
 
     .bg-primary .dropdown-menu .dropdown-item,
@@ -11440,7 +11440,7 @@ a.text-dark:hover, a.text-dark:focus {
 }
 
 .btn-group .dropdown-toggle.btn-primary ~ .dropdown-menu {
-    background-color: #008cba;
+    background-color: #32CD32;
     border-color: #0079a1;
 }
 
@@ -11542,7 +11542,7 @@ table {
     .table-primary,
     .table-primary > th,
     .table-primary > td {
-        background-color: #008cba;
+        background-color: #32CD32;
     }
 
 .table-secondary,
@@ -11718,7 +11718,7 @@ label,
 }
 
 .alert-primary, .alert-primary > th, .alert-primary > td {
-    background-color: #008cba;
+    background-color: #32CD32;
 }
 
 .alert-secondary, .alert-secondary > th, .alert-secondary > td {

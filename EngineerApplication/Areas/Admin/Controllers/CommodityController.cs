@@ -1,5 +1,4 @@
 ﻿using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using EngineerApplication.ContextStructure.Data.Repository.IRepository;
 using EngineerApplication.Entities.ViewModels;
@@ -14,7 +13,7 @@ namespace EngineerApplication.Areas.Admin.Controllers
     private readonly IWebHostEnvironment _hostEnvironment;
 
     [BindProperty]
-    public CommodityVM ServVM { get; set; }
+    public CommodityVM CommodityVM { get; set; }
 
     public CommodityController(IUnitOfWork unitOfWork, IWebHostEnvironment hostEnvironment)
     {
@@ -29,7 +28,7 @@ namespace EngineerApplication.Areas.Admin.Controllers
 
     public IActionResult Upsert(int? id)
     {
-      ServVM = new CommodityVM()
+      CommodityVM = new CommodityVM()
       {
         Commodity = new Entities.Commodity(),
         CategoryList = _unitOfWork.Category.GetCategoryListForDropDown(),
@@ -37,10 +36,10 @@ namespace EngineerApplication.Areas.Admin.Controllers
       };
       if (id != null)
       {
-        ServVM.Commodity = _unitOfWork.Commodity.Get(id.GetValueOrDefault());
+        CommodityVM.Commodity = _unitOfWork.Commodity.Get(id.GetValueOrDefault());
       }
 
-      return View(ServVM);
+      return View(CommodityVM);
     }
 
     [HttpPost]
@@ -51,29 +50,29 @@ namespace EngineerApplication.Areas.Admin.Controllers
       {
         string webRootPath = _hostEnvironment.WebRootPath;
         var files = HttpContext.Request.Form.Files;
-        if (ServVM.Commodity.Id == 0)
+        if (CommodityVM.Commodity.Id == 0)
         {
           //New Commodity
           string fileName = Guid.NewGuid().ToString();
-          var uploads = Path.Combine(webRootPath, @"images\Services");
+          var uploads = Path.Combine(webRootPath, @"images\Commodities");
           var extension = Path.GetExtension(files[0].FileName);
 
           using (var fileStreams = new FileStream(Path.Combine(uploads, fileName + extension), FileMode.Create))
           {
             files[0].CopyTo(fileStreams);
           }
-          ServVM.Commodity.ImageUrl = @"\images\Services\" + fileName + extension;
+          CommodityVM.Commodity.ImageUrl = @"\images\Commodities\" + fileName + extension;
 
-          _unitOfWork.Commodity.Add(ServVM.Commodity);
+          _unitOfWork.Commodity.Add(CommodityVM.Commodity);
         }
         else
         {
           //Edit Commodity
-          var CommodityFromDb = _unitOfWork.Commodity.Get(ServVM.Commodity.Id);
+          var CommodityFromDb = _unitOfWork.Commodity.Get(CommodityVM.Commodity.Id);
           if (files.Count > 0)
           {
             string fileName = Guid.NewGuid().ToString();
-            var uploads = Path.Combine(webRootPath, @"images\Services");
+            var uploads = Path.Combine(webRootPath, @"images\Commodities");
             var extension_new = Path.GetExtension(files[0].FileName);
 
             var imagePath = Path.Combine(webRootPath, CommodityFromDb.ImageUrl.TrimStart('\\'));
@@ -86,28 +85,25 @@ namespace EngineerApplication.Areas.Admin.Controllers
             {
               files[0].CopyTo(fileStreams);
             }
-            ServVM.Commodity.ImageUrl = @"\images\Services\" + fileName + extension_new;
+            CommodityVM.Commodity.ImageUrl = @"\images\Commodities\" + fileName + extension_new;
           }
           else
           {
-            ServVM.Commodity.ImageUrl = CommodityFromDb.ImageUrl;
+            CommodityVM.Commodity.ImageUrl = CommodityFromDb.ImageUrl;
           }
 
-          _unitOfWork.Commodity.Update(ServVM.Commodity);
+          _unitOfWork.Commodity.Update(CommodityVM.Commodity);
         }
         _unitOfWork.Save();
         return RedirectToAction(nameof(Index));
       }
       else
       {
-        ServVM.CategoryList = _unitOfWork.Category.GetCategoryListForDropDown();
-        ServVM.FrequencyList = _unitOfWork.Frequency.GetFrequencyListForDropDown();
-        return View(ServVM);
+        CommodityVM.CategoryList = _unitOfWork.Category.GetCategoryListForDropDown();
+        CommodityVM.FrequencyList = _unitOfWork.Frequency.GetFrequencyListForDropDown();
+        return View(CommodityVM);
       }
     }
-
-
-
     #region API Calls
     public IActionResult GetAll()
     {

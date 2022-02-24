@@ -1,9 +1,7 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using EngineerApplication.ContextStructure.Data;
-using EngineerApplication.ContextStructure.Data.Repository.IRepository;
 using EngineerApplication.Entities;
-using EngineerApplication.Helpers;
 
 namespace EngineerApplication.Areas.Admin.Controllers
 {

@@ -63,7 +63,6 @@ namespace EngineerApplication.ContextStructure.Data.Initializer
 
       ApplicationUser? user1 = _db.ApplicationUser?.Where(u => u.Email == "marcinkowalczyk24.5@wp.pl").FirstOrDefault();
       _userManager.AddToRoleAsync(user1, UsefulConsts.Employee).GetAwaiter().GetResult();
-
     }
   }
 }

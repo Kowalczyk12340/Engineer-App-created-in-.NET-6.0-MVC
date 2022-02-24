@@ -11,9 +11,9 @@ using EngineerApplication.Entities;
 using EngineerApplication.Entities.ViewModels;
 using EngineerApplication.Helpers;
 
-namespace EngineerApplication.Controllers
+namespace EngineerApplication.Areas.Employee.Controllers
 {
-    [Area("Customer")]
+    [Area("Employee")]
     public class HomeController : Controller
     {
         private readonly IUnitOfWork _unitOfWork;

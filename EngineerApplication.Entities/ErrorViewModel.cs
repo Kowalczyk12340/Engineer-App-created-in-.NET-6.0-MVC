@@ -1,5 +1,3 @@
-using System;
-
 namespace EngineerApplication.Entities
 {
   public class ErrorViewModel

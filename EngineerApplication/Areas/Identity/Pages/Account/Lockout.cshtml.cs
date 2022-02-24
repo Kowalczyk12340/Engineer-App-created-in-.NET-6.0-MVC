@@ -7,12 +7,12 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace EngineerApplication.Areas.Identity.Pages.Account
 {
-    [AllowAnonymous]
-    public class LockoutModel : PageModel
+  [AllowAnonymous]
+  public class LockoutModel : PageModel
+  {
+    public void OnGet()
     {
-        public void OnGet()
-        {
 
-        }
     }
+  }
 }
