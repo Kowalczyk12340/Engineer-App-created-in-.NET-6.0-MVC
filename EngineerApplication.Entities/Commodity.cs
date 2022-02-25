@@ -33,5 +33,11 @@ namespace EngineerApplication.Entities
 
     [ForeignKey("FrequencyId")]
     public Frequency? Frequency { get; set; }
+
+    [Required]
+    public int SupplierId { get; set; }
+
+    [ForeignKey("SupplierId")]
+    public Supplier? Supplier { get; set; }
   }
 }

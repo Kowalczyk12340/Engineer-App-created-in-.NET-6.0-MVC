@@ -1,7 +1,8 @@
-﻿using EngineerApplication.ContextStructure.Data.Repository.IRepository;
-using EngineerApplication.Entities;
+﻿using EngineerApplication.Entities;
+using EngineerApplication.ContextStructure.Data.Repository;
+using EngineerApplication.ContextStructure.Data.Service.Interfaces;
 
-namespace EngineerApplication.ContextStructure.Data.Repository
+namespace EngineerApplication.ContextStructure.Data.Service
 {
   public class UserService : Repository<ApplicationUser>, IUserService
   {

@@ -1,12 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data.SqlClient;
-using System.Text;
+﻿using System.Data.SqlClient;
 using Dapper;
 using Microsoft.EntityFrameworkCore;
-using EngineerApplication.ContextStructure.Data.Repository.IRepository;
+using EngineerApplication.ContextStructure.Data.Service.Interfaces;
 
-namespace EngineerApplication.ContextStructure.Data.Repository
+namespace EngineerApplication.ContextStructure.Data.Service
 {
   public class SP_Call : ISP_Call
   {

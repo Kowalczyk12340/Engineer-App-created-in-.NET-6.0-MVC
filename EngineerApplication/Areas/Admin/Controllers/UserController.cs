@@ -1,7 +1,7 @@
 ﻿using System.Security.Claims;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using EngineerApplication.ContextStructure.Data.Repository.IRepository;
+using EngineerApplication.ContextStructure.Data.Service.Interfaces;
 using EngineerApplication.Helpers;
 
 namespace EngineerApplication.Areas.Admin.Controllers

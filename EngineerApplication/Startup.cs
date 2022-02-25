@@ -1,11 +1,11 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using EngineerApplication.ContextStructure.Data;
-using EngineerApplication.ContextStructure.Data.Repository.IRepository;
-using EngineerApplication.ContextStructure.Data.Repository;
 using EngineerApplication.ContextStructure.Data.Initializer;
 using Microsoft.AspNetCore.Identity.UI.Services;
 using EngineerApplication.Helpers;
+using EngineerApplication.ContextStructure.Data.Service.Interfaces;
+using EngineerApplication.ContextStructure.Data.Service;
 
 namespace EngineerApplication
 {

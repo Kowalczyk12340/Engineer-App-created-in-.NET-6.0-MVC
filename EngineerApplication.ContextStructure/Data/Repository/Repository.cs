@@ -4,7 +4,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Text;
-using EngineerApplication.ContextStructure.Data.Repository.IRepository;
 
 namespace EngineerApplication.ContextStructure.Data.Repository
 {

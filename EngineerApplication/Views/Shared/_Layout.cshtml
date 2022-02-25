@@ -52,16 +52,16 @@
                                 <div class="dropdown-menu" aria-labelledby="navbarDropDown">
                                     <a class="dropdown-item text-white" asp-area="Admin" asp-controller="Category" asp-action="Index">Category</a>
                                     <a class="dropdown-item text-white" asp-area="Admin" asp-controller="Frequency" asp-action="Index">Frequency</a>
+                                    <a class="dropdown-item text-white" asp-area="Admin" asp-controller="Supplier" asp-action="Index">Supplier</a>
                                     <a class="dropdown-item text-white" asp-area="Admin" asp-controller="Commodity" asp-action="Index">Commodity</a>
                                     <a class="dropdown-item text-white" asp-area="Admin" asp-controller="WebImage" asp-action="Index">Image Uploader</a>
-                                    @if (User.IsInRole(UsefulConsts.Admin))
-                                    {
-                                        <a class="dropdown-item text-white" asp-area="Admin" asp-controller="User" asp-action="Index">User</a>
-                                    }
                                     <a class="dropdown-item text-white" asp-area="Admin" asp-controller="Order" asp-action="Index">Order</a>
-
                                 </div>
                             </li>
+                        }
+                        @if (User.IsInRole(UsefulConsts.Admin))
+                        {
+                            <a class="dropdown-item text-white" asp-area="Admin" asp-controller="User" asp-action="Index">User</a>
                         }
                         @if (HttpContextAccessor.HttpContext.Session.GetObject<List<int>>(UsefulConsts.SessionCart) != null)
                         {

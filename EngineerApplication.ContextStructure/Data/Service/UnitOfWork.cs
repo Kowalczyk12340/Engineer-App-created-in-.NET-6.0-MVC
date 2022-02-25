@@ -1,6 +1,7 @@
-﻿using EngineerApplication.ContextStructure.Data.Repository.IRepository;
+﻿using EngineerApplication.ContextStructure.Data.Repository;
+using EngineerApplication.ContextStructure.Data.Service.Interfaces;
 
-namespace EngineerApplication.ContextStructure.Data.Repository
+namespace EngineerApplication.ContextStructure.Data.Service
 {
   public class UnitOfWork : IUnitOfWork
   {
@@ -12,6 +13,7 @@ namespace EngineerApplication.ContextStructure.Data.Repository
       Category = new CategoryService(_db);
       Frequency = new FrequencyService(_db);
       Commodity = new CommodityService(_db);
+      Supplier = new SupplierService(_db);
       OrderHeader = new OrderHeaderService(_db);
       OrderDetails = new OrderDetailsService(_db);
       User = new UserService(_db);
@@ -20,6 +22,7 @@ namespace EngineerApplication.ContextStructure.Data.Repository
 
     public ICategoryService Category { get; private set; }
     public IFrequencyService Frequency { get; private set; }
+    public ISupplierService Supplier { get; private set; }
     public ICommodityService Commodity { get; private set; }
     public IOrderHeaderService OrderHeader { get; private set; }
     public IOrderDetailsService OrderDetails { get; private set; }

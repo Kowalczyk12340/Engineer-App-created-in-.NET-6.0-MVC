@@ -7,11 +7,11 @@ namespace EngineerApplication.Areas.Admin.Controllers
 {
   [Authorize]
   [Area("Admin")]
-  public class CategoryController : Controller
+  public class SupplierController : Controller
   {
     private readonly IUnitOfWork _unitOfWork;
 
-    public CategoryController(IUnitOfWork unitOfWork)
+    public SupplierController(IUnitOfWork unitOfWork)
     {
       _unitOfWork = unitOfWork;
     }
@@ -21,41 +21,44 @@ namespace EngineerApplication.Areas.Admin.Controllers
       return View();
     }
 
-
     public IActionResult Upsert(int? id)
     {
-      Category category = new();
-      if (id == null)
+      Supplier supplier = new();
+
+      if (id is null)
       {
-        return View(category);
+        return View(supplier);
       }
-      category = _unitOfWork.Category.Get(id.GetValueOrDefault());
-      if (category == null)
+
+      supplier = _unitOfWork.Supplier.Get(id.GetValueOrDefault());
+
+      if (supplier is null)
       {
         return NotFound();
       }
-      return View(category);
+
+      return View(supplier);
 
     }
 
     [HttpPost]
     [ValidateAntiForgeryToken]
-    public IActionResult Upsert(Category category)
+    public IActionResult Upsert(Supplier supplier)
     {
       if (ModelState.IsValid)
       {
-        if (category.Id == 0)
+        if (supplier.Id == 0)
         {
-          _unitOfWork.Category.Add(category);
+          _unitOfWork.Supplier.Add(supplier);
         }
         else
         {
-          _unitOfWork.Category.Update(category);
+          _unitOfWork.Supplier.Update(supplier);
         }
         _unitOfWork.Save();
         return RedirectToAction(nameof(Index));
       }
-      return View(category);
+      return View(supplier);
     }
 
 
@@ -64,26 +67,24 @@ namespace EngineerApplication.Areas.Admin.Controllers
     [HttpGet]
     public IActionResult GetAll()
     {
-      return Json(new { data = _unitOfWork.Category.GetAll() });
-      //return Json(new { data = _unitOfWork.SP_Call.ReturnList<Category>(UsefulConsts.usp_GetAllCategory,null)  });
+      return Json(new { data = _unitOfWork.Supplier.GetAll() });
+      //return Json(new { data = _unitOfWork.SP_Call.ReturnList<Supplier>(UsefulConsts.usp_GetAllSupplier,null)  });
     }
 
     [HttpDelete]
     public IActionResult Delete(int id)
     {
-      var objFromDb = _unitOfWork.Category.Get(id);
+      var objFromDb = _unitOfWork.Supplier.Get(id);
       if (objFromDb == null)
       {
         return Json(new { success = false, message = "Error while deleting." });
       }
 
-      _unitOfWork.Category.Remove(objFromDb);
+      _unitOfWork.Supplier.Remove(objFromDb);
       _unitOfWork.Save();
       return Json(new { success = true, message = "Delete successful." });
 
     }
-
-
     #endregion
   }
 }

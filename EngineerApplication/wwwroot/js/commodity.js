@@ -14,9 +14,10 @@ function loadDataTable() {
         },
         "columns": [
             { "data": "name", "width": "20%" },
-            { "data": "category.name", "width": "20%" },
-            { "data": "price", "width": "15%" },
-            { "data": "frequency.frequencyCount", "width": "15%" },
+            { "data": "category.name", "width": "15%" },
+            { "data": "supplier.name", "width": "15%" },
+            { "data": "price", "width": "10%" },
+            { "data": "frequency.frequencyCount", "width": "10%" },
             {
                 "data": "id",
                 "render": function (data) {

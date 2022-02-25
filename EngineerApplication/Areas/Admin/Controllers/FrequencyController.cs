@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using EngineerApplication.ContextStructure.Data.Repository.IRepository;
+using EngineerApplication.ContextStructure.Data.Service.Interfaces;
 using EngineerApplication.Entities;
 
 namespace EngineerApplication.Areas.Admin.Controllers

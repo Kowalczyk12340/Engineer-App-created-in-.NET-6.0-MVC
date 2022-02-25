@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using EngineerApplication.ContextStructure.Data.Repository.IRepository;
+using EngineerApplication.ContextStructure.Data.Service.Interfaces;
 using EngineerApplication.Entities.ViewModels;
 
 namespace EngineerApplication.Areas.Admin.Controllers
@@ -32,6 +32,7 @@ namespace EngineerApplication.Areas.Admin.Controllers
       {
         Commodity = new Entities.Commodity(),
         CategoryList = _unitOfWork.Category.GetCategoryListForDropDown(),
+        SupplierList = _unitOfWork.Supplier.GetSupplierListForDropDown(),
         FrequencyList = _unitOfWork.Frequency.GetFrequencyListForDropDown(),
       };
       if (id != null)
@@ -100,6 +101,7 @@ namespace EngineerApplication.Areas.Admin.Controllers
       else
       {
         CommodityVM.CategoryList = _unitOfWork.Category.GetCategoryListForDropDown();
+        CommodityVM.SupplierList = _unitOfWork.Supplier.GetSupplierListForDropDown();
         CommodityVM.FrequencyList = _unitOfWork.Frequency.GetFrequencyListForDropDown();
         return View(CommodityVM);
       }
@@ -107,7 +109,7 @@ namespace EngineerApplication.Areas.Admin.Controllers
     #region API Calls
     public IActionResult GetAll()
     {
-      return Json(new { data = _unitOfWork.Commodity.GetAll(includeProperties: "Category,Frequency") });
+      return Json(new { data = _unitOfWork.Commodity.GetAll(includeProperties: "Category,Supplier,Frequency") });
     }
 
     [HttpDelete]

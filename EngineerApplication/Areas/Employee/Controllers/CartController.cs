@@ -4,11 +4,11 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using EngineerApplication.ContextStructure.Data.Repository;
-using EngineerApplication.ContextStructure.Data.Repository.IRepository;
 using EngineerApplication.Extensions;
 using EngineerApplication.Entities;
 using EngineerApplication.Entities.ViewModels;
 using EngineerApplication.Helpers;
+using EngineerApplication.ContextStructure.Data.Service.Interfaces;
 
 namespace EngineerApplication.Areas.Employee.Controllers
 {
