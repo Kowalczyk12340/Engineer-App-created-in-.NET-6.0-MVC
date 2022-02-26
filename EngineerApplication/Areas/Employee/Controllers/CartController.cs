@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
-using EngineerApplication.ContextStructure.Data.Repository;
+﻿using Microsoft.AspNetCore.Mvc;
 using EngineerApplication.Extensions;
 using EngineerApplication.Entities;
 using EngineerApplication.Entities.ViewModels;
@@ -80,7 +75,7 @@ namespace EngineerApplication.Areas.Employee.Controllers
             {
                 CartVM.OrderHeader.OrderDate = DateTime.Now;
                 CartVM.OrderHeader.Status = UsefulConsts.StatusSubmitted;
-                CartVM.OrderHeader.CommodityCount = CartVM.CommodityList.Count;
+                CartVM.OrderHeader.Count = CartVM.CommodityList.Count;
                 _unitOfWork.OrderHeader.Add(CartVM.OrderHeader);
                 _unitOfWork.Save();
 

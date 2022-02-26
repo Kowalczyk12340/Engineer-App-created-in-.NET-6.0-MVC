@@ -9,6 +9,7 @@ namespace EngineerApplication.ContextStructure.Data.Service.Interfaces
     ICategoryService Category { get; }
     IFrequencyService Frequency { get; }
     ISupplierService Supplier { get; }
+    IOfferService Offer { get; }
     ICommodityService Commodity { get; }
     IOrderHeaderService OrderHeader { get; }
     IOrderDetailsService OrderDetails { get; }

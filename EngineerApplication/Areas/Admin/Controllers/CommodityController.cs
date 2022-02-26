@@ -55,14 +55,14 @@ namespace EngineerApplication.Areas.Admin.Controllers
         {
           //New Commodity
           string fileName = Guid.NewGuid().ToString();
-          var uploads = Path.Combine(webRootPath, @"images\Commodities");
+          var uploads = Path.Combine(webRootPath, @"images\Services");
           var extension = Path.GetExtension(files[0].FileName);
 
           using (var fileStreams = new FileStream(Path.Combine(uploads, fileName + extension), FileMode.Create))
           {
             files[0].CopyTo(fileStreams);
           }
-          CommodityVM.Commodity.ImageUrl = @"\images\Commodities\" + fileName + extension;
+          CommodityVM.Commodity.ImageUrl = @"\images\Services\" + fileName + extension;
 
           _unitOfWork.Commodity.Add(CommodityVM.Commodity);
         }
@@ -73,7 +73,7 @@ namespace EngineerApplication.Areas.Admin.Controllers
           if (files.Count > 0)
           {
             string fileName = Guid.NewGuid().ToString();
-            var uploads = Path.Combine(webRootPath, @"images\Commodities");
+            var uploads = Path.Combine(webRootPath, @"images\Services");
             var extension_new = Path.GetExtension(files[0].FileName);
 
             var imagePath = Path.Combine(webRootPath, CommodityFromDb.ImageUrl.TrimStart('\\'));
@@ -86,7 +86,7 @@ namespace EngineerApplication.Areas.Admin.Controllers
             {
               files[0].CopyTo(fileStreams);
             }
-            CommodityVM.Commodity.ImageUrl = @"\images\Commodities\" + fileName + extension_new;
+            CommodityVM.Commodity.ImageUrl = @"\images\Services\" + fileName + extension_new;
           }
           else
           {
@@ -132,7 +132,6 @@ namespace EngineerApplication.Areas.Admin.Controllers
       _unitOfWork.Save();
       return Json(new { success = true, message = "Deleted Successfully." });
     }
-
     #endregion
   }
 }

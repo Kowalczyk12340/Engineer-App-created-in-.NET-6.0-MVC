@@ -52,9 +52,6 @@ namespace EngineerApplication.Areas.Admin.Controllers
       _unitOfWork.OrderHeader.ChangeOrderStatus(id, UsefulConsts.StatusRejected);
       return View(nameof(Index));
     }
-
-
-
     #region API Calls
 
     public IActionResult GetAllOrders()

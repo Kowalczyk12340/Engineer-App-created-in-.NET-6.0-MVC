@@ -103,6 +103,35 @@ namespace EngineerApplication.ContextStructure.Migrations
                     b.ToTable("Frequency");
                 });
 
+            modelBuilder.Entity("EngineerApplication.Entities.Offer", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<int>("CommodityId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Count")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("OfferDesc")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CommodityId");
+
+                    b.ToTable("Offer");
+                });
+
             modelBuilder.Entity("EngineerApplication.Entities.OrderDetails", b =>
                 {
                     b.Property<int>("Id")
@@ -152,7 +181,7 @@ namespace EngineerApplication.ContextStructure.Migrations
                     b.Property<string>("Comments")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("CommodityCount")
+                    b.Property<int>("Count")
                         .HasColumnType("int");
 
                     b.Property<string>("Email")
@@ -489,6 +518,17 @@ namespace EngineerApplication.ContextStructure.Migrations
                     b.Navigation("Frequency");
 
                     b.Navigation("Supplier");
+                });
+
+            modelBuilder.Entity("EngineerApplication.Entities.Offer", b =>
+                {
+                    b.HasOne("EngineerApplication.Entities.Commodity", "Commodity")
+                        .WithMany()
+                        .HasForeignKey("CommodityId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Commodity");
                 });
 
             modelBuilder.Entity("EngineerApplication.Entities.OrderDetails", b =>

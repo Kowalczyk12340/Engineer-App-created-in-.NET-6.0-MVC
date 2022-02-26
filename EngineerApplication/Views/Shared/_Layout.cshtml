@@ -62,6 +62,7 @@
                         @if (User.IsInRole(UsefulConsts.Admin))
                         {
                             <a class="dropdown-item text-white" asp-area="Admin" asp-controller="User" asp-action="Index">User</a>
+                            <a class="dropdown-item text-white" asp-area="Admin" asp-controller="Offer" asp-action="Index">Offer</a>
                         }
                         @if (HttpContextAccessor.HttpContext.Session.GetObject<List<int>>(UsefulConsts.SessionCart) != null)
                         {

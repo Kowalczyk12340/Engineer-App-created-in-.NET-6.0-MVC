@@ -22,7 +22,6 @@ namespace EngineerApplication.Entities
     public DateTime OrderDate { get; set; }
     public string? Status { get; set; }
     public string? Comments { get; set; }
-    public int CommodityCount { get; set; }
-
+    public int Count { get; set; }
   }
 }

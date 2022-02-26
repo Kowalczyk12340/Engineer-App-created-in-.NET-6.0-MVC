@@ -1,9 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace EngineerApplication.Entities
 {
@@ -16,6 +12,18 @@ namespace EngineerApplication.Entities
     [Display(Name = "Offer Name")]
     public string? Name { get; set; }
 
-    public List<Commodity>? Commodities { get; set; }
+    [Required]
+    [Display(Name = "Count")]
+    public int Count { get; set; }
+
+    [Required]
+    [Display(Name = "Offer Description")]
+    public string? OfferDesc { get; set; }
+
+    [Required]
+    public int CommodityId { get; set; }
+
+    [ForeignKey("CommodityId")]
+    public Commodity? Commodity { get; set; }
   }
 }

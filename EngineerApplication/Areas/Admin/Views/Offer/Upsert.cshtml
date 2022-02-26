@@ -1,0 +1,107 @@
+﻿@model EngineerApplication.Entities.ViewModels.OfferVM
+
+@{
+    var title = "Create Offer";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<form method="post" asp-action="Upsert" enctype="multipart/form-data">
+
+    <div class="row px-2 mx-2 backgroundWhite border">
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        @if (Model.Offer.Id != 0)
+        {
+            <input type="hidden" asp-for="Offer.Id" />
+            title = "Edit Offer";
+        }
+
+        <div class="col-12">
+            <h2 class="text-primary">@title</h2>
+            <br />
+        </div>
+        <div class="col-10">
+            <div class="form-group row">
+                <div class="col-4">
+                    <label asp-for="Offer.Name"></label>
+                </div>
+                <div class="col-8">
+                    <input asp-for="Offer.Name" class="form-control" />
+                    <span asp-validation-for="Offer.Name" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="form-group row">
+                <div class="col-4">
+                    <label asp-for="Offer.Count"></label>
+                </div>
+                <div class="col-8">
+                    <input asp-for="Offer.Count" id="txtPrice" class="form-control" />
+                    <span asp-validation-for="Offer.Count" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="form-group row">
+                <div class="col-4">
+                    <label asp-for="Offer.OfferDesc"></label>
+                </div>
+                <div class="col-8">
+                    <textarea asp-for="Offer.OfferDesc" class="form-control" style="height:300px;"></textarea>
+                    <span asp-validation-for="Offer.OfferDesc" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="form-group row">
+                <div class="col-4">
+                    <label asp-for="Offer.CommodityId"></label>
+                </div>
+                <div class="col-8">
+                    @Html.DropDownListFor(m => m.Offer.CommodityId, Model.CommodityList,
+                                            "- Please select a Commodity-", new { @class = "form-control" })
+                </div>
+            </div>
+            <div class="form-group row">
+                <div class="col-8 offset-4">
+                    @if (Model.Offer.Id != 0)
+                    {
+                        //Edit button and back to list
+                        <partial name="_EditAndBackToListButton" model="Model.Offer.Id" />
+                    }
+                    else
+                    {
+                        <div class="row">
+                            <div class="col">
+                                <button type="submit" onclick="return validateInput()" class="btn btn-primary form-control">Create</button>
+                            </div>
+                            <div class="col">
+                                <a asp-action="Index" class="btn btn-success form-control">Back to List</a>
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+
+@section Scripts{
+    <script src="https://cdn.tiny.cloud/1/n94ifuzvl80pchikopiwgz2esrw8n28dwcywvpejlqrregfp/tinymce/5/tinymce.min.js"></script>
+    <script>
+
+    tinymce.init({
+        selector: 'textarea',
+        plugins: 'lists',
+        menubar: 'file edit format'
+    });
+
+    function validateInput() {
+        if (document.getElementById("uploadBox").value == "") {
+            swal("Error", "Please Select an Image", "error")
+            return false;
+        }
+        return true;
+            };
+
+    $(document).ready(function () {
+        if (document.getElementById('txtPrice').value == "0") {
+            document.getElementById('txtPrice').value = '';
+        }
+    });
+    </script>
+}

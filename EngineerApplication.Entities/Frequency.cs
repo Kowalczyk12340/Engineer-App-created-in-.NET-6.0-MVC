@@ -2,7 +2,6 @@
 
 namespace EngineerApplication.Entities
 {
-
   public class Frequency
   {
     [Key]

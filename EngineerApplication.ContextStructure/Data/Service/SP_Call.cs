@@ -23,14 +23,14 @@ namespace EngineerApplication.ContextStructure.Data.Service
       return (T)Convert.ChangeType(value: sqlCon.ExecuteScalar<T>(procedureName, param, commandType: System.Data.CommandType.StoredProcedure), typeof(T));
     }
 
-    public void ExecuteWithoutReturn(string procedureName, DynamicParameters param = null)
+    public void ExecuteWithoutReturn(string procedureName, DynamicParameters? param = null)
     {
       using SqlConnection sqlCon = new(ConnectionString);
       sqlCon.Open();
       sqlCon.Execute(procedureName, param, commandType: System.Data.CommandType.StoredProcedure);
     }
 
-    public IEnumerable<T> ReturnList<T>(string procedureName, DynamicParameters param = null)
+    public IEnumerable<T> ReturnList<T>(string procedureName, DynamicParameters? param = null)
     {
       using SqlConnection sqlCon = new(ConnectionString);
       sqlCon.Open();

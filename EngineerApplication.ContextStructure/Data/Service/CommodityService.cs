@@ -1,6 +1,7 @@
 ﻿using EngineerApplication.Entities;
 using EngineerApplication.ContextStructure.Data.Repository;
 using EngineerApplication.ContextStructure.Data.Service.Interfaces;
+using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace EngineerApplication.ContextStructure.Data.Service
 {
@@ -13,6 +14,14 @@ namespace EngineerApplication.ContextStructure.Data.Service
       _db = db;
     }
 
+    public IEnumerable<SelectListItem> GetCommodityListForDropDown()
+    {
+      return _db.Commodity.Select(i => new SelectListItem()
+      {
+        Text = i.Name,
+        Value = i.Id.ToString()
+      });
+    }
 
     public void Update(Commodity Commodity)
     {

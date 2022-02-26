@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace EngineerApplication.Helpers
+﻿namespace EngineerApplication.Helpers
 {
   public static class UsefulConsts
   {
