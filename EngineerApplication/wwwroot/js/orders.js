@@ -27,7 +27,7 @@ function loadDataTable(url) {
             { "data": "name", "width": "20%" },
             { "data": "phone", "width": "20%" },
             { "data": "email", "width": "15%" },
-            { "data": "count", "width": "15%" },
+            { "data": "commodityCount", "width": "15%" },
             { "data": "status", "width": "15%" },
             {
                 "data": "id",

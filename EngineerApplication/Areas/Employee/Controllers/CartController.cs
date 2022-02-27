@@ -75,7 +75,7 @@ namespace EngineerApplication.Areas.Employee.Controllers
             {
                 CartVM.OrderHeader.OrderDate = DateTime.Now;
                 CartVM.OrderHeader.Status = UsefulConsts.StatusSubmitted;
-                CartVM.OrderHeader.Count = CartVM.CommodityList.Count;
+                CartVM.OrderHeader.CommodityCount = CartVM.CommodityList.Count;
                 _unitOfWork.OrderHeader.Add(CartVM.OrderHeader);
                 _unitOfWork.Save();
 
