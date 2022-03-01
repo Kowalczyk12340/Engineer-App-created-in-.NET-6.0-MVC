@@ -31,8 +31,6 @@ function loadDataTable() {
                         `;
                 }, "width": "30%"
             }
-
-
         ],
         "language": {
             "emptyTable": "no data found."

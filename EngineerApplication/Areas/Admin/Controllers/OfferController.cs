@@ -19,6 +19,7 @@ namespace EngineerApplication.Areas.Admin.Controllers
       _unitOfWork = unitOfWork;
     }
 
+    [AllowAnonymous]
     public IActionResult Index()
     {
       return View();
@@ -64,6 +65,7 @@ namespace EngineerApplication.Areas.Admin.Controllers
       }
     }
     #region API Calls
+    [AllowAnonymous]
     public IActionResult GetAll()
     {
       return Json(new { data = _unitOfWork.Offer.GetAll(includeProperties: "Commodity") });

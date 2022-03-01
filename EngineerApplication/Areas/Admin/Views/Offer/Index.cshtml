@@ -1,4 +1,9 @@
-﻿@{
+﻿@using EngineerApplication.Helpers
+@using Microsoft.AspNetCore.Http
+@inject IHttpContextAccessor HttpContextAccessor
+@using EngineerApplication.Extensions
+
+@{
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
@@ -6,11 +11,14 @@
 <div class="border backgroundWhite">
     <div class="row">
         <div class="col-6">
-            <h2 class="text-primary">Commodity List</h2>
+            <h2 class="text-primary">Offer List</h2>
         </div>
-        <div class="col-6 text-right">
-            <a asp-action="Upsert" class="btn btn-primary"><i class="fas fa-plus"></i> &nbsp;  Create New Offer</a>
-        </div>
+        @if (HttpContextAccessor.HttpContext.Session.GetObject<List<int>>(UsefulConsts.SessionCart) != null)
+        {
+            <div class="col-6 text-right">
+                <a asp-action="Upsert" class="btn btn-primary"><i class="fas fa-plus"></i> &nbsp;  Create New Offer</a>
+            </div>
+        }
     </div>
     <br />
     <br />
@@ -21,14 +29,17 @@
                 <th>Supplier Name</th>
                 <th>Count</th>
                 <th>Description</th>
-                <th></th>
+                @if (HttpContextAccessor.HttpContext.Session.GetObject<List<int>>(UsefulConsts.SessionCart) != null)
+                {
+                    <th></th>
+                }
             </tr>
         </thead>
     </table>
 </div>
 @section Scripts{
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.js"></script>
-    <script src="~/js/offer.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.js"></script>
+<script src="~/js/offer.js"></script>
 }
 
 
