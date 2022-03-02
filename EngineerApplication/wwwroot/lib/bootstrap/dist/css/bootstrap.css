@@ -11,10 +11,10 @@
  * Copyright 2011-2019 Twitter, Inc.
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  */
-@import url("https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,700italic,400,300,700");
+@import url('https://fonts.googleapis.com/css2?family=Oswald&display=swap');
 
 :root {
-    --blue: rgba(0, 140, 186, 0.25);
+    --blue: rgba(2, 222, 177, 0.15);
     --indigo: #6610f2;
     --purple: #6f42c1;
     --pink: #e83e8c;
@@ -27,7 +27,7 @@
     --white: #fff;
     --gray: #888;
     --gray-dark: #333;
-    --primary: rgba(0, 140, 186, 0.25);
+    --primary: rgba(2, 222, 177, 0.15);
     --secondary: #eee;
     --success: #43ac6a;
     --info: #5bc0de;
@@ -163,7 +163,7 @@ sup {
 }
 
 a {
-    color: rgba(0, 140, 186, 0.25);
+    color: rgba(2, 222, 177, 0.15);
     text-decoration: none;
     background-color: transparent;
 }
@@ -564,9 +564,45 @@ pre {
     margin-left: auto;
 }
 
+@media (min-width: 246px) {
+    .container {
+        width: 100%;
+    }
+
+    #tblData {
+        width: 90%;
+    }
+
+    .data {
+        display: block;
+    }
+}
+
+@media (min-width: 376px) {
+    .container {
+        width: 100%;
+    }
+
+    #tblData {
+        width: 90%;
+    }
+
+    .data {
+        display: block;
+    }
+}
+
 @media (min-width: 576px) {
     .container {
-        max-width: 540px;
+        width: 100%;
+    }
+
+    #tblData {
+        width: 90%;
+    }
+
+    .data {
+        display: block;
     }
 }
 
@@ -574,17 +610,26 @@ pre {
     .container {
         max-width: 720px;
     }
+    #tblData {
+        max-width: 700px;
+    }
 }
 
 @media (min-width: 992px) {
     .container {
         max-width: 960px;
     }
+    #tblData {
+        max-width: 940px;
+    }
 }
 
 @media (min-width: 1200px) {
     .container {
         max-width: 1140px;
+    }
+    #tblData {
+        max-width: 1120px;
     }
 }
 
@@ -2211,8 +2256,8 @@ pre {
     background-color: #fff;
     border-color: #3bceff;
     outline: 0;
-    -webkit-box-shadow: 0 0 0 0.2rem rgba(0, 140, 186, 0.25);
-    box-shadow: 0 0 0 0.2rem rgba(0, 140, 186, 0.25);
+    -webkit-box-shadow: 0 0 0 0.2rem rgba(2, 222, 177, 0.15);
+    box-shadow: 0 0 0 0.2rem rgba(2, 222, 177, 0.15);
 }
 
 .form-control::-webkit-input-placeholder {
@@ -2763,8 +2808,8 @@ textarea.form-control {
 
 .btn:focus, .btn.focus {
     outline: 0;
-    -webkit-box-shadow: 0 0 0 0.2rem rgba(0, 140, 186, 0.25);
-    box-shadow: 0 0 0 0.2rem rgba(0, 140, 186, 0.25);
+    -webkit-box-shadow: 0 0 0 0.2rem rgba(2, 222, 177, 0.15);
+    box-shadow: 0 0 0 0.2rem rgba(2, 222, 177, 0.15);
 }
 
 .btn.disabled, .btn:disabled {
@@ -2778,8 +2823,8 @@ fieldset:disabled a.btn {
 
 .btn-primary {
     color: #fff;
-    background-color: rgba(0, 140, 186, 0.25);
-    border-color: rgba(0, 140, 186, 0.25);
+    background-color: rgba(2, 222, 177, 0.15);
+    border-color: rgba(2, 222, 177, 0.15);
 }
 
     .btn-primary:hover {
@@ -2795,8 +2840,8 @@ fieldset:disabled a.btn {
 
     .btn-primary.disabled, .btn-primary:disabled {
         color: #fff;
-        background-color: rgba(0, 140, 186, 0.25);
-        border-color: rgba(0, 140, 186, 0.25);
+        background-color: rgba(2, 222, 177, 0.15);
+        border-color: rgba(2, 222, 177, 0.15);
     }
 
     .btn-primary:not(:disabled):not(.disabled):active, .btn-primary:not(:disabled):not(.disabled).active,
@@ -3065,14 +3110,14 @@ fieldset:disabled a.btn {
         }
 
 .btn-outline-primary {
-    color: rgba(0, 140, 186, 0.25);
-    border-color: rgba(0, 140, 186, 0.25);
+    color: rgba(2, 222, 177, 0.15);
+    border-color: rgba(2, 222, 177, 0.15);
 }
 
     .btn-outline-primary:hover {
         color: #fff;
-        background-color: rgba(0, 140, 186, 0.25);
-        border-color: rgba(0, 140, 186, 0.25);
+        background-color: rgba(2, 222, 177, 0.15);
+        border-color: rgba(2, 222, 177, 0.15);
     }
 
     .btn-outline-primary:focus, .btn-outline-primary.focus {
@@ -3081,15 +3126,15 @@ fieldset:disabled a.btn {
     }
 
     .btn-outline-primary.disabled, .btn-outline-primary:disabled {
-        color: rgba(0, 140, 186, 0.25);
+        color: rgba(2, 222, 177, 0.15);
         background-color: transparent;
     }
 
     .btn-outline-primary:not(:disabled):not(.disabled):active, .btn-outline-primary:not(:disabled):not(.disabled).active,
     .show > .btn-outline-primary.dropdown-toggle {
         color: #fff;
-        background-color: rgba(0, 140, 186, 0.25);
-        border-color: rgba(0, 140, 186, 0.25);
+        background-color: rgba(2, 222, 177, 0.15);
+        border-color: rgba(2, 222, 177, 0.15);
     }
 
         .btn-outline-primary:not(:disabled):not(.disabled):active:focus, .btn-outline-primary:not(:disabled):not(.disabled).active:focus,
@@ -4039,8 +4084,8 @@ input[type="button"].btn-block {
     }
 
     .custom-control-input:focus ~ .custom-control-label::before {
-        -webkit-box-shadow: 0 0 0 0.2rem rgba(0, 140, 186, 0.25);
-        box-shadow: 0 0 0 0.2rem rgba(0, 140, 186, 0.25);
+        -webkit-box-shadow: 0 0 0 0.2rem rgba(2, 222, 177, 0.15);
+        box-shadow: 0 0 0 0.2rem rgba(2, 222, 177, 0.15);
     }
 
     .custom-control-input:focus:not(:checked) ~ .custom-control-label::before {
@@ -4191,8 +4236,8 @@ input[type="button"].btn-block {
     .custom-select:focus {
         border-color: #3bceff;
         outline: 0;
-        -webkit-box-shadow: 0 0 0 0.2rem rgba(0, 140, 186, 0.25);
-        box-shadow: 0 0 0 0.2rem rgba(0, 140, 186, 0.25);
+        -webkit-box-shadow: 0 0 0 0.2rem rgba(2, 222, 177, 0.15);
+        box-shadow: 0 0 0 0.2rem rgba(2, 222, 177, 0.15);
     }
 
         .custom-select:focus::-ms-value {
@@ -4250,8 +4295,8 @@ input[type="button"].btn-block {
 
     .custom-file-input:focus ~ .custom-file-label {
         border-color: #3bceff;
-        -webkit-box-shadow: 0 0 0 0.2rem rgba(0, 140, 186, 0.25);
-        box-shadow: 0 0 0 0.2rem rgba(0, 140, 186, 0.25);
+        -webkit-box-shadow: 0 0 0 0.2rem rgba(2, 222, 177, 0.15);
+        box-shadow: 0 0 0 0.2rem rgba(2, 222, 177, 0.15);
     }
 
     .custom-file-input:disabled ~ .custom-file-label {
@@ -4314,16 +4359,16 @@ input[type="button"].btn-block {
     }
 
         .custom-range:focus::-webkit-slider-thumb {
-            -webkit-box-shadow: 0 0 0 1px #fff, 0 0 0 0.2rem rgba(0, 140, 186, 0.25);
-            box-shadow: 0 0 0 1px #fff, 0 0 0 0.2rem rgba(0, 140, 186, 0.25);
+            -webkit-box-shadow: 0 0 0 1px #fff, 0 0 0 0.2rem rgba(2, 222, 177, 0.15);
+            box-shadow: 0 0 0 1px #fff, 0 0 0 0.2rem rgba(2, 222, 177, 0.15);
         }
 
         .custom-range:focus::-moz-range-thumb {
-            box-shadow: 0 0 0 1px #fff, 0 0 0 0.2rem rgba(0, 140, 186, 0.25);
+            box-shadow: 0 0 0 1px #fff, 0 0 0 0.2rem rgba(2, 222, 177, 0.15);
         }
 
         .custom-range:focus::-ms-thumb {
-            box-shadow: 0 0 0 1px #fff, 0 0 0 0.2rem rgba(0, 140, 186, 0.25);
+            box-shadow: 0 0 0 1px #fff, 0 0 0 0.2rem rgba(2, 222, 177, 0.15);
         }
 
     .custom-range::-moz-focus-outer {
@@ -5398,8 +5443,8 @@ input[type="button"].btn-block {
     .page-link:focus {
         z-index: 2;
         outline: 0;
-        -webkit-box-shadow: 0 0 0 0.2rem rgba(0, 140, 186, 0.25);
-        box-shadow: 0 0 0 0.2rem rgba(0, 140, 186, 0.25);
+        -webkit-box-shadow: 0 0 0 0.2rem rgba(2, 222, 177, 0.15);
+        box-shadow: 0 0 0 0.2rem rgba(2, 222, 177, 0.15);
     }
 
 .page-item:first-child .page-link {

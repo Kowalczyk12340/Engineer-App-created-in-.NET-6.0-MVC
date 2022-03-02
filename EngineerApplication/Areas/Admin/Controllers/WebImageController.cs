@@ -25,9 +25,8 @@ namespace EngineerApplication.Areas.Admin.Controllers
     public IActionResult Upsert(int? id)
     {
       WebImages imageObj = new();
-      if (id == null)
+      if (id is null)
       {
-
       }
       else
       {
@@ -38,7 +37,6 @@ namespace EngineerApplication.Areas.Admin.Controllers
         }
       }
       return View(imageObj);
-
     }
 
     [HttpPost]
@@ -79,8 +77,6 @@ namespace EngineerApplication.Areas.Admin.Controllers
       }
       return View(imageObj);
     }
-
-
     #region API CALLS
 
     [HttpGet]
