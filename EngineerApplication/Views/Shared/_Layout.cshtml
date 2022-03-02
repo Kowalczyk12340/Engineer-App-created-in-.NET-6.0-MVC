@@ -70,17 +70,14 @@
                         <li class="nav-item">
                                 <a class="dropdown-item text-white" asp-area="Admin" asp-controller="Offer" asp-action="Index">Offer</a>
                         </li>
-                        @if (HttpContextAccessor.HttpContext.Session.GetObject<List<int>>(UsefulConsts.SessionCart) != null)
-                        {
-                            <li style="color:white">
-                                <a asp-area="Employee" asp-controller="Cart" asp-action="Index" class="nav-link text-white">
-                                    @{
-                                        var count = HttpContextAccessor.HttpContext.Session.GetObject<List<int>>(UsefulConsts.SessionCart).Count;
-                                    }
-                                    <i class="fas fa-shopping-cart"></i>&nbsp; (@count)
-                                </a>
-                            </li>
-                        }
+                        <li style="color:white">
+                            <a asp-area="Employee" asp-controller="Cart" asp-action="Index" class="nav-link text-white">
+                            @{
+                                var count = HttpContextAccessor.HttpContext.Session.GetObject<List<int>>(UsefulConsts.SessionCart).Count;
+                            }
+                            <i class="fas fa-shopping-cart"></i>&nbsp; (@count)
+                            </a>
+                        </li>
                         else
                         {
                             <li style="color:white">

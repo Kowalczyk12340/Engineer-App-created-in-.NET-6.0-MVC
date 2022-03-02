@@ -20,6 +20,12 @@ namespace EngineerApplication.Entities
     public Commodity? Commodity { get; set; }
 
     [Required]
+    public int DeliveryId { get; set; }
+
+    [ForeignKey("DeliveryId")]
+    public Delivery? Delivery { get; set; }
+
+    [Required]
     public string? CommodityName { get; set; }
 
     [Required]
