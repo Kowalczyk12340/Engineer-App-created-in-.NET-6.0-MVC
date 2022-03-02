@@ -1,14 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using EngineerApplication.ContextStructure.Data.Repository;
-
-namespace EngineerApplication.ContextStructure.Data.Service.Interfaces
+﻿namespace EngineerApplication.ContextStructure.Data.Service.Interfaces
 {
   public interface IUnitOfWork : IDisposable
   {
     ICategoryService Category { get; }
     IFrequencyService Frequency { get; }
     ISupplierService Supplier { get; }
+    IDeliveryService Delivery { get; }
     IOfferService Offer { get; }
     ICommodityService Commodity { get; }
     IOrderHeaderService OrderHeader { get; }

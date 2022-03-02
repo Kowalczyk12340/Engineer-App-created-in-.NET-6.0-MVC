@@ -34,6 +34,7 @@ namespace EngineerApplication.Areas.Admin.Controllers
         CategoryList = _unitOfWork.Category.GetCategoryListForDropDown(),
         SupplierList = _unitOfWork.Supplier.GetSupplierListForDropDown(),
         FrequencyList = _unitOfWork.Frequency.GetFrequencyListForDropDown(),
+        DeliveryList = _unitOfWork.Delivery.GetDeliveryListForDropDown(),
       };
       if (id != null)
       {
@@ -103,13 +104,14 @@ namespace EngineerApplication.Areas.Admin.Controllers
         CommodityVM.CategoryList = _unitOfWork.Category.GetCategoryListForDropDown();
         CommodityVM.SupplierList = _unitOfWork.Supplier.GetSupplierListForDropDown();
         CommodityVM.FrequencyList = _unitOfWork.Frequency.GetFrequencyListForDropDown();
+        CommodityVM.DeliveryList = _unitOfWork.Delivery.GetDeliveryListForDropDown();
         return View(CommodityVM);
       }
     }
     #region API Calls
     public IActionResult GetAll()
     {
-      return Json(new { data = _unitOfWork.Commodity.GetAll(includeProperties: "Category,Supplier,Frequency") });
+      return Json(new { data = _unitOfWork.Commodity.GetAll(includeProperties: "Category,Supplier,Frequency,Delivery") });
     }
 
     [HttpDelete]

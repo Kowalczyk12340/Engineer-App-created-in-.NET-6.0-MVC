@@ -32,6 +32,8 @@ namespace EngineerApplication.ContextStructure.Data.Service
       objFromDb.Price = Commodity.Price;
       objFromDb.ImageUrl = Commodity.ImageUrl;
       objFromDb.FrequencyId = Commodity.FrequencyId;
+      objFromDb.DeliveryId = Commodity.DeliveryId;
+      objFromDb.SupplierId = Commodity.SupplierId;
       objFromDb.CategoryId = Commodity.CategoryId;
 
       _db.SaveChanges();

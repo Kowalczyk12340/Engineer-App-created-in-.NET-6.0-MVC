@@ -25,7 +25,7 @@ function loadDataTable(url) {
         },
         "columns": [
             { "data": "name", "width": "20%" },
-            { "data": "phone", "width": "20%" },
+            { "data": "phone", "width": "15%" },
             { "data": "email", "width": "15%" },
             { "data": "commodityCount", "width": "15%" },
             { "data": "status", "width": "15%" },
@@ -38,7 +38,7 @@ function loadDataTable(url) {
                                 </a>
                             </div>
                             `;
-                }, "width": "15%"
+                }, "width": "20%"
             }
         ],
         "language": {

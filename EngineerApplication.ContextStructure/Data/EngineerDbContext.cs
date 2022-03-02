@@ -13,6 +13,7 @@ namespace EngineerApplication.ContextStructure.Data
     public DbSet<Category>? Category { get; set; }
     public DbSet<Frequency>? Frequency { get; set; }
     public DbSet<Supplier>? Supplier { get; set; }
+    public DbSet<Delivery>? Delivery { get; set; }
     public DbSet<Commodity>? Commodity { get; set; }
     public DbSet<Offer>? Offer { get; set; }
     public DbSet<WebImages>? WebImages { get; set; }

@@ -31,7 +31,7 @@
     <header>
         <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
             <div class="container">
-                <img style="width: 45px; height: fitcontent;" src="~/images/logisticApp.png" />
+                <img style="width: 45px; height: fitcontent; margin-right: 3px;" src="~/images/logisticApp.png" />
                 <a class="navbar-brand" asp-area="Employee" asp-controller="Home" asp-action="Index"><b>Logistic App</b></a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01"
                         aria-expanded="false" aria-label="Toggle navigation">
@@ -56,6 +56,7 @@
                                     <a class="dropdown-item text-white" asp-area="Admin" asp-controller="Frequency" asp-action="Index">Frequency</a>
                                     <a class="dropdown-item text-white" asp-area="Admin" asp-controller="Supplier" asp-action="Index">Supplier</a>
                                     <a class="dropdown-item text-white" asp-area="Admin" asp-controller="Commodity" asp-action="Index">Commodity</a>
+                                    <a class="dropdown-item text-white" asp-area="Admin" asp-controller="Delivery" asp-action="Index">Delivery</a>
                                     <a class="dropdown-item text-white" asp-area="Admin" asp-controller="WebImage" asp-action="Index">Image Uploader</a>
                                     <a class="dropdown-item text-white" asp-area="Admin" asp-controller="Order" asp-action="Index">Order</a>
                                 </div>
@@ -70,14 +71,17 @@
                         <li class="nav-item">
                                 <a class="dropdown-item text-white" asp-area="Admin" asp-controller="Offer" asp-action="Index">Offer</a>
                         </li>
-                        <li style="color:white">
-                            <a asp-area="Employee" asp-controller="Cart" asp-action="Index" class="nav-link text-white">
-                            @{
-                                var count = HttpContextAccessor.HttpContext.Session.GetObject<List<int>>(UsefulConsts.SessionCart).Count;
-                            }
-                            <i class="fas fa-shopping-cart"></i>&nbsp; (@count)
-                            </a>
-                        </li>
+                        @if (HttpContextAccessor.HttpContext.Session.GetObject<List<int>>(UsefulConsts.SessionCart) != null)
+                        {
+                            <li style="color:white">
+                                <a asp-area="Employee" asp-controller="Cart" asp-action="Index" class="nav-link text-white">
+                                    @{
+                                        var count = HttpContextAccessor.HttpContext.Session.GetObject<List<int>>(UsefulConsts.SessionCart).Count;
+                                    }
+                                    <i class="fas fa-shopping-cart"></i>&nbsp; (@count)
+                                </a>
+                            </li>
+                        }
                         else
                         {
                             <li style="color:white">

@@ -4,6 +4,7 @@ using EngineerApplication.ContextStructure.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace EngineerApplication.ContextStructure.Migrations
 {
     [DbContext(typeof(EngineerDbContext))]
-    partial class EngineerDbContextModelSnapshot : ModelSnapshot
+    [Migration("20220302014358_DeliveryEntity")]
+    partial class DeliveryEntity
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
