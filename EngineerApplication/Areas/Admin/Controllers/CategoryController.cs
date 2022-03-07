@@ -80,10 +80,7 @@ namespace EngineerApplication.Areas.Admin.Controllers
       _unitOfWork.Category.Remove(objFromDb);
       _unitOfWork.Save();
       return Json(new { success = true, message = "Delete successful." });
-
     }
-
-
     #endregion
   }
 }

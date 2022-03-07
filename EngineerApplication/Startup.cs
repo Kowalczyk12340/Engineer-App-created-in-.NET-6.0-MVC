@@ -68,7 +68,7 @@ namespace EngineerApplication
       app.UseCookiePolicy();
 
       app.UseRouting();
-      seeder.HighlightDatabase();
+      //seeder.HighlightDatabase();
       app.UseAuthentication();
       app.UseAuthorization();
 

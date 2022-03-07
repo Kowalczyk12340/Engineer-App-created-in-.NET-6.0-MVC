@@ -13,66 +13,66 @@ using EngineerApplication.ContextStructure.Data.Service.Interfaces;
 
 namespace EngineerApplication.Areas.Employee.Controllers
 {
-    [Area("Employee")]
-    public class HomeController : Controller
+  [Area("Employee")]
+  public class HomeController : Controller
+  {
+    private readonly IUnitOfWork _unitOfWork;
+    private HomeViewModel HomeVM;
+
+    public HomeController(IUnitOfWork unitOfWork)
     {
-        private readonly IUnitOfWork _unitOfWork;
-        private HomeViewModel HomeVM;
-
-        public HomeController(IUnitOfWork unitOfWork)
-        {
-            _unitOfWork = unitOfWork;
-        }
-
-        public IActionResult Index()
-        {
-            HomeVM = new HomeViewModel()
-            {
-                CategoryList = _unitOfWork.Category.GetAll(),
-                CommodityList = _unitOfWork.Commodity.GetAll(includeProperties: "Frequency")
-            };
-
-            return View(HomeVM);
-        }
-
-        public IActionResult Details(int id)
-        {
-            var CommodityFromDb = _unitOfWork.Commodity.GetFirstOrDefault(includeProperties: "Category,Frequency", filter: c => c.Id == id);
-            return View(CommodityFromDb);
-        }
-
-
-        public IActionResult AddToCart(int CommodityId)
-        {
-            List<int> sessionList = new();
-            if (string.IsNullOrEmpty(HttpContext.Session.GetString(UsefulConsts.SessionCart)))
-            {
-                sessionList.Add(CommodityId);
-                HttpContext.Session.SetObject(UsefulConsts.SessionCart, sessionList);
-            }
-            else
-            {
-                sessionList = HttpContext.Session.GetObject<List<int>>(UsefulConsts.SessionCart);
-                if (!sessionList.Contains(CommodityId))
-                {
-                    sessionList.Add(CommodityId);
-                    HttpContext.Session.SetObject(UsefulConsts.SessionCart, sessionList);
-                }
-            }
-
-            return RedirectToAction(nameof(Index));
-        }
-
-
-        public IActionResult Privacy()
-        {
-            return View();
-        }
-
-        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-        public IActionResult Error()
-        {
-            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
-        }
+      _unitOfWork = unitOfWork;
     }
+
+    public IActionResult Index()
+    {
+      HomeVM = new HomeViewModel()
+      {
+        CategoryList = _unitOfWork.Category.GetAll(),
+        CommodityList = _unitOfWork.Commodity.GetAll(includeProperties: "Frequency")
+      };
+
+      return View(HomeVM);
+    }
+
+    public IActionResult Details(int id)
+    {
+      var CommodityFromDb = _unitOfWork.Commodity.GetFirstOrDefault(includeProperties: "Category,Frequency", filter: c => c.Id == id);
+      return View(CommodityFromDb);
+    }
+
+
+    public IActionResult AddToCart(int CommodityId)
+    {
+      List<int> sessionList = new();
+      if (string.IsNullOrEmpty(HttpContext.Session.GetString(UsefulConsts.SessionCart)))
+      {
+        sessionList.Add(CommodityId);
+        HttpContext.Session.SetObject(UsefulConsts.SessionCart, sessionList);
+      }
+      else
+      {
+        sessionList = HttpContext.Session.GetObject<List<int>>(UsefulConsts.SessionCart);
+        if (!sessionList.Contains(CommodityId))
+        {
+          sessionList.Add(CommodityId);
+          HttpContext.Session.SetObject(UsefulConsts.SessionCart, sessionList);
+        }
+      }
+
+      return RedirectToAction(nameof(Index));
+    }
+
+
+    public IActionResult Privacy()
+    {
+      return View();
+    }
+
+    [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
+    public IActionResult Error()
+    {
+      return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+    }
+  }
 }
