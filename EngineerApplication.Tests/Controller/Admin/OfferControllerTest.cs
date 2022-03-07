@@ -28,10 +28,10 @@ namespace EngineerApplication.Tests.Controller.Admin
     {
       var offerItem = new Offer()
       {
-        Name = "Szczotki Sportowe",
+        Name = "Fantastic offer for Tesco",
       };
       var offer = await Client.PostAsJsonAsync("/Admin/Offer", offerItem);
-      Assert.IsNotNull(offer.RequestMessage.Content);
+      Assert.IsNotNull(offer.RequestMessage);
     }
 
     [Test]
@@ -39,7 +39,7 @@ namespace EngineerApplication.Tests.Controller.Admin
     {
       var offerItem = new Offer()
       {
-        Name = "Szczotki Sportowe",
+        Name = "Fantastic offer for Ambro",
       };
       var offer = await Client.PostAsJsonAsync("/Admin/Offer/1", offerItem);
       Assert.IsNotNull(offer.RequestMessage);

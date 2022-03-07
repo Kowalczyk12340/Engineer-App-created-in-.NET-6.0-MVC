@@ -32,7 +32,7 @@ namespace EngineerApplication.Tests.Controller.Admin
         DisplayOrder = 8
       };
       var category = await Client.PostAsJsonAsync("/Admin/Category", categoryItem);
-      Assert.IsNotNull(category.RequestMessage.Content);
+      Assert.IsNotNull(category.RequestMessage);
     }
 
     [Test]

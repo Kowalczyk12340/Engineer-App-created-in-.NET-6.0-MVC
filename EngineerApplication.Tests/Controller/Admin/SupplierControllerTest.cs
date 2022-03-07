@@ -28,10 +28,10 @@ namespace EngineerApplication.Tests.Controller.Admin
     {
       var supplierItem = new Supplier()
       {
-        Name = "Szczotki Sportowe",
+        Name = "Stol",
       };
       var supplier = await Client.PostAsJsonAsync("/Admin/Supplier", supplierItem);
-      Assert.IsNotNull(supplier.RequestMessage.Content);
+      Assert.IsNotNull(supplier.RequestMessage);
     }
 
     [Test]
@@ -39,7 +39,7 @@ namespace EngineerApplication.Tests.Controller.Admin
     {
       var supplierItem = new Supplier()
       {
-        Name = "Szczotki Sportowe",
+        Name = "Simar",
       };
       var supplier = await Client.PostAsJsonAsync("/Admin/Supplier/1", supplierItem);
       Assert.IsNotNull(supplier.RequestMessage);

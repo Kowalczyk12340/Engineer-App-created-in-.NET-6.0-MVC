@@ -28,10 +28,11 @@ namespace EngineerApplication.Tests.Controller.Admin
     {
       var frequencyItem = new Frequency()
       {
-        Name = "Szczotki Sportowe"
+        Name = "High Five",
+        FrequencyCount = 25
       };
       var frequency = await Client.PostAsJsonAsync("/Admin/Frequency", frequencyItem);
-      Assert.IsNotNull(frequency.RequestMessage.Content);
+      Assert.IsNotNull(frequency.RequestMessage);
     }
 
     [Test]
@@ -39,7 +40,8 @@ namespace EngineerApplication.Tests.Controller.Admin
     {
       var frequencyItem = new Frequency()
       {
-        Name = "Szczotki Sportowe",
+        Name = "Middle Five",
+        FrequencyCount = 5
       };
       var frequency = await Client.PostAsJsonAsync("/Admin/Frequency/1", frequencyItem);
       Assert.IsNotNull(frequency.RequestMessage);

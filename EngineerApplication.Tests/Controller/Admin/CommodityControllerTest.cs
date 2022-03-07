@@ -30,11 +30,16 @@ namespace EngineerApplication.Tests.Controller.Admin
     {
       var commodityItem = new Commodity()
       {
-        Name = "Szczotki Sportowe",
-        DisplayOrder = 8
+        Name = "Buty Adidas",
+        CategoryId = 1,
+        DeliveryId = 1,
+        FrequencyId = 1,
+        SupplierId = 1,
+        LongDesc = "Description for sport item",
+        Price = 87.90,
       };
       var commodity = await Client.PostAsJsonAsync("/Admin/Commodity", commodityItem);
-      Assert.IsNotNull(commodity.RequestMessage.Content);
+      Assert.IsNotNull(commodity.RequestMessage);
     }
 
     [Test]
@@ -42,8 +47,13 @@ namespace EngineerApplication.Tests.Controller.Admin
     {
       var commodityItem = new Commodity()
       {
-        Name = "Szczotki Sportowe",
-        DisplayOrder = 9
+        Name = "Buty Adidas",
+        CategoryId = 1,
+        DeliveryId = 1,
+        FrequencyId = 1,
+        SupplierId = 1,
+        LongDesc = "Description for sport item",
+        Price = 87.90,
       };
       var commodity = await Client.PostAsJsonAsync("/Admin/Commodity/1", commodityItem);
       Assert.IsNotNull(commodity.RequestMessage);

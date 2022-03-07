@@ -28,10 +28,14 @@ namespace EngineerApplication.Tests.Controller.Admin
     {
       var userItem = new ApplicationUser()
       {
-        Name = "Szczotki Sportowe"
+        Name = "Marcin Kowalczyk",
+        Email = "marcinkowalczyk11@wp.pl",
+        PasswordHash = "Marcingrafik1#",
+        City = "Kalisz",
+        PhoneNumber = "506093843"
       };
       var user = await Client.PostAsJsonAsync("/Admin/User", userItem);
-      Assert.IsNotNull(user.RequestMessage.Content);
+      Assert.IsNotNull(user.RequestMessage);
     }
 
     [Test]
@@ -39,7 +43,11 @@ namespace EngineerApplication.Tests.Controller.Admin
     {
       var userItem = new ApplicationUser()
       {
-        Name = "Szczotki Sportowe"
+        Name = "Marcin Kowalczyk",
+        Email = "marcinkowalczyk11@wp.pl",
+        PasswordHash = "Marcingrafik1#",
+        City = "Kalisz",
+        PhoneNumber = "506093843"
       };
       var user = await Client.PostAsJsonAsync("/Admin/User/1", userItem);
       Assert.IsNotNull(user.RequestMessage);

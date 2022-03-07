@@ -9,7 +9,7 @@ a.navbar-brand {
 
 /* Provide sufficient contrast against white background */
 a {
-  color: #0351d6;
+  color: #0441dd;
 }
 
 .btn-primary {
@@ -71,9 +71,8 @@ body {
 }
 
 
-
 .search-background {
-    background: url('/images/dust_scratches.png');
+    background-color: rgba(220, 220, 220, 0.1);
 }
 
 .backgroundWhite {
