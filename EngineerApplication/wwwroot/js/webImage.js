@@ -13,10 +13,16 @@ function loadDataTable() {
         },
         "columns": [
             {
-                "data": "id",
-                "render": function (data) {
-                    return `<img style="width: 50%; height: fitcontent; margin: 0 auto;" src="${picture}" />`;
-                }, "width": "70%" },
+                "data": "picture",
+                "columnDefs": [
+                    {
+                        "targets": 2,
+                        "render": function (data) {
+                            return '<img src="' + data + '" alt="' + data + '"width="36px" height="fitcontent"/>';
+                        }, "width": "70%"
+                    }
+                ]
+            },
             {
                 "data": "id",
                 "render": function (data) {
@@ -34,9 +40,9 @@ function loadDataTable() {
             }
         ],
         "language": {
-            "emptyTable":"No records found."
+            "emptyTable": "No records found."
         },
-        "width":"100%"
+        "width": "100%"
     });
 }
 

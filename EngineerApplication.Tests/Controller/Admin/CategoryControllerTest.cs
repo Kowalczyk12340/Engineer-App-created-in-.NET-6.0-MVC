@@ -4,10 +4,6 @@ using EngineerApplication.Entities;
 using Microsoft.AspNetCore.Mvc;
 using Moq;
 using NUnit.Framework;
-using System;
-using System.ComponentModel.DataAnnotations;
-using System.Net.Http;
-using System.Net.Http.Headers;
 using System.Net.Http.Json;
 using System.Threading.Tasks;
 
@@ -17,21 +13,14 @@ namespace EngineerApplication.Tests.Controller.Admin
   {
     private Mock<IUnitOfWork> _unitOfWork;
     private CategoryController _categoryController;
+    private ActionContext _context;
 
     [SetUp]
     public void Setup()
     {
       _unitOfWork = new Mock<IUnitOfWork>();
       _categoryController = new CategoryController(_unitOfWork.Object);
-    }
-    [Test]
-    public async Task TestGetMethodForHomePage()
-    {
-      var response = await Client.GetAsync("/");
-      response.EnsureSuccessStatusCode();
-      var responseString = await response.Content.ReadAsStringAsync();
-      var result = responseString != null && responseString.Contains("Bluzy Sportowe");
-      Assert.That(result);
+      _context = new ActionContext();
     }
 
     [Test]
@@ -77,8 +66,10 @@ namespace EngineerApplication.Tests.Controller.Admin
     public async Task TestGetAllCategoryMethodForPage()
     {
       var category = await Client.GetAsync("/Admin/Controller");
+      var allCategories = _categoryController.GetAll();
       var result = category.RequestMessage;
-      Assert.IsNotNull(result);
+      await allCategories.ExecuteResultAsync(_context);
+      Assert.IsNotNull(result.Content);
     }
   }
 }
