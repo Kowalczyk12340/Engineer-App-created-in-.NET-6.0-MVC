@@ -14,14 +14,10 @@ function loadDataTable() {
         "columns": [
             {
                 "data": "picture",
-                "columnDefs": [
-                    {
-                        "targets": 2,
-                        "render": function (data) {
-                            return '<img src="' + data + '" alt="' + data + '"width="36px" height="fitcontent"/>';
-                        }, "width": "70%"
-                    }
-                ]
+                "render": function (data) {
+                    var img = 'data:image/png;base64,' + data;
+                    return '<img src="' + img + '" alt="' + img + '"width="136px" height="fitcontent"/>';
+                }, "width": "70%"
             },
             {
                 "data": "id",

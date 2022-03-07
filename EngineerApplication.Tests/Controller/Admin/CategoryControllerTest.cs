@@ -31,7 +31,7 @@ namespace EngineerApplication.Tests.Controller.Admin
         Name = "Szczotki Sportowe",
         DisplayOrder = 8
       };
-      var category = await Client.PostAsJsonAsync("/Admin/Controller", categoryItem);
+      var category = await Client.PostAsJsonAsync("/Admin/Category", categoryItem);
       Assert.IsNotNull(category.RequestMessage.Content);
     }
 
@@ -43,21 +43,21 @@ namespace EngineerApplication.Tests.Controller.Admin
         Name = "Szczotki Sportowe",
         DisplayOrder = 9
       };
-      var category = await Client.PostAsJsonAsync("/Admin/Controller/1", categoryItem);
+      var category = await Client.PostAsJsonAsync("/Admin/Category/1", categoryItem);
       Assert.IsNotNull(category.RequestMessage);
     }
 
     [Test]
     public async Task TestDeleteCategoryMethodForPage()
     {
-      var category = await Client.DeleteAsync("/Admin/Controller/1");
+      var category = await Client.DeleteAsync("/Admin/Category/1");
       Assert.IsNotNull(category.RequestMessage);
     }
 
     [Test]
     public async Task TestGetByIdCategoryMethodForPage()
     {
-      var category = await Client.GetAsync("/Admin/Controller/1");
+      var category = await Client.GetAsync("/Admin/Category/1");
       var result = category.RequestMessage;
       Assert.IsNotNull(result);
     }
@@ -65,11 +65,8 @@ namespace EngineerApplication.Tests.Controller.Admin
     [Test]
     public async Task TestGetAllCategoryMethodForPage()
     {
-      var category = await Client.GetAsync("/Admin/Controller");
-      var allCategories = _categoryController.GetAll();
-      var result = category.RequestMessage;
-      await allCategories.ExecuteResultAsync(_context);
-      Assert.IsNotNull(result.Content);
+      var category = await Client.GetAsync("/Admin/Category");
+      Assert.IsNotNull(category.Content);
     }
   }
 }

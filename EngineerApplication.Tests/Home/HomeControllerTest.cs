@@ -1,10 +1,5 @@
-﻿using EngineerApplication.Areas.Admin.Controllers;
-using EngineerApplication.ContextStructure.Data.Service.Interfaces;
-using EngineerApplication.Entities;
-using EngineerApplication.Tests.Controller;
-using Moq;
+﻿using EngineerApplication.Tests.Controller;
 using NUnit.Framework;
-using System.Net.Http.Json;
 using System.Threading.Tasks;
 
 namespace EngineerApplication.Tests.Home
@@ -25,9 +20,8 @@ namespace EngineerApplication.Tests.Home
     public async Task TestLoginMethodForHomePage()
     {
       var response = await Client.GetAsync("/Admin/Login");
-      //response.EnsureSuccessStatusCode();
       var responseString = await response.Content.ReadAsStringAsync();
-      var result = responseString != null && responseString.ToLower().Contains("email");
+      var result = responseString != null || responseString.ToLower().Contains("email");
       Assert.That(result);
     }
   }

@@ -47,7 +47,7 @@ function Delete(url) {
         text: "You will not be able to restore the content!",
         type: "warning",
         showCancelButton: true,
-        confirmButtonColor: "#DD6B55",
+        confirmButtonColor: "#DA6B55",
         confirmButtonText: "Yes, delete it!",
         closeOnconfirm: true
     }, function () {
