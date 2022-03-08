@@ -1,7 +1,9 @@
-﻿using Microsoft.AspNetCore.Hosting;
+﻿using EngineerApplication.ContextStructure.Data;
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc.Authorization;
 using Microsoft.AspNetCore.Mvc.Testing;
 using Microsoft.AspNetCore.TestHost;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -9,7 +11,7 @@ using NUnit.Framework;
 using System.Collections.Generic;
 using System.Net.Http;
 
-namespace EngineerApplication.Tests.Controller
+namespace EngineerApplication.Tests.ControllerTest
 {
   public abstract class BaseControllerTest
   {

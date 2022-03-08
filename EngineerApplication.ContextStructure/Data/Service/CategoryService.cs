@@ -7,8 +7,6 @@ namespace EngineerApplication.ContextStructure.Data.Service
 {
   public class CategoryService : Repository<Category>, ICategoryService
   {
-    private readonly EngineerDbContext _db;
-
     public CategoryService(EngineerDbContext db) : base(db)
     {
       _db = db;

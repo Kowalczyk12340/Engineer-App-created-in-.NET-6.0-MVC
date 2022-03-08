@@ -1,13 +1,14 @@
 ﻿using EngineerApplication.Areas.Admin.Controllers;
 using EngineerApplication.ContextStructure.Data.Service.Interfaces;
 using EngineerApplication.Entities;
+using EngineerApplication.Tests.ControllerTest;
 using Microsoft.AspNetCore.Mvc;
 using Moq;
 using NUnit.Framework;
 using System.Net.Http.Json;
 using System.Threading.Tasks;
 
-namespace EngineerApplication.Tests.Controller.Admin
+namespace EngineerApplication.Tests.ControllerTest.Admin
 {
   public class UserControllerTest : BaseControllerTest
   {

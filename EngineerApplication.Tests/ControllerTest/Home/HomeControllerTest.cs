@@ -1,8 +1,7 @@
-﻿using EngineerApplication.Tests.Controller;
-using NUnit.Framework;
+﻿using NUnit.Framework;
 using System.Threading.Tasks;
 
-namespace EngineerApplication.Tests.Home
+namespace EngineerApplication.Tests.ControllerTest.Home
 {
   public class HomeControllerTest : BaseControllerTest
   {

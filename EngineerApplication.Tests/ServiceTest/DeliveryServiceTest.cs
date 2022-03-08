@@ -7,9 +7,9 @@ using NUnit.Framework;
 using System.Net.Http.Json;
 using System.Threading.Tasks;
 
-namespace EngineerApplication.Tests.Controller.Admin
+namespace EngineerApplication.Tests.ServiceTest
 {
-  public class DeliveryControllerTest : BaseControllerTest
+  public class DeliveryServiceTest
   {
     private Mock<IUnitOfWork> _unitOfWork;
     private DeliveryController _deliveryController;
@@ -26,45 +26,26 @@ namespace EngineerApplication.Tests.Controller.Admin
     [Test]
     public async Task TestPostDeliveryMethodForPage()
     {
-      var deliveryItem = new Delivery()
-      {
-        Name = "Dostawa Taxi",
-      };
-      var delivery = await Client.PostAsJsonAsync("/Admin/Delivery", deliveryItem);
-      Assert.IsNotNull(delivery.RequestMessage);
     }
 
     [Test]
     public async Task TestPutDeliveryMethodForPage()
     {
-      var deliveryItem = new Delivery()
-      {
-        Name = "Dostawa Taxi",
-      };
-      var delivery = await Client.PostAsJsonAsync("/Admin/Delivery/1", deliveryItem);
-      Assert.IsNotNull(delivery.RequestMessage);
     }
 
     [Test]
     public async Task TestDeleteDeliveryMethodForPage()
     {
-      var delivery = await Client.DeleteAsync("/Admin/Delivery/1");
-      Assert.IsNotNull(delivery.RequestMessage);
     }
 
     [Test]
     public async Task TestGetByIdDeliveryMethodForPage()
     {
-      var delivery = await Client.GetAsync("/Admin/Delivery/1");
-      var result = delivery.RequestMessage;
-      Assert.IsNotNull(result);
     }
 
     [Test]
     public async Task TestGetAllDeliveryMethodForPage()
     {
-      var delivery = await Client.GetAsync("/Admin/Delivery");
-      Assert.IsNotNull(delivery.Content);
     }
   }
 }

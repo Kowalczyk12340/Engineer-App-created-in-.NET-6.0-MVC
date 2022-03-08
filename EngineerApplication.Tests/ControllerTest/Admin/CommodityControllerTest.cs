@@ -8,7 +8,7 @@ using NUnit.Framework;
 using System.Net.Http.Json;
 using System.Threading.Tasks;
 
-namespace EngineerApplication.Tests.Controller.Admin
+namespace EngineerApplication.Tests.ControllerTest.Admin
 {
   public class CommodityControllerTest : BaseControllerTest
   {
