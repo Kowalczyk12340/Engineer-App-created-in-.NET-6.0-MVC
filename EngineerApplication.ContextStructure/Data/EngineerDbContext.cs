@@ -10,6 +10,12 @@ namespace EngineerApplication.ContextStructure.Data
         : base(options)
     {
     }
+
+    protected override void OnModelCreating(ModelBuilder modelBuilder)
+    {
+      base.OnModelCreating(modelBuilder);
+    }
+
     public DbSet<Category>? Category { get; set; }
     public DbSet<Frequency>? Frequency { get; set; }
     public DbSet<Supplier>? Supplier { get; set; }
