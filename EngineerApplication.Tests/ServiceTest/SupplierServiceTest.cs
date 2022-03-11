@@ -1,51 +1,58 @@
-﻿using EngineerApplication.Areas.Admin.Controllers;
+﻿using EngineerApplication.ContextStructure.Data;
 using EngineerApplication.ContextStructure.Data.Service.Interfaces;
 using EngineerApplication.Entities;
-using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Moq;
 using NUnit.Framework;
-using System.Net.Http.Json;
-using System.Threading.Tasks;
 
 namespace EngineerApplication.Tests.ServiceTest
 {
   public class SupplierServiceTest
   {
-    private Mock<IUnitOfWork> _unitOfWork;
-    private SupplierController _supplierController;
-    private ActionContext _context;
+    private Mock<ISupplierService> _supplierService;
+    private DbContextOptionsBuilder<EngineerDbContext> _optionsBuilder = new DbContextOptionsBuilder<EngineerDbContext>();
+    private DbContextOptions<EngineerDbContext> _options;
 
     [SetUp]
     public void Setup()
     {
-      _unitOfWork = new Mock<IUnitOfWork>();
-      _supplierController = new SupplierController(_unitOfWork.Object);
-      _context = new ActionContext();
+      _supplierService = new Mock<ISupplierService>();
+      _options = _optionsBuilder.UseSqlServer(@"Data Source=DESKTOP-VPKE3ES\\SQLEXPRESS;Initial Catalog=EngineerDatabase;Integrated Security=True;").Options;
     }
 
-    [Test]
-    public async Task TestPostSupplierMethodForPage()
+    [TestCase(1)]
+    public void TestGetByIdSupplier(int id)
     {
+      var supplier = new Supplier { Name = "Ambro", City = "Kalisz", EmailAddress = "ambro@ambro.pl" };
+      var resultService = _supplierService.Setup(p => p.Get(id)).Returns(supplier);
+      Assert.That(resultService != null);
     }
 
-    [Test]
-    public async Task TestPutSupplierMethodForPage()
+    [TestCase(1)]
+    public void TestPostSupplierMethodForPage(int id)
     {
+      var supplier1 = new Supplier { Name = "Ambro", City = "Kalisz", EmailAddress = "ambro@ambro.pl" };
+      var addedSupplier = _supplierService.Setup(x => x.Get(id)).Returns(supplier1);
+      Assert.That(addedSupplier != null);
     }
 
-    [Test]
-    public async Task TestDeleteSupplierMethodForPage()
+    [TestCase(1)]
+    public void TestPutSupplierMethodForPage(int id)
     {
+      var supplier1 = new Supplier { Name = "Ambro", City = "Kalisz", EmailAddress = "ambro@ambro.pl" };
+      supplier1.Name = "Super Obuwie";
+      _supplierService.Setup(x => x.Update(supplier1)).Verifiable();
+      var editedSupplier = _supplierService.Setup(x => x.Get(id)).Returns(supplier1);
+      Assert.That(editedSupplier != null);
     }
 
-    [Test]
-    public async Task TestGetByIdSupplierMethodForPage()
+    [TestCase(1)]
+    public void TestDeleteSupplierMethodForPage(int id)
     {
-    }
-
-    [Test]
-    public async Task TestGetAllSupplierMethodForPage()
-    {
+      var supplier1 = new Supplier { Name = "Ambro", City = "Kalisz", EmailAddress = "ambro@ambro.pl" };
+      _supplierService.Setup(x => x.Remove(supplier1)).Verifiable();
+      var editedSupplier = _supplierService.Setup(x => x.Get(id)).Returns(supplier1);
+      Assert.IsNotNull(editedSupplier);
     }
   }
 }

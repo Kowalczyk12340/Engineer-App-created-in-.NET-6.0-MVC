@@ -1,8 +1,10 @@
 ﻿using EngineerApplication.Areas.Admin.Controllers;
+using EngineerApplication.ContextStructure.Data;
 using EngineerApplication.ContextStructure.Data.Service.Interfaces;
 using EngineerApplication.Entities;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Moq;
 using NUnit.Framework;
 using System.Net.Http.Json;
@@ -12,42 +14,53 @@ namespace EngineerApplication.Tests.ServiceTest
 {
   public class CommodityServiceTest
   {
-    private Mock<IUnitOfWork> _unitOfWork;
-    private readonly IWebHostEnvironment _hostEnvironment;
-    private CommodityController _commodityController;
-    private ActionContext _context;
+    private Mock<ICommodityService> _commodityService;
+    private DbContextOptionsBuilder<EngineerDbContext> _optionsBuilder = new DbContextOptionsBuilder<EngineerDbContext>();
+    private DbContextOptions<EngineerDbContext> _options;
 
     [SetUp]
     public void Setup()
     {
-      _unitOfWork = new Mock<IUnitOfWork>();
-      _commodityController = new CommodityController(_unitOfWork.Object, _hostEnvironment);
-      _context = new ActionContext();
+      _commodityService = new Mock<ICommodityService>();
+      _options = _optionsBuilder.UseSqlServer(@"Data Source=DESKTOP-VPKE3ES\\SQLEXPRESS;Initial Catalog=EngineerDatabase;Integrated Security=True;").Options;
     }
 
-    [Test]
-    public async Task TestPostCommodityMethodForPage()
+    [TestCase(1)]
+    public void TestGetByIdCommodity(int id)
     {
+      var commodity = new Commodity { Name = "Sportowe Obuwie", Frequency = new Frequency { Name = "Big", FrequencyCount = 15 }, Delivery = new Delivery { Name = "Busem", DeliveryDesc = "Super Bus" }, Category = new Category { Name = "Super Kategoria", DisplayOrder = 3 }, Supplier = new Supplier() { Name = "Ambro Express", City = "Turek" } };
+      var resultService = _commodityService.Setup(p => p.Get(id)).Returns(commodity);
+      Assert.That(resultService != null);
     }
 
-    [Test]
-    public async Task TestPutCommodityMethodForPage()
+    [TestCase(1)]
+    public void TestPostCommodityMethodForPage(int id)
     {
+      var commodity1 = new Commodity { Name = "Sportowe Obuwie", Frequency = new Frequency { Name = "Big", FrequencyCount = 15 }, Delivery = new Delivery { Name = "Busem", DeliveryDesc = "Super Bus" }, Category = new Category { Name = "Super Kategoria", DisplayOrder = 3 }, Supplier = new Supplier() { Name = "Ambro Express", City = "Turek" } };
+      _commodityService.Setup(x => x.Add(commodity1)).Verifiable();
+      var addedCommodity = _commodityService.Setup(x => x.Get(id)).Returns(commodity1);
+      Assert.That(addedCommodity != null);
     }
 
-    [Test]
-    public async Task TestDeleteCommodityMethodForPage()
+    [TestCase(1)]
+    public void TestPutCommodityMethodForPage(int id)
     {
+      var commodity1 = new Commodity { Name = "Sportowe Obuwie", Frequency = new Frequency { Name = "Big", FrequencyCount = 15 }, Delivery = new Delivery { Name = "Busem", DeliveryDesc = "Super Bus" }, Category = new Category { Name = "Super Kategoria", DisplayOrder = 3 }, Supplier = new Supplier() { Name = "Ambro Express", City = "Turek" } };
+      _commodityService.Setup(x => x.Add(commodity1)).Verifiable();
+      commodity1.Name = "Super Obuwie";
+      _commodityService.Setup(x => x.Update(commodity1)).Verifiable();
+      var editedCommodity = _commodityService.Setup(x => x.Get(id)).Returns(commodity1);
+      Assert.That(editedCommodity != null);
     }
 
-    [Test]
-    public async Task TestGetByIdCommodityMethodForPage()
+    [TestCase(1)]
+    public void TestDeleteCommodityMethodForPage(int id)
     {
-    }
-
-    [Test]
-    public async Task TestGetAllCommodityMethodForPage()
-    {
+      var commodity1 = new Commodity { Name = "Sportowe Obuwie", Frequency = new Frequency { Name = "Big", FrequencyCount = 15 }, Delivery = new Delivery { Name = "Busem", DeliveryDesc = "Super Bus" }, Category = new Category { Name = "Super Kategoria", DisplayOrder = 3 }, Supplier = new Supplier() { Name = "Ambro Express", City = "Turek" } };
+      _commodityService.Setup(x => x.Add(commodity1)).Verifiable();
+      _commodityService.Setup(x => x.Remove(commodity1)).Verifiable();
+      var editedCommodity = _commodityService.Setup(x => x.Get(id)).Returns(commodity1);
+      Assert.IsNotNull(editedCommodity);
     }
   }
 }

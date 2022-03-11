@@ -1,51 +1,48 @@
-﻿using EngineerApplication.Areas.Admin.Controllers;
+﻿using EngineerApplication.ContextStructure.Data;
 using EngineerApplication.ContextStructure.Data.Service.Interfaces;
 using EngineerApplication.Entities;
-using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Moq;
 using NUnit.Framework;
-using System.Net.Http.Json;
-using System.Threading.Tasks;
 
 namespace EngineerApplication.Tests.ServiceTest
 {
   public class UserServiceTest
   {
-    private Mock<IUnitOfWork> _unitOfWork;
-    private UserController _userController;
-    private ActionContext _context;
+    private Mock<IUserService> _userService;
+    private DbContextOptionsBuilder<EngineerDbContext> _optionsBuilder = new DbContextOptionsBuilder<EngineerDbContext>();
+    private DbContextOptions<EngineerDbContext> _options;
 
     [SetUp]
     public void Setup()
     {
-      _unitOfWork = new Mock<IUnitOfWork>();
-      _userController = new UserController(_unitOfWork.Object);
-      _context = new ActionContext();
+      _userService = new Mock<IUserService>();
+      _options = _optionsBuilder.UseSqlServer(@"Data Source=DESKTOP-VPKE3ES\\SQLEXPRESS;Initial Catalog=EngineerDatabase;Integrated Security=True;").Options;
     }
 
-    [Test]
-    public async Task TestPostUserMethodForPage()
+    [TestCase(1)]
+    public void TestGetByIdApplicationUser(int id)
     {
+      var user = new ApplicationUser { Name = "Marcin", UserName = "Kowalczyk12340", Email = "ambro@ambro.pl", PasswordHash = "Marcingrafik1#" };
+      var resultService = _userService.Setup(p => p.Get(id)).Returns(user);
+      Assert.That(resultService != null);
     }
 
-    [Test]
-    public async Task TestPutUserMethodForPage()
+    [TestCase(1)]
+    public void TestPostApplicationUserMethodForPage(int id)
     {
+      var user1 = new ApplicationUser { Name = "Marcin", UserName = "Kowalczyk12340", Email = "ambro@ambro.pl", PasswordHash = "Marcingrafik1#" };
+      var addedApplicationUser = _userService.Setup(x => x.Get(id)).Returns(user1);
+      Assert.That(addedApplicationUser != null);
     }
 
-    [Test]
-    public async Task TestDeleteUserMethodForPage()
+    [TestCase(1)]
+    public void TestDeleteApplicationUserMethodForPage(int id)
     {
-    }
-
-    [Test]
-    public async Task TestGetByIdUserMethodForPage()
-    {
-    }
-
-    [Test]
-    public async Task TestGetAllUserMethodForPage()
-    {
+      var user1 = new ApplicationUser { Name = "Marcin", UserName = "Kowalczyk12340", Email = "ambro@ambro.pl", PasswordHash = "Marcingrafik1#" };
+      _userService.Setup(x => x.Remove(user1)).Verifiable();
+      var editedApplicationUser = _userService.Setup(x => x.Get(id)).Returns(user1);
+      Assert.IsNotNull(editedApplicationUser);
     }
   }
 }
