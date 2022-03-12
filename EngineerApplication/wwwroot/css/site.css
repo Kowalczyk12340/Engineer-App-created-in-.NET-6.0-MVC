@@ -2,72 +2,117 @@
 for details on configuring this project to bundle and minify static web assets. */
 
 a.navbar-brand {
-  white-space: normal;
-  text-align: center;
-  word-break: break-all;
+    white-space: normal;
+    text-align: center;
+    word-break: break-all;
 }
 
 /* Provide sufficient contrast against white background */
 a {
-  color: #0441dd;
+    color: #0441dd;
 }
 
 .btn-primary {
-  color: #fff;
-  background-color: #8d67f1;
-  border-color: #1861ac;
+    color: #fff;
+    background-color: #8d67f1;
+    border-color: #1861ac;
 }
 
 .nav-pills .nav-link.active, .nav-pills .show > .nav-link {
-  color: #fff;
-  background-color: #8d67f1;
-  border-color: #1861ac;
+    color: #fff;
+    background-color: #8d67f1;
+    border-color: #1861ac;
 }
 
 /* Sticky footer styles
 -------------------------------------------------- */
 html {
-  font-size: 14px;
+    font-size: 14px;
 }
+
 @media (min-width: 768px) {
-  html {
-    font-size: 16px;
-  }
+    html {
+        font-size: 16px;
+    }
+
+    table, thead, tbody, tr, td {
+        display: table;
+    }
+
+    thead {
+        display: table-header-group;
+    }
+
+    tbody {
+        display: table-row-group;
+    }
+        thead tr {
+            position: relative;
+            top: auto;
+            display: inline-flex;
+            left: auto;
+            align-items: center;
+        }
+
+            thead tr th {
+                display: inline-flex;
+                min-width: 93px;
+            }
+
+        tbody tr td {
+            display: inline-flex;
+            min-width: 93px;
+        }
+
+            tbody tr td div a {
+                display: inline-flex;
+            }
+
+        tr:nth-of-type(odd) {
+            background: #eee;
+        }
+
+    td {
+        border: 1px solid #ccc;
+        text-align: left;
+    }
 }
 
 .border-top {
-  border-top: 1px solid #f5f5f5;
+    border-top: 1px solid #f5f5f5;
 }
+
 .border-bottom {
-  border-bottom: 1px solid #f5f5f5;
+    border-bottom: 1px solid #f5f5f5;
 }
 
 .box-shadow {
-  box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05);
+    box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05);
 }
 
 button.accept-policy {
-  font-size: 1rem;
-  line-height: inherit;
+    font-size: 1rem;
+    line-height: inherit;
 }
 
 /* Sticky footer styles
 -------------------------------------------------- */
 html {
-  position: relative;
-  min-height: 100%;
+    position: relative;
+    min-height: 100%;
 }
 
 body {
-  /* Margin bottom by footer height */
-  margin-bottom: 60px;
+    /* Margin bottom by footer height */
+    margin-bottom: 60px;
 }
+
 .footer {
-  position: absolute;
-  bottom: 0;
-  width: 100%;
-  white-space: nowrap;
-  line-height: 60px; /* Vertically center the text there */
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    white-space: nowrap;
+    line-height: 60px; /* Vertically center the text there */
 }
 
 
@@ -107,30 +152,9 @@ body {
     border-radius: 2px;
 }
 
-@media (min-width: 225px) {
-    .container {
-        max-width: 200px;
-    }
-    #tblData {
-        max-width: 192px;
-    }
-}
-
-@media (min-width: 376px) {
-    .container {
-        max-width: 320px;
-    }
-    #tblData {
-        max-width: 310px;
-    }
-}
-
 @media (min-width: 576px) {
     .container {
-        max-width: 520px;
-    }
-    #tblData {
-        max-width: 510px;
+        max-width: 550px;
     }
 }
 
@@ -138,15 +162,13 @@ body {
     .container {
         max-width: 720px;
     }
-    #tblData {
-        max-width: 710px;
-    }
 }
 
 @media (min-width: 992px) {
     .container {
         max-width: 940px;
     }
+
     #tblData {
         max-width: 930px;
     }
@@ -158,7 +180,246 @@ body {
     }
 }
 
+@media (min-width: 190px) {
+    /* Force table to not be like tables anymore */
+    table, thead, tbody, th, td, tr {
+        display: block;
+    }
+
+        thead tr {
+            position: absolute;
+            top: -9999px;
+            left: -9999px;
+        }
+
+    tr {
+        border: 1px solid #ccc;
+    }
+
+    td {
+        /* Behave  like a "row" */
+        border: none;
+        border-bottom: 1px solid #eee;
+        position: relative;
+        padding-left: 50%;
+    }
+
+        td:before {
+            /* Now like a table header */
+            position: absolute;
+            /* Top/left values mimic padding */
+            top: 6px;
+            left: 6px;
+            width: 45%;
+            padding-right: 10px;
+            white-space: nowrap;
+        }
+
+    .flex-sm-row {
+        -ms-flex-direction: row !important;
+        flex-direction: row !important;
+    }
+
+    .flex-sm-column {
+        -ms-flex-direction: column !important;
+        flex-direction: column !important;
+    }
+
+    .flex-sm-row-reverse {
+        -ms-flex-direction: row-reverse !important;
+        flex-direction: row-reverse !important;
+    }
+
+    .flex-sm-column-reverse {
+        -ms-flex-direction: column-reverse !important;
+        flex-direction: column-reverse !important;
+    }
+
+    .flex-sm-wrap {
+        -ms-flex-wrap: wrap !important;
+        flex-wrap: wrap !important;
+    }
+
+    .flex-sm-nowrap {
+        -ms-flex-wrap: nowrap !important;
+        flex-wrap: nowrap !important;
+    }
+
+    .flex-sm-wrap-reverse {
+        -ms-flex-wrap: wrap-reverse !important;
+        flex-wrap: wrap-reverse !important;
+    }
+
+    .flex-sm-fill {
+        -ms-flex: 0.5 0.5 auto !important;
+        flex: 1 1 auto !important;
+    }
+
+    .flex-sm-grow-0 {
+        -ms-flex-positive: 0 !important;
+        flex-grow: 0 !important;
+    }
+
+    .flex-sm-grow-1 {
+        -ms-flex-positive: 1 !important;
+        flex-grow: 1 !important;
+    }
+
+    .flex-sm-shrink-0 {
+        -ms-flex-negative: 0 !important;
+        flex-shrink: 0 !important;
+    }
+
+    .flex-sm-shrink-1 {
+        -ms-flex-negative: 0.5 !important;
+        flex-shrink: 1 !important;
+    }
+
+    .justify-content-sm-start {
+        -ms-flex-pack: start !important;
+        justify-content: flex-start !important;
+    }
+
+    .justify-content-sm-end {
+        -ms-flex-pack: end !important;
+        justify-content: flex-end !important;
+    }
+
+    .justify-content-sm-center {
+        -ms-flex-pack: center !important;
+        justify-content: center !important;
+    }
+
+    .justify-content-sm-between {
+        -ms-flex-pack: justify !important;
+        justify-content: space-between !important;
+    }
+
+    .justify-content-sm-around {
+        -ms-flex-pack: distribute !important;
+        justify-content: space-around !important;
+    }
+
+    .align-items-sm-start {
+        -ms-flex-align: start !important;
+        align-items: flex-start !important;
+    }
+
+    .align-items-sm-end {
+        -ms-flex-align: end !important;
+        align-items: flex-end !important;
+    }
+
+    .align-items-sm-center {
+        -ms-flex-align: center !important;
+        align-items: center !important;
+    }
+
+    .align-items-sm-baseline {
+        -ms-flex-align: baseline !important;
+        align-items: baseline !important;
+    }
+
+    .align-items-sm-stretch {
+        -ms-flex-align: stretch !important;
+        align-items: stretch !important;
+    }
+
+    .align-content-sm-start {
+        -ms-flex-line-pack: start !important;
+        align-content: flex-start !important;
+    }
+
+    .align-content-sm-end {
+        -ms-flex-line-pack: end !important;
+        align-content: flex-end !important;
+    }
+
+    .align-content-sm-center {
+        -ms-flex-line-pack: center !important;
+        align-content: center !important;
+    }
+
+    .align-content-sm-between {
+        -ms-flex-line-pack: justify !important;
+        align-content: space-between !important;
+    }
+
+    .align-content-sm-around {
+        -ms-flex-line-pack: distribute !important;
+        align-content: space-around !important;
+    }
+
+    .align-content-sm-stretch {
+        -ms-flex-line-pack: stretch !important;
+        align-content: stretch !important;
+    }
+
+    .align-self-sm-auto {
+        -ms-flex-item-align: auto !important;
+        align-self: auto !important;
+    }
+
+    .align-self-sm-start {
+        -ms-flex-item-align: start !important;
+        align-self: flex-start !important;
+    }
+
+    .align-self-sm-end {
+        -ms-flex-item-align: end !important;
+        align-self: flex-end !important;
+    }
+
+    .align-self-sm-center {
+        -ms-flex-item-align: center !important;
+        align-self: center !important;
+    }
+
+    .align-self-sm-baseline {
+        -ms-flex-item-align: baseline !important;
+        align-self: baseline !important;
+    }
+
+    .align-self-sm-stretch {
+        -ms-flex-item-align: stretch !important;
+        align-self: stretch !important;
+    }
+}
+
 @media (min-width: 320px) {
+    /* Force table to not be like tables anymore */
+    table, thead, tbody, th, td, tr {
+        display: block;
+    }
+
+        thead tr {
+            position: absolute;
+            top: -9999px;
+            left: -9999px;
+        }
+
+    tr {
+        border: 1px solid #ccc;
+    }
+
+    td {
+        /* Behave  like a "row" */
+        border: none;
+        border-bottom: 1px solid #eee;
+        position: relative;
+        padding-left: 50%;
+    }
+
+        td:before {
+            /* Now like a table header */
+            position: absolute;
+            /* Top/left values mimic padding */
+            top: 6px;
+            left: 6px;
+            width: 45%;
+            padding-right: 10px;
+            white-space: nowrap;
+        }
     .flex-sm-row {
         -ms-flex-direction: row !important;
         flex-direction: row !important;
@@ -497,178 +758,6 @@ body {
     }
 
     .align-self-sm-stretch {
-        -ms-flex-item-align: stretch !important;
-        align-self: stretch !important;
-    }
-}
-
-@media (min-width: 768px) {
-    .flex-md-row {
-        -ms-flex-direction: row !important;
-        flex-direction: row !important;
-    }
-
-    .flex-md-column {
-        -ms-flex-direction: column !important;
-        flex-direction: column !important;
-    }
-
-    .flex-md-row-reverse {
-        -ms-flex-direction: row-reverse !important;
-        flex-direction: row-reverse !important;
-    }
-
-    .flex-md-column-reverse {
-        -ms-flex-direction: column-reverse !important;
-        flex-direction: column-reverse !important;
-    }
-
-    .flex-md-wrap {
-        -ms-flex-wrap: wrap !important;
-        flex-wrap: wrap !important;
-    }
-
-    .flex-md-nowrap {
-        -ms-flex-wrap: nowrap !important;
-        flex-wrap: nowrap !important;
-    }
-
-    .flex-md-wrap-reverse {
-        -ms-flex-wrap: wrap-reverse !important;
-        flex-wrap: wrap-reverse !important;
-    }
-
-    .flex-md-fill {
-        -ms-flex: 1 1 auto !important;
-        flex: 1 1 auto !important;
-    }
-
-    .flex-md-grow-0 {
-        -ms-flex-positive: 0 !important;
-        flex-grow: 0 !important;
-    }
-
-    .flex-md-grow-1 {
-        -ms-flex-positive: 1 !important;
-        flex-grow: 1 !important;
-    }
-
-    .flex-md-shrink-0 {
-        -ms-flex-negative: 0 !important;
-        flex-shrink: 0 !important;
-    }
-
-    .flex-md-shrink-1 {
-        -ms-flex-negative: 1 !important;
-        flex-shrink: 1 !important;
-    }
-
-    .justify-content-md-start {
-        -ms-flex-pack: start !important;
-        justify-content: flex-start !important;
-    }
-
-    .justify-content-md-end {
-        -ms-flex-pack: end !important;
-        justify-content: flex-end !important;
-    }
-
-    .justify-content-md-center {
-        -ms-flex-pack: center !important;
-        justify-content: center !important;
-    }
-
-    .justify-content-md-between {
-        -ms-flex-pack: justify !important;
-        justify-content: space-between !important;
-    }
-
-    .justify-content-md-around {
-        -ms-flex-pack: distribute !important;
-        justify-content: space-around !important;
-    }
-
-    .align-items-md-start {
-        -ms-flex-align: start !important;
-        align-items: flex-start !important;
-    }
-
-    .align-items-md-end {
-        -ms-flex-align: end !important;
-        align-items: flex-end !important;
-    }
-
-    .align-items-md-center {
-        -ms-flex-align: center !important;
-        align-items: center !important;
-    }
-
-    .align-items-md-baseline {
-        -ms-flex-align: baseline !important;
-        align-items: baseline !important;
-    }
-
-    .align-items-md-stretch {
-        -ms-flex-align: stretch !important;
-        align-items: stretch !important;
-    }
-
-    .align-content-md-start {
-        -ms-flex-line-pack: start !important;
-        align-content: flex-start !important;
-    }
-
-    .align-content-md-end {
-        -ms-flex-line-pack: end !important;
-        align-content: flex-end !important;
-    }
-
-    .align-content-md-center {
-        -ms-flex-line-pack: center !important;
-        align-content: center !important;
-    }
-
-    .align-content-md-between {
-        -ms-flex-line-pack: justify !important;
-        align-content: space-between !important;
-    }
-
-    .align-content-md-around {
-        -ms-flex-line-pack: distribute !important;
-        align-content: space-around !important;
-    }
-
-    .align-content-md-stretch {
-        -ms-flex-line-pack: stretch !important;
-        align-content: stretch !important;
-    }
-
-    .align-self-md-auto {
-        -ms-flex-item-align: auto !important;
-        align-self: auto !important;
-    }
-
-    .align-self-md-start {
-        -ms-flex-item-align: start !important;
-        align-self: flex-start !important;
-    }
-
-    .align-self-md-end {
-        -ms-flex-item-align: end !important;
-        align-self: flex-end !important;
-    }
-
-    .align-self-md-center {
-        -ms-flex-item-align: center !important;
-        align-self: center !important;
-    }
-
-    .align-self-md-baseline {
-        -ms-flex-item-align: baseline !important;
-        align-self: baseline !important;
-    }
-
-    .align-self-md-stretch {
         -ms-flex-item-align: stretch !important;
         align-self: stretch !important;
     }
