@@ -1,14 +1,9 @@
-﻿using EngineerApplication.Areas.Admin.Controllers;
-using EngineerApplication.ContextStructure.Data;
+﻿using EngineerApplication.ContextStructure.Data;
 using EngineerApplication.ContextStructure.Data.Service.Interfaces;
 using EngineerApplication.Entities;
-using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Moq;
 using NUnit.Framework;
-using System.Net.Http.Json;
-using System.Threading.Tasks;
 
 namespace EngineerApplication.Tests.ServiceTest
 {

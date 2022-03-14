@@ -32,7 +32,7 @@ html {
 
 @media (min-width: 768px) {
     html {
-        font-size: 16px;
+        font-size: 14px;
     }
 
     table, thead, tbody, tr, td {
@@ -46,31 +46,32 @@ html {
     tbody {
         display: table-row-group;
     }
-        thead tr {
-            position: relative;
-            top: auto;
-            display: inline-flex;
-            left: auto;
-            align-items: center;
-        }
 
-            thead tr th {
-                display: inline-flex;
-                min-width: 93px;
-            }
+    thead tr {
+        position: relative;
+        top: 0;
+        display: inline-flex;
+        left: 0;
+        align-items: center;
+    }
 
-        tbody tr td {
+        thead tr th {
             display: inline-flex;
             min-width: 93px;
         }
 
-            tbody tr td div a {
-                display: inline-flex;
-            }
+    tbody tr td {
+        display: inline-flex;
+        min-width: 93px;
+    }
 
-        tr:nth-of-type(odd) {
-            background: #eee;
+        tbody tr td div a {
+            display: inline-flex;
         }
+
+    tr:nth-of-type(odd) {
+        background: #eee;
+    }
 
     td {
         border: 1px solid #ccc;
@@ -420,6 +421,7 @@ body {
             padding-right: 10px;
             white-space: nowrap;
         }
+
     .flex-sm-row {
         -ms-flex-direction: row !important;
         flex-direction: row !important;

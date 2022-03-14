@@ -6,6 +6,10 @@ using Microsoft.AspNetCore.Identity.UI.Services;
 using EngineerApplication.Helpers;
 using EngineerApplication.ContextStructure.Data.Service.Interfaces;
 using EngineerApplication.ContextStructure.Data.Service;
+using EngineerApplication.Resources;
+using System.Globalization;
+using Microsoft.AspNetCore.Localization;
+using Microsoft.Extensions.Options;
 
 namespace EngineerApplication
 {
@@ -34,8 +38,22 @@ namespace EngineerApplication
           .AddEntityFrameworkStores<EngineerDbContext>()
           .AddDefaultTokenProviders();
 
-      Services.AddSingleton<IEmailSender, EmailSender>();
+      Services.Configure<RequestLocalizationOptions>(options =>
+      {
+        var supportedCultures = new[]
+         {
+        new CultureInfo("en"),
+        new CultureInfo("pl"),
+        new CultureInfo("de"),
+    };
+        options.DefaultRequestCulture = new RequestCulture("en");
+        options.SupportedCultures = supportedCultures;
+        options.SupportedUICultures = supportedCultures;
+      });
 
+      Services.AddSingleton<IEmailSender, EmailSender>();
+      Services.AddMvc().AddViewLocalization();
+      Services.AddSingleton<CommonLocalizationService>();
       Services.AddScoped<IUnitOfWork, UnitOfWork>();
       Services.AddScoped<ISeederToDatabase, SeederToDatabase>();
       Services.AddSession(options =>
@@ -68,9 +86,11 @@ namespace EngineerApplication
       app.UseCookiePolicy();
 
       app.UseRouting();
-      //seeder.HighlightDatabase();
+      seeder.HighlightDatabase();
       app.UseAuthentication();
       app.UseAuthorization();
+      var localizationOptions = app.ApplicationServices.GetService<IOptions<RequestLocalizationOptions>>().Value;
+      app.UseRequestLocalization(localizationOptions);
 
       app.UseEndpoints(endpoints =>
       {

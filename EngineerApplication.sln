@@ -11,7 +11,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EngineerApplication.Helpers
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EngineerApplication.ContextStructure", "EngineerApplication.ContextStructure\EngineerApplication.ContextStructure.csproj", "{17352975-B458-436B-AC41-E9D089234A33}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EngineerApplication.Tests", "EngineerApplication.Tests\EngineerApplication.Tests.csproj", "{CDC33C1E-1889-44BF-BCEB-F0FE3CDED056}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EngineerApplication.Tests", "EngineerApplication.Tests\EngineerApplication.Tests.csproj", "{CDC33C1E-1889-44BF-BCEB-F0FE3CDED056}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

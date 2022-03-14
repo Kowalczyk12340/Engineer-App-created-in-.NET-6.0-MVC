@@ -1,5 +1,6 @@
 ﻿@using EngineerApplication.Helpers
 @using Microsoft.AspNetCore.Http
+@using EngineerApplication.Resources
 @inject IHttpContextAccessor HttpContextAccessor
 @using EngineerApplication.Extensions
 
@@ -49,26 +50,26 @@
                         {
                             <li class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle text-white" href="#" id="navbarDropDown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    Logistic Operations
+                                    Operacje
                                 </a>
                                 <div class="dropdown-menu" aria-labelledby="navbarDropDown">
-                                    <a class="dropdown-item text-white" asp-area="Admin" asp-controller="Category" asp-action="Index">Category</a>
-                                    <a class="dropdown-item text-white" asp-area="Admin" asp-controller="Frequency" asp-action="Index">Frequency</a>
-                                    <a class="dropdown-item text-white" asp-area="Admin" asp-controller="Supplier" asp-action="Index">Supplier</a>
-                                    <a class="dropdown-item text-white" asp-area="Admin" asp-controller="Commodity" asp-action="Index">Commodity</a>
-                                    <a class="dropdown-item text-white" asp-area="Admin" asp-controller="Delivery" asp-action="Index">Delivery</a>
-                                    <a class="dropdown-item text-white" asp-area="Admin" asp-controller="WebImage" asp-action="Index">Photo Gallery</a>
-                                    <a class="dropdown-item text-white" asp-area="Admin" asp-controller="Order" asp-action="Index">Order</a>
+                                    <a class="dropdown-item text-white" asp-area="Admin" asp-controller="Category" asp-action="Index">Kategoria</a>
+                                    <a class="dropdown-item text-white" asp-area="Admin" asp-controller="Frequency" asp-action="Index">Frekwencja</a>
+                                    <a class="dropdown-item text-white" asp-area="Admin" asp-controller="Supplier" asp-action="Index">Dostawca</a>
+                                    <a class="dropdown-item text-white" asp-area="Admin" asp-controller="Commodity" asp-action="Index">Towar</a>
+                                    <a class="dropdown-item text-white" asp-area="Admin" asp-controller="Delivery" asp-action="Index">Dostawa</a>
+                                    <a class="dropdown-item text-white" asp-area="Admin" asp-controller="WebImage" asp-action="Index">Galeria Zdjęć</a>
+                                    <a class="dropdown-item text-white" asp-area="Admin" asp-controller="Order" asp-action="Index">Zamówienie</a>
                                 </div>
                             </li>
                             <li class="nav-item">
-                                <a class="dropdown-item text-white" asp-area="Admin" asp-controller="Offer" asp-action="Index">Offer</a>
+                                <a class="dropdown-item text-white" asp-area="Admin" asp-controller="Offer" asp-action="Index">Oferta</a>
                             </li>
                         }
                         @if (User.IsInRole(UsefulConsts.Admin))
                         {
                             <li class="nav-item">
-                                <a class="dropdown-item text-white" asp-area="Admin" asp-controller="User" asp-action="Index">User</a>
+                                <a class="dropdown-item text-white" asp-area="Admin" asp-controller="User" asp-action="Index">Użytkownik</a>
                             </li>
                         }
                         @if (HttpContextAccessor.HttpContext.Session.GetObject<List<int>>(UsefulConsts.SessionCart) != null)
@@ -91,7 +92,7 @@
                             </li>
                         }
                     </ul>
-
+                    <vc:culture-switcher/>
                 </div>
                 <partial name="_LoginPartial" />
             </div>
