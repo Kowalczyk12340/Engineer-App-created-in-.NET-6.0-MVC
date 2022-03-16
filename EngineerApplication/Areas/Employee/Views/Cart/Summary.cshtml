@@ -1,4 +1,5 @@
-﻿@model EngineerApplication.Entities.ViewModels.CartViewModel
+﻿@inject CommonLocalizationService localizer
+@model EngineerApplication.Entities.ViewModels.CartViewModel
 
 @{
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -115,7 +116,7 @@
                 </div>
                 <div class="card-footer">
                     <div class="col-12 col-md-6 offset-md-6 col-lg-4 offset-lg-8 text-right">
-                        <button type="submit" class="btn btn-success form-control">Place Order</button>                        
+                        <button type="submit" class="btn btn-success form-control">Place Order</button>
                     </div>
                 </div>
             </div>

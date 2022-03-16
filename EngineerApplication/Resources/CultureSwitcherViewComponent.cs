@@ -4,6 +4,7 @@ using Microsoft.Extensions.Options;
 
 namespace EngineerApplication.Resources
 {
+  [ViewComponent]
   public class CultureSwitcherViewComponent : ViewComponent
   {
     private readonly IOptions<RequestLocalizationOptions> localizationOptions;

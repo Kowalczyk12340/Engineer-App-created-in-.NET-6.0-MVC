@@ -41,18 +41,21 @@ namespace EngineerApplication
       Services.Configure<RequestLocalizationOptions>(options =>
       {
         var supportedCultures = new[]
-         {
-        new CultureInfo("en"),
-        new CultureInfo("pl"),
-        new CultureInfo("de"),
-    };
+        {
+          new CultureInfo("pl"),
+          new CultureInfo("en"),
+          new CultureInfo("de")
+        };
         options.DefaultRequestCulture = new RequestCulture("en");
         options.SupportedCultures = supportedCultures;
         options.SupportedUICultures = supportedCultures;
       });
 
       Services.AddSingleton<IEmailSender, EmailSender>();
-      Services.AddMvc().AddViewLocalization();
+      Services.AddMvc().AddViewLocalization().AddRazorOptions(options =>
+      {
+        options.ViewLocationFormats.Add("/{0}.cshtml");
+      });
       Services.AddSingleton<CommonLocalizationService>();
       Services.AddScoped<IUnitOfWork, UnitOfWork>();
       Services.AddScoped<ISeederToDatabase, SeederToDatabase>();
@@ -62,7 +65,7 @@ namespace EngineerApplication
         options.Cookie.HttpOnly = true;
         options.Cookie.IsEssential = true;
       });
-
+      Services.AddLocalization(options => options.ResourcesPath = "Resources");
       Services.AddControllersWithViews().AddNewtonsoftJson().AddRazorRuntimeCompilation();
       Services.AddRazorPages();
     }
@@ -89,6 +92,7 @@ namespace EngineerApplication
       seeder.HighlightDatabase();
       app.UseAuthentication();
       app.UseAuthorization();
+
       var localizationOptions = app.ApplicationServices.GetService<IOptions<RequestLocalizationOptions>>().Value;
       app.UseRequestLocalization(localizationOptions);
 

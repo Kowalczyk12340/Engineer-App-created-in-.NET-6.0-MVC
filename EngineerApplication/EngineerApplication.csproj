@@ -33,17 +33,27 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <Compile Update="Resources\Resources.Designer.cs">
+	  <Compile Update="Resources\Resources.en.Designer.cs">
 	    <DesignTime>True</DesignTime>
 	    <AutoGen>True</AutoGen>
-	    <DependentUpon>Resources.resx</DependentUpon>
+	    <DependentUpon>Resources.en.resx</DependentUpon>
 	  </Compile>
 	</ItemGroup>
 
 	<ItemGroup>
-	  <EmbeddedResource Update="Resources\Resources.resx">
+	  <EmbeddedResource Update="Resources\Resources.de.resx">
+	    <SubType>Designer</SubType>
+	    <LastGenOutput>Resources - kopiować (2).en.Designer.cs</LastGenOutput>
 	    <Generator>PublicResXFileCodeGenerator</Generator>
-	    <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+	  </EmbeddedResource>
+	  <EmbeddedResource Update="Resources\Resources.pl.resx">
+	    <SubType>Designer</SubType>
+	    <LastGenOutput>Resources - kopiować.en.Designer.cs</LastGenOutput>
+	    <Generator>PublicResXFileCodeGenerator</Generator>
+	  </EmbeddedResource>
+	  <EmbeddedResource Update="Resources\Resources.en.resx">
+	    <Generator>PublicResXFileCodeGenerator</Generator>
+	    <LastGenOutput>Resources.en.Designer.cs</LastGenOutput>
 	  </EmbeddedResource>
 	</ItemGroup>
 

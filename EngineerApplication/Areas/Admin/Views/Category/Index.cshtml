@@ -1,23 +1,21 @@
 ﻿@using Microsoft.AspNetCore.Localization
 @using Microsoft.AspNetCore.Mvc.Localization
 @using Microsoft.Extensions.Localization
-@inject IStringLocalizer<Index> localizer
-@inject IHtmlLocalizer<Index> htmlLocalizer
+@inject CommonLocalizationService localizer
 @{
     Layout = "~/Views/Shared/_Layout.cshtml";
     var requestCultureFeature = Context.Features.Get<IRequestCultureFeature>();
     var requestCulture = requestCultureFeature.RequestCulture;
-    //<h2 class="text-primary">@localizer["CategoryList"]</h2>
 }
 
 <br />
 <div class="border backgroundWhite">
     <div class="row">
         <div class="col-6">
-            <h2 class="text-primary">Category List</h2>
+            <h2 class="text-primary">@localizer.Get("CategoryList")</h2>
         </div>
         <div class="col-6 text-right">
-            <a asp-action="Upsert" class="btn btn-primary"><i class="fas fa-plus"></i> &nbsp; Create New Category</a>
+            <a asp-action="Upsert" class="btn btn-primary"><i class="fas fa-plus"></i> &nbsp; @localizer.Get("CreateNewCategory")</a>
         </div>
     </div>
     <br />

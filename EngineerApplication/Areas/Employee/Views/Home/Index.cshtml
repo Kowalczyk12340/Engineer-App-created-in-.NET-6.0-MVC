@@ -1,4 +1,5 @@
-﻿@model EngineerApplication.Entities.ViewModels.HomeViewModel
+﻿@inject CommonLocalizationService localizer
+@model EngineerApplication.Entities.ViewModels.HomeViewModel
 
 @foreach(var category in Model.CategoryList.OrderBy(o => o.DisplayOrder))
 {
