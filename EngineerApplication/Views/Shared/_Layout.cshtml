@@ -9,7 +9,7 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - Aplikacja Hurtowni</title>
+    <title>@ViewData["Title"] - Dropshipping Application</title>
 
     <environment include="Development">
         <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
@@ -33,7 +33,7 @@
         <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
             <div class="container">
                 <img style="width: 45px; height: fitcontent; margin-right: 3px;" src="~/images/logisticApp.png" />
-                <a class="navbar-brand" asp-area="Employee" asp-controller="Home" asp-action="Index"><b>Aplikacja Hurtowni</b></a>
+                <a class="navbar-brand" asp-area="Employee" asp-controller="Home" asp-action="Index"><b>Aplikacja Handlowa</b></a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01"
                         aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -43,7 +43,7 @@
 
                     <ul class="navbar-nav mr-auto">
                         <li class="nav-item">
-                            <a class="nav-link " asp-area="Employee" asp-controller="Home" asp-action="Index">Home</a>
+                            <a class="nav-link " asp-area="Employee" asp-controller="Home" asp-action="Index">Strona Główna</a>
                         </li>
 
                         @if (User.IsInRole(UsefulConsts.Employee) || User.IsInRole(UsefulConsts.Admin))
@@ -53,23 +53,23 @@
                                     Operacje
                                 </a>
                                 <div class="dropdown-menu" aria-labelledby="navbarDropDown">
-                                    <a class="dropdown-item text-white" asp-area="Admin" asp-controller="Category" asp-action="Index">Kategoria</a>
-                                    <a class="dropdown-item text-white" asp-area="Admin" asp-controller="Frequency" asp-action="Index">Frekwencja</a>
-                                    <a class="dropdown-item text-white" asp-area="Admin" asp-controller="Supplier" asp-action="Index">Dostawca</a>
-                                    <a class="dropdown-item text-white" asp-area="Admin" asp-controller="Commodity" asp-action="Index">Towar</a>
-                                    <a class="dropdown-item text-white" asp-area="Admin" asp-controller="Delivery" asp-action="Index">Dostawa</a>
+                                    <a class="dropdown-item text-white" asp-area="Admin" asp-controller="Category" asp-action="Index">Kategorie</a>
+                                    <a class="dropdown-item text-white" asp-area="Admin" asp-controller="Frequency" asp-action="Index">Częstotliwości</a>
+                                    <a class="dropdown-item text-white" asp-area="Admin" asp-controller="Supplier" asp-action="Index">Dostawcy</a>
+                                    <a class="dropdown-item text-white" asp-area="Admin" asp-controller="Commodity" asp-action="Index">Towary</a>
+                                    <a class="dropdown-item text-white" asp-area="Admin" asp-controller="Delivery" asp-action="Index">Dostawy</a>
                                     <a class="dropdown-item text-white" asp-area="Admin" asp-controller="WebImage" asp-action="Index">Galeria Zdjęć</a>
-                                    <a class="dropdown-item text-white" asp-area="Admin" asp-controller="Order" asp-action="Index">Zamówienie</a>
+                                    <a class="dropdown-item text-white" asp-area="Admin" asp-controller="Order" asp-action="Index">Zamówienia</a>
                                 </div>
                             </li>
                             <li class="nav-item">
-                                <a class="dropdown-item text-white" asp-area="Admin" asp-controller="Offer" asp-action="Index">Oferta</a>
+                                <a class="dropdown-item text-white" asp-area="Admin" asp-controller="Offer" asp-action="Index">Oferty</a>
                             </li>
                         }
                         @if (User.IsInRole(UsefulConsts.Admin))
                         {
                             <li class="nav-item">
-                                <a class="dropdown-item text-white" asp-area="Admin" asp-controller="User" asp-action="Index">Użytkownik</a>
+                                <a class="dropdown-item text-white" asp-area="Admin" asp-controller="User" asp-action="Index">Użytkownicy</a>
                             </li>
                         }
                         @if (HttpContextAccessor.HttpContext.Session.GetObject<List<int>>(UsefulConsts.SessionCart) != null)

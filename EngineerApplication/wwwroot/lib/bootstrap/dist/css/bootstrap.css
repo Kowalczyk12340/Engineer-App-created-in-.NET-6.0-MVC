@@ -608,19 +608,19 @@ pre {
 
 @media (min-width: 768px) {
     .container {
-        max-width: 720px;
+        max-width: 740px;
     }
     #tblData {
-        max-width: 700px;
+        max-width: 730px;
     }
 }
 
 @media (min-width: 992px) {
     .container {
-        max-width: 960px;
+        max-width: 970px;
     }
     #tblData {
-        max-width: 940px;
+        max-width: 960px;
     }
 }
 
