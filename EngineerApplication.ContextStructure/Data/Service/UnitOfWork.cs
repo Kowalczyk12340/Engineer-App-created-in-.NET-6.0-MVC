@@ -1,5 +1,4 @@
-﻿using EngineerApplication.ContextStructure.Data.Repository;
-using EngineerApplication.ContextStructure.Data.Service.Interfaces;
+﻿using EngineerApplication.ContextStructure.Data.Service.Interfaces;
 
 namespace EngineerApplication.ContextStructure.Data.Service
 {
@@ -13,6 +12,7 @@ namespace EngineerApplication.ContextStructure.Data.Service
       Category = new CategoryService(_db);
       Frequency = new FrequencyService(_db);
       Commodity = new CommodityService(_db);
+      Service = new ServiceService(_db);
       Supplier = new SupplierService(_db);
       Delivery = new DeliveryService(_db);
       Offer = new OfferService(_db);
@@ -27,6 +27,7 @@ namespace EngineerApplication.ContextStructure.Data.Service
     public ISupplierService Supplier { get; private set; }
     public IOfferService Offer { get; private set; }
     public ICommodityService Commodity { get; private set; }
+    public IServiceService Service { get; private set; }
     public IOrderHeaderService OrderHeader { get; private set; }
     public IOrderDetailsService OrderDetails { get; private set; }
     public IUserService User { get; private set; }

@@ -7,12 +7,12 @@
     ISupplierService Supplier { get; }
     IDeliveryService Delivery { get; }
     IOfferService Offer { get; }
+    IServiceService Service { get; }
     ICommodityService Commodity { get; }
     IOrderHeaderService OrderHeader { get; }
     IOrderDetailsService OrderDetails { get; }
 
     ISP_Call SP_Call { get; }
-
     IUserService User { get; }
     void Save();
   }

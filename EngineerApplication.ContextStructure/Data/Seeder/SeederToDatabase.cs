@@ -1,8 +1,5 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Linq;
-using System.Text;
 using EngineerApplication.Entities;
 using EngineerApplication.Helpers;
 

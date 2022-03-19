@@ -38,7 +38,6 @@ namespace EngineerApplication.Areas.Employee.Controllers
       return View(CartVM);
     }
 
-
     public IActionResult Summary()
     {
       if (HttpContext.Session.GetObject<List<int>>(UsefulConsts.SessionCart) != null)

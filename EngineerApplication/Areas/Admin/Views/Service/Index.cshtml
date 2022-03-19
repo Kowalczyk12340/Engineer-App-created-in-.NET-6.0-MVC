@@ -1,0 +1,38 @@
+﻿@inject CommonLocalizationService localizer
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<br />
+<div class="border backgroundWhite">
+    <div class="row">
+        <div class="col-6">
+            <h2 class="text-primary">@localizer.Get("ServiceList")</h2>
+        </div>
+        <div class="col-6 text-right">
+            <a asp-action="Upsert" class="btn btn-primary"><i class="fas fa-plus"></i> &nbsp;  @localizer.Get("CreateNewService")</a>
+        </div>
+    </div>
+    <br />
+    <br />
+    <table id="tblData" class="table table-striped table-bordered" style="width:100%">
+        <thead>
+            <tr>
+                <th>@localizer.Get("Name")</th>
+                <th>@localizer.Get("CategoryName")</th>
+                <th>@localizer.Get("SupplierName")</th>
+                <th>@localizer.Get("DeliveryName")</th>
+                <th>@localizer.Get("Price")</th>
+                <th>@localizer.Get("Frequency")</th>
+                <th></th>
+            </tr>
+        </thead>
+    </table>
+</div>
+@section Scripts{
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.js"></script>
+    <script src="~/js/service.js"></script>
+}
+
+
+

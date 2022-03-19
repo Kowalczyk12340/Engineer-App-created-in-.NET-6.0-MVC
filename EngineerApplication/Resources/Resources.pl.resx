@@ -255,11 +255,17 @@
   <data name="CreateNewOffer" xml:space="preserve">
     <value>Utwórz nową ofertę</value>
   </data>
+  <data name="CreateNewService" xml:space="preserve">
+    <value>Utwórz nową usługę</value>
+  </data>
   <data name="CreateNewSupplier" xml:space="preserve">
     <value>Utwórz nowego dostawcę</value>
   </data>
   <data name="CreateOffer" xml:space="preserve">
     <value>Utwórz ofertę</value>
+  </data>
+  <data name="CreateService" xml:space="preserve">
+    <value>Utwórz usługę</value>
   </data>
   <data name="CreateSupplier" xml:space="preserve">
     <value>Utwórz dostawcę</value>
@@ -338,6 +344,9 @@
   </data>
   <data name="EditOffer" xml:space="preserve">
     <value>Edytuj ofertę</value>
+  </data>
+  <data name="EditService" xml:space="preserve">
+    <value>Edytuj usługę</value>
   </data>
   <data name="EditSupplier" xml:space="preserve">
     <value>Edytuj dostawcę</value>
@@ -632,6 +641,12 @@
   </data>
   <data name="SendVerificationEmail" xml:space="preserve">
     <value>Wyślij email weryfikacyjny</value>
+  </data>
+  <data name="ServiceList" xml:space="preserve">
+    <value>Lista usług</value>
+  </data>
+  <data name="Services" xml:space="preserve">
+    <value>Usługi</value>
   </data>
   <data name="SetPassword" xml:space="preserve">
     <value>Ustaw hasło</value>
