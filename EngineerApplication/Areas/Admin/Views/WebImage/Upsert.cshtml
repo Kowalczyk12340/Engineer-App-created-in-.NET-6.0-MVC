@@ -2,7 +2,7 @@
 @model EngineerApplication.Entities.WebImages
 
 @{
-    var title = "Create Images";
+    var title = @localizer.Get("CreateImage");
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
@@ -13,7 +13,7 @@
         @if (Model.Id != 0)
         {
             <input type="hidden" asp-for="Id" />
-            title = "Edit Images";
+            title = @localizer.Get("EditImage");
         }
 
         <div class="col-12">

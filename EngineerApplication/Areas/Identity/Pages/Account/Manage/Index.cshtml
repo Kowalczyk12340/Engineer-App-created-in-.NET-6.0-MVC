@@ -2,7 +2,7 @@
 @inject CommonLocalizationService localizer
 @model IndexModel
 @{
-    ViewData["Title"] = "Profile";
+    ViewData["Title"] = @localizer.Get("Profile");
     ViewData["ActivePage"] = ManageNavPages.Index;
 }
 
@@ -21,7 +21,7 @@
                 <input asp-for="Input.PhoneNumber" class="form-control" />
                 <span asp-validation-for="Input.PhoneNumber" class="text-danger"></span>
             </div>
-            <button id="update-profile-button" type="submit" class="btn btn-primary">Save</button>
+            <button id="update-profile-button" type="submit" class="btn btn-primary">@localizer.Get("Save")</button>
         </form>
     </div>
 </div>

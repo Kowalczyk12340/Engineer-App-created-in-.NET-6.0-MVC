@@ -2,7 +2,7 @@
 @inject CommonLocalizationService localizer
 @model DeletePersonalDataModel
 @{
-    ViewData["Title"] = "Delete Personal Data";
+    ViewData["Title"] = @localizer.Get("DeletePersonalData");
     ViewData["ActivePage"] = ManageNavPages.PersonalData;
 }
 
@@ -11,7 +11,7 @@
 <div class="alert alert-warning" role="alert">
     <p>
         <span class="glyphicon glyphicon-warning-sign"></span>
-        <strong>Deleting this data will permanently remove your account, and this cannot be recovered.</strong>
+        <strong>@localizer.Get("DeletePermamently")</strong>
     </p>
 </div>
 
@@ -26,7 +26,7 @@
                 <span asp-validation-for="Input.Password" class="text-danger"></span>
             </div>
         }
-        <button class="btn btn-danger" type="submit">Delete data and close my account</button>
+        <button class="btn btn-danger" type="submit">@localizer.Get("DeleteDataAndCloseAccount")</button>
     </form>
 </div>
 

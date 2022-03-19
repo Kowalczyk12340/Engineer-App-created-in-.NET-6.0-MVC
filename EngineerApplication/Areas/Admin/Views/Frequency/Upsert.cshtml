@@ -1,7 +1,7 @@
 ﻿@inject CommonLocalizationService localizer
 @model EngineerApplication.Entities.Frequency
 @{
-    var title = "Create Frequency";
+    var title = @localizer.Get("CreateFrequency");
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
@@ -12,7 +12,7 @@
         @if (Model.Id != 0)
         {
             <input type="hidden" asp-for="Id" />
-            title = "Edit Frequency";
+            title = @localizer.Get("EditFrequency");
         }
         <div class="col-12">
 

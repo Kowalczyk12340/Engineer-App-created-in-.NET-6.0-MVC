@@ -1,12 +1,13 @@
-﻿@inject CommonLocalizationService localizer
+﻿@using EngineerApplication.Resources
+@inject CommonLocalizationService localizer
 @{
     Layout = "/Areas/Identity/Pages/_Layout.cshtml";
 }
 
-<h1>Manage your account</h1>
+<h1>@localizer.Get("ManageYourAccount")</h1>
 
 <div>
-    <h4>Change your account settings</h4>
+    <h4>@localizer.Get("ChangeYourAccountSettings")</h4>
     <hr />
     <div class="row">
         <div class="col-md-3">

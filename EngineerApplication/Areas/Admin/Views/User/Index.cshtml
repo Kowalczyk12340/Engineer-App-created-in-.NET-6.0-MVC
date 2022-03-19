@@ -1,7 +1,7 @@
 ﻿@inject CommonLocalizationService localizer
 @model IEnumerable<ApplicationUser>
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = @localizer.Get("Index");
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
@@ -9,11 +9,11 @@
 <div class="border backgroundWhite">
     <div class="row">
         <div class="col-6">
-            <h2 class="text-info">Employees List</h2>
+            <h2 class="text-info">@localizer.Get("EmployeesList")</h2>
         </div>
         <div class="col-6 text-right">
             <a asp-area="Identity" asp-page="/Account/Register" class="btn btn-info">
-                <i class="fas fa-plus"></i> &nbsp; New Employee Registeration
+                <i class="fas fa-plus"></i> &nbsp; @localizer.Get("NewEmployeeRegistration")
             </a>
         </div>
     </div>
@@ -66,7 +66,7 @@
     }
     else
     {
-        <p>No Users Exists...</p>
+        <p>@localizer.Get("NoUserExists")...</p>
     }
 
 </div>

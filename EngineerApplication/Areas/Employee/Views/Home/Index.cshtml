@@ -1,4 +1,5 @@
-﻿@inject CommonLocalizationService localizer
+﻿@using EngineerApplication.Resources
+@inject CommonLocalizationService localizer
 @model EngineerApplication.Entities.ViewModels.HomeViewModel
 
 @foreach(var category in Model.CategoryList.OrderBy(o => o.DisplayOrder))
@@ -9,7 +10,6 @@
             <div class="col-12">
                 <div class="row">
                     <h2 class="text-success"><b>@category.Name</b></h2>
-
                     <div class="col-12">
                         <div class="row my-3">
                             @foreach(var Commodity in Model.CommodityList.Where(c=>c.CategoryId==category.Id))
@@ -20,13 +20,13 @@
                                             <h3 class="card-title text-primary"><b>@Commodity.Name</b></h3>
                                         </div>
                                         <div class="d-flex justify-content-between ">
-                                            <div class="pl-1 text-muted">Price per Commodity</div>
+                                            <div class="pl-1 text-muted">@localizer.Get("Price") @localizer.Get("PerCommodity")</div>
                                             <div class="pr-1 text-danger h5">$@Commodity.Price</div>
                                         </div>
                                         <img src="@Commodity.ImageUrl" class="card-img-top p-2 rounded" />
 
                                         <div class="text-muted text-center pb-2" >@Commodity.Frequency.Name</div>
-                                        <a asp-action="Details" class="btn btn-success" style="border-radius:2px;" asp-route-id="@Commodity.Id">Details</a>
+                                        <a asp-action="Details" class="btn btn-success" style="border-radius:2px;" asp-route-id="@Commodity.Id">@localizer.Get("Details")</a>
                                     </div>
                                 </div>
                             }

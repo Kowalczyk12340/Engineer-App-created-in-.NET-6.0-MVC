@@ -1,21 +1,22 @@
-﻿@inject CommonLocalizationService localizer
+﻿@using EngineerApplication.Resources
+@inject CommonLocalizationService localizer
 @model int
 @{
-    ViewData["Title"] = "OrderConfirmation";
+    ViewData["Title"] = @localizer.Get("OrderConfirmation");
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 <div class="container row">
     <div class="col-12 text-center">
-        <h1 class="text-primary text-center">Order Request Submitted</h1><br />
+        <h1 class="text-primary text-center">@localizer.Get("OrderRequestSubmitted")</h1><br />
         <img src="~/images/services/orderRealized.jpg" width="50%" />
     </div>
     <div class="col-12 text-center" style="color:maroon">
         <br />
-        Thank you for submitting a request online! <br />
-        We have received your request and our team will be call you shortly!
+        @localizer.Get("ThankYouForSubmitting") <br />
+        @localizer.Get("WeHaveReceived")
         <br />
-        Your Request Number is : @Model
+        @localizer.Get("YourRequest") : @Model
     </div>
 </div>
 

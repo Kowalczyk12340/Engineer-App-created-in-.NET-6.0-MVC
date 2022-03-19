@@ -1,12 +1,13 @@
 ﻿@model EngineerApplication.Entities.Commodity
 @using EngineerApplication.Helpers
+@using EngineerApplication.Resources
 @using Microsoft.AspNetCore.Http
 @inject CommonLocalizationService localizer
 @inject IHttpContextAccessor HttpContextAccessor
 @using EngineerApplication.Extensions
 
 @{
-    ViewData["Title"] = "Details";
+    ViewData["Title"] = @localizer.Get("Details");
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
@@ -17,7 +18,7 @@
                 <h1 class="text-primary">@Model.Name</h1>
             </div>
             <div class="col-12 col-md-6 text-md-right">
-                <h1 class="text-muted">Total : @((Model.Price * Model.Frequency.FrequencyCount).ToString("c"))</h1>
+                <h1 class="text-muted">@localizer.Get("Total") : @((Model.Price * Model.Frequency.FrequencyCount).ToString("c"))</h1>
             </div>
         </div>
         <div class="card-body">
@@ -26,7 +27,7 @@
                     <div class="col-12 col-lg-8">
                         <div class="row">
                             <div class="col-12">
-                                <h3 class="text-success">Price per Commodity: $@Model.Price</h3>
+                                <h3 class="text-success">@localizer.Get("Price") @localizer.Get("PerCommodity"): $@Model.Price</h3>
                                 <h4 class="text-muted">@Model.Frequency.Name</h4>
                                 <p class="text-secondary">@Html.Raw(Model.LongDesc)</p>
                             </div>
@@ -43,7 +44,7 @@
         <div class="card-footer">
             <div class="row">
                 <div class="col-12 col-md-6 pb-1">
-                    <a asp-action="Index" class="btn btn-success form-control  btn-square btn-lg" style="height:50px;">Back to List</a>
+                    <a asp-action="Index" class="btn btn-success form-control  btn-square btn-lg" style="height:50px;">@localizer.Get("BackToList")</a>
                 </div>
                 <div class="col-12 col-md-6 pb-1">
                     @{
@@ -61,13 +62,12 @@
 
                     @if (AddToCartEnabled)
                     {
-                        <a asp-action="AddToCart" asp-route-CommodityId="@Model.Id" class="btn btn-primary btn-square form-control btn-lg" style="height:50px;">Add to Cart</a>
+                        <a asp-action="AddToCart" asp-route-CommodityId="@Model.Id" class="btn btn-primary btn-square form-control btn-lg" style="height:50px;">@localizer.Get("AddToCart")</a>
                     }
                     else
                     {
-                        <button class="btn btn-primary btn-square form-control btn-lg" style="height:50px;" disabled>Item in Cart</button>
+                        <button class="btn btn-primary btn-square form-control btn-lg" style="height:50px;" disabled>@localizer.Get("ItemInCart")</button>
                     }
-
                 </div>
             </div>
         </div>

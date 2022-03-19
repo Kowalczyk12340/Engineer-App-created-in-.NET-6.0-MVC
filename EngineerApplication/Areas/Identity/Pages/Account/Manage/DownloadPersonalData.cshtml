@@ -2,7 +2,7 @@
 @inject CommonLocalizationService localizer
 @model DownloadPersonalDataModel
 @{
-    ViewData["Title"] = "Download Your Data";
+    ViewData["Title"] = @localizer.Get("DownloadYourData");
     ViewData["ActivePage"] = ManageNavPages.PersonalData;
 }
 

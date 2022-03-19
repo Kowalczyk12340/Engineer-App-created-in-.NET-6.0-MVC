@@ -2,10 +2,10 @@
 @inject CommonLocalizationService localizer
 @model AccessDeniedModel
 @{
-    ViewData["Title"] = "Access denied";
+    ViewData["Title"] = @localizer.Get("AccessDenied");
 }
 
 <header>
     <h1 class="text-danger">@ViewData["Title"]</h1>
-    <p class="text-danger">You do not have access to this resource.</p>
+    <p class="text-danger">@localizer.Get("WithoutAccess").</p>
 </header>

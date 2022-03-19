@@ -2,10 +2,10 @@
 @inject CommonLocalizationService localizer
 @model LogoutModel
 @{
-    ViewData["Title"] = "Log out";
+    ViewData["Title"] = @localizer.Get("Logout");
 }
 
 <header>
     <h1>@ViewData["Title"]</h1>
-    <p>You have successfully logged out of the application.</p>
+    <p>@localizer.Get("SuccessfullyLogged").</p>
 </header>

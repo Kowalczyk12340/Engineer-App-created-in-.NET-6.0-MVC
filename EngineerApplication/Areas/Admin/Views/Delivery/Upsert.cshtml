@@ -2,7 +2,7 @@
 @model EngineerApplication.Entities.Delivery
 
 @{
-    var title = "Create Delivery";
+    var title = @localizer.Get("CreateDelivery");
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
@@ -13,7 +13,7 @@
         @if(Model.Id != 0)
         {
             <input type="hidden" asp-for="Id" />
-            title = "Edit Delivery";
+            title = @localizer.Get("EditDelivery");
         }
 
         <div class="col-12">

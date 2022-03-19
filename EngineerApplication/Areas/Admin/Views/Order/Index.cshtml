@@ -28,18 +28,18 @@
 <div class="border backgroundWhite p-3">
     <div class="d-flex justify-content-between mb-3">
         <div class="p-2">
-            <h2 class="text-primary">Order's List</h2>
+            <h2 class="text-primary">@localizer.Get("OrdersList")</h2>
         </div>
         <div class="p-2">
             <ul class="list-group list-group-horizontal-sm">
                 <a style="text-decoration:none" asp-controller="Order" asp-route-status="pending" asp-action="Index">
-                    <li class="list-group-item @pending">Pending</li>
+                    <li class="list-group-item @pending">@localizer.Get("Pending")</li>
                 </a>
                 <a style="text-decoration:none" asp-controller="Order" asp-route-status="approved" asp-action="Index">
-                    <li class="list-group-item @approved">Approved</li>
+                    <li class="list-group-item @approved">@localizer.Get("Approved")</li>
                 </a>
                 <a style="text-decoration:none" asp-controller="Order" asp-route-status="all" asp-action="Index">
-                    <li class="list-group-item @all">All</li>
+                    <li class="list-group-item @all">@localizer.Get("All")</li>
                 </a>
             </ul>
         </div>
@@ -49,11 +49,11 @@
     <table id="tblData" class="table table-striped table-bordered" style="width:100%">
         <thead>
             <tr>
-                <th>Name</th>
-                <th>Phone</th>
-                <th>Email</th>
-                <th>Count</th>
-                <th>Status</th>
+                <th>@localizer.Get("Name")</th>
+                <th>@localizer.Get("Phone")</th>
+                <th>@localizer.Get("Email")</th>
+                <th>@localizer.Get("Count")</th>
+                <th>@localizer.Get("Status")</th>
                 <th></th>
             </tr>
         </thead>

@@ -7,10 +7,10 @@
 <div class="border backgroundWhite">
     <div class="row">
         <div class="col-6">
-            <h2 class="text-primary">Commodity List</h2>
+            <h2 class="text-primary">@localizer.Get("CommodityList")</h2>
         </div>
         <div class="col-6 text-right">
-            <a asp-action="Upsert" class="btn btn-primary"><i class="fas fa-plus"></i> &nbsp;  Create New Commodity</a>
+            <a asp-action="Upsert" class="btn btn-primary"><i class="fas fa-plus"></i> &nbsp;  @localizer.Get("CreateNewCommodity")</a>
         </div>
     </div>
     <br />
@@ -18,12 +18,12 @@
     <table id="tblData" class="table table-striped table-bordered" style="width:100%">
         <thead>
             <tr>
-                <th>Name</th>
-                <th>Category Name</th>
-                <th>Supplier Name</th>
-                <th>Delivery Name</th>
-                <th>Price</th>
-                <th>Frequency</th>
+                <th>@localizer.Get("Name")</th>
+                <th>@localizer.Get("CategoryName")</th>
+                <th>@localizer.Get("SupplierName")</th>
+                <th>@localizer.Get("DeliveryName")</th>
+                <th>@localizer.Get("Price")</th>
+                <th>@localizer.Get("Frequency")</th>
                 <th></th>
             </tr>
         </thead>

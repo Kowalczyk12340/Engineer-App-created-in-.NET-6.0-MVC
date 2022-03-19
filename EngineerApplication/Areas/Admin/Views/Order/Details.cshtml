@@ -3,7 +3,7 @@
 @using EngineerApplication.Helpers
 
 @{
-    ViewData["Title"] = "Details";
+    ViewData["Title"] = @localizer.Get("Details");
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
@@ -15,10 +15,10 @@
             <div class="card">
                 <div class="card-header bg-dark text-light ml-0 row container">
                     <div class="col-12 d-none d-md-block col-md-6 pb-1">
-                        <i class="fas fa-shopping-cart"></i> &nbsp; Order Summary
+                        <i class="fas fa-shopping-cart"></i> &nbsp; @localizer.Get("OrderSummary")
                     </div>
                     <div class="col-12 col-md-4 offset-md-2 text-right">
-                        <a asp-action="Index" asp-controller="Order" asp-area="Admin" class="btn btn-outline-info form-control btn-sm">Back to Orders</a>
+                        <a asp-action="Index" asp-controller="Order" asp-area="Admin" class="btn btn-outline-info form-control btn-sm">@localizer.Get("BackToOrders")</a>
                     </div>
                 </div>
                 <div class="card-body">
@@ -27,12 +27,12 @@
                             <div class="col-12 col-lg-6 pb-4">
                                 <div class="row">
                                     <h4 class="d-flex justify-content-between align-items-center mb-3">
-                                        <span class="text-primary">PickUp Details:</span>
+                                        <span class="text-primary">@localizer.Get("PickUpDetails"):</span>
                                     </h4>
                                 </div>
                                 <div class="row my-1">
                                     <div class="col-3">
-                                        <label>Name</label>
+                                        <label>@localizer.Get("Name")</label>
                                     </div>
                                     <div class="col-9">
                                         <input asp-for="OrderHeader.Name" id="txtName" readonly type="text" class="form-control" />
@@ -40,15 +40,15 @@
                                 </div>
                                 <div class="row my-1">
                                     <div class="col-3">
-                                        <label>Phone</label>
+                                        <label>@localizer.Get("Phone")</label>
                                     </div>
                                     <div class="col-9">
-                                        <input asp-for="OrderHeader.Phone" id="txtPhone"  readonly type="text" class="form-control" />
+                                        <input asp-for="OrderHeader.Phone" id="txtPhone" readonly type="text" class="form-control" />
                                     </div>
                                 </div>
                                 <div class="row my-1">
                                     <div class="col-3">
-                                        <label>Address</label>
+                                        <label>@localizer.Get("Address")</label>
                                     </div>
                                     <div class="col-9">
                                         <input asp-for="OrderHeader.Address" type="text" readonly  class="form-control" />
@@ -56,7 +56,7 @@
                                 </div>
                                 <div class="row my-1">
                                     <div class="col-3">
-                                        <label>City</label>
+                                        <label>@localizer.Get("City")</label>
                                     </div>
                                     <div class="col-9">
                                         <input asp-for="OrderHeader.City" type="text" readonly  class="form-control" />
@@ -64,7 +64,7 @@
                                 </div>
                                 <div class="row my-1">
                                     <div class="col-3">
-                                        <label>Zip Code</label>
+                                        <label>@localizer.Get("ZipCode")</label>
                                     </div>
                                     <div class="col-9">
                                         <input asp-for="OrderHeader.ZipCode" type="text" readonly  class="form-control" />
@@ -72,7 +72,7 @@
                                 </div>
                                 <div class="row my-1">
                                     <div class="col-3">
-                                        <label>Email</label>
+                                        <label>@localizer.Get("Email")</label>
                                     </div>
                                     <div class="col-9">
                                         <input asp-for="OrderHeader.Email" type="text"  readonly class="form-control" />
@@ -81,7 +81,7 @@
                             </div>
                             <div class="col-12 col-lg-5 offset-lg-1">
                                 <h4 class="d-flex justify-content-between align-items-center mb-3">
-                                    <span class="text-primary">Order Summary</span>
+                                    <span class="text-primary">@localizer.Get("OrderSummary")</span>
                                 </h4>
                                 <ul class="list-group mb-3">
                                     @{ var total = 0.0;}
@@ -92,7 +92,7 @@
                                             <div>
                                                 <input type="hidden" asp-for="@details.Id" />
                                                 <h6 class="my-0">@details.CommodityName</h6>
-                                                <small class="text-muted">Price : @details.Price</small>
+                                                <small class="text-muted">@localizer.Get("Price") : @details.Price</small>
                                             </div>
                                         </li>
                                     }
@@ -112,10 +112,10 @@
                         @if (Model.OrderHeader.Status != UsefulConsts.StatusApproved && Model.OrderHeader.Status != UsefulConsts.StatusRejected)
                         {
                             <div class="col-6 offset-md-4 col-md-4 col-lg-2 offset-lg-8">
-                                <a asp-action="Approve" asp-route-id="@Model.OrderHeader.Id" class="btn btn-success form-control">Approve</a>
+                                <a asp-action="Approve" asp-route-id="@Model.OrderHeader.Id" class="btn btn-success form-control">@localizer.Get("Approve")</a>
                             </div>
                             <div class="col-6 col-md-4 col-lg-2">
-                                <a asp-action="reject" asp-route-id="@Model.OrderHeader.Id" class="btn btn-danger form-control">Reject</a>
+                                <a asp-action="reject" asp-route-id="@Model.OrderHeader.Id" class="btn btn-danger form-control">@localizer.Get("Reject")</a>
                             </div>
                         }
                     </div>
@@ -125,7 +125,7 @@
     }
     else
     {
-        <div class="backgroundWhite">No items added to the shopping cart...</div>
+        <div class="backgroundWhite">@localizer.Get("NoItemsAdded")</div>
     }
 </form>
 

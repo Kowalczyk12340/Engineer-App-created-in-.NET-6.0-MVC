@@ -1,4 +1,5 @@
-﻿@inject CommonLocalizationService localizer
+﻿@using EngineerApplication.Resources
+@inject CommonLocalizationService localizer
 @model EngineerApplication.Entities.ViewModels.CartViewModel
 
 @{
@@ -13,10 +14,10 @@
             <div class="card">
                 <div class="card-header bg-dark text-light ml-0 row container">
                     <div class="col-12 d-none d-md-block col-md-6 pb-1">
-                        <i class="fas fa-shopping-cart"></i> &nbsp; Shopping Cart
+                        <i class="fas fa-shopping-cart"></i> &nbsp; @localizer.Get("ShoppingCart")
                     </div>
                     <div class="col-12 col-md-4 offset-md-2 text-right">
-                        <a asp-action="Index" asp-controller="Home" asp-area="Employee" class="btn btn-outline-info form-control btn-sm">Shopping Cart</a>
+                        <a asp-action="Index" asp-controller="Home" asp-area="Employee" class="btn btn-outline-info form-control btn-sm">@localizer.Get("ShoppingCart")</a>
                     </div>
                 </div>
                 <div class="card-body">
@@ -33,7 +34,7 @@
                             </div>
                             <div class="col-12 col-md-5 text-md-left pt-3">
                                 <h5><strong class="text-primary">@item.Name</strong></h5>
-                                <h5 class="text-secondary">$@item.Price per Commodity</h5>
+                                <h5 class="text-secondary">$@item.Price @localizer.Get("PerCommodity")</h5>
                                 <h5 class="text-secondary"><small>@item.Frequency.Name</small></h5>
                             </div>
                             <div class="col-12 col-md-5 row pt-3">
@@ -52,13 +53,13 @@
 
                     <div class="row">
                         <div class="col-12 text-right pr-4">
-                            <p class="text-success h5">Total (USD): &nbsp;&nbsp; $@orderTotal</p>
+                            <p class="text-success h5">@localizer.Get("TotalUSD"): &nbsp;&nbsp; $@orderTotal</p>
                         </div>
                     </div>
                 </div>
                 <div class="card-footer">
                     <div class="col-12 col-md-6 offset-md-6 col-lg-4 offset-lg-8 text-right">
-                        <a asp-action="Summary" asp-area="Employee" asp-controller="Cart" class="btn btn-success form-control">Summary</a>
+                        <a asp-action="Summary" asp-area="Employee" asp-controller="Cart" class="btn btn-success form-control">@localizer.Get("Summary")</a>
                     </div>
                 </div>
             </div>
@@ -66,6 +67,6 @@
     }
     else
     {
-        <div class="backgroundWhite"> No items added to the shopping cart...</div>
+        <div class="backgroundWhite"> @localizer.Get("NoItemsAddedToTheShoppingCart")...</div>
     }
 </form>

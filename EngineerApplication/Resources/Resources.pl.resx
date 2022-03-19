@@ -117,13 +117,655 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="Accept" xml:space="preserve">
+    <value>Akceptuj</value>
+  </data>
+  <data name="AccessDenied" xml:space="preserve">
+    <value>Zabroniony dostęp</value>
+  </data>
+  <data name="Account" xml:space="preserve">
+    <value>konto</value>
+  </data>
+  <data name="AccountHasBeenLocked" xml:space="preserve">
+    <value>To konto zostało zablokowane, spróbuj ponownie później</value>
+  </data>
+  <data name="AddAnother" xml:space="preserve">
+    <value>Dodaj kolejny towar aby się zalogować</value>
+  </data>
+  <data name="AddAuthenticatorApp" xml:space="preserve">
+    <value>Dodaj aplikacje uwierzytelniającą</value>
+  </data>
+  <data name="Address" xml:space="preserve">
+    <value>Adres</value>
+  </data>
+  <data name="AddToCart" xml:space="preserve">
+    <value>Dodaj do karty</value>
+  </data>
+  <data name="All" xml:space="preserve">
+    <value>Wszystkie</value>
+  </data>
+  <data name="and" xml:space="preserve">
+    <value>i</value>
+  </data>
+  <data name="Android" xml:space="preserve">
+    <value>Android</value>
+  </data>
+  <data name="Approve" xml:space="preserve">
+    <value>Zatwierdź</value>
+  </data>
+  <data name="Approved" xml:space="preserve">
+    <value>Zatwierdzone</value>
+  </data>
+  <data name="AssociateYour" xml:space="preserve">
+    <value>Powiąż swoje</value>
+  </data>
+  <data name="AuthenticatorApp" xml:space="preserve">
+    <value>Aplikacja uwierzytelniająca</value>
+  </data>
+  <data name="BackToCart" xml:space="preserve">
+    <value>Wróć do karty</value>
+  </data>
+  <data name="BackToList" xml:space="preserve">
+    <value>Wróc do listy</value>
+  </data>
+  <data name="BackToOrders" xml:space="preserve">
+    <value>Wróć do zamówień</value>
+  </data>
+  <data name="BeforeYou" xml:space="preserve">
+    <value>zanim będziesz mógł się zalogować za pomocą kodu odzyskiwania</value>
+  </data>
+  <data name="Categories" xml:space="preserve">
+    <value>Kategorie</value>
+  </data>
   <data name="CategoryList" xml:space="preserve">
-    <value>Lista Kategorii</value>
+    <value>Lista kategorii</value>
+  </data>
+  <data name="CategoryName" xml:space="preserve">
+    <value>Nazwa kategorii</value>
+  </data>
+  <data name="ChangeEmail" xml:space="preserve">
+    <value>Zmień email</value>
+  </data>
+  <data name="ChangePassword" xml:space="preserve">
+    <value>Zmień hasło</value>
+  </data>
+  <data name="ChangeYourAccountSettings" xml:space="preserve">
+    <value>Zmień ustawienia konta</value>
+  </data>
+  <data name="City" xml:space="preserve">
+    <value>Miasto</value>
+  </data>
+  <data name="ClickHereToConfirm" xml:space="preserve">
+    <value>Kliknij tutaj aby zatwierdzić konto</value>
+  </data>
+  <data name="ClickHereToLogIn" xml:space="preserve">
+    <value>kliknij tutaj aby się zalogować</value>
+  </data>
+  <data name="Commodities" xml:space="preserve">
+    <value>Towary</value>
+  </data>
+  <data name="CommodityList" xml:space="preserve">
+    <value>Lista towarów</value>
+  </data>
+  <data name="ConfigureAuthenticatorApp" xml:space="preserve">
+    <value>Konfiguruj aplikacje uwierzytelniającą</value>
+  </data>
+  <data name="ConfirmEmail" xml:space="preserve">
+    <value>Potwierdź email</value>
+  </data>
+  <data name="ConfirmEmailChange" xml:space="preserve">
+    <value>Potwierdź zmianę email-a</value>
+  </data>
+  <data name="Count" xml:space="preserve">
+    <value>Ilość</value>
+  </data>
+  <data name="Create" xml:space="preserve">
+    <value>Utwórz</value>
+  </data>
+  <data name="CreateANewAccount" xml:space="preserve">
+    <value>Utwórz nowe konto</value>
+  </data>
+  <data name="CreateCategory" xml:space="preserve">
+    <value>Utwórz kategorie</value>
+  </data>
+  <data name="CreateCommodity" xml:space="preserve">
+    <value>Utwórz towar</value>
+  </data>
+  <data name="CreateDelivery" xml:space="preserve">
+    <value>Utwórz dostawę</value>
+  </data>
+  <data name="CreateFrequency" xml:space="preserve">
+    <value>Utwórz częstotliwość</value>
+  </data>
+  <data name="CreateImage" xml:space="preserve">
+    <value>Utwórz zdjęcie</value>
   </data>
   <data name="CreateNewCategory" xml:space="preserve">
     <value>Utwórz nową kategorie</value>
   </data>
+  <data name="CreateNewCommodity" xml:space="preserve">
+    <value>Utwórz nowy towar</value>
+  </data>
+  <data name="CreateNewDelivery" xml:space="preserve">
+    <value>Utwórz nową dostawę</value>
+  </data>
+  <data name="CreateNewFrequency" xml:space="preserve">
+    <value>Utwórz nową częstotliwość</value>
+  </data>
+  <data name="CreateNewOffer" xml:space="preserve">
+    <value>Utwórz nową ofertę</value>
+  </data>
+  <data name="CreateNewSupplier" xml:space="preserve">
+    <value>Utwórz nowego dostawcę</value>
+  </data>
+  <data name="CreateOffer" xml:space="preserve">
+    <value>Utwórz ofertę</value>
+  </data>
+  <data name="CreateSupplier" xml:space="preserve">
+    <value>Utwórz dostawcę</value>
+  </data>
+  <data name="Delete" xml:space="preserve">
+    <value>Usuń</value>
+  </data>
+  <data name="DeleteDataAndCloseAccount" xml:space="preserve">
+    <value>Usuń dane i zamknij konto</value>
+  </data>
+  <data name="DeletePermamently" xml:space="preserve">
+    <value>Usunięcie tych danych spowoduje trwałe usunięcie Twojego konta i nie będzie można go odzyskać.</value>
+  </data>
+  <data name="DeletePersonalData" xml:space="preserve">
+    <value>Usuń dane personalne</value>
+  </data>
+  <data name="DeletingThisData" xml:space="preserve">
+    <value>Usunięcie tych danych spowoduje trwałe usunięcie Twojego konta i nie będzie można go odzyskać</value>
+  </data>
+  <data name="Deliveries" xml:space="preserve">
+    <value>Dostawy</value>
+  </data>
+  <data name="DeliveryList" xml:space="preserve">
+    <value>Lista dostawców</value>
+  </data>
+  <data name="DeliveryName" xml:space="preserve">
+    <value>Nazwa dostawcy</value>
+  </data>
+  <data name="Description" xml:space="preserve">
+    <value>Opis</value>
+  </data>
+  <data name="Details" xml:space="preserve">
+    <value>Szczegóły</value>
+  </data>
+  <data name="Disable2FA" xml:space="preserve">
+    <value>Wyłącz uwierzytelnianie dwuskładnikowe (2FA)</value>
+  </data>
+  <data name="Disabling2FADoesNot" xml:space="preserve">
+    <value>Wyłączenie 2FA nie zmienia kluczy używanych w aplikacjach uwierzytelniających. Jeśli chcesz zmienić klucz używany w aplikacji uwierzytelniającej, powinieneś</value>
+  </data>
+  <data name="DisplayOrder" xml:space="preserve">
+    <value>Kolejność wyświetlania</value>
+  </data>
+  <data name="documentation" xml:space="preserve">
+    <value>dokumentacja</value>
+  </data>
+  <data name="DontHaveAccess" xml:space="preserve">
+    <value>Nie masz dostępu do swojego urządzenia uwierzytelniającego? Możesz</value>
+  </data>
+  <data name="Download" xml:space="preserve">
+    <value>Pobierz</value>
+  </data>
+  <data name="DownloadLikeMicrosoft" xml:space="preserve">
+    <value>Pobierz dwuskładnikową aplikację uwierzytelniającą, taką jak Microsoft Authenticator, dla</value>
+  </data>
+  <data name="DownloadYourData" xml:space="preserve">
+    <value>Pobierz swoje dane</value>
+  </data>
+  <data name="DropshippingApplication" xml:space="preserve">
+    <value>Aplikacja Dropshipping</value>
+  </data>
+  <data name="EditCategory" xml:space="preserve">
+    <value>Edytuj kategorie</value>
+  </data>
+  <data name="EditCommodity" xml:space="preserve">
+    <value>Edytuj towar</value>
+  </data>
+  <data name="EditDelivery" xml:space="preserve">
+    <value>Edytuj dostawę</value>
+  </data>
+  <data name="EditFrequency" xml:space="preserve">
+    <value>Edytuj częstotliwość</value>
+  </data>
+  <data name="EditImage" xml:space="preserve">
+    <value>Edytuj zdjęcie</value>
+  </data>
+  <data name="EditOffer" xml:space="preserve">
+    <value>Edytuj ofertę</value>
+  </data>
+  <data name="EditSupplier" xml:space="preserve">
+    <value>Edytuj dostawcę</value>
+  </data>
+  <data name="Email" xml:space="preserve">
+    <value>Email</value>
+  </data>
+  <data name="EmailAddress" xml:space="preserve">
+    <value>Adres Email</value>
+  </data>
+  <data name="EmployeesList" xml:space="preserve">
+    <value>Lista pracowników</value>
+  </data>
+  <data name="EnterEmail" xml:space="preserve">
+    <value>Wprowadź poniżej adres e-mail dla tej witryny i kliknij przycisk Zarejestruj się, aby zakończyć logowanie</value>
+  </data>
+  <data name="EnterYourEmail" xml:space="preserve">
+    <value>Wprowadź swój email</value>
+  </data>
+  <data name="Error" xml:space="preserve">
+    <value>Błąd</value>
+  </data>
+  <data name="ExternalLogins" xml:space="preserve">
+    <value>Logowanie zewnętrzne</value>
+  </data>
   <data name="Footer" xml:space="preserve">
-    <value>Projekt w ramach pracy inżynierskiej - Marcin Kowalczyk 2022/2023</value>
+    <value>Projekt i wykonanie w ramach pracy inżynierskiej - Marcin Kowalczyk 2022/2023</value>
+  </data>
+  <data name="ForgetThisBrowser" xml:space="preserve">
+    <value>Zapomnij o tej przeglądarce</value>
+  </data>
+  <data name="ForgotPassword" xml:space="preserve">
+    <value>Zapomniałeś hasła?</value>
+  </data>
+  <data name="ForgotPasswordConfirmation" xml:space="preserve">
+    <value>Zapomniałem potwierdzenia hasła</value>
+  </data>
+  <data name="ForHowToConfigure" xml:space="preserve">
+    <value>jak skonfigurować prawdziwego nadawcę e-maili</value>
+  </data>
+  <data name="Frequencies" xml:space="preserve">
+    <value>Częstotliwości</value>
+  </data>
+  <data name="Frequency" xml:space="preserve">
+    <value>Częstotliwość</value>
+  </data>
+  <data name="FrequencyList" xml:space="preserve">
+    <value>Lista Częstotliwości</value>
+  </data>
+  <data name="GenerateANewSet" xml:space="preserve">
+    <value>wygeneruj nowy zestaw kodów odzyskiwania</value>
+  </data>
+  <data name="GenerateRecoveryCodes" xml:space="preserve">
+    <value>Generuj kody odzyskiwania</value>
+  </data>
+  <data name="GenerateTwoFactor" xml:space="preserve">
+    <value>Wygeneruj kody odzyskiwania uwierzytelniania dwuskładnikowego (2FA)</value>
+  </data>
+  <data name="GeneratingRecovery" xml:space="preserve">
+    <value>Generowanie nowych kodów odzyskiwania nie zmienia kluczy używanych w aplikacjach uwierzytelniających. Jeśli chcesz zmienić klucz używany w aplikacji uwierzytelniającej, powinieneś</value>
+  </data>
+  <data name="GoogleAuthenticatorFor" xml:space="preserve">
+    <value>Uwierzytelniacz Google dla</value>
+  </data>
+  <data name="Home" xml:space="preserve">
+    <value>Strona Główna</value>
+  </data>
+  <data name="IfYouLose" xml:space="preserve">
+    <value>Jeśli zgubisz urządzenie i nie będziesz mieć kodów odzyskiwania, utracisz dostęp do swojego konta</value>
+  </data>
+  <data name="IfYouLoseDevice" xml:space="preserve">
+    <value>Jeśli zgubisz urządzenie i nie będziesz mieć kodów odzyskiwania, utracisz dostęp do swojego konta</value>
+  </data>
+  <data name="IfYouReset" xml:space="preserve">
+    <value>Jeśli zresetujesz klucz uwierzytelniający, aplikacja uwierzytelniająca nie będzie działać, dopóki nie zmienisz jej konfiguracji</value>
+  </data>
+  <data name="Index" xml:space="preserve">
+    <value>Index</value>
+  </data>
+  <data name="IntoYourTwoFactor" xml:space="preserve">
+    <value>do Twojej aplikacji do uwierzytelniania dwuskładnikowego. Spacje i obudowa nie mają znaczenia</value>
+  </data>
+  <data name="iOS" xml:space="preserve">
+    <value>iOS</value>
+  </data>
+  <data name="ItemInCart" xml:space="preserve">
+    <value>Pozycja w koszyku</value>
+  </data>
+  <data name="LearnMore" xml:space="preserve">
+    <value>Zobacz więcej</value>
+  </data>
+  <data name="LocalAccount" xml:space="preserve">
+    <value>Nie masz lokalnej nazwy użytkownika/hasła dla tej witryny. Dodaj konto lokalne, aby móc się zalogować bez zewnętrznego loginu</value>
+  </data>
+  <data name="LockedOut" xml:space="preserve">
+    <value>Zablokowany</value>
+  </data>
+  <data name="LogIn" xml:space="preserve">
+    <value>Zaloguj się</value>
+  </data>
+  <data name="LoginFromYourAccount" xml:space="preserve">
+    <value>login z Twojego konta</value>
+  </data>
+  <data name="LogInRecovery" xml:space="preserve">
+    <value>zaloguj się za pomocą kodu odzyskiwania</value>
+  </data>
+  <data name="LogInUsingFor" xml:space="preserve">
+    <value>Zaloguj się poprzez</value>
+  </data>
+  <data name="Logout" xml:space="preserve">
+    <value>Wyloguj się</value>
+  </data>
+  <data name="ManageEmail" xml:space="preserve">
+    <value>Zarządzaj email-em</value>
+  </data>
+  <data name="ManageYourAccount" xml:space="preserve">
+    <value>Zarządzaj swoim kontem</value>
+  </data>
+  <data name="ManageYourExternalLogins" xml:space="preserve">
+    <value>Zarządzaj zewnętrznymi loginami</value>
+  </data>
+  <data name="Name" xml:space="preserve">
+    <value>Nazwa</value>
+  </data>
+  <data name="NewEmployeeRegistration" xml:space="preserve">
+    <value>Rejestracja nowego pracownika</value>
+  </data>
+  <data name="NoItemsAdded" xml:space="preserve">
+    <value>Do koszyka nie dodano żadnych pozycji...</value>
+  </data>
+  <data name="NoItemsAddedToTheShoppingCart" xml:space="preserve">
+    <value>Do koszyka nie dodano żadnych pozycji</value>
+  </data>
+  <data name="NormallyThisWouldBe" xml:space="preserve">
+    <value>Normalnie zostanie to wysłane e-mailem</value>
+  </data>
+  <data name="NoUserExists" xml:space="preserve">
+    <value>Użytkownik nie istnieje</value>
+  </data>
+  <data name="OfferList" xml:space="preserve">
+    <value>Lista ofert</value>
+  </data>
+  <data name="Offers" xml:space="preserve">
+    <value>Oferty</value>
+  </data>
+  <data name="OnceYouHave" xml:space="preserve">
+    <value>Po zeskanowaniu kodu QR lub wprowadzeniu powyższego klucza aplikacja do uwierzytelniania dwuskładnikowego dostarczy Ci unikalny kod. Wpisz kod w polu potwierdzenia poniżej</value>
+  </data>
+  <data name="Operations" xml:space="preserve">
+    <value>Operacje</value>
+  </data>
+  <data name="or" xml:space="preserve">
+    <value>lub</value>
+  </data>
+  <data name="OrderConfirmation" xml:space="preserve">
+    <value>Potwierdzenie zamówienia</value>
+  </data>
+  <data name="OrderRequestSubmitted" xml:space="preserve">
+    <value>Złożono wniosek o zamówienie</value>
+  </data>
+  <data name="Orders" xml:space="preserve">
+    <value>Zamówienia</value>
+  </data>
+  <data name="OrdersList" xml:space="preserve">
+    <value>Lista zamówień</value>
+  </data>
+  <data name="OrderSummary" xml:space="preserve">
+    <value>Podsumowanie zamowienia</value>
+  </data>
+  <data name="Password" xml:space="preserve">
+    <value>Hasło</value>
+  </data>
+  <data name="Pending" xml:space="preserve">
+    <value>Nieroztrzygnięte</value>
+  </data>
+  <data name="PerCommodity" xml:space="preserve">
+    <value>za sztukę</value>
+  </data>
+  <data name="PersonalData" xml:space="preserve">
+    <value>Dane osobowe</value>
+  </data>
+  <data name="Phone" xml:space="preserve">
+    <value>Telefon</value>
+  </data>
+  <data name="PhoneNumber" xml:space="preserve">
+    <value>Numer telefonu</value>
+  </data>
+  <data name="PhotoGallery" xml:space="preserve">
+    <value>Galeria zdjęć</value>
+  </data>
+  <data name="PickUpDetails" xml:space="preserve">
+    <value>Szczegóły odbioru</value>
+  </data>
+  <data name="Picture" xml:space="preserve">
+    <value>Obraz</value>
+  </data>
+  <data name="PlaceOrder" xml:space="preserve">
+    <value>Złóż zamówienie</value>
+  </data>
+  <data name="PleaseCheck" xml:space="preserve">
+    <value>Sprawdź pocztę e-mail, aby zresetować hasło</value>
+  </data>
+  <data name="PleaseCheckEmail" xml:space="preserve">
+    <value>Sprawdź pocztę e-mail, aby potwierdzić swoje konto</value>
+  </data>
+  <data name="PleaseSelectACategory" xml:space="preserve">
+    <value>-- Proszę wybierz kategorie --</value>
+  </data>
+  <data name="PleaseSelectADelivery" xml:space="preserve">
+    <value>-- Proszę wybierz sposób dostawy --</value>
+  </data>
+  <data name="PleaseSelectAFrequency" xml:space="preserve">
+    <value>-- Proszę wybierz częstotliwość --</value>
+  </data>
+  <data name="PleaseSelectAnImage" xml:space="preserve">
+    <value>Proszę wybierz zdjęcie</value>
+  </data>
+  <data name="PleaseSelectASupplier" xml:space="preserve">
+    <value>-- Proszę wybierz dostawcę --</value>
+  </data>
+  <data name="PostalCode" xml:space="preserve">
+    <value>Kod pocztowy</value>
+  </data>
+  <data name="Price" xml:space="preserve">
+    <value>Cena</value>
+  </data>
+  <data name="PrivacyPolicy" xml:space="preserve">
+    <value>Polityka prywatności</value>
+  </data>
+  <data name="Profile" xml:space="preserve">
+    <value>Profil</value>
+  </data>
+  <data name="PutTheseCodes" xml:space="preserve">
+    <value>Umieść te kody w bezpiecznym miejscu</value>
+  </data>
+  <data name="RecoveryCodes" xml:space="preserve">
+    <value>Kody odzyskiwania</value>
+  </data>
+  <data name="RecoveryCodeVerification" xml:space="preserve">
+    <value>Weryfikacja kodu odzyskiwania</value>
+  </data>
+  <data name="Register" xml:space="preserve">
+    <value>Rejestracja</value>
+  </data>
+  <data name="RegisterConfirmation" xml:space="preserve">
+    <value>Potwierdzenie rejestracji</value>
+  </data>
+  <data name="RegisteredLogins" xml:space="preserve">
+    <value>Zarejestrowane loginy</value>
+  </data>
+  <data name="RegisterNewEmployee" xml:space="preserve">
+    <value>Rejestracja nowego pracownika</value>
+  </data>
+  <data name="Reject" xml:space="preserve">
+    <value>Odrzuć</value>
+  </data>
+  <data name="Remove" xml:space="preserve">
+    <value>Usuń</value>
+  </data>
+  <data name="RemoveThis" xml:space="preserve">
+    <value>Usuń to</value>
+  </data>
+  <data name="Reset" xml:space="preserve">
+    <value>Zresetuj</value>
+  </data>
+  <data name="ResetAuthenticatorApp" xml:space="preserve">
+    <value>Zresetuj aplikację uwierzytelniającą</value>
+  </data>
+  <data name="ResetAuthenticatorKey" xml:space="preserve">
+    <value>Zresetuj klucz uwierzytelniający</value>
+  </data>
+  <data name="ResetKeys" xml:space="preserve">
+    <value>zresetuj swoje klucze uwierzytelniające</value>
+  </data>
+  <data name="ResetPassword" xml:space="preserve">
+    <value>Zresetuj hasło</value>
+  </data>
+  <data name="ResetPasswordConfirmation" xml:space="preserve">
+    <value>Potwierdź zresetowanie hasła</value>
+  </data>
+  <data name="ResetYourPassword" xml:space="preserve">
+    <value>Zresetuj swoje hasło</value>
+  </data>
+  <data name="SafePlace" xml:space="preserve">
+    <value>Umieść te kody w bezpiecznym miejscu</value>
+  </data>
+  <data name="Save" xml:space="preserve">
+    <value>Zapisz</value>
+  </data>
+  <data name="ScanTheQR" xml:space="preserve">
+    <value>Zeskanuj kod QR lub wprowadź ten klucz</value>
+  </data>
+  <data name="SendVerificationEmail" xml:space="preserve">
+    <value>Wyślij email weryfikacyjny</value>
+  </data>
+  <data name="SetPassword" xml:space="preserve">
+    <value>Ustaw hasło</value>
+  </data>
+  <data name="SetupAuthenticatorApp" xml:space="preserve">
+    <value>Skonfiguruj aplikację uwierzytelniającą</value>
+  </data>
+  <data name="SetYourPassword" xml:space="preserve">
+    <value>Ustaw swoje hasło</value>
+  </data>
+  <data name="ShoppingCart" xml:space="preserve">
+    <value>Koszyk</value>
+  </data>
+  <data name="Status" xml:space="preserve">
+    <value>Status</value>
+  </data>
+  <data name="Street" xml:space="preserve">
+    <value>Ulica</value>
+  </data>
+  <data name="Submit" xml:space="preserve">
+    <value>Złóż</value>
+  </data>
+  <data name="SuccessfullyAuthenticated" xml:space="preserve">
+    <value>Pomyślnie uwierzytelniono się za pomocą</value>
+  </data>
+  <data name="SuccessfullyLogged" xml:space="preserve">
+    <value>Pomyślnie wylogowałeś się z aplikacji</value>
+  </data>
+  <data name="Summary" xml:space="preserve">
+    <value>Podsumowanie</value>
+  </data>
+  <data name="SupplierList" xml:space="preserve">
+    <value>Lista dostawców</value>
+  </data>
+  <data name="SupplierName" xml:space="preserve">
+    <value>Nazwa dostawcy</value>
+  </data>
+  <data name="Suppliers" xml:space="preserve">
+    <value>Dostawcy</value>
+  </data>
+  <data name="ThankYouForSubmitting" xml:space="preserve">
+    <value>Dziękujemy za przesłanie wniosku online!</value>
+  </data>
+  <data name="TheseDocs" xml:space="preserve">
+    <value>te dokumenty</value>
+  </data>
+  <data name="ThisActionOnly" xml:space="preserve">
+    <value>Ta czynność wyłącza tylko 2FA</value>
+  </data>
+  <data name="ThisAppDoesNotCurrently" xml:space="preserve">
+    <value>Ta aplikacja nie ma obecnie zarejestrowanego prawdziwego nadawcy wiadomości e-mail, zobacz</value>
+  </data>
+  <data name="ThisProcess" xml:space="preserve">
+    <value>Ten proces wyłącza 2FA, dopóki nie zweryfikujesz swojej aplikacji uwierzytelniającej. Jeśli nie ukończysz konfiguracji aplikacji uwierzytelniającej, możesz utracić dostęp do swojego konta</value>
+  </data>
+  <data name="ToEnableQR" xml:space="preserve">
+    <value>Aby włączyć generowanie kodów QR, przeczytaj nasze</value>
+  </data>
+  <data name="Total" xml:space="preserve">
+    <value>Całkowity</value>
+  </data>
+  <data name="TotalUSD" xml:space="preserve">
+    <value>Całkowity (USD)</value>
+  </data>
+  <data name="ToUseAnAuthenticator" xml:space="preserve">
+    <value>Aby użyć aplikacji uwierzytelniającej, wykonaj następujące kroki</value>
+  </data>
+  <data name="TwoFactorAuthentication" xml:space="preserve">
+    <value>Uwierzytelnianie dwupoziomowe</value>
+  </data>
+  <data name="Update" xml:space="preserve">
+    <value>Zaaktualizuj</value>
+  </data>
+  <data name="UpdatePassword" xml:space="preserve">
+    <value>Zaaktualizuj hasła</value>
+  </data>
+  <data name="UploadNewPhoto" xml:space="preserve">
+    <value>Prześlij nowe zdjęcie</value>
+  </data>
+  <data name="Users" xml:space="preserve">
+    <value>Użytkownicy</value>
+  </data>
+  <data name="UseThisPageTo" xml:space="preserve">
+    <value>Użyj tej strony, aby szczegółowo opisać politykę prywatności swojej witryny</value>
+  </data>
+  <data name="UseThisSpace" xml:space="preserve">
+    <value>Użyj tego miejsca, aby podsumować swoją politykę prywatności i korzystania z plików cookie</value>
+  </data>
+  <data name="VerificationCode" xml:space="preserve">
+    <value>Kod weryfikacyjny</value>
+  </data>
+  <data name="Verify" xml:space="preserve">
+    <value>Weryfikuj</value>
+  </data>
+  <data name="WeHaveReceived" xml:space="preserve">
+    <value>Otrzymaliśmy Twoją prośbę i nasz zespół wkrótce do Ciebie oddzwoni!</value>
+  </data>
+  <data name="Welcome" xml:space="preserve">
+    <value>Witaj</value>
+  </data>
+  <data name="WindowsPhone" xml:space="preserve">
+    <value>Windows Phone</value>
+  </data>
+  <data name="WithoutAccess" xml:space="preserve">
+    <value>Nie masz dostępu do tego zasobu</value>
+  </data>
+  <data name="YouCan" xml:space="preserve">
+    <value>Ty możesz</value>
+  </data>
+  <data name="YouHave1Recovery" xml:space="preserve">
+    <value>Pozostał Ci 1 kod odzyskiwania</value>
+  </data>
+  <data name="YouHaveRequested" xml:space="preserve">
+    <value>Poprosiłeś o zalogowanie się za pomocą kodu odzyskiwania. Ten login nie zostanie zapamiętany, dopóki nie podasz kodu aplikacji uwierzytelniającej podczas logowania lub wyłączysz 2FA i zalogujesz się ponownie</value>
+  </data>
+  <data name="YouMust" xml:space="preserve">
+    <value>Ty musisz</value>
+  </data>
+  <data name="YourAccountContains" xml:space="preserve">
+    <value>Twoje konto zawiera dane osobowe, które nam przekazałeś. Ta strona umożliwia pobranie lub usunięcie tych danych</value>
+  </data>
+  <data name="YourLoginIsProtected" xml:space="preserve">
+    <value>Twój login jest chroniony przez aplikację uwierzytelniającą. Wpisz poniżej swój kod uwierzytelniający</value>
+  </data>
+  <data name="YourPasswordHasBeen" xml:space="preserve">
+    <value>Twoje hasło zostało zresetowane. Proszę</value>
+  </data>
+  <data name="YourRequest" xml:space="preserve">
+    <value>Twój numer żądania to</value>
+  </data>
+  <data name="YouShould" xml:space="preserve">
+    <value>Ty powinieneś</value>
+  </data>
+  <data name="ZipCode" xml:space="preserve">
+    <value>Kod pocztowy</value>
   </data>
 </root>

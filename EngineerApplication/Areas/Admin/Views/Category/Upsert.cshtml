@@ -2,7 +2,7 @@
 @inject CommonLocalizationService localizer
 
 @{
-    var title = "Create Category";
+    var title = @localizer.Get("CreateCategory");
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
@@ -13,7 +13,7 @@
         @if(Model.Id != 0)
         {
             <input type="hidden" asp-for="Id" />
-            title = "Edit Category";
+            title = @localizer.Get("EditCategory");
         }
 
         <div class="col-12">

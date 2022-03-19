@@ -2,7 +2,7 @@
 @inject CommonLocalizationService localizer
 @model EmailModel
 @{
-    ViewData["Title"] = "Manage Email";
+    ViewData["Title"] = @localizer.Get("ManageEmail");
     ViewData["ActivePage"] = ManageNavPages.Email;
 }
 
@@ -24,7 +24,7 @@
                  else
                 {
                     <input asp-for="Email" class="form-control" disabled />
-                    <button id="email-verification" type="submit" asp-page-handler="SendVerificationEmail" class="btn btn-link">Send verification email</button>
+                    <button id="email-verification" type="submit" asp-page-handler="SendVerificationEmail" class="btn btn-link">@localizer.Get("SendVerificationEmail")</button>
                 }
             </div>
             <div class="form-group">
@@ -32,7 +32,7 @@
                 <input asp-for="Input.NewEmail" class="form-control" />
                 <span asp-validation-for="Input.NewEmail" class="text-danger"></span>
             </div>
-            <button id="change-email-button" type="submit" class="btn btn-primary">Change email</button>
+            <button id="change-email-button" type="submit" class="btn btn-primary">@localizer.Get("ChangeEmail")</button>
         </form>
     </div>
 </div>

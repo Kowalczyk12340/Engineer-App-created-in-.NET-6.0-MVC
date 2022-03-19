@@ -1,9 +1,9 @@
 ﻿@inject CommonLocalizationService localizer
 <div class="row">
     <div class="col">
-        <button type="submit" class="btn btn-primary form-control">Create</button>
+        <button type="submit" class="btn btn-primary form-control">@localizer.Get("Create")</button>
     </div>
     <div class="col">
-        <a asp-action="Index" class="btn btn-success form-control">Back to List</a>
+        <a asp-action="Index" class="btn btn-success form-control">@localizer.Get("BackToList")</a>
     </div>
 </div>

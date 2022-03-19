@@ -2,14 +2,14 @@
 @inject CommonLocalizationService localizer
 @model ExternalLoginsModel
 @{
-    ViewData["Title"] = "Manage your external logins";
+    ViewData["Title"] = @localizer.Get("ManageYourExternalLogins");
     ViewData["ActivePage"] = ManageNavPages.ExternalLogins;
 }
 
 <partial name="_StatusMessage" for="StatusMessage" />
 @if (Model.CurrentLogins?.Count > 0)
 {
-    <h4>Registered Logins</h4>
+    <h4>@localizer.Get("RegisteredLogins")</h4>
     <table class="table">
         <tbody>
             @foreach (var login in Model.CurrentLogins)
@@ -23,7 +23,7 @@
                                 <div>
                                     <input asp-for="@login.LoginProvider" name="LoginProvider" type="hidden" />
                                     <input asp-for="@login.ProviderKey" name="ProviderKey" type="hidden" />
-                                    <button type="submit" class="btn btn-primary" title="Remove this @login.ProviderDisplayName login from your account">Remove</button>
+                                    <button type="submit" class="btn btn-primary" title="@localizer.Get("RemoveThis") @login.ProviderDisplayName @localizer.Get("LoginFromYourAccount")">@localizer.Get("Remove")</button>
                                 </div>
                             </form>
                         }
@@ -39,14 +39,14 @@
 }
 @if (Model.OtherLogins?.Count > 0)
 {
-    <h4>Add another Commodity to log in.</h4>
+    <h4>@localizer.Get("AddAnother").</h4>
     <hr />
     <form id="link-login-form" asp-page-handler="LinkLogin" method="post" class="form-horizontal">
         <div id="socialLoginList">
             <p>
                 @foreach (var provider in Model.OtherLogins)
                 {
-                    <button id="link-login-button" type="submit" class="btn btn-primary" name="provider" value="@provider.Name" title="Log in using your @provider.DisplayName account">@provider.DisplayName</button>
+                    <button id="link-login-button" type="submit" class="btn btn-primary" name="provider" value="@provider.Name" title="@localizer.Get("LogInUsingYour") @provider.DisplayName account">@provider.DisplayName</button>
                 }
             </p>
         </div>

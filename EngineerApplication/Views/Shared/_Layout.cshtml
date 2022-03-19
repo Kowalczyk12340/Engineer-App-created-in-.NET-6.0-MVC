@@ -10,7 +10,7 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - Dropshipping Application</title>
+    <title>@ViewData["Title"] - @localizer.Get("DropshippingApplication")</title>
 
     <environment include="Development">
         <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
@@ -34,7 +34,7 @@
         <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
             <div class="container">
                 <img style="width: 45px; height: fitcontent; margin-right: 3px;" src="~/images/logisticApp.png" />
-                <a class="navbar-brand" asp-area="Employee" asp-controller="Home" asp-action="Index"><b>Aplikacja Handlowa</b></a>
+                <a class="navbar-brand" asp-area="Employee" asp-controller="Home" asp-action="Index"><b>@localizer.Get("DropshippingApplication")</b></a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01"
                         aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -44,33 +44,33 @@
 
                     <ul class="navbar-nav mr-auto">
                         <li class="nav-item">
-                            <a class="nav-link " asp-area="Employee" asp-controller="Home" asp-action="Index">Strona Główna</a>
+                            <a class="nav-link " asp-area="Employee" asp-controller="Home" asp-action="Index">@localizer.Get("Home")</a>
                         </li>
 
                         @if (User.IsInRole(UsefulConsts.Employee) || User.IsInRole(UsefulConsts.Admin))
                         {
                             <li class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle text-white" href="#" id="navbarDropDown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    Operacje
+                                    @localizer.Get("Operations")
                                 </a>
                                 <div class="dropdown-menu" aria-labelledby="navbarDropDown">
-                                    <a class="dropdown-item text-white" asp-area="Admin" asp-controller="Category" asp-action="Index">Kategorie</a>
-                                    <a class="dropdown-item text-white" asp-area="Admin" asp-controller="Frequency" asp-action="Index">Częstotliwości</a>
-                                    <a class="dropdown-item text-white" asp-area="Admin" asp-controller="Supplier" asp-action="Index">Dostawcy</a>
-                                    <a class="dropdown-item text-white" asp-area="Admin" asp-controller="Commodity" asp-action="Index">Towary</a>
-                                    <a class="dropdown-item text-white" asp-area="Admin" asp-controller="Delivery" asp-action="Index">Dostawy</a>
-                                    <a class="dropdown-item text-white" asp-area="Admin" asp-controller="WebImage" asp-action="Index">Galeria Zdjęć</a>
-                                    <a class="dropdown-item text-white" asp-area="Admin" asp-controller="Order" asp-action="Index">Zamówienia</a>
+                                    <a class="dropdown-item text-white" asp-area="Admin" asp-controller="Category" asp-action="Index">@localizer.Get("Categories")</a>
+                                    <a class="dropdown-item text-white" asp-area="Admin" asp-controller="Frequency" asp-action="Index">@localizer.Get("Frequencies")</a>
+                                    <a class="dropdown-item text-white" asp-area="Admin" asp-controller="Supplier" asp-action="Index">@localizer.Get("Suppliers")</a>
+                                    <a class="dropdown-item text-white" asp-area="Admin" asp-controller="Commodity" asp-action="Index">@localizer.Get("Commodities")</a>
+                                    <a class="dropdown-item text-white" asp-area="Admin" asp-controller="Delivery" asp-action="Index">@localizer.Get("Deliveries")</a>
+                                    <a class="dropdown-item text-white" asp-area="Admin" asp-controller="WebImage" asp-action="Index">@localizer.Get("PhotoGallery")</a>
+                                    <a class="dropdown-item text-white" asp-area="Admin" asp-controller="Order" asp-action="Index">@localizer.Get("Orders")</a>
                                 </div>
                             </li>
                             <li class="nav-item">
-                                <a class="dropdown-item text-white" asp-area="Admin" asp-controller="Offer" asp-action="Index">Oferty</a>
+                                <a class="dropdown-item text-white" asp-area="Admin" asp-controller="Offer" asp-action="Index">@localizer.Get("Offers")</a>
                             </li>
                         }
                         @if (User.IsInRole(UsefulConsts.Admin))
                         {
                             <li class="nav-item">
-                                <a class="dropdown-item text-white" asp-area="Admin" asp-controller="User" asp-action="Index">Użytkownicy</a>
+                                <a class="dropdown-item text-white" asp-area="Admin" asp-controller="User" asp-action="Index">@localizer.Get("Users")</a>
                             </li>
                         }
                         @if (HttpContextAccessor.HttpContext.Session.GetObject<List<int>>(UsefulConsts.SessionCart) != null)
@@ -110,7 +110,7 @@
 
     <footer class="border-top footer bg-primary text-white">
         <div class="container">
-            &copy;
+            &copy; @localizer.Get("Footer")
         </div>
     </footer>
 
