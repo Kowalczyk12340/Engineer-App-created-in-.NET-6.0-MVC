@@ -801,4 +801,7 @@
   <data name="UserList" xml:space="preserve">
     <value>Lista użytkowników</value>
   </data>
+  <data name="NoServiceExists" xml:space="preserve">
+    <value>Usługi nie istnieją</value>
+  </data>
 </root>

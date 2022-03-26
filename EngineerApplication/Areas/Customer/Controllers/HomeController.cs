@@ -1,9 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
+﻿using System.Diagnostics;
 using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using EngineerApplication.Extensions;
 using EngineerApplication.Entities;
@@ -29,7 +25,9 @@ namespace EngineerApplication.Areas.Customer.Controllers
       HomeVM = new HomeViewModel()
       {
         CategoryList = _unitOfWork.Category.GetAll(),
-        CommodityList = _unitOfWork.Commodity.GetAll(includeProperties: "Frequency")
+        CommodityList = _unitOfWork.Commodity.GetAll(includeProperties: "Frequency"),
+        ServiceList = _unitOfWork.Service.GetAll(includeProperties: "Frequency"),
+        EmployeeList = _unitOfWork.Employee.GetAll(includeProperties: "Service")
       };
 
       return View(HomeVM);

@@ -1,4 +1,5 @@
 ﻿@inject CommonLocalizationService localizer
+@using EngineerApplication.Helpers
 @{
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
@@ -9,9 +10,12 @@
         <div class="col-6">
             <h2 class="text-primary">@localizer.Get("PhotoGallery")</h2>
         </div>
-        <div class="col-6 text-right">
-            <a asp-action="Upsert" class="btn btn-primary"><i class="fas fa-plus"></i> &nbsp; @localizer.Get("UploadNewPhoto")</a>
-        </div>
+        @if (User.IsInRole(UsefulConsts.Customer) || User.IsInRole(UsefulConsts.Admin))
+        {
+            <div class="col-6 text-right">
+                <a asp-action="Upsert" class="btn btn-primary"><i class="fas fa-plus"></i> &nbsp; @localizer.Get("UploadNewPhoto")</a>
+            </div>
+        }
     </div>
 
     <br />

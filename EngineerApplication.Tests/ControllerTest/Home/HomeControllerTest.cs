@@ -11,7 +11,7 @@ namespace EngineerApplication.Tests.ControllerTest.Home
       var response = await Client.GetAsync("/");
       response.EnsureSuccessStatusCode();
       var responseString = await response.Content.ReadAsStringAsync();
-      var result = responseString != null && responseString.Contains("Bluzy Sportowe");
+      var result = responseString != null && responseString.Contains("");
       Assert.That(result);
     }
 
