@@ -110,9 +110,9 @@ namespace EngineerApplication.Areas.Identity.Pages.Account
           }
           else
           {
-            if (role == UsefulConsts.Employee)
+            if (role == UsefulConsts.Customer)
             {
-              await _userManager.AddToRoleAsync(user, UsefulConsts.Employee);
+              await _userManager.AddToRoleAsync(user, UsefulConsts.Customer);
             }
           }
 

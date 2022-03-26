@@ -8,7 +8,7 @@
     public const string StatusRejected = "Rejected";
 
     public const string Admin = "Admin";
-    public const string Employee = "Employee";
+    public const string Customer = "Customer";
     public const string usp_GetAllCategory = "usp_GetAllCategory";
   }
 }

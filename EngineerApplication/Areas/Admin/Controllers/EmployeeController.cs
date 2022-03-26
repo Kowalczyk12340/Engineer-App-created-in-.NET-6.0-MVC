@@ -7,14 +7,14 @@ namespace EngineerApplication.Areas.Admin.Controllers
 {
   [Area("Admin")]
   [Authorize]
-  public class OfferController : Controller
+  public class EmployeeController : Controller
   {
     private readonly IUnitOfWork _unitOfWork;
 
     [BindProperty]
-    public OfferVM OfferVM { get; set; }
+    public EmployeeVM EmployeeVM { get; set; }
 
-    public OfferController(IUnitOfWork unitOfWork)
+    public EmployeeController(IUnitOfWork unitOfWork)
     {
       _unitOfWork = unitOfWork;
     }
@@ -26,17 +26,17 @@ namespace EngineerApplication.Areas.Admin.Controllers
 
     public IActionResult Upsert(int? id)
     {
-      OfferVM = new OfferVM()
+      EmployeeVM = new EmployeeVM()
       {
-        Offer = new Entities.Offer(),
-        CommodityList = _unitOfWork.Commodity.GetCommodityListForDropDown(),
+        Employee = new Entities.Employee(),
+        ServiceList = _unitOfWork.Service.GetServiceListForDropDown(),
       };
       if (id != null)
       {
-        OfferVM.Offer = _unitOfWork.Offer.Get(id.GetValueOrDefault());
+        EmployeeVM.Employee = _unitOfWork.Employee.Get(id.GetValueOrDefault());
       }
 
-      return View(OfferVM);
+      return View(EmployeeVM);
     }
 
     [HttpPost]
@@ -45,41 +45,41 @@ namespace EngineerApplication.Areas.Admin.Controllers
     {
       if (ModelState.IsValid)
       {
-        if (OfferVM.Offer.Id == 0)
+        if (EmployeeVM.Employee.Id == 0)
         {
-          _unitOfWork.Offer.Add(OfferVM.Offer);
+          _unitOfWork.Employee.Add(EmployeeVM.Employee);
         }
         else
         {
-          var OfferFromDb = _unitOfWork.Offer.Get(OfferVM.Offer.Id);
-          _unitOfWork.Offer.Update(OfferVM.Offer);
+          var EmployeeFromDb = _unitOfWork.Employee.Get(EmployeeVM.Employee.Id);
+          _unitOfWork.Employee.Update(EmployeeVM.Employee);
         }
         _unitOfWork.Save();
         return RedirectToAction(nameof(Index));
       }
       else
       {
-        OfferVM.CommodityList = _unitOfWork.Commodity.GetCommodityListForDropDown();
-        return View(OfferVM);
+        EmployeeVM.ServiceList = _unitOfWork.Service.GetServiceListForDropDown();
+        return View(EmployeeVM);
       }
     }
     #region API Calls
     public IActionResult GetAll()
     {
-      return Json(new { data = _unitOfWork.Offer.GetAll(includeProperties: "Commodity") });
+      return Json(new { data = _unitOfWork.Employee.GetAll(includeProperties: "Service") });
     }
 
     [HttpDelete]
     public IActionResult Delete(int id)
     {
-      var OfferFromDb = _unitOfWork.Offer.Get(id);
+      var EmployeeFromDb = _unitOfWork.Employee.Get(id);
 
-      if (OfferFromDb is null)
+      if (EmployeeFromDb is null)
       {
         return Json(new { success = false, message = "Error while deleting." });
       }
 
-      _unitOfWork.Offer.Remove(OfferFromDb);
+      _unitOfWork.Employee.Remove(EmployeeFromDb);
       _unitOfWork.Save();
       return Json(new { success = true, message = "Deleted Successfully." });
     }

@@ -3,8 +3,8 @@ using EngineerApplication.Entities;
 
 namespace EngineerApplication.ContextStructure.Data.Service.Interfaces
 {
-  public interface IOfferService : IRepository<Offer>
+  public interface IEmployeeService : IRepository<Employee>
   {
-    void Update(Offer offer);
+    void Update(Employee employee);
   }
 }

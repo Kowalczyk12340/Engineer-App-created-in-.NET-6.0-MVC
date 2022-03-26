@@ -35,7 +35,7 @@ namespace EngineerApplication.ContextStructure.Data.Initializer
       if (_db.Roles.Any(r => r.Name == UsefulConsts.Admin)) return;
 
       _roleManager.CreateAsync(new IdentityRole(UsefulConsts.Admin)).GetAwaiter().GetResult();
-      _roleManager.CreateAsync(new IdentityRole(UsefulConsts.Employee)).GetAwaiter().GetResult();
+      _roleManager.CreateAsync(new IdentityRole(UsefulConsts.Customer)).GetAwaiter().GetResult();
 
       _userManager.CreateAsync(new ApplicationUser
       {
@@ -59,7 +59,7 @@ namespace EngineerApplication.ContextStructure.Data.Initializer
       _userManager.AddToRoleAsync(user, UsefulConsts.Admin).GetAwaiter().GetResult();
 
       ApplicationUser? user1 = _db.ApplicationUser?.Where(u => u.Email == "marcinkowalczyk24.5@wp.pl").FirstOrDefault();
-      _userManager.AddToRoleAsync(user1, UsefulConsts.Employee).GetAwaiter().GetResult();
+      _userManager.AddToRoleAsync(user1, UsefulConsts.Customer).GetAwaiter().GetResult();
     }
   }
 }

@@ -252,8 +252,8 @@
   <data name="CreateNewFrequency" xml:space="preserve">
     <value>Create new frequency</value>
   </data>
-  <data name="CreateNewOffer" xml:space="preserve">
-    <value>Create new offer</value>
+  <data name="CreateNewEmployee" xml:space="preserve">
+    <value>Create new employee</value>
   </data>
   <data name="CreateNewService" xml:space="preserve">
     <value>Create new service</value>
@@ -261,14 +261,20 @@
   <data name="CreateNewSupplier" xml:space="preserve">
     <value>Create new supplier</value>
   </data>
-  <data name="CreateOffer" xml:space="preserve">
-    <value>Create offer</value>
+  <data name="CreateEmployee" xml:space="preserve">
+    <value>Create employee</value>
   </data>
   <data name="CreateService" xml:space="preserve">
     <value>Create service</value>
   </data>
   <data name="CreateSupplier" xml:space="preserve">
     <value>Create supplier</value>
+  </data>
+  <data name="Customer" xml:space="preserve">
+    <value>Customer</value>
+  </data>
+  <data name="Customers" xml:space="preserve">
+    <value>Customers</value>
   </data>
   <data name="Delete" xml:space="preserve">
     <value>Delete</value>
@@ -342,8 +348,8 @@
   <data name="EditImage" xml:space="preserve">
     <value>Edit image</value>
   </data>
-  <data name="EditOffer" xml:space="preserve">
-    <value>Edit offer</value>
+  <data name="EditEmployee" xml:space="preserve">
+    <value>Edit employee</value>
   </data>
   <data name="EditService" xml:space="preserve">
     <value>Edit service</value>
@@ -356,6 +362,15 @@
   </data>
   <data name="EmailAddress" xml:space="preserve">
     <value>Email address</value>
+  </data>
+  <data name="Employee" xml:space="preserve">
+    <value>Employee</value>
+  </data>
+  <data name="EmployeeList" xml:space="preserve">
+    <value>Employee list</value>
+  </data>
+  <data name="Employees" xml:space="preserve">
+    <value>Employees</value>
   </data>
   <data name="EmployeesList" xml:space="preserve">
     <value>Employees list</value>
@@ -471,8 +486,8 @@
   <data name="Name" xml:space="preserve">
     <value>Name</value>
   </data>
-  <data name="NewEmployeeRegistration" xml:space="preserve">
-    <value>New employee registration</value>
+  <data name="NewUserRegistration" xml:space="preserve">
+    <value>New user registration</value>
   </data>
   <data name="NoItemsAdded" xml:space="preserve">
     <value>No items added to the shopping cart...</value>
@@ -485,12 +500,6 @@
   </data>
   <data name="NoUserExists" xml:space="preserve">
     <value>No user exists</value>
-  </data>
-  <data name="OfferList" xml:space="preserve">
-    <value>Offer list</value>
-  </data>
-  <data name="Offers" xml:space="preserve">
-    <value>Offers</value>
   </data>
   <data name="OnceYouHave" xml:space="preserve">
     <value>Once you have scanned the QR code or input the key above, your two factor authentication app will provide you with a unique code. Enter the code in the confirmation box below</value>
@@ -782,5 +791,14 @@
   </data>
   <data name="ZipCode" xml:space="preserve">
     <value>Zip code</value>
+  </data>
+  <data name="PleaseSelectAService" xml:space="preserve">
+    <value>-- Please select a service --</value>
+  </data>
+  <data name="ServiceName" xml:space="preserve">
+    <value>Service name</value>
+  </data>
+  <data name="UserList" xml:space="preserve">
+    <value>User list</value>
   </data>
 </root>

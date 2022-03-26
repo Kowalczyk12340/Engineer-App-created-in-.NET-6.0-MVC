@@ -22,7 +22,7 @@ namespace EngineerApplication.ContextStructure.Data
     public DbSet<Entities.Service>? Service { get; set; }
     public DbSet<Delivery>? Delivery { get; set; }
     public DbSet<Commodity>? Commodity { get; set; }
-    public DbSet<Offer>? Offer { get; set; }
+    public DbSet<Employee>? Employee { get; set; }
     public DbSet<WebImages>? WebImages { get; set; }
     public DbSet<ApplicationUser>? ApplicationUser { get; set; }
     public DbSet<OrderHeader>? OrderHeader { get; set; }

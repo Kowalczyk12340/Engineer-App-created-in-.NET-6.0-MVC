@@ -1,8 +1,8 @@
 ﻿@inject CommonLocalizationService localizer
-@model EngineerApplication.Entities.ViewModels.OfferVM
+@model EngineerApplication.Entities.ViewModels.EmployeeVM
 
 @{
-    var title = @localizer.Get("CreateOffer");
+    var title = @localizer.Get("CreateEmployee");
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
@@ -10,10 +10,10 @@
 
     <div class="row px-2 mx-2 backgroundWhite border">
         <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-        @if (Model.Offer.Id != 0)
+        @if (Model.Employee.Id != 0)
         {
-            <input type="hidden" asp-for="Offer.Id" />
-            title = @localizer.Get("EditOffer");
+            <input type="hidden" asp-for="Employee.Id" />
+            title = @localizer.Get("EditEmployee");
         }
 
         <div class="col-12">
@@ -23,46 +23,54 @@
         <div class="col-10">
             <div class="form-group row">
                 <div class="col-4">
-                    <label asp-for="Offer.Name"></label>
+                    <label asp-for="Employee.Name"></label>
                 </div>
                 <div class="col-8">
-                    <input asp-for="Offer.Name" class="form-control" />
-                    <span asp-validation-for="Offer.Name" class="text-danger"></span>
+                    <input asp-for="Employee.Name" class="form-control" />
+                    <span asp-validation-for="Employee.Name" class="text-danger"></span>
                 </div>
             </div>
             <div class="form-group row">
                 <div class="col-4">
-                    <label asp-for="Offer.Count"></label>
+                    <label asp-for="Employee.PhoneNumber"></label>
                 </div>
                 <div class="col-8">
-                    <input asp-for="Offer.Count" id="txtPrice" class="form-control" />
-                    <span asp-validation-for="Offer.Count" class="text-danger"></span>
+                    <input asp-for="Employee.PhoneNumber" id="txtPrice" class="form-control" />
+                    <span asp-validation-for="Employee.PhoneNumber" class="text-danger"></span>
+                </div>
+                <div class="form-group row">
+                <div class="col-4">
+                    <label asp-for="Employee.EmailAddress"></label>
+                </div>
+                <div class="col-8">
+                    <input asp-for="Employee.EmailAddress" id="txtPrice" class="form-control" />
+                    <span asp-validation-for="Employee.EmailAddress" class="text-danger"></span>
                 </div>
             </div>
             <div class="form-group row">
                 <div class="col-4">
-                    <label asp-for="Offer.OfferDesc"></label>
+                    <label asp-for="Employee.EmployeeDesc"></label>
                 </div>
                 <div class="col-8">
-                    <textarea asp-for="Offer.OfferDesc" class="form-control" style="height:300px;"></textarea>
-                    <span asp-validation-for="Offer.OfferDesc" class="text-danger"></span>
+                    <textarea asp-for="Employee.EmployeeDesc" class="form-control" style="height:300px;"></textarea>
+                    <span asp-validation-for="Employee.EmployeeDesc" class="text-danger"></span>
                 </div>
             </div>
             <div class="form-group row">
                 <div class="col-4">
-                    <label asp-for="Offer.CommodityId"></label>
+                    <label asp-for="Employee.ServiceId"></label>
                 </div>
                 <div class="col-8">
-                    @Html.DropDownListFor(m => m.Offer.CommodityId, Model.CommodityList,
-                                            @localizer.Get("PleaseSelectACommodity"), new { @class = "form-control" })
+                    @Html.DropDownListFor(m => m.Employee.ServiceId, Model.ServiceList,
+                                            @localizer.Get("PleaseSelectAService"), new { @class = "form-control" })
                 </div>
             </div>
             <div class="form-group row">
                 <div class="col-8 offset-4">
-                    @if (Model.Offer.Id != 0)
+                    @if (Model.Employee.Id != 0)
                     {
                         //Edit button and back to list
-                        <partial name="_EditAndBackToListButton" model="Model.Offer.Id" />
+                        <partial name="_EditAndBackToListButton" model="Model.Employee.Id" />
                     }
                     else
                     {

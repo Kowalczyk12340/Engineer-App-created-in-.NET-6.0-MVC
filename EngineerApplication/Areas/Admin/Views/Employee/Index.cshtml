@@ -12,10 +12,10 @@
 <div class="border backgroundWhite">
     <div class="row">
         <div class="col-6">
-            <h2 class="text-primary">@localizer.Get("OfferList")</h2>
+            <h2 class="text-primary">@localizer.Get("EmployeeList")</h2>
         </div>
         <div class="col-6 text-right">
-            <a asp-action="Upsert" class="btn btn-primary"><i class="fas fa-plus"></i> &nbsp;  @localizer.Get("CreateNewOffer")</a>
+            <a asp-action="Upsert" class="btn btn-primary"><i class="fas fa-plus"></i> &nbsp;  @localizer.Get("CreateNewEmployee")</a>
         </div>
     </div>
     <br />
@@ -24,8 +24,9 @@
         <thead>
             <tr>
                 <th>@localizer.Get("Name")</th>
-                <th>@localizer.Get("SupplierName")</th>
-                <th>@localizer.Get("Count")</th>
+                <th>@localizer.Get("ServiceName")</th>
+                <th>@localizer.Get("PhoneNumber")</th>
+                <th>@localizer.Get("EmailAddress")</th>
                 <th>@localizer.Get("Description")</th>
                 <th></th>
             </tr>
@@ -34,7 +35,7 @@
 </div>
 @section Scripts{
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.js"></script>
-<script src="~/js/offer.js"></script>
+<script src="~/js/employee.js"></script>
 }
 
 

@@ -13,12 +13,10 @@ function loadDataTable() {
             "datatype": "json"
         },
         "columns": [
-            { "data": "name", "width": "15%" },
-            { "data": "category.name", "width": "15%" },
-            { "data": "supplier.name", "width": "15%" },
-            { "data": "delivery.name", "width": "15%" },
-            { "data": "price", "width": "10%" },
-            { "data": "frequency.frequencyCount", "width": "10%" },
+            { "data": "name", "width": "20%" },
+            { "data": "category.name", "width": "20%" },
+            { "data": "price", "width": "15%" },
+            { "data": "frequency.frequencyCount", "width": "15%" },
             {
                 "data": "id",
                 "render": function (data) {
@@ -32,7 +30,7 @@ function loadDataTable() {
                                <i class='far fa-trash-alt'></i> Delete
                             </a></div>
                         `;
-                }, "width": "20%"
+                }, "width": "25%"
             }
 
 

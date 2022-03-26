@@ -5,9 +5,9 @@ using EngineerApplication.Entities.ViewModels;
 using EngineerApplication.Helpers;
 using EngineerApplication.ContextStructure.Data.Service.Interfaces;
 
-namespace EngineerApplication.Areas.Employee.Controllers
+namespace EngineerApplication.Areas.Customer.Controllers
 {
-  [Area("Employee")]
+  [Area("Customer")]
   public class CartController : Controller
   {
     private readonly IUnitOfWork _unitOfWork;

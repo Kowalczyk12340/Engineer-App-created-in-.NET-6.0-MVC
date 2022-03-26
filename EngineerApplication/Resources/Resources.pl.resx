@@ -252,7 +252,7 @@
   <data name="CreateNewFrequency" xml:space="preserve">
     <value>Utwórz nową częstotliwość</value>
   </data>
-  <data name="CreateNewOffer" xml:space="preserve">
+  <data name="CreateNewEmployee" xml:space="preserve">
     <value>Utwórz nową ofertę</value>
   </data>
   <data name="CreateNewService" xml:space="preserve">
@@ -261,7 +261,7 @@
   <data name="CreateNewSupplier" xml:space="preserve">
     <value>Utwórz nowego dostawcę</value>
   </data>
-  <data name="CreateOffer" xml:space="preserve">
+  <data name="CreateEmployee" xml:space="preserve">
     <value>Utwórz ofertę</value>
   </data>
   <data name="CreateService" xml:space="preserve">
@@ -269,6 +269,12 @@
   </data>
   <data name="CreateSupplier" xml:space="preserve">
     <value>Utwórz dostawcę</value>
+  </data>
+  <data name="Customer" xml:space="preserve">
+    <value>Klient</value>
+  </data>
+  <data name="Customers" xml:space="preserve">
+    <value>Klienci</value>
   </data>
   <data name="Delete" xml:space="preserve">
     <value>Usuń</value>
@@ -342,7 +348,7 @@
   <data name="EditImage" xml:space="preserve">
     <value>Edytuj zdjęcie</value>
   </data>
-  <data name="EditOffer" xml:space="preserve">
+  <data name="EditEmployee" xml:space="preserve">
     <value>Edytuj ofertę</value>
   </data>
   <data name="EditService" xml:space="preserve">
@@ -356,6 +362,15 @@
   </data>
   <data name="EmailAddress" xml:space="preserve">
     <value>Adres Email</value>
+  </data>
+  <data name="Employee" xml:space="preserve">
+    <value>Pracownik</value>
+  </data>
+  <data name="EmployeeList" xml:space="preserve">
+    <value>Lista pracowników</value>
+  </data>
+  <data name="Employees" xml:space="preserve">
+    <value>Pracownicy</value>
   </data>
   <data name="EmployeesList" xml:space="preserve">
     <value>Lista pracowników</value>
@@ -471,8 +486,8 @@
   <data name="Name" xml:space="preserve">
     <value>Nazwa</value>
   </data>
-  <data name="NewEmployeeRegistration" xml:space="preserve">
-    <value>Rejestracja nowego pracownika</value>
+  <data name="NewUserRegistration" xml:space="preserve">
+    <value>Rejestracja nowego użytkownika</value>
   </data>
   <data name="NoItemsAdded" xml:space="preserve">
     <value>Do koszyka nie dodano żadnych pozycji...</value>
@@ -485,12 +500,6 @@
   </data>
   <data name="NoUserExists" xml:space="preserve">
     <value>Użytkownik nie istnieje</value>
-  </data>
-  <data name="OfferList" xml:space="preserve">
-    <value>Lista ofert</value>
-  </data>
-  <data name="Offers" xml:space="preserve">
-    <value>Oferty</value>
   </data>
   <data name="OnceYouHave" xml:space="preserve">
     <value>Po zeskanowaniu kodu QR lub wprowadzeniu powyższego klucza aplikacja do uwierzytelniania dwuskładnikowego dostarczy Ci unikalny kod. Wpisz kod w polu potwierdzenia poniżej</value>
@@ -782,5 +791,14 @@
   </data>
   <data name="ZipCode" xml:space="preserve">
     <value>Kod pocztowy</value>
+  </data>
+  <data name="PleaseSelectAService" xml:space="preserve">
+    <value>-- Proszę wybrać usługę --</value>
+  </data>
+  <data name="ServiceName" xml:space="preserve">
+    <value>Nazwa usługi</value>
+  </data>
+  <data name="UserList" xml:space="preserve">
+    <value>Lista użytkowników</value>
   </data>
 </root>

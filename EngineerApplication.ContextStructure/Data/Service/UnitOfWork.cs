@@ -15,7 +15,7 @@ namespace EngineerApplication.ContextStructure.Data.Service
       Service = new ServiceService(_db);
       Supplier = new SupplierService(_db);
       Delivery = new DeliveryService(_db);
-      Offer = new OfferService(_db);
+      Employee = new EmployeeService(_db);
       OrderHeader = new OrderHeaderService(_db);
       OrderDetails = new OrderDetailsService(_db);
       User = new UserService(_db);
@@ -25,7 +25,7 @@ namespace EngineerApplication.ContextStructure.Data.Service
     public ICategoryService Category { get; private set; }
     public IFrequencyService Frequency { get; private set; }
     public ISupplierService Supplier { get; private set; }
-    public IOfferService Offer { get; private set; }
+    public IEmployeeService Employee { get; private set; }
     public ICommodityService Commodity { get; private set; }
     public IServiceService Service { get; private set; }
     public IOrderHeaderService OrderHeader { get; private set; }

@@ -34,7 +34,7 @@
         <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
             <div class="container" style="font-weight: bold;">
                 <img style="width: 45px; height: fitcontent; margin-right: 3px;" src="~/images/logisticApp.png" />
-                <a class="navbar-brand" asp-area="Employee" asp-controller="Home" asp-action="Index"><b>@localizer.Get("DropshippingApplication")</b></a>
+                <a class="navbar-brand" asp-area="Customer" asp-controller="Home" asp-action="Index"><b>@localizer.Get("DropshippingApplication")</b></a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01"
                         aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -44,10 +44,15 @@
 
                     <ul class="navbar-nav mr-auto">
                         <li class="nav-item">
-                            <a class="nav-link " asp-area="Employee" asp-controller="Home" asp-action="Index">@localizer.Get("Home")</a>
+                            <a class="nav-link" asp-area="Customer" asp-controller="Home" asp-action="Index">@localizer.Get("Home")</a>
                         </li>
-
-                        @if (User.IsInRole(UsefulConsts.Employee) || User.IsInRole(UsefulConsts.Admin))
+                        @if (User.IsInRole(UsefulConsts.Customer))
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link" asp-area="Admin" asp-controller="Order" asp-action="Index">@localizer.Get("Orders")</a>
+                            </li>
+                        }
+                        @if (User.IsInRole(UsefulConsts.Admin))
                         {
                             <li class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle text-white" href="#" id="navbarDropDown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -59,25 +64,25 @@
                                     <a class="dropdown-item text-white" asp-area="Admin" asp-controller="Supplier" asp-action="Index">@localizer.Get("Suppliers")</a>
                                     <a class="dropdown-item text-white" asp-area="Admin" asp-controller="Commodity" asp-action="Index">@localizer.Get("Commodities")</a>
                                     <a class="dropdown-item text-white" asp-area="Admin" asp-controller="Delivery" asp-action="Index">@localizer.Get("Deliveries")</a>
-                                    <a class="dropdown-item text-white" asp-area="Admin" asp-controller="Offer" asp-action="Index">@localizer.Get("Offers")</a>
+                                    <a class="dropdown-item text-white" asp-area="Admin" asp-controller="Employee" asp-action="Index">@localizer.Get("Employees")</a>
                                     <a class="dropdown-item text-white" asp-area="Admin" asp-controller="Service" asp-action="Index">@localizer.Get("Services")</a>
                                     <a class="dropdown-item text-white" asp-area="Admin" asp-controller="Order" asp-action="Index">@localizer.Get("Orders")</a>
                                 </div>
                             </li>
-                            <li class="nav-item">
-                                <a class="dropdown-item text-white" asp-area="Admin" asp-controller="WebImage" asp-action="Index">@localizer.Get("PhotoGallery")</a>
-                            </li>
                         }
+                        <li class="nav-item">
+                            <a class="nav-link" asp-area="Admin" asp-controller="WebImage" asp-action="Index">@localizer.Get("PhotoGallery")</a>
+                        </li>
                         @if (User.IsInRole(UsefulConsts.Admin))
                         {
                             <li class="nav-item">
-                                <a class="dropdown-item text-white" asp-area="Admin" asp-controller="User" asp-action="Index">@localizer.Get("Users")</a>
+                                <a class="nav-link" asp-area="Admin" asp-controller="User" asp-action="Index">@localizer.Get("Users")</a>
                             </li>
                         }
                         @if (HttpContextAccessor.HttpContext.Session.GetObject<List<int>>(UsefulConsts.SessionCart) != null)
                         {
                             <li style="color:white">
-                                <a asp-area="Employee" asp-controller="Cart" asp-action="Index" class="nav-link text-white">
+                                <a asp-area="Customer" asp-controller="Cart" asp-action="Index" class="nav-link text-white">
                                     @{
                                         var count = HttpContextAccessor.HttpContext.Session.GetObject<List<int>>(UsefulConsts.SessionCart).Count;
                                     }

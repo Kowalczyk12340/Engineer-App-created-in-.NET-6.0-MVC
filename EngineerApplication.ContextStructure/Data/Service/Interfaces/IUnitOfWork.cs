@@ -6,7 +6,7 @@
     IFrequencyService Frequency { get; }
     ISupplierService Supplier { get; }
     IDeliveryService Delivery { get; }
-    IOfferService Offer { get; }
+    IEmployeeService Employee { get; }
     IServiceService Service { get; }
     ICommodityService Commodity { get; }
     IOrderHeaderService OrderHeader { get; }

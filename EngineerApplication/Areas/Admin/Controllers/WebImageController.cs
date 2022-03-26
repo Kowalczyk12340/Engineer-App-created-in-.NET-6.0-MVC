@@ -5,7 +5,6 @@ using EngineerApplication.Entities;
 
 namespace EngineerApplication.Areas.Admin.Controllers
 {
-  [Authorize]
   [Area("Admin")]
   public class WebImageController : Controller
   {
@@ -39,6 +38,7 @@ namespace EngineerApplication.Areas.Admin.Controllers
       return View(imageObj);
     }
 
+    [Authorize]
     [HttpPost]
     [ValidateAntiForgeryToken]
     public IActionResult Upsert(int id, WebImages imageObj)

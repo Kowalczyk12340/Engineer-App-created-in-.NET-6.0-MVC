@@ -1,4 +1,4 @@
-﻿using EngineerApplication.Areas.Employee.Controllers;
+﻿using EngineerApplication.Areas.Customer.Controllers;
 using EngineerApplication.ContextStructure.Data.Service.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 using Moq;
@@ -24,7 +24,7 @@ namespace EngineerApplication.Tests.ControllerTest.Home
     [Test]
     public async Task TestGetMethodForShoppingCartPage()
     {
-      var response = await Client.GetAsync("/Employee/Cart");
+      var response = await Client.GetAsync("/Customer/Cart");
       response.EnsureSuccessStatusCode();
       var responseString = await response.Content.ReadAsStringAsync();
       var result = responseString != null && responseString.Contains("Accept");
