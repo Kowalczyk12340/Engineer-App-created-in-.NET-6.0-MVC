@@ -1,0 +1,17 @@
+﻿@using Microsoft.AspNetCore.Identity
+@inject SignInManager<IdentityUser> SignInManager
+@inject CommonLocalizationService localizer
+@inject UserManager<IdentityUser> UserManager
+
+<ul class="navbar-nav">
+@if (SignInManager.IsSignedIn(User))
+{
+    <h7></h7>
+}
+else
+{
+    <li class="nav-item">
+        <a asp-area="Identity" asp-page="/Account/RegisterClient" class="nav-link">@localizer.Get("Registration")</a>
+    </li>
+}
+</ul>

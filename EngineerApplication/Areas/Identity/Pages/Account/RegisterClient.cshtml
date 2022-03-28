@@ -1,6 +1,6 @@
 ﻿@page
 @inject CommonLocalizationService localizer
-@model RegisterModel
+@model RegisterClientModel
 @using EngineerApplication.Helpers
 @{
 }
@@ -98,7 +98,6 @@
             <div class="form-group row">
                 <div class="col-3"></div>
                 <div class="col-5">
-                    <input type="radio" name="rdUserRole" value="@UsefulConsts.Admin" /> @UsefulConsts.Admin
                     <input type="radio" name="rdUserRole" value="@UsefulConsts.Customer" checked  /> @UsefulConsts.Customer
                 </div>
             </div>

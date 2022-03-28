@@ -804,4 +804,7 @@
   <data name="NoServiceExists" xml:space="preserve">
     <value>Usługi nie istnieją</value>
   </data>
+  <data name="Registration" xml:space="preserve">
+    <value>Rejestracja</value>
+  </data>
 </root>

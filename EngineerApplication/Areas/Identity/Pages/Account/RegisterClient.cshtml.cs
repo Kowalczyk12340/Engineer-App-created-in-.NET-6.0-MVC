@@ -1,4 +1,4 @@
-﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
@@ -11,8 +11,7 @@ using EngineerApplication.Helpers;
 
 namespace EngineerApplication.Areas.Identity.Pages.Account
 {
-  [Authorize]
-  public class RegisterModel : PageModel
+  public class RegisterClientModel : PageModel
   {
     private readonly SignInManager<IdentityUser> _signInManager;
     private readonly UserManager<IdentityUser> _userManager;
@@ -20,7 +19,7 @@ namespace EngineerApplication.Areas.Identity.Pages.Account
     private readonly IEmailSender _emailSender;
     private readonly RoleManager<IdentityRole> _roleManager;
 
-    public RegisterModel(
+    public RegisterClientModel(
         UserManager<IdentityUser> userManager,
         SignInManager<IdentityUser> signInManager,
         ILogger<RegisterModel> logger,

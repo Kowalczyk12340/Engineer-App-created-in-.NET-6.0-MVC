@@ -7,9 +7,9 @@
     @if (Model.CommodityList.Where(c => c.CategoryId == category.Id).Count() > 0)
     {
         <div class="row container pb-3 backgroundWhite">
+            <h1>Commodities</h1>
             <div class="col-12">
                 <div class="row">
-                    <h1>Commodities</h1><br/>
                     <h2 class="text-success"><b>@category.Name</b></h2>
                     <div class="col-12">
                         <div class="row my-3">
@@ -41,9 +41,9 @@
     @if (Model.ServiceList.Where(c => c.CategoryId == category.Id).Count() > 0)
     {
         <div class="row container pb-3 backgroundWhite">
+            <h1>Services</h1>
             <div class="col-12">
                 <div class="row">
-                    <h1>Services</h1><br/>
                     <h2 class="text-success"><b>@category.Name</b></h2>
                     <div class="col-12">
                         <div class="row my-3">
