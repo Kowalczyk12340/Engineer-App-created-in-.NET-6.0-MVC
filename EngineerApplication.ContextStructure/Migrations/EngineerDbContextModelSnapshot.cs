@@ -50,13 +50,10 @@ namespace EngineerApplication.ContextStructure.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
+                    b.Property<int>("Amount")
+                        .HasColumnType("int");
+
                     b.Property<int>("CategoryId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("DeliveryId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("FrequencyId")
                         .HasColumnType("int");
 
                     b.Property<string>("ImageUrl")
@@ -72,18 +69,9 @@ namespace EngineerApplication.ContextStructure.Migrations
                     b.Property<double>("Price")
                         .HasColumnType("float");
 
-                    b.Property<int>("SupplierId")
-                        .HasColumnType("int");
-
                     b.HasKey("Id");
 
                     b.HasIndex("CategoryId");
-
-                    b.HasIndex("DeliveryId");
-
-                    b.HasIndex("FrequencyId");
-
-                    b.HasIndex("SupplierId");
 
                     b.ToTable("Commodity");
                 });
@@ -143,26 +131,6 @@ namespace EngineerApplication.ContextStructure.Migrations
                     b.ToTable("Employee");
                 });
 
-            modelBuilder.Entity("EngineerApplication.Entities.Frequency", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
-
-                    b.Property<int>("FrequencyCount")
-                        .HasColumnType("int");
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Frequency");
-                });
-
             modelBuilder.Entity("EngineerApplication.Entities.OrderDetails", b =>
                 {
                     b.Property<int>("Id")
@@ -178,17 +146,32 @@ namespace EngineerApplication.ContextStructure.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int>("DeliveryId")
+                        .HasColumnType("int");
+
                     b.Property<int>("OrderHeaderId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("PaymentId")
                         .HasColumnType("int");
 
                     b.Property<double>("Price")
                         .HasColumnType("float");
 
+                    b.Property<int>("SupplierId")
+                        .HasColumnType("int");
+
                     b.HasKey("Id");
 
                     b.HasIndex("CommodityId");
 
+                    b.HasIndex("DeliveryId");
+
                     b.HasIndex("OrderHeaderId");
+
+                    b.HasIndex("PaymentId");
+
+                    b.HasIndex("SupplierId");
 
                     b.ToTable("OrderDetails");
                 });
@@ -215,6 +198,9 @@ namespace EngineerApplication.ContextStructure.Migrations
                     b.Property<int>("CommodityCount")
                         .HasColumnType("int");
 
+                    b.Property<int>("DeliveryId")
+                        .HasColumnType("int");
+
                     b.Property<string>("Email")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -226,6 +212,9 @@ namespace EngineerApplication.ContextStructure.Migrations
                     b.Property<DateTime>("OrderDate")
                         .HasColumnType("datetime2");
 
+                    b.Property<int>("PaymentId")
+                        .HasColumnType("int");
+
                     b.Property<string>("Phone")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -233,13 +222,43 @@ namespace EngineerApplication.ContextStructure.Migrations
                     b.Property<string>("Status")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int>("SupplierId")
+                        .HasColumnType("int");
+
                     b.Property<string>("ZipCode")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 
+                    b.HasIndex("DeliveryId");
+
+                    b.HasIndex("PaymentId");
+
+                    b.HasIndex("SupplierId");
+
                     b.ToTable("OrderHeader");
+                });
+
+            modelBuilder.Entity("EngineerApplication.Entities.Payment", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<string>("Code")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Payment");
                 });
 
             modelBuilder.Entity("EngineerApplication.Entities.Service", b =>
@@ -253,9 +272,6 @@ namespace EngineerApplication.ContextStructure.Migrations
                     b.Property<int>("CategoryId")
                         .HasColumnType("int");
 
-                    b.Property<int>("FrequencyId")
-                        .HasColumnType("int");
-
                     b.Property<string>("ImageUrl")
                         .HasColumnType("nvarchar(max)");
 
@@ -266,6 +282,9 @@ namespace EngineerApplication.ContextStructure.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int>("PaymentId")
+                        .HasColumnType("int");
+
                     b.Property<double>("Price")
                         .HasColumnType("float");
 
@@ -273,7 +292,7 @@ namespace EngineerApplication.ContextStructure.Migrations
 
                     b.HasIndex("CategoryId");
 
-                    b.HasIndex("FrequencyId");
+                    b.HasIndex("PaymentId");
 
                     b.ToTable("Service");
                 });
@@ -568,31 +587,7 @@ namespace EngineerApplication.ContextStructure.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("EngineerApplication.Entities.Delivery", "Delivery")
-                        .WithMany()
-                        .HasForeignKey("DeliveryId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("EngineerApplication.Entities.Frequency", "Frequency")
-                        .WithMany()
-                        .HasForeignKey("FrequencyId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("EngineerApplication.Entities.Supplier", "Supplier")
-                        .WithMany()
-                        .HasForeignKey("SupplierId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
                     b.Navigation("Category");
-
-                    b.Navigation("Delivery");
-
-                    b.Navigation("Frequency");
-
-                    b.Navigation("Supplier");
                 });
 
             modelBuilder.Entity("EngineerApplication.Entities.Employee", b =>
@@ -614,15 +609,66 @@ namespace EngineerApplication.ContextStructure.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
+                    b.HasOne("EngineerApplication.Entities.Delivery", "Delivery")
+                        .WithMany()
+                        .HasForeignKey("DeliveryId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
                     b.HasOne("EngineerApplication.Entities.OrderHeader", "OrderHeader")
                         .WithMany()
                         .HasForeignKey("OrderHeaderId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
+                    b.HasOne("EngineerApplication.Entities.Payment", "Payment")
+                        .WithMany()
+                        .HasForeignKey("PaymentId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("EngineerApplication.Entities.Supplier", "Supplier")
+                        .WithMany()
+                        .HasForeignKey("SupplierId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
                     b.Navigation("Commodity");
 
+                    b.Navigation("Delivery");
+
                     b.Navigation("OrderHeader");
+
+                    b.Navigation("Payment");
+
+                    b.Navigation("Supplier");
+                });
+
+            modelBuilder.Entity("EngineerApplication.Entities.OrderHeader", b =>
+                {
+                    b.HasOne("EngineerApplication.Entities.Delivery", "Delivery")
+                        .WithMany()
+                        .HasForeignKey("DeliveryId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("EngineerApplication.Entities.Payment", "Payment")
+                        .WithMany()
+                        .HasForeignKey("PaymentId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("EngineerApplication.Entities.Supplier", "Supplier")
+                        .WithMany()
+                        .HasForeignKey("SupplierId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Delivery");
+
+                    b.Navigation("Payment");
+
+                    b.Navigation("Supplier");
                 });
 
             modelBuilder.Entity("EngineerApplication.Entities.Service", b =>
@@ -633,15 +679,15 @@ namespace EngineerApplication.ContextStructure.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("EngineerApplication.Entities.Frequency", "Frequency")
+                    b.HasOne("EngineerApplication.Entities.Payment", "Payment")
                         .WithMany()
-                        .HasForeignKey("FrequencyId")
+                        .HasForeignKey("PaymentId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.Navigation("Category");
 
-                    b.Navigation("Frequency");
+                    b.Navigation("Payment");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>

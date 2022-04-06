@@ -35,7 +35,6 @@ namespace EngineerApplication.Areas.Admin.Controllers
         return NotFound();
       }
       return View(delivery);
-
     }
 
     [HttpPost]
@@ -65,7 +64,6 @@ namespace EngineerApplication.Areas.Admin.Controllers
     public IActionResult GetAll()
     {
       return Json(new { data = _unitOfWork.Delivery.GetAll() });
-      //return Json(new { data = _unitOfWork.SP_Call.ReturnList<Delivery>(UsefulConsts.usp_GetAllDelivery,null)  });
     }
 
     [HttpDelete]

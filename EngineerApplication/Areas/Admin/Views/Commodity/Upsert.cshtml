@@ -58,24 +58,6 @@
             </div>
             <div class="form-group row">
                 <div class="col-4">
-                    <label asp-for="Commodity.SupplierId"></label>
-                </div>
-                <div class="col-8">
-                    @Html.DropDownListFor(m => m.Commodity.SupplierId, Model.SupplierList,
-                                            @localizer.Get("PleaseSelectASupplier"), new { @class = "form-control" })
-                </div>
-            </div>
-            <div class="form-group row">
-                <div class="col-4">
-                    <label asp-for="Commodity.FrequencyId"></label>
-                </div>
-                <div class="col-8">
-                    @Html.DropDownListFor(m => m.Commodity.FrequencyId, Model.FrequencyList,
-                                            @localizer.Get("PleaseSelectAFrequency"), new { @class = "form-control" })
-                </div>
-            </div>
-            <div class="form-group row">
-                <div class="col-4">
                     <label asp-for="Commodity.CategoryId"></label>
                 </div>
                 <div class="col-8">
@@ -84,19 +66,9 @@
                 </div>
             </div>
             <div class="form-group row">
-                <div class="col-4">
-                    <label asp-for="Commodity.DeliveryId"></label>
-                </div>
-                <div class="col-8">
-                    @Html.DropDownListFor(m => m.Commodity.DeliveryId, Model.DeliveryList,
-                                            @localizer.Get("PleaseSelectADelivery"), new { @class = "form-control" })
-                </div>
-            </div>
-            <div class="form-group row">
                 <div class="col-8 offset-4">
                     @if (Model.Commodity.Id != 0)
                     {
-                        //Edit button and back to list
                         <partial name="_EditAndBackToListButton" model="Model.Commodity.Id" />
                     }
                     else

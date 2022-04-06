@@ -9,9 +9,9 @@ namespace EngineerApplication.Tests.ServiceTest
 {
   public class CommodityServiceTest
   {
-    private Mock<ICommodityService> _commodityService;
-    private DbContextOptionsBuilder<EngineerDbContext> _optionsBuilder = new DbContextOptionsBuilder<EngineerDbContext>();
-    private DbContextOptions<EngineerDbContext> _options;
+    private Mock<ICommodityService>? _commodityService;
+    private DbContextOptionsBuilder<EngineerDbContext>? _optionsBuilder = new DbContextOptionsBuilder<EngineerDbContext>();
+    private DbContextOptions<EngineerDbContext>? _options;
 
     [SetUp]
     public void Setup()
@@ -23,7 +23,7 @@ namespace EngineerApplication.Tests.ServiceTest
     [TestCase(1)]
     public void TestGetByIdCommodity(int id)
     {
-      var commodity = new Commodity { Name = "Sportowe Obuwie", Frequency = new Frequency { Name = "Big", FrequencyCount = 15 }, Delivery = new Delivery { Name = "Busem", DeliveryDesc = "Super Bus" }, Category = new Category { Name = "Super Kategoria", DisplayOrder = 3 }, Supplier = new Supplier() { Name = "Ambro Express", City = "Turek" } };
+      var commodity = new Commodity { Name = "Sportowe Obuwie",  Category = new Category { Name = "Super Kategoria", DisplayOrder = 3 } };
       var resultService = _commodityService.Setup(p => p.Get(id)).Returns(commodity);
       Assert.That(resultService != null);
     }
@@ -31,7 +31,7 @@ namespace EngineerApplication.Tests.ServiceTest
     [TestCase(1)]
     public void TestPostCommodityMethodForPage(int id)
     {
-      var commodity1 = new Commodity { Name = "Sportowe Obuwie", Frequency = new Frequency { Name = "Big", FrequencyCount = 15 }, Delivery = new Delivery { Name = "Busem", DeliveryDesc = "Super Bus" }, Category = new Category { Name = "Super Kategoria", DisplayOrder = 3 }, Supplier = new Supplier() { Name = "Ambro Express", City = "Turek" } };
+      var commodity1 = new Commodity { Name = "Sportowe Obuwie", Category = new Category { Name = "Super Kategoria", DisplayOrder = 3 } };
       _commodityService.Setup(x => x.Add(commodity1)).Verifiable();
       var addedCommodity = _commodityService.Setup(x => x.Get(id)).Returns(commodity1);
       Assert.That(addedCommodity != null);
@@ -40,7 +40,7 @@ namespace EngineerApplication.Tests.ServiceTest
     [TestCase(1)]
     public void TestPutCommodityMethodForPage(int id)
     {
-      var commodity1 = new Commodity { Name = "Sportowe Obuwie", Frequency = new Frequency { Name = "Big", FrequencyCount = 15 }, Delivery = new Delivery { Name = "Busem", DeliveryDesc = "Super Bus" }, Category = new Category { Name = "Super Kategoria", DisplayOrder = 3 }, Supplier = new Supplier() { Name = "Ambro Express", City = "Turek" } };
+      var commodity1 = new Commodity { Name = "Sportowe Obuwie", Category = new Category { Name = "Super Kategoria", DisplayOrder = 3 } };
       _commodityService.Setup(x => x.Add(commodity1)).Verifiable();
       commodity1.Name = "Super Obuwie";
       _commodityService.Setup(x => x.Update(commodity1)).Verifiable();
@@ -51,7 +51,7 @@ namespace EngineerApplication.Tests.ServiceTest
     [TestCase(1)]
     public void TestDeleteCommodityMethodForPage(int id)
     {
-      var commodity1 = new Commodity { Name = "Sportowe Obuwie", Frequency = new Frequency { Name = "Big", FrequencyCount = 15 }, Delivery = new Delivery { Name = "Busem", DeliveryDesc = "Super Bus" }, Category = new Category { Name = "Super Kategoria", DisplayOrder = 3 }, Supplier = new Supplier() { Name = "Ambro Express", City = "Turek" } };
+      var commodity1 = new Commodity { Name = "Sportowe Obuwie", Category = new Category { Name = "Super Kategoria", DisplayOrder = 3 } };
       _commodityService.Setup(x => x.Add(commodity1)).Verifiable();
       _commodityService.Setup(x => x.Remove(commodity1)).Verifiable();
       var editedCommodity = _commodityService.Setup(x => x.Get(id)).Returns(commodity1);

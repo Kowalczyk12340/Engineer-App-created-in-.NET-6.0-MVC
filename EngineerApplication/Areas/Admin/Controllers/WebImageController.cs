@@ -21,6 +21,7 @@ namespace EngineerApplication.Areas.Admin.Controllers
     }
 
 
+    [Authorize]
     public IActionResult Upsert(int? id)
     {
       WebImages imageObj = new();

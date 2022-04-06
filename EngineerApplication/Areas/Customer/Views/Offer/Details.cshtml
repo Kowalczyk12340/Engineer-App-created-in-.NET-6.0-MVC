@@ -18,7 +18,7 @@
                 <h1 class="text-primary">@Model.Name</h1>
             </div>
             <div class="col-12 col-md-6 text-md-right">
-                <h1 class="text-muted">@localizer.Get("Total") : @((Model.Price * Model.Frequency.FrequencyCount).ToString("c"))</h1>
+                <h1 class="text-muted">@localizer.Get("Total") : @((Model.Price).ToString("c"))</h1>
             </div>
         </div>
         <div class="card-body">
@@ -28,7 +28,6 @@
                         <div class="row">
                             <div class="col-12">
                                 <h3 class="text-success">@localizer.Get("Price") @localizer.Get("PerCommodity"): $@Model.Price</h3>
-                                <h4 class="text-muted">@Model.Frequency.Name</h4>
                                 <p class="text-secondary">@Html.Raw(Model.LongDesc)</p>
                             </div>
                         </div>

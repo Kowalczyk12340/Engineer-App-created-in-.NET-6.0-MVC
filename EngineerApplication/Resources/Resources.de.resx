@@ -234,8 +234,8 @@
   <data name="CreateDelivery" xml:space="preserve">
     <value>Lieferung erstellen</value>
   </data>
-  <data name="CreateFrequency" xml:space="preserve">
-    <value>Frequenz erstellen</value>
+  <data name="CreatePayment" xml:space="preserve">
+    <value>Zahlung erstellen</value>
   </data>
   <data name="CreateImage" xml:space="preserve">
     <value>Bild erstellen</value>
@@ -249,8 +249,8 @@
   <data name="CreateNewDelivery" xml:space="preserve">
     <value>Neue Lieferung anlegen</value>
   </data>
-  <data name="CreateNewFrequency" xml:space="preserve">
-    <value>Neue Frequenz erstellen</value>
+  <data name="CreateNewPayment" xml:space="preserve">
+    <value>Neue Zahlung erstellen</value>
   </data>
   <data name="CreateNewEmployee" xml:space="preserve">
     <value>Neues Angebot erstellen</value>
@@ -331,7 +331,7 @@
     <value>Laden Sie Ihre Daten herunter</value>
   </data>
   <data name="DropshippingApplication" xml:space="preserve">
-    <value>Dropshipping-Anwendung</value>
+    <value>Dropshipping</value>
   </data>
   <data name="EditCategory" xml:space="preserve">
     <value>Kategorie bearbeiten</value>
@@ -342,8 +342,8 @@
   <data name="EditDelivery" xml:space="preserve">
     <value>Lieferung bearbeiten</value>
   </data>
-  <data name="EditFrequency" xml:space="preserve">
-    <value>Frequenz bearbeiten</value>
+  <data name="EditPayment" xml:space="preserve">
+    <value>Zahlung bearbeiten</value>
   </data>
   <data name="EditImage" xml:space="preserve">
     <value>Bild bearbeiten</value>
@@ -402,14 +402,14 @@
   <data name="ForHowToConfigure" xml:space="preserve">
     <value>zum Konfigurieren eines echten E-Mail-Absenders</value>
   </data>
-  <data name="Frequencies" xml:space="preserve">
-    <value>Frequenzen</value>
+  <data name="Payments" xml:space="preserve">
+    <value>Zahlungen</value>
   </data>
-  <data name="Frequency" xml:space="preserve">
-    <value>Frequenz</value>
+  <data name="Payment" xml:space="preserve">
+    <value>Zahlung</value>
   </data>
-  <data name="FrequencyList" xml:space="preserve">
-    <value>Frequenzliste</value>
+  <data name="PaymentList" xml:space="preserve">
+    <value>Zahlungliste</value>
   </data>
   <data name="GenerateANewSet" xml:space="preserve">
     <value>Generieren Sie einen neuen Satz Wiederherstellungscodes</value>
@@ -426,8 +426,8 @@
   <data name="GoogleAuthenticatorFor" xml:space="preserve">
     <value>Google-Authentifikator für</value>
   </data>
-  <data name="Home" xml:space="preserve">
-    <value>Startseite</value>
+  <data name="Offer" xml:space="preserve">
+    <value>Angebot</value>
   </data>
   <data name="IfYouLose" xml:space="preserve">
     <value>Wenn Sie Ihr Gerät verlieren und die Wiederherstellungscodes nicht haben, verlieren Sie den Zugriff auf Ihr Konto</value>
@@ -567,8 +567,8 @@
   <data name="PleaseSelectADelivery" xml:space="preserve">
     <value>-- Bitte wählen Sie eine Lieferung aus --</value>
   </data>
-  <data name="PleaseSelectAFrequency" xml:space="preserve">
-    <value>-- Bitte wählen Sie eine Frequenz aus --</value>
+  <data name="PleaseSelectAPayment" xml:space="preserve">
+    <value>-- Bitte wählen Sie eine Zahlung aus --</value>
   </data>
   <data name="PleaseSelectAnImage" xml:space="preserve">
     <value>Bitte wählen Sie ein Bild aus</value>
@@ -606,8 +606,8 @@
   <data name="RegisteredLogins" xml:space="preserve">
     <value>Registrierte Anmeldungen</value>
   </data>
-  <data name="RegisterNewEmployee" xml:space="preserve">
-    <value>Neuen Mitarbeiter registrieren</value>
+  <data name="RegisterNewUser" xml:space="preserve">
+    <value>Neuen Benutzer registrieren</value>
   </data>
   <data name="Reject" xml:space="preserve">
     <value>Ablehnen</value>
@@ -806,5 +806,32 @@
   </data>
   <data name="Registration" xml:space="preserve">
     <value>Anmeldung</value>
+  </data>
+  <data name="BackToHome" xml:space="preserve">
+    <value>Gehen Sie zurück zur Startseite</value>
+  </data>
+  <data name="CreateNewOffer" xml:space="preserve">
+    <value>Neues Angebot erstellen</value>
+  </data>
+  <data name="CreateOffer" xml:space="preserve">
+    <value>Angebot erstellen</value>
+  </data>
+  <data name="DescApp" xml:space="preserve">
+    <value>Die Anwendung, die im Rahmen dieser Ingenieursarbeit erstellt wird, ist ein System, das es Kunden ermöglicht, Einkäufe bei einem Unternehmen zu tätigen, das für die Lieferung von Waren und Dienstleistungen im Zusammenhang mit der Umsetzung von dedizierten Aufträgen für die Automatisierungs- und Robotikindustrie in der Industrie verantwortlich ist. Der Kunde kann die Anwendung verwenden, um Waren oder Dienstleistungen zu bestellen, indem er sie in den Warenkorb legt, und dann eine Bestellung erstellen. Der Systemadministrator ist ein Benutzer, der in dieser Anwendung jede Koordination der internen Abläufe der Unternehmensstrukturen und der Anwendungsstrukturen nutzen kann. Darüber hinaus ist eine wichtige Aufgabe des Administrators, der auch Mitarbeiter des Unternehmens ist, die umfassende Koordination von Bestellungen, die von Kunden erwartet werden, die im Angebotsbereich angebotene Waren oder Dienstleistungen bestellen möchten.</value>
+  </data>
+  <data name="H1DescApp" xml:space="preserve">
+    <value>Eine Anwendung, die den Handel mit Waren und Dienstleistungen in Automatisierung und Robotik unterstützt</value>
+  </data>
+  <data name="Home" xml:space="preserve">
+    <value>Startseite</value>
+  </data>
+  <data name="Delivery" xml:space="preserve">
+    <value>Lieferung</value>
+  </data>
+  <data name="Supplier" xml:space="preserve">
+    <value>Anbieter</value>
+  </data>
+  <data name="Buy" xml:space="preserve">
+    <value>Kaufen</value>
   </data>
 </root>

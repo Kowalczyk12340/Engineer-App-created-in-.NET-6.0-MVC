@@ -20,8 +20,8 @@ namespace EngineerApplication.Areas.Customer.Controllers
       _unitOfWork = unitOfWork;
       CartVM = new CartViewModel()
       {
-        OrderHeader = new Entities.OrderHeader(),
-        CommodityList = new List<Commodity>()
+        OrderHeader = new OrderHeader(),
+        CommodityList = new List<Commodity>(),
       };
     }
 
@@ -32,7 +32,10 @@ namespace EngineerApplication.Areas.Customer.Controllers
         List<int> sessionList = HttpContext.Session.GetObject<List<int>>(UsefulConsts.SessionCart);
         foreach (int CommodityId in sessionList)
         {
-          CartVM.CommodityList.Add(_unitOfWork.Commodity.GetFirstOrDefault(u => u.Id == CommodityId, includeProperties: "Frequency,Category"));
+          CartVM.CommodityList.Add(_unitOfWork.Commodity.GetFirstOrDefault(u => u.Id == CommodityId, includeProperties: "Category"));
+          CartVM.SupplierList = _unitOfWork.Supplier.GetSupplierListForDropDown();
+          CartVM.PaymentList = _unitOfWork.Payment.GetPaymentListForDropDown();
+          CartVM.DeliveryList = _unitOfWork.Delivery.GetDeliveryListForDropDown();
         }
       }
       return View(CartVM);
@@ -45,8 +48,13 @@ namespace EngineerApplication.Areas.Customer.Controllers
         List<int> sessionList = HttpContext.Session.GetObject<List<int>>(UsefulConsts.SessionCart);
         foreach (int CommodityId in sessionList)
         {
-          CartVM.CommodityList.Add(_unitOfWork.Commodity.GetFirstOrDefault(u => u.Id == CommodityId, includeProperties: "Frequency,Category"));
+          CartVM.CommodityList.Add(_unitOfWork.Commodity.GetFirstOrDefault(u => u.Id == CommodityId, includeProperties: "Category"));
+          CartVM.SupplierList = _unitOfWork.Supplier.GetSupplierListForDropDown();
+          CartVM.PaymentList = _unitOfWork.Payment.GetPaymentListForDropDown();
+          CartVM.DeliveryList = _unitOfWork.Delivery.GetDeliveryListForDropDown();
+          CartVM.Amount = _unitOfWork.Commodity.GetFirstOrDefault(u => u.Id == CommodityId, includeProperties: "Category").Amount;
         }
+        _unitOfWork.Save();
       }
       return View(CartVM);
     }
@@ -63,6 +71,10 @@ namespace EngineerApplication.Areas.Customer.Controllers
         foreach (int CommodityId in sessionList)
         {
           CartVM.CommodityList.Add(_unitOfWork.Commodity.Get(CommodityId));
+          CartVM.SupplierList = _unitOfWork.Supplier.GetSupplierListForDropDown();
+          CartVM.PaymentList = _unitOfWork.Payment.GetPaymentListForDropDown();
+          CartVM.DeliveryList = _unitOfWork.Delivery.GetDeliveryListForDropDown();
+          CartVM.Amount = _unitOfWork.Commodity.GetFirstOrDefault(u => u.Id == CommodityId, includeProperties: "Category").Amount;
         }
       }
 
@@ -74,7 +86,6 @@ namespace EngineerApplication.Areas.Customer.Controllers
       {
         CartVM.OrderHeader.OrderDate = DateTime.Now;
         CartVM.OrderHeader.Status = UsefulConsts.StatusSubmitted;
-        CartVM.OrderHeader.CommodityCount = CartVM.CommodityList.Count;
         _unitOfWork.OrderHeader.Add(CartVM.OrderHeader);
         _unitOfWork.Save();
 

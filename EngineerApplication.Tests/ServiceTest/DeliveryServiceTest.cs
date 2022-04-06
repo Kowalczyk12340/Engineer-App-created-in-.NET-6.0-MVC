@@ -9,9 +9,9 @@ namespace EngineerApplication.Tests.ServiceTest
 {
   public class DeliveryServiceTest
   {
-    private Mock<IDeliveryService> _deliveryService;
-    private DbContextOptionsBuilder<EngineerDbContext> _optionsBuilder = new DbContextOptionsBuilder<EngineerDbContext>();
-    private DbContextOptions<EngineerDbContext> _options;
+    private Mock<IDeliveryService>? _deliveryService;
+    private DbContextOptionsBuilder<EngineerDbContext>? _optionsBuilder = new DbContextOptionsBuilder<EngineerDbContext>();
+    private DbContextOptions<EngineerDbContext>? _options;
 
     [SetUp]
     public void Setup()

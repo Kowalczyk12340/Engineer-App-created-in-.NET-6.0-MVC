@@ -6,6 +6,8 @@ namespace EngineerApplication.Entities
   public class OrderDetails
   {
     public int Id { get; set; }
+    [Required]
+    public double Price { get; set; }
 
     [Required]
     public int OrderHeaderId { get; set; }
@@ -21,9 +23,5 @@ namespace EngineerApplication.Entities
 
     [Required]
     public string? CommodityName { get; set; }
-
-    [Required]
-    public double Price { get; set; }
-
   }
 }

@@ -3,7 +3,7 @@
   public interface IUnitOfWork : IDisposable
   {
     ICategoryService Category { get; }
-    IFrequencyService Frequency { get; }
+    IPaymentService Payment { get; }
     ISupplierService Supplier { get; }
     IDeliveryService Delivery { get; }
     IEmployeeService Employee { get; }

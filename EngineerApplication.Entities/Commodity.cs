@@ -18,6 +18,9 @@ namespace EngineerApplication.Entities
     [Display(Name = "Description")]
     public string? LongDesc { get; set; }
 
+    [Display(Name = "Amount")]
+    public int Amount { get; set; } = 1;
+
     [DataType(DataType.ImageUrl)]
     [Display(Name = "Image")]
     public string? ImageUrl { get; set; }
@@ -27,23 +30,5 @@ namespace EngineerApplication.Entities
 
     [ForeignKey("CategoryId")]
     public Category? Category { get; set; }
-
-    [Required]
-    public int FrequencyId { get; set; }
-
-    [ForeignKey("FrequencyId")]
-    public Frequency? Frequency { get; set; }
-
-    [Required]
-    public int DeliveryId { get; set; }
-
-    [ForeignKey("DeliveryId")]
-    public Delivery? Delivery { get; set; }
-
-    [Required]
-    public int SupplierId { get; set; }
-
-    [ForeignKey("SupplierId")]
-    public Supplier? Supplier { get; set; }
   }
 }

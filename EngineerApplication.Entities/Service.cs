@@ -27,11 +27,10 @@ namespace EngineerApplication.Entities
 
     [ForeignKey("CategoryId")]
     public Category? Category { get; set; }
-
     [Required]
-    public int FrequencyId { get; set; }
+    public int PaymentId { get; set; }
 
-    [ForeignKey("FrequencyId")]
-    public Frequency? Frequency { get; set; }
+    [ForeignKey("PaymentId")]
+    public Payment? Payment { get; set; }
   }
 }

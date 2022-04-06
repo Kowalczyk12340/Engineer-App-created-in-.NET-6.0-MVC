@@ -31,13 +31,18 @@ namespace EngineerApplication.ContextStructure.Data.Service
       objFromDb.LongDesc = Commodity.LongDesc;
       objFromDb.Price = Commodity.Price;
       objFromDb.ImageUrl = Commodity.ImageUrl;
-      objFromDb.FrequencyId = Commodity.FrequencyId;
-      objFromDb.DeliveryId = Commodity.DeliveryId;
-      objFromDb.SupplierId = Commodity.SupplierId;
       objFromDb.CategoryId = Commodity.CategoryId;
 
       _db.SaveChanges();
+    }
 
+    public void UpdateCommodityAmount(Commodity Commodity)
+    {
+      var objFromDb = _db.Commodity.FirstOrDefault(s => s.Id == Commodity.Id);
+
+      objFromDb.Amount = Commodity.Amount;
+
+      _db.SaveChanges();
     }
   }
 }

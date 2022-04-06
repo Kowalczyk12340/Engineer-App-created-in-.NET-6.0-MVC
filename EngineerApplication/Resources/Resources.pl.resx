@@ -234,8 +234,8 @@
   <data name="CreateDelivery" xml:space="preserve">
     <value>Utwórz dostawę</value>
   </data>
-  <data name="CreateFrequency" xml:space="preserve">
-    <value>Utwórz częstotliwość</value>
+  <data name="CreatePayment" xml:space="preserve">
+    <value>Utwórz płatność</value>
   </data>
   <data name="CreateImage" xml:space="preserve">
     <value>Utwórz zdjęcie</value>
@@ -249,8 +249,8 @@
   <data name="CreateNewDelivery" xml:space="preserve">
     <value>Utwórz nową dostawę</value>
   </data>
-  <data name="CreateNewFrequency" xml:space="preserve">
-    <value>Utwórz nową częstotliwość</value>
+  <data name="CreateNewPayment" xml:space="preserve">
+    <value>Utwórz nową płatność</value>
   </data>
   <data name="CreateNewEmployee" xml:space="preserve">
     <value>Utwórz nową ofertę</value>
@@ -342,14 +342,14 @@
   <data name="EditDelivery" xml:space="preserve">
     <value>Edytuj dostawę</value>
   </data>
-  <data name="EditFrequency" xml:space="preserve">
-    <value>Edytuj częstotliwość</value>
+  <data name="EditPayment" xml:space="preserve">
+    <value>Edytuj płatność</value>
   </data>
   <data name="EditImage" xml:space="preserve">
     <value>Edytuj zdjęcie</value>
   </data>
   <data name="EditEmployee" xml:space="preserve">
-    <value>Edytuj ofertę</value>
+    <value>Edytuj pracownika</value>
   </data>
   <data name="EditService" xml:space="preserve">
     <value>Edytuj usługę</value>
@@ -402,14 +402,14 @@
   <data name="ForHowToConfigure" xml:space="preserve">
     <value>jak skonfigurować prawdziwego nadawcę e-maili</value>
   </data>
-  <data name="Frequencies" xml:space="preserve">
-    <value>Częstotliwości</value>
+  <data name="Payments" xml:space="preserve">
+    <value>Płatności</value>
   </data>
-  <data name="Frequency" xml:space="preserve">
-    <value>Częstotliwość</value>
+  <data name="Payment" xml:space="preserve">
+    <value>Płatność</value>
   </data>
-  <data name="FrequencyList" xml:space="preserve">
-    <value>Lista Częstotliwości</value>
+  <data name="PaymentList" xml:space="preserve">
+    <value>Lista płatności</value>
   </data>
   <data name="GenerateANewSet" xml:space="preserve">
     <value>wygeneruj nowy zestaw kodów odzyskiwania</value>
@@ -426,8 +426,8 @@
   <data name="GoogleAuthenticatorFor" xml:space="preserve">
     <value>Uwierzytelniacz Google dla</value>
   </data>
-  <data name="Home" xml:space="preserve">
-    <value>Strona Główna</value>
+  <data name="Offer" xml:space="preserve">
+    <value>Oferta</value>
   </data>
   <data name="IfYouLose" xml:space="preserve">
     <value>Jeśli zgubisz urządzenie i nie będziesz mieć kodów odzyskiwania, utracisz dostęp do swojego konta</value>
@@ -567,8 +567,8 @@
   <data name="PleaseSelectADelivery" xml:space="preserve">
     <value>-- Proszę wybierz sposób dostawy --</value>
   </data>
-  <data name="PleaseSelectAFrequency" xml:space="preserve">
-    <value>-- Proszę wybierz częstotliwość --</value>
+  <data name="PleaseSelectAPayment" xml:space="preserve">
+    <value>-- Proszę wybierz płatność --</value>
   </data>
   <data name="PleaseSelectAnImage" xml:space="preserve">
     <value>Proszę wybierz zdjęcie</value>
@@ -806,5 +806,32 @@
   </data>
   <data name="Registration" xml:space="preserve">
     <value>Rejestracja</value>
+  </data>
+  <data name="BackToHome" xml:space="preserve">
+    <value>Wróć do strony głównej</value>
+  </data>
+  <data name="CreateNewOffer" xml:space="preserve">
+    <value>Utwórz nową ofertę</value>
+  </data>
+  <data name="CreateOffer" xml:space="preserve">
+    <value>Utwórz ofertę</value>
+  </data>
+  <data name="DescApp" xml:space="preserve">
+    <value>Aplikacja, która jest tworzona w ramach tej pracy inżynierskiej jest systemem, który daje możliwość składania zakupów klientom w firmie odpowiedzialnej za dostarczanie towarów i usług związanych z realizacją dedykowanych zamówień dla branży automatyki i robotyki w przemyśle. Klient może korzystać z aplikacji w celu zamawiania towarów lub usług korzystając z dodawania ich do koszyka, a następnie do tworzenia zamówienia. Administrator systemu to użytkownik, który może w tej aplikacji korzystać z wszelkiej koordynacji wewnętrznym działaniem struktur firmy, oraz struktur aplikacji. Poza tym istotnym zadaniem administratora, który jest zarazem pracownikiem przedsiębiorstwa jest kompleksowa koordynacja zamówień, których oczekują klienci chcący zamówić towar lub usługę oferowaną w zakładce Oferta.</value>
+  </data>
+  <data name="H1DescApp" xml:space="preserve">
+    <value>Aplikacja obsługująca obrót towarami i usługami w automatyce i robotyce</value>
+  </data>
+  <data name="Home" xml:space="preserve">
+    <value>Strona Główna</value>
+  </data>
+  <data name="Delivery" xml:space="preserve">
+    <value>Dostawa</value>
+  </data>
+  <data name="Supplier" xml:space="preserve">
+    <value>Dostawca</value>
+  </data>
+  <data name="Buy" xml:space="preserve">
+    <value>Kup</value>
   </data>
 </root>

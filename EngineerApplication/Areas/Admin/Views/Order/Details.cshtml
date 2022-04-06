@@ -75,7 +75,31 @@
                                         <label>@localizer.Get("Email")</label>
                                     </div>
                                     <div class="col-9">
-                                        <input asp-for="OrderHeader.Email" type="text"  readonly class="form-control" />
+                                        <input asp-for="OrderHeader.Email" type="text" readonly class="form-control" />
+                                    </div>
+                                </div>
+                                <div class="row my-1">
+                                    <div class="col-3">
+                                        <label>@localizer.Get("Supplier")</label>
+                                    </div>
+                                    <div class="col-9">
+                                        <input asp-for="Supplier.Name" type="text" readonly class="form-control" />
+                                    </div>
+                                </div>
+                                <div class="row my-1">
+                                    <div class="col-3">
+                                        <label>@localizer.Get("Delivery")</label>
+                                    </div>
+                                    <div class="col-9">
+                                        <input asp-for="Delivery.Name" type="text" readonly class="form-control" />
+                                    </div>
+                                </div>
+                                <div class="row my-1">
+                                    <div class="col-3">
+                                        <label>@localizer.Get("Payment")</label>
+                                    </div>
+                                    <div class="col-9">
+                                        <input asp-for="Payment.Name" type="text" readonly class="form-control" />
                                     </div>
                                 </div>
                             </div>

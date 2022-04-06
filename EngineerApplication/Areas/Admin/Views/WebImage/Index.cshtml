@@ -10,7 +10,7 @@
         <div class="col-6">
             <h2 class="text-primary">@localizer.Get("PhotoGallery")</h2>
         </div>
-        @if (User.IsInRole(UsefulConsts.Customer) || User.IsInRole(UsefulConsts.Admin))
+        @if (User.IsInRole(UsefulConsts.Admin))
         {
             <div class="col-6 text-right">
                 <a asp-action="Upsert" class="btn btn-primary"><i class="fas fa-plus"></i> &nbsp; @localizer.Get("UploadNewPhoto")</a>
@@ -32,6 +32,6 @@
 </div>
 
 @section Scripts{
-    <script src="~/js/webImage.js"></script>
+<script src="~/js/webImage.js"></script>
 }
 

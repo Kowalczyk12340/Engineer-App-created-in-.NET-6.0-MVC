@@ -84,6 +84,33 @@
                                       <span asp-validation-for="OrderHeader.Email" class="text-danger"></span>
                                   </div>
                               </div>
+                              <div class="row my-1">
+                                    <div class="col-3">
+                                        <label>@localizer.Get("Supplier")</label>
+                                    </div>
+                                    <div class="col-9">
+                                        @Html.DropDownListFor(m => m.OrderHeader.SupplierId, Model.SupplierList,
+                                        @localizer.Get("PleaseSelectASupplier"), new { @class = "form-control" })
+                                    </div>
+                                </div>
+                                <div class="row my-1">
+                                    <div class="col-3">
+                                        <label>@localizer.Get("Delivery")</label>
+                                    </div>
+                                    <div class="col-9">
+                                        @Html.DropDownListFor(m => m.OrderHeader.DeliveryId, Model.DeliveryList,
+                                        @localizer.Get("PleaseSelectADelivery"), new { @class = "form-control" })
+                                    </div>
+                                </div>
+                                <div class="row my-1">
+                                    <div class="col-3">
+                                        <label>@localizer.Get("Payment")</label>
+                                    </div>
+                                    <div class="col-9">
+                                        @Html.DropDownListFor(m => m.OrderHeader.PaymentId, Model.PaymentList,
+                                        @localizer.Get("PleaseSelectAPayment"), new { @class = "form-control" })
+                                    </div>
+                                </div>
                           </div>
                           <div class="col-12 col-lg-5 offset-lg-1">
                               <h4 class="d-flex justify-content-between align-items-center mb-3">
@@ -94,14 +121,15 @@
 
                                   @foreach(var details in Model.CommodityList)
                                   {
+                                      var modelOrder = Model.OrderHeader;
                                       <li class="list-group-item d-flex justify-content-between">
                                           <div>
                                               <input type="hidden" asp-for="@details.Id" />
                                               <h6 class="my-0">@details.Name</h6>
-                                              <small class="text-muted">@localizer.Get("Frequency") : @details.Frequency.FrequencyCount</small>
+                                              <small class="text-muted">@localizer.Get("Count") : @details.Amount</small>
                                           </div>
-                                          <span class="text-muted">$@(details.Price*details.Frequency.FrequencyCount)</span>
-                                          @{ total += (details.Price * details.Frequency.FrequencyCount);}
+                                          <span class="text-muted">$@(details.Price * details.Amount)</span>
+                                          @{ total += (details.Price * details.Amount);}
                                       </li>
                                   }
 

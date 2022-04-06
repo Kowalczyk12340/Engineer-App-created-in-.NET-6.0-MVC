@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace EngineerApplication.Entities
 {
@@ -23,5 +24,22 @@ namespace EngineerApplication.Entities
     public string? Status { get; set; }
     public string? Comments { get; set; }
     public int CommodityCount { get; set; }
+    [Required]
+    public int PaymentId { get; set; }
+
+    [ForeignKey("PaymentId")]
+    public Payment? Payment { get; set; }
+
+    [Required]
+    public int DeliveryId { get; set; }
+
+    [ForeignKey("DeliveryId")]
+    public Delivery? Delivery { get; set; }
+
+    [Required]
+    public int SupplierId { get; set; }
+
+    [ForeignKey("SupplierId")]
+    public Supplier? Supplier { get; set; }
   }
 }

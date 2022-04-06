@@ -7,10 +7,10 @@ using EngineerApplication.ContextStructure.Data.Repository;
 
 namespace EngineerApplication.ContextStructure.Data.Service.Interfaces
 {
-  public interface IFrequencyService : IRepository<Frequency>
+  public interface IPaymentService : IRepository<Payment>
   {
-    IEnumerable<SelectListItem> GetFrequencyListForDropDown();
+    IEnumerable<SelectListItem> GetPaymentListForDropDown();
 
-    void Update(Frequency frequency);
+    void Update(Payment payment);
   }
 }

@@ -64,7 +64,6 @@ namespace EngineerApplication.Areas.Admin.Controllers
     public IActionResult GetAll()
     {
       return Json(new { data = _unitOfWork.Category.GetAll() });
-      //return Json(new { data = _unitOfWork.SP_Call.ReturnList<Category>(UsefulConsts.usp_GetAllCategory,null)  });
     }
 
     [HttpDelete]

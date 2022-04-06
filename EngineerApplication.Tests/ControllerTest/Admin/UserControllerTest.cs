@@ -12,9 +12,9 @@ namespace EngineerApplication.Tests.ControllerTest.Admin
 {
   public class UserControllerTest : BaseControllerTest
   {
-    private Mock<IUnitOfWork> _unitOfWork;
-    private UserController _userController;
-    private ActionContext _context;
+    private Mock<IUnitOfWork>? _unitOfWork;
+    private UserController? _userController;
+    private ActionContext? _context;
 
     [SetUp]
     public void Setup()

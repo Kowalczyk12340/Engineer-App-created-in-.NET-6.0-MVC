@@ -5,13 +5,13 @@ using Moq;
 using NUnit.Framework;
 using System.Threading.Tasks;
 
-namespace EngineerApplication.Tests.ControllerTest.Home
+namespace EngineerApplication.Tests.ControllerTest.Offer
 {
   public class CartControllerTest : BaseControllerTest
   {
-    private Mock<IUnitOfWork> _unitOfWork;
-    private CartController _cartController;
-    private ActionContext _context;
+    private Mock<IUnitOfWork>? _unitOfWork;
+    private CartController? _cartController;
+    private ActionContext? _context;
 
     [SetUp]
     public void Setup()
@@ -30,6 +30,5 @@ namespace EngineerApplication.Tests.ControllerTest.Home
       var result = responseString != null && responseString.Contains("Accept");
       Assert.That(result);
     }
-
   }
 }

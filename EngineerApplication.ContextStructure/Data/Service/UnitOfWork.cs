@@ -10,7 +10,7 @@ namespace EngineerApplication.ContextStructure.Data.Service
     {
       _db = db;
       Category = new CategoryService(_db);
-      Frequency = new FrequencyService(_db);
+      Payment = new PaymentService(_db);
       Commodity = new CommodityService(_db);
       Service = new ServiceService(_db);
       Supplier = new SupplierService(_db);
@@ -23,7 +23,7 @@ namespace EngineerApplication.ContextStructure.Data.Service
     }
 
     public ICategoryService Category { get; private set; }
-    public IFrequencyService Frequency { get; private set; }
+    public IPaymentService Payment { get; private set; }
     public ISupplierService Supplier { get; private set; }
     public IEmployeeService Employee { get; private set; }
     public ICommodityService Commodity { get; private set; }

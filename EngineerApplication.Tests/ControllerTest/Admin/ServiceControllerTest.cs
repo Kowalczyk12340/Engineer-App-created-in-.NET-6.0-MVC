@@ -12,10 +12,10 @@ namespace EngineerApplication.Tests.ControllerTest.Admin
 {
   public class ServiceControllerTest : BaseControllerTest
   {
-    private Mock<IUnitOfWork> _unitOfWork;
-    private readonly IWebHostEnvironment _hostEnvironment;
-    private ServiceController _serviceController;
-    private ActionContext _context;
+    private Mock<IUnitOfWork>? _unitOfWork;
+    private readonly IWebHostEnvironment? _hostEnvironment;
+    private ServiceController? _serviceController;
+    private ActionContext? _context;
 
     [SetUp]
     public void Setup()
@@ -32,7 +32,7 @@ namespace EngineerApplication.Tests.ControllerTest.Admin
       {
         Name = "Przewóz wozem strażackim",
         CategoryId = 1,
-        FrequencyId = 1,
+        PaymentId = 1,
         LongDesc = "Description for firefigthers",
         Price = 87.90,
       };
@@ -47,7 +47,7 @@ namespace EngineerApplication.Tests.ControllerTest.Admin
       {
         Name = "Buty Adidas",
         CategoryId = 1,
-        FrequencyId = 1,
+        PaymentId = 1,
         LongDesc = "Description for sport item",
         Price = 87.90,
       };

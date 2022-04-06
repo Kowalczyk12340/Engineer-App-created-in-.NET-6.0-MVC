@@ -7,11 +7,11 @@ namespace EngineerApplication.Areas.Admin.Controllers
 {
   [Area("Admin")]
   [Authorize]
-  public class FrequencyController : Controller
+  public class PaymentController : Controller
   {
     private readonly IUnitOfWork _unitOfWork;
 
-    public FrequencyController(IUnitOfWork unitOfWork)
+    public PaymentController(IUnitOfWork unitOfWork)
     {
       _unitOfWork = unitOfWork;
     }
@@ -20,68 +20,61 @@ namespace EngineerApplication.Areas.Admin.Controllers
       return View();
     }
 
-
-    // GET: Contacts/Upsert/5
     public IActionResult Upsert(int? id)
     {
-      Frequency frequency = new();
+      Payment payment = new();
       if (id == null)
       {
 
-        return View(frequency);
+        return View(payment);
       }
 
-      frequency = _unitOfWork.Frequency.Get(id.GetValueOrDefault());
-      if (frequency == null)
+      payment = _unitOfWork.Payment.Get(id.GetValueOrDefault());
+      if (payment == null)
       {
         return NotFound();
       }
-      return View(frequency);
+      return View(payment);
     }
 
-    // POST: Contacts/Upsert/5
-    // To protect from overposting attacks, please enable the specific properties you want to bind to, for
-    // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
     [HttpPost]
     [ValidateAntiForgeryToken]
-    public IActionResult Upsert(Frequency frequency)
+    public IActionResult Upsert(Payment payment)
     {
 
       if (ModelState.IsValid)
       {
-        if (frequency.Id == 0)
+        if (payment.Id == 0)
         {
-          _unitOfWork.Frequency.Add(frequency);
+          _unitOfWork.Payment.Add(payment);
         }
         else
         {
-          _unitOfWork.Frequency.Update(frequency);
+          _unitOfWork.Payment.Update(payment);
         }
         _unitOfWork.Save();
         return RedirectToAction(nameof(Index));
       }
-      return View(frequency);
+      return View(payment);
 
     }
-
-
     #region API Calls
 
     public IActionResult GetAll()
     {
 
-      return Json(new { data = _unitOfWork.Frequency.GetAll() });
+      return Json(new { data = _unitOfWork.Payment.GetAll() });
     }
 
     [HttpDelete]
     public IActionResult Delete(int id)
     {
-      var objFromDb = _unitOfWork.Frequency.Get(id);
+      var objFromDb = _unitOfWork.Payment.Get(id);
       if (objFromDb == null)
       {
         return Json(new { success = false, message = "Error while deleting." });
       }
-      _unitOfWork.Frequency.Remove(objFromDb);
+      _unitOfWork.Payment.Remove(objFromDb);
       _unitOfWork.Save();
       return Json(new { success = true, message = "Delete success." });
 

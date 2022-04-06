@@ -16,7 +16,7 @@ function loadDataTable() {
                 "data": "picture",
                 "render": function (data) {
                     var img = 'data:image/png;base64,' + data;
-                    return '<img src="' + img + '" alt="' + img + '"width="136px" height="fitcontent"/>';
+                    return '<img src="' + img + '" alt="' + img + '"width="336px" height="fitcontent"/>';
                 }, "width": "70%"
             },
             {

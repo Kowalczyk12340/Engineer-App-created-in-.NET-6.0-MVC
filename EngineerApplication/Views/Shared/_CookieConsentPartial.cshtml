@@ -10,7 +10,7 @@
 @if (showBanner)
 {
     <div id="cookieConsent" class="alert alert-info alert-dismissible fade show" role="alert">
-        @localizer.Get("UseThisSpace"). <a class="alert-link" asp-area="" asp-controller="Home" asp-action="Privacy">@localizer.Get("LearnMore")</a>.
+        @localizer.Get("UseThisSpace"). <a class="alert-link" asp-area="" asp-controller="Offer" asp-action="Privacy">@localizer.Get("LearnMore")</a>.
         <button type="button" class="accept-policy close" data-dismiss="alert" aria-label="Close" data-cookie-string="@cookieString">
             <span aria-hidden="true">@localizer.Get("Accept")</span>
         </button>

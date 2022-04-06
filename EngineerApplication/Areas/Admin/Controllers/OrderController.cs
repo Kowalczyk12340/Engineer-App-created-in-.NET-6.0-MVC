@@ -21,16 +21,23 @@ namespace EngineerApplication.Areas.Admin.Controllers
       return View();
     }
 
+    [Authorize]
     public IActionResult Details(int id)
     {
       OrderViewModel orderVM = new()
       {
         OrderHeader = _unitOfWork.OrderHeader.Get(id),
-        OrderDetails = _unitOfWork.OrderDetails.GetAll(filter: o => o.OrderHeaderId == id)
+        OrderDetails = _unitOfWork.OrderDetails.GetAll(filter: o => o.OrderHeaderId == id),
       };
+      orderVM.Amount = _unitOfWork.Commodity.GetFirstOrDefault().Amount;
+      orderVM.Supplier = _unitOfWork.Supplier.GetFirstOrDefault(filter: o => o.Id == orderVM.OrderHeader.SupplierId);
+      orderVM.Delivery = _unitOfWork.Delivery.GetFirstOrDefault(filter: o => o.Id == orderVM.OrderHeader.DeliveryId);
+      orderVM.Payment = _unitOfWork.Payment.GetFirstOrDefault(filter: o => o.Id == orderVM.OrderHeader.PaymentId);
+      _unitOfWork.Save();
       return View(orderVM);
     }
 
+    [Authorize(Roles = UsefulConsts.Admin)]
     public IActionResult Approve(int id)
     {
       var orderFromDb = _unitOfWork.OrderHeader.Get(id);
@@ -42,6 +49,7 @@ namespace EngineerApplication.Areas.Admin.Controllers
       return View(nameof(Index));
     }
 
+    [Authorize(Roles = UsefulConsts.Admin)]
     public IActionResult Reject(int id)
     {
       var orderFromDb = _unitOfWork.OrderHeader.Get(id);

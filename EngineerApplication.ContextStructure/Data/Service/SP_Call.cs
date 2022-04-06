@@ -8,7 +8,7 @@ namespace EngineerApplication.ContextStructure.Data.Service
   public class SP_Call : ISP_Call
   {
     private readonly EngineerDbContext _db;
-    private static string ConnectionString = "";
+    private static string? ConnectionString = "";
 
     public SP_Call(EngineerDbContext db)
     {

@@ -234,8 +234,8 @@
   <data name="CreateDelivery" xml:space="preserve">
     <value>Create delivery</value>
   </data>
-  <data name="CreateFrequency" xml:space="preserve">
-    <value>Create frequency</value>
+  <data name="CreatePayment" xml:space="preserve">
+    <value>Create payment</value>
   </data>
   <data name="CreateImage" xml:space="preserve">
     <value>Create image</value>
@@ -249,8 +249,8 @@
   <data name="CreateNewDelivery" xml:space="preserve">
     <value>Create new delivery</value>
   </data>
-  <data name="CreateNewFrequency" xml:space="preserve">
-    <value>Create new frequency</value>
+  <data name="CreateNewPayment" xml:space="preserve">
+    <value>Create new payment</value>
   </data>
   <data name="CreateNewEmployee" xml:space="preserve">
     <value>Create new employee</value>
@@ -342,8 +342,8 @@
   <data name="EditDelivery" xml:space="preserve">
     <value>Edit delivery</value>
   </data>
-  <data name="EditFrequency" xml:space="preserve">
-    <value>Edit frequency</value>
+  <data name="EditPayment" xml:space="preserve">
+    <value>Edit payment</value>
   </data>
   <data name="EditImage" xml:space="preserve">
     <value>Edit image</value>
@@ -402,14 +402,14 @@
   <data name="ForHowToConfigure" xml:space="preserve">
     <value>for how to configure a real email sender</value>
   </data>
-  <data name="Frequencies" xml:space="preserve">
-    <value>Frequencies</value>
+  <data name="Payments" xml:space="preserve">
+    <value>Payments</value>
   </data>
-  <data name="Frequency" xml:space="preserve">
-    <value>Frequency</value>
+  <data name="Payment" xml:space="preserve">
+    <value>Payment</value>
   </data>
-  <data name="FrequencyList" xml:space="preserve">
-    <value>Frequency list</value>
+  <data name="PaymentList" xml:space="preserve">
+    <value>Payment list</value>
   </data>
   <data name="GenerateANewSet" xml:space="preserve">
     <value>generate a new set of recovery codes</value>
@@ -426,8 +426,8 @@
   <data name="GoogleAuthenticatorFor" xml:space="preserve">
     <value>Google authenticator for</value>
   </data>
-  <data name="Home" xml:space="preserve">
-    <value>Home</value>
+  <data name="Offer" xml:space="preserve">
+    <value>Offer</value>
   </data>
   <data name="IfYouLose" xml:space="preserve">
     <value>If you lose your device and don't have the recovery codes you will lose access to your account</value>
@@ -567,8 +567,8 @@
   <data name="PleaseSelectADelivery" xml:space="preserve">
     <value>-- Please select a delivery --</value>
   </data>
-  <data name="PleaseSelectAFrequency" xml:space="preserve">
-    <value>-- Please select a frequency --</value>
+  <data name="PleaseSelectAPayment" xml:space="preserve">
+    <value>-- Please select a payment --</value>
   </data>
   <data name="PleaseSelectAnImage" xml:space="preserve">
     <value>Please select an image</value>
@@ -606,8 +606,8 @@
   <data name="RegisteredLogins" xml:space="preserve">
     <value>Registered logins</value>
   </data>
-  <data name="RegisterNewEmployee" xml:space="preserve">
-    <value>Register New Employee</value>
+  <data name="RegisterNewUser" xml:space="preserve">
+    <value>Register New User</value>
   </data>
   <data name="Reject" xml:space="preserve">
     <value>Reject</value>
@@ -806,5 +806,32 @@
   </data>
   <data name="Registration" xml:space="preserve">
     <value>Registration</value>
+  </data>
+  <data name="BackToHome" xml:space="preserve">
+    <value>Back to home page</value>
+  </data>
+  <data name="CreateNewOffer" xml:space="preserve">
+    <value>Create new offer</value>
+  </data>
+  <data name="CreateOffer" xml:space="preserve">
+    <value>Create offer</value>
+  </data>
+  <data name="DescApp" xml:space="preserve">
+    <value>The application that is created as part of this engineering work is a system that allows customers to place purchases in a company responsible for delivering goods and services related to the implementation of dedicated orders for the automation and robotics industry in industry. The customer can use the application to order goods or services by adding them to the cart, and then to create an order. The system administrator is a user who in this application can use any coordination of the internal workings of the company's structures and the application structures. In addition, an important task of the administrator, who is also an employee of the company, is the comprehensive coordination of orders expected by customers who want to order goods or services offered in the Offer tab.</value>
+  </data>
+  <data name="H1DescApp" xml:space="preserve">
+    <value>An application that supports the trading of goods and services in automation and robotics</value>
+  </data>
+  <data name="Home" xml:space="preserve">
+    <value>Home</value>
+  </data>
+  <data name="Delivery" xml:space="preserve">
+    <value>Delivery</value>
+  </data>
+  <data name="Supplier" xml:space="preserve">
+    <value>Supplier</value>
+  </data>
+  <data name="Buy" xml:space="preserve">
+    <value>Buy</value>
   </data>
 </root>

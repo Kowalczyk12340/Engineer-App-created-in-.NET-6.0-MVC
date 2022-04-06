@@ -18,7 +18,7 @@ namespace EngineerApplication.Areas.Admin.Controllers
 
     public IActionResult Index()
     {
-      var claimsIdentity = (ClaimsIdentity)this.User.Identity;
+      var claimsIdentity = (ClaimsIdentity)User.Identity;
       var claims = claimsIdentity.FindFirst(ClaimTypes.NameIdentifier);
 
       return View(_unitOfWork.User.GetAll(u => u.Id != claims.Value));

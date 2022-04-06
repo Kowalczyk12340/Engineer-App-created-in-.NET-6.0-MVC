@@ -32,9 +32,6 @@ namespace EngineerApplication.Tests.ControllerTest.Admin
       {
         Name = "Buty Adidas",
         CategoryId = 1,
-        DeliveryId = 1,
-        FrequencyId = 1,
-        SupplierId = 1,
         LongDesc = "Description for sport item",
         Price = 87.90,
       };
@@ -49,9 +46,6 @@ namespace EngineerApplication.Tests.ControllerTest.Admin
       {
         Name = "Buty Adidas",
         CategoryId = 1,
-        DeliveryId = 1,
-        FrequencyId = 1,
-        SupplierId = 1,
         LongDesc = "Description for sport item",
         Price = 87.90,
       };

@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using EngineerApplication.ContextStructure.Data.Service.Interfaces;
 using EngineerApplication.Entities.ViewModels;
+using EngineerApplication.Entities;
 
 namespace EngineerApplication.Areas.Admin.Controllers
 {
@@ -30,11 +31,8 @@ namespace EngineerApplication.Areas.Admin.Controllers
     {
       CommodityVM = new CommodityVM()
       {
-        Commodity = new Entities.Commodity(),
+        Commodity = new Commodity(),
         CategoryList = _unitOfWork.Category.GetCategoryListForDropDown(),
-        SupplierList = _unitOfWork.Supplier.GetSupplierListForDropDown(),
-        FrequencyList = _unitOfWork.Frequency.GetFrequencyListForDropDown(),
-        DeliveryList = _unitOfWork.Delivery.GetDeliveryListForDropDown(),
       };
       if (id != null)
       {
@@ -102,16 +100,13 @@ namespace EngineerApplication.Areas.Admin.Controllers
       else
       {
         CommodityVM.CategoryList = _unitOfWork.Category.GetCategoryListForDropDown();
-        CommodityVM.SupplierList = _unitOfWork.Supplier.GetSupplierListForDropDown();
-        CommodityVM.FrequencyList = _unitOfWork.Frequency.GetFrequencyListForDropDown();
-        CommodityVM.DeliveryList = _unitOfWork.Delivery.GetDeliveryListForDropDown();
         return View(CommodityVM);
       }
     }
     #region API Calls
     public IActionResult GetAll()
     {
-      return Json(new { data = _unitOfWork.Commodity.GetAll(includeProperties: "Category,Supplier,Frequency,Delivery") });
+      return Json(new { data = _unitOfWork.Commodity.GetAll(includeProperties: "Category") });
     }
 
     [HttpDelete]

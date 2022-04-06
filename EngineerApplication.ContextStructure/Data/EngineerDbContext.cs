@@ -11,13 +11,13 @@ namespace EngineerApplication.ContextStructure.Data
     {
     }
 
-    protected override void OnModelCreating(ModelBuilder modelBuilder)
+    protected override void OnModelCreating(ModelBuilder builder)
     {
-      base.OnModelCreating(modelBuilder);
+      base.OnModelCreating(builder);
     }
 
     public DbSet<Category>? Category { get; set; }
-    public DbSet<Frequency>? Frequency { get; set; }
+    public DbSet<Payment>? Payment { get; set; }
     public DbSet<Supplier>? Supplier { get; set; }
     public DbSet<Entities.Service>? Service { get; set; }
     public DbSet<Delivery>? Delivery { get; set; }

@@ -11,9 +11,9 @@ namespace EngineerApplication.Tests.ControllerTest.Admin
 {
   public class EmployeeControllerTest : BaseControllerTest
   {
-    private Mock<IUnitOfWork> _unitOfWork;
-    private EmployeeController _employeeController;
-    private ActionContext _context;
+    private Mock<IUnitOfWork>? _unitOfWork;
+    private EmployeeController? _employeeController;
+    private ActionContext? _context;
 
     [SetUp]
     public void Setup()

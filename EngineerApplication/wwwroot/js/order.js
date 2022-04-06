@@ -1,15 +1,20 @@
 ﻿var dataTable;
 
-$(document).ready(function () {
+$(document).ready(function ()
+{
     var url = window.location.search;
-    if (url.includes("approved")) {
+    if (url.includes("approved"))
+    {
         loadDataTable("GetAllApprovedOrders");
     }
-    else {
-        if (url.includes("pending")) {
+    else
+    {
+        if (url.includes("pending"))
+        {
             loadDataTable("GetAllPendingOrders");
         }
-        else {
+        else
+        {
             loadDataTable("GetAllOrders");
         }
 
@@ -42,8 +47,8 @@ function loadDataTable(url) {
             }
         ],
         "language": {
-            "emptyTable":"No records found."
+            "emptyTable": "No records found."
         },
-        "width":"100%"
+        "width": "100%"
     });
 }

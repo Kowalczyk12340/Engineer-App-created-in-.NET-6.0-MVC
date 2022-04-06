@@ -30,7 +30,7 @@ namespace EngineerApplication.ContextStructure.Data.Service
       objFromDb.LongDesc = service.LongDesc;
       objFromDb.Price = service.Price;
       objFromDb.ImageUrl = service.ImageUrl;
-      objFromDb.FrequencyId = service.FrequencyId;
+      objFromDb.PaymentId = service.PaymentId;
       objFromDb.CategoryId = service.CategoryId;
 
       _db.SaveChanges();

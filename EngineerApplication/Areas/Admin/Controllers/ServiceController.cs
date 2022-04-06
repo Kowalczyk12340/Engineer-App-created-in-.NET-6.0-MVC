@@ -32,7 +32,7 @@ namespace EngineerApplication.Areas.Admin.Controllers
       {
         Service = new Entities.Service(),
         CategoryList = _unitOfWork.Category.GetCategoryListForDropDown(),
-        FrequencyList = _unitOfWork.Frequency.GetFrequencyListForDropDown(),
+        PaymentList = _unitOfWork.Payment.GetPaymentListForDropDown(),
       };
       if (id != null)
       {
@@ -100,14 +100,14 @@ namespace EngineerApplication.Areas.Admin.Controllers
       else
       {
         ServiceVM.CategoryList = _unitOfWork.Category.GetCategoryListForDropDown();
-        ServiceVM.FrequencyList = _unitOfWork.Frequency.GetFrequencyListForDropDown();
+        ServiceVM.PaymentList = _unitOfWork.Payment.GetPaymentListForDropDown();
         return View(ServiceVM);
       }
     }
     #region API Calls
     public IActionResult GetAll()
     {
-      return Json(new { data = _unitOfWork.Service.GetAll(includeProperties: "Category,Frequency") });
+      return Json(new { data = _unitOfWork.Service.GetAll(includeProperties: "Category,Payment") });
     }
 
     [HttpDelete]
