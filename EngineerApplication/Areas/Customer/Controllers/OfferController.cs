@@ -13,6 +13,8 @@ namespace EngineerApplication.Areas.Customer.Controllers
   {
     private readonly IUnitOfWork _unitOfWork;
     private OfferViewModel OfferVM;
+    [BindProperty]
+    public CommodityVM CommodityVM { get; set; }
 
     public OfferController(IUnitOfWork unitOfWork)
     {
@@ -29,25 +31,18 @@ namespace EngineerApplication.Areas.Customer.Controllers
         EmployeeList = _unitOfWork.Employee.GetAll(includeProperties: "Service"),
       };
 
-      foreach (var commodity in (_unitOfWork.Commodity.GetAll(includeProperties: "Category")))
-      {
-        var CommodityFromDb = commodity;
-        _unitOfWork.Commodity.UpdateCommodityAmount(CommodityFromDb);
-        _unitOfWork.Save();
-      }
-
-      _unitOfWork.Save();
-
       return View(OfferVM);
     }
 
     [HttpPost]
-    public IActionResult UpdateAmount(int id)
+    public IActionResult UpdateAmount(int id, int amount)
     {
-      var CommodityFromDb = _unitOfWork.Commodity.GetFirstOrDefault(includeProperties: "Category", filter: c => c.Id == id);
-      _unitOfWork.Commodity.UpdateCommodityAmount(CommodityFromDb);
+      var objFromDb = _unitOfWork.Commodity.GetFirstOrDefault(includeProperties: "Category", filter: c => c.Id == id);
+
+      objFromDb.Amount = amount;
+
       _unitOfWork.Save();
-      return View(CommodityFromDb);
+      return RedirectToAction(nameof(Index));
     }
 
     public IActionResult Details(int id)

@@ -11,6 +11,5 @@ namespace EngineerApplication.ContextStructure.Data.Service.Interfaces
   {
     IEnumerable<SelectListItem> GetCommodityListForDropDown();
     void Update(Commodity Commodity);
-    void UpdateCommodityAmount(Commodity Commodity);
   }
 }

@@ -8,7 +8,5 @@ namespace EngineerApplication.Entities.ViewModels
     public IEnumerable<Commodity>? CommodityList { get; set; }
     public IEnumerable<Service>? ServiceList { get; set; }
     public IEnumerable<Employee>? EmployeeList { get; set; }
-    [BindProperty]
-    public int Amount { get; set; }
   }
 }

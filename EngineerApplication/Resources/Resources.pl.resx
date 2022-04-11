@@ -834,4 +834,7 @@
   <data name="Buy" xml:space="preserve">
     <value>Kup</value>
   </data>
+  <data name="AmountOfCommodityToOrder" xml:space="preserve">
+    <value>Ilość towaru w zamówieniu</value>
+  </data>
 </root>

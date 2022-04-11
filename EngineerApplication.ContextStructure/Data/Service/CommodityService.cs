@@ -35,14 +35,5 @@ namespace EngineerApplication.ContextStructure.Data.Service
 
       _db.SaveChanges();
     }
-
-    public void UpdateCommodityAmount(Commodity Commodity)
-    {
-      var objFromDb = _db.Commodity.FirstOrDefault(s => s.Id == Commodity.Id);
-
-      objFromDb.Amount = Commodity.Amount;
-
-      _db.SaveChanges();
-    }
   }
 }

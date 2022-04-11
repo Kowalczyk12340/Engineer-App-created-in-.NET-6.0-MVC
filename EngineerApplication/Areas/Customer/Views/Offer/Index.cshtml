@@ -13,23 +13,26 @@
                     <h2 class="text-success"><b>@category.Name</b></h2>
                     <div class="col-12">
                         <div class="row my-3">
-                            @foreach (var Commodity in Model.CommodityList.Where(c => c.CategoryId == category.Id))
+                            @foreach (var commodity in Model.CommodityList.Where(c => c.CategoryId == category.Id))
                             {
                                 <div class="col-lg-4 col-xl-3 col-md-6 pb-4">
                                     <div class="card" style="border:2px solid #43ac6a;border-radius:5px; backgroundcolor: #fffeee">
                                         <div class="pl-3 pt-1 text-center">
-                                            <h3 class="card-title text-primary"><b>@Commodity.Name</b></h3>
+                                            <h3 class="card-title text-primary"><b>@commodity.Name</b></h3>
                                         </div>
-                                        <div class="d-flex justify-content-between ">
+                                        <div class="d-flex justify-content-between">
                                             <div class="pl-1 text-muted">@localizer.Get("Price") @localizer.Get("PerCommodity")</div>
-                                            <div class="pr-1 text-danger h5">$@Commodity.Price</div>
+                                            <div class="pr-1 text-danger h5">$@commodity.Price</div>
                                         </div>
-                                        <img src="@Commodity.ImageUrl" class="card-img-top p-2 rounded" />
+                                        <img src="@commodity.ImageUrl" class="card-img-top p-2 rounded" />
                                         <div class="col-9">
-                                            @Html.TextBox("txtValue", 1, new { placeholder = "Input value" })
-                                            <input type="button" value="@localizer.Get("Amount")" id="quantity"  />
+                                            @using (Html.BeginForm("UpdateAmount", "Offer", new { id = commodity.Id}, FormMethod.Post))
+                                            {
+                                               <input type="number" name="amount" id="amount" value="@commodity.Amount"/>
+                                               <input style="margin-bottom: 2px; margin-top: 2px;" class="btn btn-success" type="submit" value="Change Amount" />
+                                           }
                                         </div>
-                                        <a asp-action="Details" class="btn btn-success" style="border-radius:2px;" asp-route-id="@Commodity.Id">@localizer.Get("Buy")</a>
+                                        <a asp-action="Details" class="btn btn-success" style="border-radius:2px;" asp-route-id="@commodity.Id">@localizer.Get("Buy")</a>
                                     </div>
                                 </div>
                             }
@@ -90,21 +93,4 @@
 
 @section Scripts{
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.js"></script>
-<script>
-    $(function () {
-        $('quantity').unbind('click');
-        $('quantity').on('click', function () {
-            $.ajax({
-                url: "/Admin/Offer/UpdateAmount",
-                type: 'POST',
-                contentType: "application/json; charset=utf-8",
-                dataType: 'json',
-                data: JSON.stringify({
-                    txtValue: $("txtValue").val()
-                }),
-                async: false
-            });
-       });
-   });
-</script>
 }

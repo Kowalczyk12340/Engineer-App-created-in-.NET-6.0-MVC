@@ -11,11 +11,6 @@ namespace EngineerApplication.ContextStructure.Data
     {
     }
 
-    protected override void OnModelCreating(ModelBuilder builder)
-    {
-      base.OnModelCreating(builder);
-    }
-
     public DbSet<Category>? Category { get; set; }
     public DbSet<Payment>? Payment { get; set; }
     public DbSet<Supplier>? Supplier { get; set; }
