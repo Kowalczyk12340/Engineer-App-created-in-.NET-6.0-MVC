@@ -837,4 +837,13 @@
   <data name="AmountOfCommodityToOrder" xml:space="preserve">
     <value>Ilość towaru w zamówieniu</value>
   </data>
+  <data name="TimeToOrder" xml:space="preserve">
+    <value>Data zamówienia</value>
+  </data>
+  <data name="TimeToRealisation" xml:space="preserve">
+    <value>Data realizacji</value>
+  </data>
+  <data name="YourOrderWillBeDeliveredBy" xml:space="preserve">
+    <value>Twoje zamówienie zostanie do Ciebie dostarczone w ciągu 14 dni, od tego momentu, a więc ostateczną datą jest</value>
+  </data>
 </root>

@@ -1,6 +1,7 @@
 ﻿@using EngineerApplication.Resources
 @inject CommonLocalizationService localizer
 @model int
+
 @{
     ViewData["Title"] = @localizer.Get("OrderConfirmation");
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -17,6 +18,8 @@
         @localizer.Get("WeHaveReceived")
         <br />
         @localizer.Get("YourRequest") : @Model
+        <br />
+        @localizer.Get("YourOrderWillBeDeliveredBy") : @DateTime.UtcNow.AddDays(14);
     </div>
 </div>
 

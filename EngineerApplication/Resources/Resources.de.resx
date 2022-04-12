@@ -837,4 +837,13 @@
   <data name="AmountOfCommodityToOrder" xml:space="preserve">
     <value>Warenmenge in der Bestellung</value>
   </data>
+  <data name="TimeToOrder" xml:space="preserve">
+    <value>Datum der Bestellung</value>
+  </data>
+  <data name="TimeToRealisation" xml:space="preserve">
+    <value>Datum der Umsetzung</value>
+  </data>
+  <data name="YourOrderWillBeDeliveredBy" xml:space="preserve">
+    <value>Ihre Bestellung wird Ihnen dann innerhalb von 14 Tagen zugestellt, so dass der endgültige Termin ist</value>
+  </data>
 </root>

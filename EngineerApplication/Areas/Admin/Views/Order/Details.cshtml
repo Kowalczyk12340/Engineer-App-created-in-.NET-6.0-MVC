@@ -80,6 +80,22 @@
                                 </div>
                                 <div class="row my-1">
                                     <div class="col-3">
+                                        <label>@localizer.Get("TimeToOrder")</label>
+                                    </div>
+                                    <div class="col-9">
+                                        <input asp-for="OrderHeader.TimeToOrder" type="date" readonly class="form-control" />
+                                    </div>
+                                </div>
+                                <div class="row my-1">
+                                    <div class="col-3">
+                                        <label>@localizer.Get("TimeToRealisation")</label>
+                                    </div>
+                                    <div class="col-9">
+                                        <input asp-for="OrderHeader.TimeToRealisation" type="date" readonly class="form-control" />
+                                    </div>
+                                </div>
+                                <div class="row my-1">
+                                    <div class="col-3">
                                         <label>@localizer.Get("Supplier")</label>
                                     </div>
                                     <div class="col-9">

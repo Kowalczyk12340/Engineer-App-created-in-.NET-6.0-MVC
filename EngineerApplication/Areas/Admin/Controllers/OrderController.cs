@@ -29,7 +29,8 @@ namespace EngineerApplication.Areas.Admin.Controllers
         OrderHeader = _unitOfWork.OrderHeader.Get(id),
         OrderDetails = _unitOfWork.OrderDetails.GetAll(filter: o => o.OrderHeaderId == id),
       };
-      orderVM.Amount = _unitOfWork.Commodity.GetFirstOrDefault().Amount;
+      orderVM.TimeToOrder = _unitOfWork.OrderHeader.Get(id).TimeToOrder.ToUniversalTime();
+      orderVM.TimeToOrder = _unitOfWork.OrderHeader.Get(id).TimeToRealisation.ToUniversalTime();
       orderVM.Supplier = _unitOfWork.Supplier.GetFirstOrDefault(filter: o => o.Id == orderVM.OrderHeader.SupplierId);
       orderVM.Delivery = _unitOfWork.Delivery.GetFirstOrDefault(filter: o => o.Id == orderVM.OrderHeader.DeliveryId);
       orderVM.Payment = _unitOfWork.Payment.GetFirstOrDefault(filter: o => o.Id == orderVM.OrderHeader.PaymentId);

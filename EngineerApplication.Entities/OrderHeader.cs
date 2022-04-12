@@ -41,5 +41,11 @@ namespace EngineerApplication.Entities
 
     [ForeignKey("SupplierId")]
     public Supplier? Supplier { get; set; }
+
+    [Required]
+    public DateTime TimeToOrder { get; set; } = DateTime.UtcNow;
+
+    [Required]
+    public DateTime TimeToRealisation { get; set; } = DateTime.UtcNow.AddDays(14);
   }
 }

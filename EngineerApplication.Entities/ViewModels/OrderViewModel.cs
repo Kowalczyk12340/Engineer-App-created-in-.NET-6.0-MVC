@@ -14,5 +14,7 @@ namespace EngineerApplication.Entities.ViewModels
     public IEnumerable<SelectListItem>? PaymentList { get; set; }
     public IEnumerable<SelectListItem>? SupplierList { get; set; }
     public int Amount { get; set; }
+    public DateTime TimeToOrder { get; set; }
+    public DateTime TimeToRealisation { get; set; }
   }
 }

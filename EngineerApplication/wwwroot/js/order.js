@@ -29,11 +29,12 @@ function loadDataTable(url) {
             "datatype": "json"
         },
         "columns": [
-            { "data": "name", "width": "20%" },
+            { "data": "name", "width": "15%" },
             { "data": "phone", "width": "15%" },
-            { "data": "email", "width": "15%" },
-            { "data": "commodityCount", "width": "15%" },
+            { "data": "email", "width": "20%" },
             { "data": "status", "width": "15%" },
+            { "data": "timeToOrder", "width": "10%" },
+            { "data": "timeToRealisation", "width": "10%" },
             {
                 "data": "id",
                 "render": function (data) {
