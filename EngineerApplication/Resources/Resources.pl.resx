@@ -849,4 +849,7 @@
   <data name="ChangeAmount" xml:space="preserve">
     <value>Ustaw ilość</value>
   </data>
+  <data name="Pay" xml:space="preserve">
+    <value>Zapłać</value>
+  </data>
 </root>
