@@ -18,7 +18,7 @@
                 <h1 class="text-primary">@Model.Name</h1>
             </div>
             <div class="col-12 col-md-6 text-md-right">
-                <h1 class="text-muted">@localizer.Get("Total") : @((Model.Amount * Model.Price).ToString("c"))</h1>
+                <h1 class="text-muted">@localizer.Get("Total") : @((Math.Round((Model.Amount * Model.Price), 2)).ToString("c"))</h1>
                 <h4 class="text-muted">@localizer.Get("AmountOfCommodityToOrder") : @Model.Amount</h4>
             </div>
         </div>
