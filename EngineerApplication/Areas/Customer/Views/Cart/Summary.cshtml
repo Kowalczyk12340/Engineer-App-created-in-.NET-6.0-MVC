@@ -128,7 +128,7 @@
                                               <h6 class="my-0">@details.Name</h6>
                                               <small class="text-muted">@localizer.Get("Count") : @details.Amount</small>
                                           </div>
-                                          <span class="text-muted">$@(details.Price * details.Amount)</span>
+                                          <span class="text-muted">$@(Math.Round((details.Price * details.Amount), 2))</span>
                                           @{ total += (details.Price * details.Amount);}
                                       </li>
                                   }

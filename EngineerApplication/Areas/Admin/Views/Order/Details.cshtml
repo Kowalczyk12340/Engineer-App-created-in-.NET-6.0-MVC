@@ -132,7 +132,7 @@
                                             <div>
                                                 <input type="hidden" asp-for="@details.Id" />
                                                 <h6 class="my-0">@details.CommodityName</h6>
-                                                <small class="text-muted">@localizer.Get("Price") : @details.Price</small>
+                                                <small class="text-muted">@localizer.Get("Price") : $@Math.Round(details.Price)</small>
                                             </div>
                                         </li>
                                     }
@@ -168,5 +168,3 @@
         <div class="backgroundWhite">@localizer.Get("NoItemsAdded")</div>
     }
 </form>
-
-
