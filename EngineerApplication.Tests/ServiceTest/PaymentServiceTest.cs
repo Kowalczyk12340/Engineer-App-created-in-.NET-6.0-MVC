@@ -9,8 +9,8 @@ namespace EngineerApplication.Tests.ServiceTest
 {
   public class PaymentServiceTest
   {
+    private readonly DbContextOptionsBuilder<EngineerDbContext>? _optionsBuilder = new();
     private Mock<IPaymentService>? _paymentService;
-    private DbContextOptionsBuilder<EngineerDbContext>? _optionsBuilder = new DbContextOptionsBuilder<EngineerDbContext>();
     private DbContextOptions<EngineerDbContext>? _options;
 
     [SetUp]
@@ -24,34 +24,34 @@ namespace EngineerApplication.Tests.ServiceTest
     public void TestGetByIdPayment(int id)
     {
       var payment = new Payment { Name = "Dużo", Code = "njdvcjuern" };
-      var resultService = _paymentService.Setup(p => p.Get(id)).Returns(payment);
+      var resultService = _paymentService.Setup(p => p.GetAsync(id).Result).Returns(payment);
       Assert.That(resultService != null);
     }
 
     [TestCase(1)]
     public void TestPostPaymentMethodForPage(int id)
     {
-      var payment1 = new Payment { Name = "Dużo", Code = "njdvcjuern" }; _paymentService.Setup(x => x.Add(payment1)).Verifiable();
-      var addedPayment = _paymentService.Setup(x => x.Get(id)).Returns(payment1);
+      var payment1 = new Payment { Name = "Dużo", Code = "njdvcjuern" }; _paymentService.Setup(x => x.AddAsync(payment1).GetAwaiter()).Verifiable();
+      var addedPayment = _paymentService.Setup(x => x.GetAsync(id).Result).Returns(payment1);
       Assert.That(addedPayment != null);
     }
 
     [TestCase(1)]
     public void TestPutPaymentMethodForPage(int id)
     {
-      var payment1 = new Payment { Name = "Dużo", Code = "njdvcjuern" }; _paymentService.Setup(x => x.Add(payment1)).Verifiable();
+      var payment1 = new Payment { Name = "Dużo", Code = "njdvcjuern" }; _paymentService.Setup(x => x.AddAsync(payment1).GetAwaiter()).Verifiable();
       payment1.Name = "Super Obuwie";
-      _paymentService.Setup(x => x.Update(payment1)).Verifiable();
-      var editedPayment = _paymentService.Setup(x => x.Get(id)).Returns(payment1);
+      _paymentService.Setup(x => x.UpdateAsync(payment1).GetAwaiter()).Verifiable();
+      var editedPayment = _paymentService.Setup(x => x.GetAsync(id).Result).Returns(payment1);
       Assert.That(editedPayment != null);
     }
 
     [TestCase(1)]
     public void TestDeletePaymentMethodForPage(int id)
     {
-      var payment1 = new Payment { Name = "Dużo", Code = "njdvcjuern" }; _paymentService.Setup(x => x.Add(payment1)).Verifiable();
+      var payment1 = new Payment { Name = "Dużo", Code = "njdvcjuern" }; _paymentService.Setup(x => x.AddAsync(payment1).GetAwaiter()).Verifiable();
       _paymentService.Setup(x => x.Remove(payment1)).Verifiable();
-      var editedPayment = _paymentService.Setup(x => x.Get(id)).Returns(payment1);
+      var editedPayment = _paymentService.Setup(x => x.GetAsync(id).Result).Returns(payment1);
       Assert.IsNotNull(editedPayment);
     }
   }

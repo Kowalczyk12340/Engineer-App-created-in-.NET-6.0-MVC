@@ -22,14 +22,14 @@ namespace EngineerApplication.Areas.Admin.Controllers
     }
 
 
-    public IActionResult Upsert(int? id)
+    public async Task<IActionResult> Upsert(int? id)
     {
       Delivery delivery = new();
       if (id == null)
       {
         return View(delivery);
       }
-      delivery = _unitOfWork.Delivery.Get(id.GetValueOrDefault());
+      delivery = await _unitOfWork.Delivery.GetAsync(id.GetValueOrDefault());
       if (delivery == null)
       {
         return NotFound();
@@ -39,19 +39,19 @@ namespace EngineerApplication.Areas.Admin.Controllers
 
     [HttpPost]
     [ValidateAntiForgeryToken]
-    public IActionResult Upsert(Delivery delivery)
+    public async Task<IActionResult> Upsert(Delivery delivery)
     {
       if (ModelState.IsValid)
       {
         if (delivery.Id == 0)
         {
-          _unitOfWork.Delivery.Add(delivery);
+          await _unitOfWork.Delivery.AddAsync(delivery);
         }
         else
         {
-          _unitOfWork.Delivery.Update(delivery);
+          await _unitOfWork.Delivery.UpdateAsync(delivery);
         }
-        _unitOfWork.Save();
+        await _unitOfWork.SaveAsync();
         return RedirectToAction(nameof(Index));
       }
       return View(delivery);
@@ -61,24 +61,23 @@ namespace EngineerApplication.Areas.Admin.Controllers
     #region API CALLS
 
     [HttpGet]
-    public IActionResult GetAll()
+    public async Task<IActionResult> GetAll()
     {
-      return Json(new { data = _unitOfWork.Delivery.GetAll() });
+      return Json(new { data = await _unitOfWork.Delivery.GetAllAsync() });
     }
 
     [HttpDelete]
-    public IActionResult Delete(int id)
+    public async Task<IActionResult> Delete(int id)
     {
-      var objFromDb = _unitOfWork.Delivery.Get(id);
-      if (objFromDb == null)
+      var objFromDb = await _unitOfWork.Delivery.GetAsync(id);
+      if (objFromDb is null)
       {
         return Json(new { success = false, message = "Error while deleting." });
       }
 
       _unitOfWork.Delivery.Remove(objFromDb);
-      _unitOfWork.Save();
+      await _unitOfWork.SaveAsync();
       return Json(new { success = true, message = "Delete successful." });
-
     }
     #endregion
   }

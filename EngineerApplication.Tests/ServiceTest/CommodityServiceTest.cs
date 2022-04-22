@@ -4,13 +4,14 @@ using EngineerApplication.Entities;
 using Microsoft.EntityFrameworkCore;
 using Moq;
 using NUnit.Framework;
+using System.Threading.Tasks;
 
 namespace EngineerApplication.Tests.ServiceTest
 {
   public class CommodityServiceTest
   {
+    private readonly DbContextOptionsBuilder<EngineerDbContext>? _optionsBuilder = new();
     private Mock<ICommodityService>? _commodityService;
-    private DbContextOptionsBuilder<EngineerDbContext>? _optionsBuilder = new DbContextOptionsBuilder<EngineerDbContext>();
     private DbContextOptions<EngineerDbContext>? _options;
 
     [SetUp]
@@ -23,8 +24,8 @@ namespace EngineerApplication.Tests.ServiceTest
     [TestCase(1)]
     public void TestGetByIdCommodity(int id)
     {
-      var commodity = new Commodity { Name = "Sportowe Obuwie",  Category = new Category { Name = "Super Kategoria", DisplayOrder = 3 } };
-      var resultService = _commodityService.Setup(p => p.Get(id)).Returns(commodity);
+      var commodity = new Commodity { Name = "Sportowe Obuwie", Category = new Category { Name = "Super Kategoria", DisplayOrder = 3 } };
+      var resultService = _commodityService.Setup(p => p.GetAsync(id).Result).Returns(commodity);
       Assert.That(resultService != null);
     }
 
@@ -32,8 +33,8 @@ namespace EngineerApplication.Tests.ServiceTest
     public void TestPostCommodityMethodForPage(int id)
     {
       var commodity1 = new Commodity { Name = "Sportowe Obuwie", Category = new Category { Name = "Super Kategoria", DisplayOrder = 3 } };
-      _commodityService.Setup(x => x.Add(commodity1)).Verifiable();
-      var addedCommodity = _commodityService.Setup(x => x.Get(id)).Returns(commodity1);
+      _commodityService.Setup(x => x.AddAsync(commodity1)).Verifiable();
+      var addedCommodity = _commodityService.Setup(x => x.GetAsync(id).Result).Returns(commodity1);
       Assert.That(addedCommodity != null);
     }
 
@@ -41,10 +42,10 @@ namespace EngineerApplication.Tests.ServiceTest
     public void TestPutCommodityMethodForPage(int id)
     {
       var commodity1 = new Commodity { Name = "Sportowe Obuwie", Category = new Category { Name = "Super Kategoria", DisplayOrder = 3 } };
-      _commodityService.Setup(x => x.Add(commodity1)).Verifiable();
+      _commodityService.Setup(x => x.AddAsync(commodity1).GetAwaiter()).Verifiable();
       commodity1.Name = "Super Obuwie";
-      _commodityService.Setup(x => x.Update(commodity1)).Verifiable();
-      var editedCommodity = _commodityService.Setup(x => x.Get(id)).Returns(commodity1);
+      _commodityService.Setup(x => x.UpdateAsync(commodity1)).Verifiable();
+      var editedCommodity = _commodityService.Setup(x => x.GetAsync(id).Result).Returns(commodity1);
       Assert.That(editedCommodity != null);
     }
 
@@ -52,9 +53,9 @@ namespace EngineerApplication.Tests.ServiceTest
     public void TestDeleteCommodityMethodForPage(int id)
     {
       var commodity1 = new Commodity { Name = "Sportowe Obuwie", Category = new Category { Name = "Super Kategoria", DisplayOrder = 3 } };
-      _commodityService.Setup(x => x.Add(commodity1)).Verifiable();
+      _commodityService.Setup(x => x.AddAsync(commodity1).GetAwaiter()).Verifiable();
       _commodityService.Setup(x => x.Remove(commodity1)).Verifiable();
-      var editedCommodity = _commodityService.Setup(x => x.Get(id)).Returns(commodity1);
+      var editedCommodity = _commodityService.Setup(x => x.GetAsync(id).Result).Returns(commodity1);
       Assert.IsNotNull(editedCommodity);
     }
   }

@@ -24,16 +24,17 @@ namespace EngineerApplication.Areas.Admin.Controllers
       return View();
     }
 
-    public IActionResult Upsert(int? id)
+    public async Task<IActionResult> Upsert(int? id)
     {
       EmployeeVM = new EmployeeVM()
       {
         Employee = new Entities.Employee(),
         ServiceList = _unitOfWork.Service.GetServiceListForDropDown(),
       };
+
       if (id != null)
       {
-        EmployeeVM.Employee = _unitOfWork.Employee.Get(id.GetValueOrDefault());
+        EmployeeVM.Employee = await _unitOfWork.Employee.GetAsync(id.GetValueOrDefault());
       }
 
       return View(EmployeeVM);
@@ -41,20 +42,20 @@ namespace EngineerApplication.Areas.Admin.Controllers
 
     [HttpPost]
     [ValidateAntiForgeryToken]
-    public IActionResult Upsert()
+    public async Task<IActionResult> Upsert()
     {
       if (ModelState.IsValid)
       {
         if (EmployeeVM.Employee.Id == 0)
         {
-          _unitOfWork.Employee.Add(EmployeeVM.Employee);
+          await _unitOfWork.Employee.AddAsync(EmployeeVM.Employee);
         }
         else
         {
-          var EmployeeFromDb = _unitOfWork.Employee.Get(EmployeeVM.Employee.Id);
-          _unitOfWork.Employee.Update(EmployeeVM.Employee);
+          var EmployeeFromDb = await _unitOfWork.Employee.GetAsync(EmployeeVM.Employee.Id);
+          await _unitOfWork.Employee.UpdateAsync(EmployeeVM.Employee);
         }
-        _unitOfWork.Save();
+        await _unitOfWork.SaveAsync();
         return RedirectToAction(nameof(Index));
       }
       else
@@ -64,15 +65,15 @@ namespace EngineerApplication.Areas.Admin.Controllers
       }
     }
     #region API Calls
-    public IActionResult GetAll()
+    public async Task<IActionResult> GetAll()
     {
-      return Json(new { data = _unitOfWork.Employee.GetAll(includeProperties: "Service") });
+      return Json(new { data = await _unitOfWork.Employee.GetAllAsync(includeProperties: "Service") });
     }
 
     [HttpDelete]
-    public IActionResult Delete(int id)
+    public async Task<IActionResult> Delete(int id)
     {
-      var EmployeeFromDb = _unitOfWork.Employee.Get(id);
+      var EmployeeFromDb = await _unitOfWork.Employee.GetAsync(id);
 
       if (EmployeeFromDb is null)
       {
@@ -80,7 +81,7 @@ namespace EngineerApplication.Areas.Admin.Controllers
       }
 
       _unitOfWork.Employee.Remove(EmployeeFromDb);
-      _unitOfWork.Save();
+      await _unitOfWork.SaveAsync();
       return Json(new { success = true, message = "Deleted Successfully." });
     }
     #endregion

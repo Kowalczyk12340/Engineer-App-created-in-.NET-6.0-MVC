@@ -10,8 +10,8 @@ namespace EngineerApplication.Tests.ServiceTest
 {
   public class OrderServiceTest
   {
+    private readonly DbContextOptionsBuilder<EngineerDbContext>? _optionsBuilder = new();
     private Mock<IOrderHeaderService>? _orderHeader;
-    private DbContextOptionsBuilder<EngineerDbContext>? _optionsBuilder = new DbContextOptionsBuilder<EngineerDbContext>();
     private DbContextOptions<EngineerDbContext>? _options;
 
     [SetUp]
@@ -25,7 +25,7 @@ namespace EngineerApplication.Tests.ServiceTest
     public void TestGetByIdOrder(int id)
     {
       var order1 = new OrderHeader { Name = "Order for Food" };
-      var resultService = _orderHeader.Setup(p => p.Get(id)).Returns(order1);
+      var resultService = _orderHeader.Setup(p => p.GetAsync(id).Result).Returns(order1);
       Assert.That(resultService != null);
     }
 
@@ -33,7 +33,7 @@ namespace EngineerApplication.Tests.ServiceTest
     public void TestPostOrderMethodForPage(int id)
     {
       var order1 = new OrderHeader { Name = "Order for Food" };
-      var addedOrder = _orderHeader.Setup(x => x.Get(id)).Returns(order1);
+      var addedOrder = _orderHeader.Setup(x => x.GetAsync(id).Result).Returns(order1);
       Assert.That(addedOrder != null);
     }
 
@@ -41,7 +41,7 @@ namespace EngineerApplication.Tests.ServiceTest
     public void TestCheckOrderStatusMethodForPage(int id)
     {
       var order1 = new OrderHeader { Name = "Order for Food" };
-      var addedOrder = _orderHeader.Setup(x => x.ChangeOrderStatus(id, UsefulConsts.StatusApproved));
+      var addedOrder = _orderHeader.Setup(x => x.ChangeOrderStatusAsync(id, UsefulConsts.StatusApproved).GetAwaiter());
       Assert.That(addedOrder != null);
     }
 
@@ -50,7 +50,7 @@ namespace EngineerApplication.Tests.ServiceTest
     {
       var order1 = new OrderHeader { Name = "Order for Food" };
       _orderHeader.Setup(x => x.Remove(order1)).Verifiable();
-      var editedOrder = _orderHeader.Setup(x => x.Get(id)).Returns(order1);
+      var editedOrder = _orderHeader.Setup(x => x.GetAsync(id).Result).Returns(order1);
       Assert.IsNotNull(editedOrder);
     }
   }

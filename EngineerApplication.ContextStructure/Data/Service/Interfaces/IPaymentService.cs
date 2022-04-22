@@ -11,6 +11,6 @@ namespace EngineerApplication.ContextStructure.Data.Service.Interfaces
   {
     IEnumerable<SelectListItem> GetPaymentListForDropDown();
 
-    void Update(Payment payment);
+    Task UpdateAsync(Payment payment);
   }
 }

@@ -18,13 +18,13 @@ namespace EngineerApplication.ContextStructure.Data.Initializer
       _userManager = userManager;
     }
 
-    public void HighlightDatabase()
+    public async Task HighlightDatabaseAsync()
     {
       try
       {
         if (_db.Database.GetPendingMigrations().Any())
         {
-          _db.Database.Migrate();
+          await _db.Database.MigrateAsync();
         }
       }
       catch (Exception)
@@ -32,7 +32,7 @@ namespace EngineerApplication.ContextStructure.Data.Initializer
         throw new Exception();
       }
 
-      if (_db.Roles.Any(r => r.Name == UsefulConsts.Admin)) return;
+      if (await _db.Roles.AnyAsync(r => r.Name == UsefulConsts.Admin)) return;
 
       _roleManager.CreateAsync(new IdentityRole(UsefulConsts.Admin)).GetAwaiter().GetResult();
       _roleManager.CreateAsync(new IdentityRole(UsefulConsts.Customer)).GetAwaiter().GetResult();
@@ -55,10 +55,10 @@ namespace EngineerApplication.ContextStructure.Data.Initializer
 
       }, "Marcingrafik1#").GetAwaiter().GetResult();
 
-      ApplicationUser? user = _db.ApplicationUser?.Where(u => u.Email == "marcinkowalczyk24.7@gmail.com").FirstOrDefault();
+      ApplicationUser? user = await _db.ApplicationUser?.Where(u => u.Email == "marcinkowalczyk24.7@gmail.com").FirstOrDefaultAsync();
       _userManager.AddToRoleAsync(user, UsefulConsts.Admin).GetAwaiter().GetResult();
 
-      ApplicationUser? user1 = _db.ApplicationUser?.Where(u => u.Email == "marcinkowalczyk24.5@wp.pl").FirstOrDefault();
+      ApplicationUser? user1 = await _db.ApplicationUser?.Where(u => u.Email == "marcinkowalczyk24.5@wp.pl").FirstOrDefaultAsync();
       _userManager.AddToRoleAsync(user1, UsefulConsts.Customer).GetAwaiter().GetResult();
     }
   }

@@ -4,22 +4,22 @@ namespace EngineerApplication.ContextStructure.Data.Repository
 {
   public interface IRepository<T> where T : class
   {
-    T Get(int id);
+    Task<T> GetAsync(int id);
 
-    IEnumerable<T> GetAll(
+    Task<IEnumerable<T>> GetAllAsync(
         Expression<Func<T, bool>>? filter = null,
         Func<IQueryable<T>, IOrderedQueryable<T>>? orderBy = null,
         string? includeProperties = null
         );
 
-    T GetFirstOrDefault(
+    Task<T> GetFirstOrDefaultAsync(
         Expression<Func<T, bool>>? filter = null,
         string? includeProperties = null
         );
 
-    void Add(T entity);
+    Task AddAsync(T entity);
 
-    void Remove(int id);
+    Task RemoveAsync(int id);
     void Remove(T entity);
   }
 }

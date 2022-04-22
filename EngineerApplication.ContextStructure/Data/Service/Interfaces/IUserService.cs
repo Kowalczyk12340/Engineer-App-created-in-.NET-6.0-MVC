@@ -5,8 +5,8 @@ namespace EngineerApplication.ContextStructure.Data.Service.Interfaces
 {
   public interface IUserService : IRepository<ApplicationUser>
   {
-    void LockUser(string userId);
+    Task LockUserAsync(string userId);
 
-    void UnLockUser(string userId);
+    Task UnLockUserAsync(string userId);
   }
 }

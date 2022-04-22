@@ -26,7 +26,7 @@ namespace EngineerApplication.Areas.Admin.Controllers
       return View();
     }
 
-    public IActionResult Upsert(int? id)
+    public async Task<IActionResult> Upsert(int? id)
     {
       ServiceVM = new ServiceVM()
       {
@@ -34,9 +34,10 @@ namespace EngineerApplication.Areas.Admin.Controllers
         CategoryList = _unitOfWork.Category.GetCategoryListForDropDown(),
         PaymentList = _unitOfWork.Payment.GetPaymentListForDropDown(),
       };
+
       if (id != null)
       {
-        ServiceVM.Service = _unitOfWork.Service.Get(id.GetValueOrDefault());
+        ServiceVM.Service = await _unitOfWork.Service.GetAsync(id.GetValueOrDefault());
       }
 
       return View(ServiceVM);
@@ -44,7 +45,7 @@ namespace EngineerApplication.Areas.Admin.Controllers
 
     [HttpPost]
     [ValidateAntiForgeryToken]
-    public IActionResult Upsert()
+    public async Task<IActionResult> Upsert()
     {
       if (ModelState.IsValid)
       {
@@ -63,12 +64,12 @@ namespace EngineerApplication.Areas.Admin.Controllers
           }
           ServiceVM.Service.ImageUrl = @"\images\Services\" + fileName + extension;
 
-          _unitOfWork.Service.Add(ServiceVM.Service);
+          await _unitOfWork.Service.AddAsync(ServiceVM.Service);
         }
         else
         {
           //Edit Service
-          var ServiceFromDb = _unitOfWork.Service.Get(ServiceVM.Service.Id);
+          var ServiceFromDb = await _unitOfWork.Service.GetAsync(ServiceVM.Service.Id);
           if (files.Count > 0)
           {
             string fileName = Guid.NewGuid().ToString();
@@ -92,9 +93,9 @@ namespace EngineerApplication.Areas.Admin.Controllers
             ServiceVM.Service.ImageUrl = ServiceFromDb.ImageUrl;
           }
 
-          _unitOfWork.Service.Update(ServiceVM.Service);
+          await _unitOfWork.Service.UpdateAsync(ServiceVM.Service);
         }
-        _unitOfWork.Save();
+        await _unitOfWork.SaveAsync();
         return RedirectToAction(nameof(Index));
       }
       else
@@ -105,15 +106,15 @@ namespace EngineerApplication.Areas.Admin.Controllers
       }
     }
     #region API Calls
-    public IActionResult GetAll()
+    public async Task<IActionResult> GetAll()
     {
-      return Json(new { data = _unitOfWork.Service.GetAll(includeProperties: "Category,Payment") });
+      return Json(new { data = await _unitOfWork.Service.GetAllAsync(includeProperties: "Category,Payment") });
     }
 
     [HttpDelete]
-    public IActionResult Delete(int id)
+    public async Task<IActionResult> Delete(int id)
     {
-      var ServiceFromDb = _unitOfWork.Service.Get(id);
+      var ServiceFromDb = await _unitOfWork.Service.GetAsync(id);
       string webRootPath = _hostEnvironment.WebRootPath;
       var imagePath = Path.Combine(webRootPath, ServiceFromDb.ImageUrl.TrimStart('\\'));
       if (System.IO.File.Exists(imagePath))
@@ -127,7 +128,7 @@ namespace EngineerApplication.Areas.Admin.Controllers
       }
 
       _unitOfWork.Service.Remove(ServiceFromDb);
-      _unitOfWork.Save();
+      await _unitOfWork.SaveAsync();
       return Json(new { success = true, message = "Deleted Successfully." });
     }
     #endregion

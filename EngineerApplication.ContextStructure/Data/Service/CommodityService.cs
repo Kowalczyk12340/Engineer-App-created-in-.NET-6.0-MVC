@@ -2,6 +2,7 @@
 using EngineerApplication.ContextStructure.Data.Repository;
 using EngineerApplication.ContextStructure.Data.Service.Interfaces;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.EntityFrameworkCore;
 
 namespace EngineerApplication.ContextStructure.Data.Service
 {
@@ -23,9 +24,9 @@ namespace EngineerApplication.ContextStructure.Data.Service
       });
     }
 
-    public void Update(Commodity Commodity)
+    public async Task UpdateAsync(Commodity Commodity)
     {
-      var objFromDb = _db.Commodity.FirstOrDefault(s => s.Id == Commodity.Id);
+      var objFromDb = await _db.Commodity.FirstOrDefaultAsync(s => s.Id == Commodity.Id);
 
       objFromDb.Name = Commodity.Name;
       objFromDb.LongDesc = Commodity.LongDesc;
@@ -33,7 +34,7 @@ namespace EngineerApplication.ContextStructure.Data.Service
       objFromDb.ImageUrl = Commodity.ImageUrl;
       objFromDb.CategoryId = Commodity.CategoryId;
 
-      _db.SaveChanges();
+      await _db.SaveChangesAsync();
     }
   }
 }

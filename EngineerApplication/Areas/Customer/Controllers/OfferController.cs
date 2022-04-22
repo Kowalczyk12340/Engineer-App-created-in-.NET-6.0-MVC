@@ -21,33 +21,33 @@ namespace EngineerApplication.Areas.Customer.Controllers
       _unitOfWork = unitOfWork;
     }
 
-    public IActionResult Index()
+    public async Task<IActionResult> Index()
     {
       OfferVM = new OfferViewModel()
       {
-        CategoryList = _unitOfWork.Category.GetAll(),
-        CommodityList = _unitOfWork.Commodity.GetAll(includeProperties: "Category"),
-        ServiceList = _unitOfWork.Service.GetAll(includeProperties: "Category,Payment"),
-        EmployeeList = _unitOfWork.Employee.GetAll(includeProperties: "Service"),
+        CategoryList = await _unitOfWork.Category.GetAllAsync(),
+        CommodityList = await _unitOfWork.Commodity.GetAllAsync(includeProperties: "Category"),
+        ServiceList = await _unitOfWork.Service.GetAllAsync(includeProperties: "Category,Payment"),
+        EmployeeList = await _unitOfWork.Employee.GetAllAsync(includeProperties: "Service"),
       };
 
       return View(OfferVM);
     }
 
     [HttpPost]
-    public IActionResult UpdateAmount(int id, int amount)
+    public async Task<IActionResult> UpdateAmount(int id, int amount)
     {
-      var objFromDb = _unitOfWork.Commodity.GetFirstOrDefault(includeProperties: "Category", filter: c => c.Id == id);
+      var objFromDb = await _unitOfWork.Commodity.GetFirstOrDefaultAsync(includeProperties: "Category", filter: c => c.Id == id);
 
       objFromDb.Amount = amount;
 
-      _unitOfWork.Save();
+      await _unitOfWork.SaveAsync();
       return RedirectToAction(nameof(Index));
     }
 
-    public IActionResult Details(int id)
+    public async Task<IActionResult> Details(int id)
     {
-      var CommodityFromDb = _unitOfWork.Commodity.GetFirstOrDefault(includeProperties: "Category", filter: c => c.Id == id);
+      var CommodityFromDb = await _unitOfWork.Commodity.GetFirstOrDefaultAsync(includeProperties: "Category", filter: c => c.Id == id);
       return View(CommodityFromDb);
     }
 

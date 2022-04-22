@@ -16,31 +16,35 @@ namespace EngineerApplication.Areas.Admin.Controllers
       _unitOfWork = unitOfWork;
     }
 
-    public IActionResult Index()
+    public async Task<IActionResult> Index()
     {
-      var claimsIdentity = (ClaimsIdentity)User.Identity;
+      var claimsIdentity = (ClaimsIdentity) User.Identity;
       var claims = claimsIdentity.FindFirst(ClaimTypes.NameIdentifier);
 
-      return View(_unitOfWork.User.GetAll(u => u.Id != claims.Value));
+      return View(await _unitOfWork.User.GetAllAsync(u => u.Id != claims.Value));
     }
 
-    public IActionResult Lock(string id)
+    public async Task<IActionResult> Lock(string id)
     {
-      if (id == null)
+      if (id is null)
       {
         return NotFound();
       }
-      _unitOfWork.User.LockUser(id);
+
+      await _unitOfWork.User.LockUserAsync(id);
+
       return RedirectToAction(nameof(Index));
     }
 
-    public IActionResult UnLock(string id)
+    public async Task<IActionResult> UnLock(string id)
     {
-      if (id == null)
+      if (id is null)
       {
         return NotFound();
       }
-      _unitOfWork.User.UnLockUser(id);
+
+      await _unitOfWork.User.UnLockUserAsync(id);
+
       return RedirectToAction(nameof(Index));
     }
   }

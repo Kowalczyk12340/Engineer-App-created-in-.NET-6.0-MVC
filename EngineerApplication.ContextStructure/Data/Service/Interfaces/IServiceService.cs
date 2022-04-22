@@ -6,7 +6,7 @@ namespace EngineerApplication.ContextStructure.Data.Service.Interfaces
   public interface IServiceService : IRepository<Entities.Service>
   {
     IEnumerable<SelectListItem> GetServiceListForDropDown();
-    void Update(Entities.Service Service);
+    Task UpdateAsync(Entities.Service Service);
   }
 }
 

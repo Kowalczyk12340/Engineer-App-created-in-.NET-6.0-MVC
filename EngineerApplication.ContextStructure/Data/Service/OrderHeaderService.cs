@@ -1,6 +1,7 @@
 ﻿using EngineerApplication.Entities;
 using EngineerApplication.ContextStructure.Data.Repository;
 using EngineerApplication.ContextStructure.Data.Service.Interfaces;
+using Microsoft.EntityFrameworkCore;
 
 namespace EngineerApplication.ContextStructure.Data.Service
 {
@@ -13,11 +14,11 @@ namespace EngineerApplication.ContextStructure.Data.Service
       _db = db;
     }
 
-    public void ChangeOrderStatus(int orderHeaderId, string status)
+    public async Task ChangeOrderStatusAsync(int orderHeaderId, string status)
     {
-      var orderFromDb = _db.OrderHeader.FirstOrDefault(o => o.Id == orderHeaderId);
+      var orderFromDb = await _db.OrderHeader.FirstOrDefaultAsync(o => o.Id == orderHeaderId);
       orderFromDb.Status = status;
-      _db.SaveChanges();
+      await _db.SaveChangesAsync();
     }
   }
 }

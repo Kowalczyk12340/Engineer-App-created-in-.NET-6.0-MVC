@@ -9,8 +9,8 @@ namespace EngineerApplication.Tests.ServiceTest
 {
   public class UserServiceTest
   {
+    private readonly DbContextOptionsBuilder<EngineerDbContext>? _optionsBuilder = new DbContextOptionsBuilder<EngineerDbContext>();
     private Mock<IUserService>? _userService;
-    private DbContextOptionsBuilder<EngineerDbContext>? _optionsBuilder = new DbContextOptionsBuilder<EngineerDbContext>();
     private DbContextOptions<EngineerDbContext>? _options;
 
     [SetUp]
@@ -24,7 +24,7 @@ namespace EngineerApplication.Tests.ServiceTest
     public void TestGetByIdApplicationUser(int id)
     {
       var user = new ApplicationUser { Name = "Marcin", UserName = "Kowalczyk12340", Email = "ambro@ambro.pl", PasswordHash = "Marcingrafik1#" };
-      var resultService = _userService.Setup(p => p.Get(id)).Returns(user);
+      var resultService = _userService.Setup(p => p.GetAsync(id).Result).Returns(user);
       Assert.That(resultService != null);
     }
 
@@ -32,7 +32,7 @@ namespace EngineerApplication.Tests.ServiceTest
     public void TestPostApplicationUserMethodForPage(int id)
     {
       var user1 = new ApplicationUser { Name = "Marcin", UserName = "Kowalczyk12340", Email = "ambro@ambro.pl", PasswordHash = "Marcingrafik1#" };
-      var addedApplicationUser = _userService.Setup(x => x.Get(id)).Returns(user1);
+      var addedApplicationUser = _userService.Setup(x => x.GetAsync(id).Result).Returns(user1);
       Assert.That(addedApplicationUser != null);
     }
 
@@ -41,7 +41,7 @@ namespace EngineerApplication.Tests.ServiceTest
     {
       var user1 = new ApplicationUser { Name = "Marcin", UserName = "Kowalczyk12340", Email = "ambro@ambro.pl", PasswordHash = "Marcingrafik1#" };
       _userService.Setup(x => x.Remove(user1)).Verifiable();
-      var editedApplicationUser = _userService.Setup(x => x.Get(id)).Returns(user1);
+      var editedApplicationUser = _userService.Setup(x => x.GetAsync(id).Result).Returns(user1);
       Assert.IsNotNull(editedApplicationUser);
     }
   }

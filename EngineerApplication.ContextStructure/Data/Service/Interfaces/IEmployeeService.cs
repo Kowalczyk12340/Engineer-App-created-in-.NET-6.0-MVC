@@ -5,6 +5,6 @@ namespace EngineerApplication.ContextStructure.Data.Service.Interfaces
 {
   public interface IEmployeeService : IRepository<Employee>
   {
-    void Update(Employee employee);
+    Task UpdateAsync(Employee employee);
   }
 }

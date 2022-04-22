@@ -25,14 +25,14 @@ namespace EngineerApplication.Areas.Customer.Controllers
       };
     }
 
-    public IActionResult Index()
+    public async Task<IActionResult> Index()
     {
       if (HttpContext.Session.GetObject<List<int>>(UsefulConsts.SessionCart) != null)
       {
         List<int> sessionList = HttpContext.Session.GetObject<List<int>>(UsefulConsts.SessionCart);
         foreach (int CommodityId in sessionList)
         {
-          CartVM.CommodityList.Add(_unitOfWork.Commodity.GetFirstOrDefault(u => u.Id == CommodityId, includeProperties: "Category"));
+          CartVM.CommodityList.Add(await _unitOfWork.Commodity.GetFirstOrDefaultAsync(u => u.Id == CommodityId, includeProperties: "Category"));
           CartVM.SupplierList = _unitOfWork.Supplier.GetSupplierListForDropDown();
           CartVM.PaymentList = _unitOfWork.Payment.GetPaymentListForDropDown();
           CartVM.DeliveryList = _unitOfWork.Delivery.GetDeliveryListForDropDown();
@@ -41,20 +41,20 @@ namespace EngineerApplication.Areas.Customer.Controllers
       return View(CartVM);
     }
 
-    public IActionResult Summary()
+    public async Task<IActionResult> Summary()
     {
       if (HttpContext.Session.GetObject<List<int>>(UsefulConsts.SessionCart) != null)
       {
         List<int> sessionList = HttpContext.Session.GetObject<List<int>>(UsefulConsts.SessionCart);
         foreach (int CommodityId in sessionList)
         {
-          CartVM.CommodityList.Add(_unitOfWork.Commodity.GetFirstOrDefault(u => u.Id == CommodityId, includeProperties: "Category"));
+          CartVM.CommodityList.Add(await _unitOfWork.Commodity.GetFirstOrDefaultAsync(u => u.Id == CommodityId, includeProperties: "Category"));
           CartVM.SupplierList = _unitOfWork.Supplier.GetSupplierListForDropDown();
           CartVM.PaymentList = _unitOfWork.Payment.GetPaymentListForDropDown();
           CartVM.DeliveryList = _unitOfWork.Delivery.GetDeliveryListForDropDown();
-          CartVM.Amount = _unitOfWork.Commodity.GetFirstOrDefault(u => u.Id == CommodityId, includeProperties: "Category").Amount;
+          CartVM.Amount = (await _unitOfWork.Commodity.GetFirstOrDefaultAsync(u => u.Id == CommodityId, includeProperties: "Category")).Amount;
         }
-        _unitOfWork.Save();
+        await _unitOfWork.SaveAsync();
       }
       return View(CartVM);
     }
@@ -62,7 +62,7 @@ namespace EngineerApplication.Areas.Customer.Controllers
     [HttpPost]
     [ValidateAntiForgeryToken]
     [ActionName("Summary")]
-    public IActionResult SummaryPOST()
+    public async Task<IActionResult> SummaryPOST()
     {
       if (HttpContext.Session.GetObject<List<int>>(UsefulConsts.SessionCart) != null)
       {
@@ -70,11 +70,11 @@ namespace EngineerApplication.Areas.Customer.Controllers
         CartVM.CommodityList = new List<Commodity>();
         foreach (int CommodityId in sessionList)
         {
-          CartVM.CommodityList.Add(_unitOfWork.Commodity.Get(CommodityId));
+          CartVM.CommodityList.Add(await _unitOfWork.Commodity.GetAsync(CommodityId));
           CartVM.SupplierList = _unitOfWork.Supplier.GetSupplierListForDropDown();
           CartVM.PaymentList = _unitOfWork.Payment.GetPaymentListForDropDown();
           CartVM.DeliveryList = _unitOfWork.Delivery.GetDeliveryListForDropDown();
-          CartVM.Amount = _unitOfWork.Commodity.GetFirstOrDefault(u => u.Id == CommodityId, includeProperties: "Category").Amount;
+          CartVM.Amount = (await _unitOfWork.Commodity.GetFirstOrDefaultAsync(u => u.Id == CommodityId, includeProperties: "Category")).Amount;
         }
       }
 
@@ -86,8 +86,8 @@ namespace EngineerApplication.Areas.Customer.Controllers
       {
         CartVM.OrderHeader.OrderDate = DateTime.Now;
         CartVM.OrderHeader.Status = UsefulConsts.StatusSubmitted;
-        _unitOfWork.OrderHeader.Add(CartVM.OrderHeader);
-        _unitOfWork.Save();
+        await _unitOfWork.OrderHeader.AddAsync(CartVM.OrderHeader);
+        await _unitOfWork.SaveAsync();
 
         foreach (var item in CartVM.CommodityList)
         {
@@ -99,10 +99,10 @@ namespace EngineerApplication.Areas.Customer.Controllers
             Price = item.Price
           };
 
-          _unitOfWork.OrderDetails.Add(orderDetails);
+          await _unitOfWork.OrderDetails.AddAsync(orderDetails);
 
         }
-        _unitOfWork.Save();
+        await _unitOfWork.SaveAsync();
         HttpContext.Session.SetObject(UsefulConsts.SessionCart, new List<int>());
         return RedirectToAction("OrderConfirmation", "Cart", new { id = CartVM.OrderHeader.Id });
       }

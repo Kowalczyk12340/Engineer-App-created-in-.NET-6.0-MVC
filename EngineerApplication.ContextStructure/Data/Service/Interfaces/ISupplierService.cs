@@ -8,6 +8,6 @@ namespace EngineerApplication.ContextStructure.Data.Service.Interfaces
   {
     IEnumerable<SelectListItem> GetSupplierListForDropDown();
 
-    void Update(Supplier supplier);
+    Task UpdateAsync(Supplier supplier);
   }
 }

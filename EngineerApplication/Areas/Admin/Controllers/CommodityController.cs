@@ -27,7 +27,7 @@ namespace EngineerApplication.Areas.Admin.Controllers
       return View();
     }
 
-    public IActionResult Upsert(int? id)
+    public async Task<IActionResult> Upsert(int? id)
     {
       CommodityVM = new CommodityVM()
       {
@@ -36,7 +36,7 @@ namespace EngineerApplication.Areas.Admin.Controllers
       };
       if (id != null)
       {
-        CommodityVM.Commodity = _unitOfWork.Commodity.Get(id.GetValueOrDefault());
+        CommodityVM.Commodity = await _unitOfWork.Commodity.GetAsync(id.GetValueOrDefault());
       }
 
       return View(CommodityVM);
@@ -44,7 +44,7 @@ namespace EngineerApplication.Areas.Admin.Controllers
 
     [HttpPost]
     [ValidateAntiForgeryToken]
-    public IActionResult Upsert()
+    public async Task<IActionResult> Upsert()
     {
       if (ModelState.IsValid)
       {
@@ -63,12 +63,12 @@ namespace EngineerApplication.Areas.Admin.Controllers
           }
           CommodityVM.Commodity.ImageUrl = @"\images\Services\" + fileName + extension;
 
-          _unitOfWork.Commodity.Add(CommodityVM.Commodity);
+          await _unitOfWork.Commodity.AddAsync(CommodityVM.Commodity);
         }
         else
         {
           //Edit Commodity
-          var CommodityFromDb = _unitOfWork.Commodity.Get(CommodityVM.Commodity.Id);
+          var CommodityFromDb = await _unitOfWork.Commodity.GetAsync(CommodityVM.Commodity.Id);
           if (files.Count > 0)
           {
             string fileName = Guid.NewGuid().ToString();
@@ -92,9 +92,9 @@ namespace EngineerApplication.Areas.Admin.Controllers
             CommodityVM.Commodity.ImageUrl = CommodityFromDb.ImageUrl;
           }
 
-          _unitOfWork.Commodity.Update(CommodityVM.Commodity);
+          await _unitOfWork.Commodity.UpdateAsync(CommodityVM.Commodity);
         }
-        _unitOfWork.Save();
+        await _unitOfWork.SaveAsync();
         return RedirectToAction(nameof(Index));
       }
       else
@@ -104,15 +104,15 @@ namespace EngineerApplication.Areas.Admin.Controllers
       }
     }
     #region API Calls
-    public IActionResult GetAll()
+    public async Task<IActionResult> GetAll()
     {
-      return Json(new { data = _unitOfWork.Commodity.GetAll(includeProperties: "Category") });
+      return Json(new { data = await _unitOfWork.Commodity.GetAllAsync(includeProperties: "Category") });
     }
 
     [HttpDelete]
-    public IActionResult Delete(int id)
+    public async Task<IActionResult> Delete(int id)
     {
-      var CommodityFromDb = _unitOfWork.Commodity.Get(id);
+      var CommodityFromDb = await _unitOfWork.Commodity.GetAsync(id);
       string webRootPath = _hostEnvironment.WebRootPath;
       var imagePath = Path.Combine(webRootPath, CommodityFromDb.ImageUrl.TrimStart('\\'));
       if (System.IO.File.Exists(imagePath))
@@ -126,7 +126,7 @@ namespace EngineerApplication.Areas.Admin.Controllers
       }
 
       _unitOfWork.Commodity.Remove(CommodityFromDb);
-      _unitOfWork.Save();
+      await _unitOfWork.SaveAsync();
       return Json(new { success = true, message = "Deleted Successfully." });
     }
     #endregion

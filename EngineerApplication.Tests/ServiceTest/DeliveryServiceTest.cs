@@ -4,13 +4,14 @@ using EngineerApplication.Entities;
 using Microsoft.EntityFrameworkCore;
 using Moq;
 using NUnit.Framework;
+using System.Threading.Tasks;
 
 namespace EngineerApplication.Tests.ServiceTest
 {
   public class DeliveryServiceTest
   {
+    private readonly DbContextOptionsBuilder<EngineerDbContext>? _optionsBuilder = new();
     private Mock<IDeliveryService>? _deliveryService;
-    private DbContextOptionsBuilder<EngineerDbContext>? _optionsBuilder = new DbContextOptionsBuilder<EngineerDbContext>();
     private DbContextOptions<EngineerDbContext>? _options;
 
     [SetUp]
@@ -24,7 +25,7 @@ namespace EngineerApplication.Tests.ServiceTest
     public void TestGetByIdDelivery(int id)
     {
       var delivery = new Delivery { Name = "Dostawa za pobraniem", DeliveryDesc = "Super Sprawa" };
-      var resultService = _deliveryService.Setup(p => p.Get(id)).Returns(delivery);
+      var resultService = _deliveryService.Setup(p => p.GetAsync(id).Result).Returns(delivery);
       Assert.That(resultService != null);
     }
 
@@ -32,8 +33,8 @@ namespace EngineerApplication.Tests.ServiceTest
     public void TestPostDeliveryMethodForPage(int id)
     {
       var delivery1 = new Delivery { Name = "Dostawa za pobraniem", DeliveryDesc = "Super Sprawa" };
-      _deliveryService.Setup(x => x.Add(delivery1)).Verifiable();
-      var addedDelivery = _deliveryService.Setup(x => x.Get(id)).Returns(delivery1);
+      _deliveryService.Setup(x => x.AddAsync(delivery1).GetAwaiter()).Verifiable();
+      var addedDelivery = _deliveryService.Setup(x => x.GetAsync(id).Result).Returns(delivery1);
       Assert.That(addedDelivery != null);
     }
 
@@ -41,10 +42,10 @@ namespace EngineerApplication.Tests.ServiceTest
     public void TestPutDeliveryMethodForPage(int id)
     {
       var delivery1 = new Delivery { Name = "Dostawa za pobraniem", DeliveryDesc = "Super Sprawa" };
-      _deliveryService.Setup(x => x.Add(delivery1)).Verifiable();
+      _deliveryService.Setup(x => x.AddAsync(delivery1).GetAwaiter()).Verifiable();
       delivery1.Name = "Super Obuwie";
-      _deliveryService.Setup(x => x.Update(delivery1)).Verifiable();
-      var editedDelivery = _deliveryService.Setup(x => x.Get(id)).Returns(delivery1);
+      _deliveryService.Setup(x => x.UpdateAsync(delivery1).GetAwaiter()).Verifiable();
+      var editedDelivery = _deliveryService.Setup(x => x.GetAsync(id).Result).Returns(delivery1);
       Assert.That(editedDelivery != null);
     }
 
@@ -52,9 +53,9 @@ namespace EngineerApplication.Tests.ServiceTest
     public void TestDeleteDeliveryMethodForPage(int id)
     {
       var delivery1 = new Delivery { Name = "Dostawa za pobraniem", DeliveryDesc = "Super Sprawa" };
-      _deliveryService.Setup(x => x.Add(delivery1)).Verifiable();
+      _deliveryService.Setup(x => x.AddAsync(delivery1).GetAwaiter()).Verifiable();
       _deliveryService.Setup(x => x.Remove(delivery1)).Verifiable();
-      var editedDelivery = _deliveryService.Setup(x => x.Get(id)).Returns(delivery1);
+      var editedDelivery = _deliveryService.Setup(x => x.GetAsync(id).Result).Returns(delivery1);
       Assert.IsNotNull(editedDelivery);
     }
   }

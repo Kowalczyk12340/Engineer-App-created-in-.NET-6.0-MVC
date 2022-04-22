@@ -9,8 +9,8 @@ namespace EngineerApplication.Tests.ServiceTest
 {
   public class SupplierServiceTest
   {
+    private readonly DbContextOptionsBuilder<EngineerDbContext>? _optionsBuilder = new();
     private Mock<ISupplierService>? _supplierService;
-    private DbContextOptionsBuilder<EngineerDbContext>? _optionsBuilder = new DbContextOptionsBuilder<EngineerDbContext>();
     private DbContextOptions<EngineerDbContext>? _options;
 
     [SetUp]
@@ -24,7 +24,7 @@ namespace EngineerApplication.Tests.ServiceTest
     public void TestGetByIdSupplier(int id)
     {
       var supplier = new Supplier { Name = "Ambro", City = "Kalisz", EmailAddress = "ambro@ambro.pl" };
-      var resultService = _supplierService.Setup(p => p.Get(id)).Returns(supplier);
+      var resultService = _supplierService.Setup(p => p.GetAsync(id).Result).Returns(supplier);
       Assert.That(resultService != null);
     }
 
@@ -32,7 +32,7 @@ namespace EngineerApplication.Tests.ServiceTest
     public void TestPostSupplierMethodForPage(int id)
     {
       var supplier1 = new Supplier { Name = "Ambro", City = "Kalisz", EmailAddress = "ambro@ambro.pl" };
-      var addedSupplier = _supplierService.Setup(x => x.Get(id)).Returns(supplier1);
+      var addedSupplier = _supplierService.Setup(x => x.GetAsync(id).Result).Returns(supplier1);
       Assert.That(addedSupplier != null);
     }
 
@@ -41,8 +41,8 @@ namespace EngineerApplication.Tests.ServiceTest
     {
       var supplier1 = new Supplier { Name = "Ambro", City = "Kalisz", EmailAddress = "ambro@ambro.pl" };
       supplier1.Name = "Super Obuwie";
-      _supplierService.Setup(x => x.Update(supplier1)).Verifiable();
-      var editedSupplier = _supplierService.Setup(x => x.Get(id)).Returns(supplier1);
+      _supplierService.Setup(x => x.UpdateAsync(supplier1).GetAwaiter()).Verifiable();
+      var editedSupplier = _supplierService.Setup(x => x.GetAsync(id).Result).Returns(supplier1);
       Assert.That(editedSupplier != null);
     }
 
@@ -51,7 +51,7 @@ namespace EngineerApplication.Tests.ServiceTest
     {
       var supplier1 = new Supplier { Name = "Ambro", City = "Kalisz", EmailAddress = "ambro@ambro.pl" };
       _supplierService.Setup(x => x.Remove(supplier1)).Verifiable();
-      var editedSupplier = _supplierService.Setup(x => x.Get(id)).Returns(supplier1);
+      var editedSupplier = _supplierService.Setup(x => x.GetAsync(id).Result).Returns(supplier1);
       Assert.IsNotNull(editedSupplier);
     }
   }

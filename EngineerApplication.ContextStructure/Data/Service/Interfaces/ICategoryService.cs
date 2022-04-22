@@ -11,6 +11,6 @@ namespace EngineerApplication.ContextStructure.Data.Service.Interfaces
   {
     IEnumerable<SelectListItem> GetCategoryListForDropDown();
 
-    void Update(Category category);
+    Task UpdateAsync(Category category);
   }
 }

@@ -14,6 +14,6 @@
 
     ISP_Call SP_Call { get; }
     IUserService User { get; }
-    void Save();
+    Task SaveAsync();
   }
 }

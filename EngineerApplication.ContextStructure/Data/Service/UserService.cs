@@ -1,6 +1,7 @@
 ﻿using EngineerApplication.Entities;
 using EngineerApplication.ContextStructure.Data.Repository;
 using EngineerApplication.ContextStructure.Data.Service.Interfaces;
+using Microsoft.EntityFrameworkCore;
 
 namespace EngineerApplication.ContextStructure.Data.Service
 {
@@ -13,18 +14,18 @@ namespace EngineerApplication.ContextStructure.Data.Service
       _db = db;
     }
 
-    public void LockUser(string userId)
+    public async Task LockUserAsync(string userId)
     {
-      var userFromDb = _db.ApplicationUser.FirstOrDefault(u => u.Id == userId);
+      var userFromDb = await _db.ApplicationUser.FirstOrDefaultAsync(u => u.Id == userId);
       userFromDb.LockoutEnd = DateTime.Now.AddYears(1000);
-      _db.SaveChanges();
+      await _db.SaveChangesAsync();
     }
 
-    public void UnLockUser(string userId)
+    public async Task UnLockUserAsync(string userId)
     {
-      var userFromDb = _db.ApplicationUser.FirstOrDefault(u => u.Id == userId);
+      var userFromDb = await _db.ApplicationUser.FirstOrDefaultAsync(u => u.Id == userId);
       userFromDb.LockoutEnd = DateTime.Now;
-      _db.SaveChanges();
+      await _db.SaveChangesAsync();
     }
   }
 }

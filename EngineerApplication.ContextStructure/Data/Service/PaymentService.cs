@@ -24,14 +24,14 @@ namespace EngineerApplication.ContextStructure.Data.Service
       });
     }
 
-    public void Update(Payment payment)
+    public async Task UpdateAsync(Payment payment)
     {
-      var objFromDb = _db.Payment.FirstOrDefault(s => s.Id == payment.Id);
+      var objFromDb = await _db.Payment.FirstOrDefaultAsync(s => s.Id == payment.Id);
 
       objFromDb.Name = payment.Name;
       objFromDb.Code = payment.Code;
 
-      _db.SaveChanges();
+      await _db.SaveChangesAsync();
     }
   }
 }

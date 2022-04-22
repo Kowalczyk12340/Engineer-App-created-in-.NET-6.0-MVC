@@ -22,61 +22,64 @@ namespace EngineerApplication.Areas.Admin.Controllers
     }
 
     [Authorize]
-    public IActionResult Details(int id)
+    public async Task<IActionResult> Details(int id)
     {
       OrderViewModel orderVM = new()
       {
-        OrderHeader = _unitOfWork.OrderHeader.Get(id),
-        OrderDetails = _unitOfWork.OrderDetails.GetAll(filter: o => o.OrderHeaderId == id),
+        OrderHeader = await _unitOfWork.OrderHeader.GetAsync(id),
+        OrderDetails = await _unitOfWork.OrderDetails.GetAllAsync(filter: o => o.OrderHeaderId == id),
       };
-      orderVM.TimeToOrder = _unitOfWork.OrderHeader.Get(id).TimeToOrder.ToUniversalTime();
-      orderVM.TimeToOrder = _unitOfWork.OrderHeader.Get(id).TimeToRealisation.ToUniversalTime();
-      orderVM.Supplier = _unitOfWork.Supplier.GetFirstOrDefault(filter: o => o.Id == orderVM.OrderHeader.SupplierId);
-      orderVM.Delivery = _unitOfWork.Delivery.GetFirstOrDefault(filter: o => o.Id == orderVM.OrderHeader.DeliveryId);
-      orderVM.Payment = _unitOfWork.Payment.GetFirstOrDefault(filter: o => o.Id == orderVM.OrderHeader.PaymentId);
-      _unitOfWork.Save();
+      orderVM.TimeToOrder = (await _unitOfWork.OrderHeader.GetAsync(id)).TimeToOrder.ToUniversalTime();
+      orderVM.TimeToOrder = (await _unitOfWork.OrderHeader.GetAsync(id)).TimeToRealisation.ToUniversalTime();
+      orderVM.Supplier = await _unitOfWork.Supplier.GetFirstOrDefaultAsync(filter: o => o.Id == orderVM.OrderHeader.SupplierId);
+      orderVM.Delivery = await _unitOfWork.Delivery.GetFirstOrDefaultAsync(filter: o => o.Id == orderVM.OrderHeader.DeliveryId);
+      orderVM.Payment = await _unitOfWork.Payment.GetFirstOrDefaultAsync(filter: o => o.Id == orderVM.OrderHeader.PaymentId);
+      await _unitOfWork.SaveAsync();
       return View(orderVM);
     }
 
     [Authorize(Roles = UsefulConsts.Admin)]
-    public IActionResult Approve(int id)
+    public async Task<IActionResult> Approve(int id)
     {
-      var orderFromDb = _unitOfWork.OrderHeader.Get(id);
-      if (orderFromDb == null)
+      var orderFromDb = await _unitOfWork.OrderHeader.GetAsync(id);
+
+      if (orderFromDb is null)
       {
         return NotFound();
       }
-      _unitOfWork.OrderHeader.ChangeOrderStatus(id, UsefulConsts.StatusApproved);
+      await _unitOfWork.OrderHeader.ChangeOrderStatusAsync(id, UsefulConsts.StatusApproved);
       return View(nameof(Index));
     }
 
     [Authorize(Roles = UsefulConsts.Admin)]
-    public IActionResult Reject(int id)
+    public async Task<IActionResult> Reject(int id)
     {
-      var orderFromDb = _unitOfWork.OrderHeader.Get(id);
-      if (orderFromDb == null)
+      var orderFromDb = await _unitOfWork.OrderHeader.GetAsync(id);
+
+      if (orderFromDb is null)
       {
         return NotFound();
       }
-      _unitOfWork.OrderHeader.ChangeOrderStatus(id, UsefulConsts.StatusRejected);
+
+      await _unitOfWork.OrderHeader.ChangeOrderStatusAsync(id, UsefulConsts.StatusRejected);
       return View(nameof(Index));
     }
     #region API Calls
 
-    public IActionResult GetAllOrders()
+    public async Task<IActionResult> GetAllOrders()
     {
-      return Json(new { data = _unitOfWork.OrderHeader.GetAll() });
+      return Json(new { data = await _unitOfWork.OrderHeader.GetAllAsync() });
     }
 
-    public IActionResult GetAllPendingOrders()
+    public async Task<IActionResult> GetAllPendingOrders()
     {
-      return Json(new { data = _unitOfWork.OrderHeader.GetAll(filter: o => o.Status == UsefulConsts.StatusSubmitted) });
-    }
-    public IActionResult GetAllApprovedOrders()
-    {
-      return Json(new { data = _unitOfWork.OrderHeader.GetAll(filter: o => o.Status == UsefulConsts.StatusApproved) });
+      return Json(new { data = await _unitOfWork.OrderHeader.GetAllAsync(filter: o => o.Status == UsefulConsts.StatusSubmitted) });
     }
 
+    public async Task<IActionResult> GetAllApprovedOrders()
+    {
+      return Json(new { data = await _unitOfWork.OrderHeader.GetAllAsync(filter: o => o.Status == UsefulConsts.StatusApproved) });
+    }
     #endregion
   }
 }

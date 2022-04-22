@@ -2,6 +2,7 @@
 using EngineerApplication.Entities;
 using EngineerApplication.ContextStructure.Data.Repository;
 using EngineerApplication.ContextStructure.Data.Service.Interfaces;
+using Microsoft.EntityFrameworkCore;
 
 namespace EngineerApplication.ContextStructure.Data.Service
 {
@@ -22,14 +23,14 @@ namespace EngineerApplication.ContextStructure.Data.Service
       });
     }
 
-    public void Update(Category category)
+    public async Task UpdateAsync(Category category)
     {
-      var objFromDb = _db.Category.FirstOrDefault(s => s.Id == category.Id);
+      var objFromDb = await _db.Category.FirstOrDefaultAsync(s => s.Id == category.Id);
 
       objFromDb.Name = category.Name;
       objFromDb.DisplayOrder = category.DisplayOrder;
 
-      _db.SaveChanges();
+      await _db.SaveChangesAsync();
 
     }
   }

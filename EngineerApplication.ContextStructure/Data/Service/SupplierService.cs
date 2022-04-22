@@ -2,6 +2,7 @@
 using EngineerApplication.Entities;
 using EngineerApplication.ContextStructure.Data.Repository;
 using EngineerApplication.ContextStructure.Data.Service.Interfaces;
+using Microsoft.EntityFrameworkCore;
 
 namespace EngineerApplication.ContextStructure.Data.Service
 {
@@ -23,9 +24,9 @@ namespace EngineerApplication.ContextStructure.Data.Service
       });
     }
 
-    public void Update(Supplier supplier)
+    public async Task UpdateAsync(Supplier supplier)
     {
-      var objFromDb = _db.Supplier.FirstOrDefault(s => s.Id == supplier.Id);
+      var objFromDb = await _db.Supplier.FirstOrDefaultAsync(s => s.Id == supplier.Id);
 
       objFromDb.Name = supplier.Name;
       objFromDb.City = supplier.City;
@@ -34,7 +35,7 @@ namespace EngineerApplication.ContextStructure.Data.Service
       objFromDb.EmailAddress = supplier.EmailAddress;
       objFromDb.PostalCode = supplier.PostalCode;
 
-      _db.SaveChanges();
+      await _db.SaveChangesAsync();
 
     }
   }

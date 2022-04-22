@@ -2,6 +2,6 @@
 {
   public interface ISeederToDatabase
   {
-    void HighlightDatabase();
+    Task HighlightDatabaseAsync();
   }
 }

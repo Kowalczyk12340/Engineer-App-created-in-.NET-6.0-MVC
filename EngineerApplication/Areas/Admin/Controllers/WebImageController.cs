@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using EngineerApplication.ContextStructure.Data;
 using EngineerApplication.Entities;
+using Microsoft.EntityFrameworkCore;
 
 namespace EngineerApplication.Areas.Admin.Controllers
 {
@@ -22,19 +23,22 @@ namespace EngineerApplication.Areas.Admin.Controllers
 
 
     [Authorize]
-    public IActionResult Upsert(int? id)
+    public async Task<IActionResult> Upsert(int? id)
     {
       WebImages imageObj = new();
+
       if (id is null)
       {
       }
       else
       {
-        imageObj = _db.WebImages.SingleOrDefault(m => m.Id == id);
-        if (imageObj == null)
+        imageObj = await _db.WebImages.SingleOrDefaultAsync(m => m.Id == id);
+
+        if (imageObj is null)
         {
           return NotFound();
         }
+
       }
       return View(imageObj);
     }
@@ -42,7 +46,7 @@ namespace EngineerApplication.Areas.Admin.Controllers
     [Authorize]
     [HttpPost]
     [ValidateAntiForgeryToken]
-    public IActionResult Upsert(int id, WebImages imageObj)
+    public async Task<IActionResult> Upsert(int id, WebImages imageObj)
     {
       if (ModelState.IsValid)
       {
@@ -61,11 +65,11 @@ namespace EngineerApplication.Areas.Admin.Controllers
 
         if (imageObj.Id == 0)
         {
-          _db.WebImages.Add(imageObj);
+          await _db.WebImages.AddAsync(imageObj);
         }
         else
         {
-          var imageFromDb = _db.WebImages.Where(c => c.Id == id).FirstOrDefault();
+          var imageFromDb = await _db.WebImages.Where(c => c.Id == id).FirstOrDefaultAsync();
 
           imageFromDb.Name = imageObj.Name;
           if (files.Count > 0)
@@ -73,24 +77,25 @@ namespace EngineerApplication.Areas.Admin.Controllers
             imageFromDb.Picture = imageObj.Picture;
           }
         }
-        _db.SaveChanges();
+
+        await _db.SaveChangesAsync();
         return RedirectToAction(nameof(Index));
       }
+
       return View(imageObj);
     }
     #region API CALLS
 
     [HttpGet]
-    public IActionResult GetAll()
+    public async Task<IActionResult> GetAll()
     {
-
-      return Json(new { data = _db.WebImages.ToList() });
+      return Json(new { data = await _db.WebImages.ToListAsync() });
     }
 
     [HttpDelete]
-    public IActionResult Delete(int id)
+    public async Task<IActionResult> Delete(int id)
     {
-      var objFromDb = _db.WebImages.Find(id);
+      var objFromDb = await _db.WebImages.FindAsync(id);
       if (objFromDb == null)
       {
         return Json(new { success = false, message = "Error while deleting." });

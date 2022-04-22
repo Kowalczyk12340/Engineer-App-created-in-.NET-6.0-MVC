@@ -9,8 +9,8 @@ namespace EngineerApplication.Tests.ServiceTest
 {
   public class ServiceServiceTest
   {
+    private readonly DbContextOptionsBuilder<EngineerDbContext>? _optionsBuilder = new();
     private Mock<IServiceService>? _serviceService;
-    private DbContextOptionsBuilder<EngineerDbContext>? _optionsBuilder = new DbContextOptionsBuilder<EngineerDbContext>();
     private DbContextOptions<EngineerDbContext>? _options;
 
     [SetUp]
@@ -24,7 +24,7 @@ namespace EngineerApplication.Tests.ServiceTest
     public void TestGetByIdService(int id)
     {
       var service = new Entities.Service { Name = "Sportowe Obuwie", Payment = new Payment { Name = "Big", Code = "ennjej45" }, Category = new Category { Name = "Super Kategoria", DisplayOrder = 3 } };
-      var resultService = _serviceService.Setup(p => p.Get(id)).Returns(service);
+      var resultService = _serviceService.Setup(p => p.GetAsync(id).Result).Returns(service);
       Assert.That(resultService != null);
     }
 
@@ -32,8 +32,8 @@ namespace EngineerApplication.Tests.ServiceTest
     public void TestPostServiceMethodForPage(int id)
     {
       var service1 = new Entities.Service { Name = "Sportowe Obuwie", Payment = new Payment { Name = "Big", Code = "ennjej45" }, Category = new Category { Name = "Super Kategoria", DisplayOrder = 3 } };
-      _serviceService.Setup(x => x.Add(service1)).Verifiable();
-      var addedEntities = _serviceService.Setup(x => x.Get(id)).Returns(service1);
+      _serviceService.Setup(x => x.AddAsync(service1).GetAwaiter()).Verifiable();
+      var addedEntities = _serviceService.Setup(x => x.GetAsync(id).Result).Returns(service1);
       Assert.That(addedEntities != null);
     }
 
@@ -41,10 +41,10 @@ namespace EngineerApplication.Tests.ServiceTest
     public void TestPutServiceMethodForPage(int id)
     {
       var service1 = new Entities.Service { Name = "Sportowe Obuwie", Payment = new Payment { Name = "Big", Code = "ennjej45" }, Category = new Category { Name = "Super Kategoria", DisplayOrder = 3 } };
-      _serviceService.Setup(x => x.Add(service1)).Verifiable();
+      _serviceService.Setup(x => x.AddAsync(service1).GetAwaiter()).Verifiable();
       service1.Name = "Super Obuwie";
-      _serviceService.Setup(x => x.Update(service1)).Verifiable();
-      var editedEntities = _serviceService.Setup(x => x.Get(id)).Returns(service1);
+      _serviceService.Setup(x => x.UpdateAsync(service1).GetAwaiter()).Verifiable();
+      var editedEntities = _serviceService.Setup(x => x.GetAsync(id).Result).Returns(service1);
       Assert.That(editedEntities != null);
     }
 
@@ -52,9 +52,9 @@ namespace EngineerApplication.Tests.ServiceTest
     public void TestDeleteServiceMethodForPage(int id)
     {
       var service1 = new Entities.Service { Name = "Sportowe Obuwie", Payment = new Payment { Name = "Big", Code = "ennjej45" }, Category = new Category { Name = "Super Kategoria", DisplayOrder = 3 } };
-      _serviceService.Setup(x => x.Add(service1)).Verifiable();
+      _serviceService.Setup(x => x.AddAsync(service1).GetAwaiter()).Verifiable();
       _serviceService.Setup(x => x.Remove(service1)).Verifiable();
-      var editedService = _serviceService.Setup(x => x.Get(id)).Returns(service1);
+      var editedService = _serviceService.Setup(x => x.GetAsync(id).Result).Returns(service1);
       Assert.IsNotNull(editedService);
     }
   }

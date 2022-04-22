@@ -5,6 +5,6 @@ namespace EngineerApplication.ContextStructure.Data.Service.Interfaces
 {
   public interface IOrderHeaderService : IRepository<OrderHeader>
   {
-    void ChangeOrderStatus(int orderHeaderId, string status);
+    Task ChangeOrderStatusAsync(int orderHeaderId, string status);
   }
 }

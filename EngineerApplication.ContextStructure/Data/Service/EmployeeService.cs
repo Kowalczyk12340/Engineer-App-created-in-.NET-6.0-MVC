@@ -2,6 +2,7 @@
 using EngineerApplication.ContextStructure.Data.Repository;
 using EngineerApplication.ContextStructure.Data.Service.Interfaces;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.EntityFrameworkCore;
 
 namespace EngineerApplication.ContextStructure.Data.Service
 {
@@ -14,16 +15,16 @@ namespace EngineerApplication.ContextStructure.Data.Service
       _db = db;
     }
 
-    public void Update(Employee employee)
+    public async Task UpdateAsync(Employee employee)
     {
-      var objFromDb = _db.Employee.FirstOrDefault(s => s.Id == employee.Id);
+      var objFromDb = await _db.Employee.FirstOrDefaultAsync(s => s.Id == employee.Id);
 
       objFromDb.Name = employee.Name;
       objFromDb.PhoneNumber = employee.PhoneNumber;
       objFromDb.EmailAddress = employee.EmailAddress;
       objFromDb.EmployeeDesc = employee.EmployeeDesc;
 
-      _db.SaveChanges();
+      await _db.SaveChangesAsync();
     }
   }
 }

@@ -8,6 +8,7 @@ using Microsoft.Extensions.Hosting;
 using NUnit.Framework;
 using System.Collections.Generic;
 using System.Net.Http;
+using Microsoft.EntityFrameworkCore;
 
 namespace EngineerApplication.Tests.ControllerTest
 {
