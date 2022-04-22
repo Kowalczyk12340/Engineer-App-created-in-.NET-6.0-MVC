@@ -42,7 +42,7 @@ namespace EngineerApplication.Tests.ServiceTest
     public void TestPutCommodityMethodForPage(int id)
     {
       var commodity1 = new Commodity { Name = "Sportowe Obuwie", Category = new Category { Name = "Super Kategoria", DisplayOrder = 3 } };
-      _commodityService.Setup(x => x.AddAsync(commodity1).GetAwaiter()).Verifiable();
+      _commodityService.Setup(x => x.AddAsync(commodity1)).Verifiable();
       commodity1.Name = "Super Obuwie";
       _commodityService.Setup(x => x.UpdateAsync(commodity1)).Verifiable();
       var editedCommodity = _commodityService.Setup(x => x.GetAsync(id).Result).Returns(commodity1);
@@ -53,7 +53,7 @@ namespace EngineerApplication.Tests.ServiceTest
     public void TestDeleteCommodityMethodForPage(int id)
     {
       var commodity1 = new Commodity { Name = "Sportowe Obuwie", Category = new Category { Name = "Super Kategoria", DisplayOrder = 3 } };
-      _commodityService.Setup(x => x.AddAsync(commodity1).GetAwaiter()).Verifiable();
+      _commodityService.Setup(x => x.AddAsync(commodity1)).Verifiable();
       _commodityService.Setup(x => x.Remove(commodity1)).Verifiable();
       var editedCommodity = _commodityService.Setup(x => x.GetAsync(id).Result).Returns(commodity1);
       Assert.IsNotNull(editedCommodity);

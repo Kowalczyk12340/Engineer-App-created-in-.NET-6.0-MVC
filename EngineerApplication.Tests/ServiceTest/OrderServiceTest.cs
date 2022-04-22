@@ -5,6 +5,7 @@ using EngineerApplication.Helpers;
 using Microsoft.EntityFrameworkCore;
 using Moq;
 using NUnit.Framework;
+using System.Threading.Tasks;
 
 namespace EngineerApplication.Tests.ServiceTest
 {
@@ -41,7 +42,7 @@ namespace EngineerApplication.Tests.ServiceTest
     public void TestCheckOrderStatusMethodForPage(int id)
     {
       var order1 = new OrderHeader { Name = "Order for Food" };
-      var addedOrder = _orderHeader.Setup(x => x.ChangeOrderStatusAsync(id, UsefulConsts.StatusApproved).GetAwaiter());
+      var addedOrder = Task.FromResult(_orderHeader.Setup(x => x.ChangeOrderStatusAsync(id, UsefulConsts.StatusApproved)));
       Assert.That(addedOrder != null);
     }
 

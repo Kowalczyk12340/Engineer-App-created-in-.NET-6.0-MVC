@@ -41,7 +41,7 @@ namespace EngineerApplication.Tests.ServiceTest
     {
       var supplier1 = new Supplier { Name = "Ambro", City = "Kalisz", EmailAddress = "ambro@ambro.pl" };
       supplier1.Name = "Super Obuwie";
-      _supplierService.Setup(x => x.UpdateAsync(supplier1).GetAwaiter()).Verifiable();
+      _supplierService.Setup(x => x.UpdateAsync(supplier1)).Verifiable();
       var editedSupplier = _supplierService.Setup(x => x.GetAsync(id).Result).Returns(supplier1);
       Assert.That(editedSupplier != null);
     }

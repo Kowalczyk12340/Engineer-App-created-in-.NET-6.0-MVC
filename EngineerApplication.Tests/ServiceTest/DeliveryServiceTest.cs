@@ -33,7 +33,7 @@ namespace EngineerApplication.Tests.ServiceTest
     public void TestPostDeliveryMethodForPage(int id)
     {
       var delivery1 = new Delivery { Name = "Dostawa za pobraniem", DeliveryDesc = "Super Sprawa" };
-      _deliveryService.Setup(x => x.AddAsync(delivery1).GetAwaiter()).Verifiable();
+      _deliveryService.Setup(x => x.AddAsync(delivery1)).Verifiable();
       var addedDelivery = _deliveryService.Setup(x => x.GetAsync(id).Result).Returns(delivery1);
       Assert.That(addedDelivery != null);
     }
@@ -42,9 +42,9 @@ namespace EngineerApplication.Tests.ServiceTest
     public void TestPutDeliveryMethodForPage(int id)
     {
       var delivery1 = new Delivery { Name = "Dostawa za pobraniem", DeliveryDesc = "Super Sprawa" };
-      _deliveryService.Setup(x => x.AddAsync(delivery1).GetAwaiter()).Verifiable();
+      _deliveryService.Setup(x => x.AddAsync(delivery1)).Verifiable();
       delivery1.Name = "Super Obuwie";
-      _deliveryService.Setup(x => x.UpdateAsync(delivery1).GetAwaiter()).Verifiable();
+      _deliveryService.Setup(x => x.UpdateAsync(delivery1)).Verifiable();
       var editedDelivery = _deliveryService.Setup(x => x.GetAsync(id).Result).Returns(delivery1);
       Assert.That(editedDelivery != null);
     }
@@ -53,7 +53,7 @@ namespace EngineerApplication.Tests.ServiceTest
     public void TestDeleteDeliveryMethodForPage(int id)
     {
       var delivery1 = new Delivery { Name = "Dostawa za pobraniem", DeliveryDesc = "Super Sprawa" };
-      _deliveryService.Setup(x => x.AddAsync(delivery1).GetAwaiter()).Verifiable();
+      _deliveryService.Setup(x => x.AddAsync(delivery1)).Verifiable();
       _deliveryService.Setup(x => x.Remove(delivery1)).Verifiable();
       var editedDelivery = _deliveryService.Setup(x => x.GetAsync(id).Result).Returns(delivery1);
       Assert.IsNotNull(editedDelivery);

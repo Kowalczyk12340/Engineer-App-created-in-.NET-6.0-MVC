@@ -44,7 +44,7 @@ namespace EngineerApplication.Tests.ServiceTest
     {
       var employee1 = new Employee { Name = "Karol Wojtczak", EmployeeDesc = "Spora oferta", PhoneNumber = "809786634", EmailAddress = "karol.wojtczak@wp.pl" };
       employee1.Name = "Super Obuwie";
-      _employeeService.Setup(x => x.UpdateAsync(employee1).GetAwaiter()).Verifiable();
+      _employeeService.Setup(x => x.UpdateAsync(employee1)).Verifiable();
       var editedEmployee = _employeeService.Setup(x => x.GetAsync(id).Result).Returns(employee1);
       Assert.That(editedEmployee != null);
     }

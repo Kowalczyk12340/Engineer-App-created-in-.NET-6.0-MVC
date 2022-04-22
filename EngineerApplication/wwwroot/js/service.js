@@ -14,9 +14,10 @@ function loadDataTable() {
         },
         "columns": [
             { "data": "name", "width": "20%" },
-            { "data": "category.name", "width": "20%" },
-            { "data": "price", "width": "15%" },
-            { "data": "payment.name", "width": "20%" },
+            { "data": "category.name", "width": "15%" },
+            { "data": "price", "width": "10%" },
+            { "data": "payment.name", "width": "15%" },
+            { "data": "longDesc", "width": "15%" },
             {
                 "data": "id",
                 "render": function (data) {
