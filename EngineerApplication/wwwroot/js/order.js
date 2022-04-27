@@ -19,6 +19,12 @@ $(document).ready(function ()
         }
 
     }
+
+    $(function () {
+        $("#btnSubmit").click(function () {
+            $("input[name='GridHtml']").val($("#tblData").html());
+        });
+    });
 });
 
 function loadDataTable(url) {

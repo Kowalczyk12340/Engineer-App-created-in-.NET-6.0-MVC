@@ -852,4 +852,10 @@
   <data name="Pay" xml:space="preserve">
     <value>Pay</value>
   </data>
+  <data name="ExportToPdf" xml:space="preserve">
+    <value>Export as PDF</value>
+  </data>
+  <data name="VATPrice" xml:space="preserve">
+    <value>VAT price</value>
+  </data>
 </root>

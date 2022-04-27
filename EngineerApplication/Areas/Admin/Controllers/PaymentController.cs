@@ -20,6 +20,16 @@ namespace EngineerApplication.Areas.Admin.Controllers
       return View();
     }
 
+    [HttpPost]
+    public IActionResult Export(string GridHtml)
+    {
+      using (MemoryStream stream = new MemoryStream())
+      {
+        HtmlConverter.ConvertToPdf(GridHtml, stream);
+        return File(stream.ToArray(), "application/pdf", $"OrderData_{DateTime.UtcNow}.pdf", true);
+      }
+    }
+
     public async Task<IActionResult> Upsert(int? id)
     {
       Payment payment = new();

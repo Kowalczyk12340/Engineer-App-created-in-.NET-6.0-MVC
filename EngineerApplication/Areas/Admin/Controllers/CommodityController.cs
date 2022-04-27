@@ -43,6 +43,16 @@ namespace EngineerApplication.Areas.Admin.Controllers
     }
 
     [HttpPost]
+    public IActionResult Export(string GridHtml)
+    {
+      using (MemoryStream stream = new MemoryStream())
+      {
+        HtmlConverter.ConvertToPdf(GridHtml, stream);
+        return File(stream.ToArray(), "application/pdf", $"OrderData_{DateTime.UtcNow}.pdf", true);
+      }
+    }
+
+    [HttpPost]
     [ValidateAntiForgeryToken]
     public async Task<IActionResult> Upsert()
     {

@@ -47,5 +47,7 @@ namespace EngineerApplication.Entities
 
     [Required]
     public DateTime TimeToRealisation { get; set; } = DateTime.UtcNow.AddDays(14);
+
+    public string? InfoToPdf { get; set; }
   }
 }

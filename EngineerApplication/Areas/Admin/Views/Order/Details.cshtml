@@ -51,7 +51,7 @@
                                         <label>@localizer.Get("Address")</label>
                                     </div>
                                     <div class="col-9">
-                                        <input asp-for="OrderHeader.Address" type="text" readonly  class="form-control" />
+                                        <input asp-for="OrderHeader.Address" type="text" readonly class="form-control" />
                                     </div>
                                 </div>
                                 <div class="row my-1">
@@ -59,7 +59,7 @@
                                         <label>@localizer.Get("City")</label>
                                     </div>
                                     <div class="col-9">
-                                        <input asp-for="OrderHeader.City" type="text" readonly  class="form-control" />
+                                        <input asp-for="OrderHeader.City" type="text" readonly class="form-control" />
                                     </div>
                                 </div>
                                 <div class="row my-1">
@@ -67,7 +67,7 @@
                                         <label>@localizer.Get("ZipCode")</label>
                                     </div>
                                     <div class="col-9">
-                                        <input asp-for="OrderHeader.ZipCode" type="text" readonly  class="form-control" />
+                                        <input asp-for="OrderHeader.ZipCode" type="text" readonly class="form-control" />
                                     </div>
                                 </div>
                                 <div class="row my-1">
@@ -124,7 +124,9 @@
                                     <span class="text-primary">@localizer.Get("OrderSummary")</span>
                                 </h4>
                                 <ul class="list-group mb-3">
-                                    @{ var total = 0.0;}
+                                    @{
+                                        var total = 0.0;
+                                    }
 
                                     @foreach (var details in Model.OrderDetails)
                                     {
@@ -132,7 +134,8 @@
                                             <div>
                                                 <input type="hidden" asp-for="@details.Id" />
                                                 <h6 class="my-0">@details.CommodityName</h6>
-                                                <small class="text-muted">@localizer.Get("Price") : $@Math.Round(details.Price)</small>
+                                                <small class="text-muted">@localizer.Get("Price") : $@Math.Round(details.Price, 2)</small>
+                                                <small class="text-muted">@localizer.Get("VATPrive") : $(@Math.Round((0.23 * details.Price), 2))</small>
                                             </div>
                                         </li>
                                     }

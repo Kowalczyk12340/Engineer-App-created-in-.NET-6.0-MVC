@@ -117,7 +117,7 @@
                                   <span class="text-primary">@localizer.Get("OrderSummary")</span>
                               </h4>
                               <ul class="list-group mb-3">
-                                  @{ var total = 0.0;}
+                                  @{ var total = 0.0; var vat = 0.23 * total;}
 
                                   @foreach(var details in Model.CommodityList)
                                   {
@@ -134,19 +134,17 @@
                                   }
 
                                   <li class="list-group-item d-flex justify-content-between bg-light">
-                                      <small class="text-primary">@localizer.Get("TotalUSD")</small>
+                                      <small class="text-primary">@localizer.Get("TotalUSD") brutto</small>
                                       <strong class="text-primary">$@Math.Round(total, 2)</strong>
                                   </li>
-
+                                  <li class="list-group-item d-flex justify-content-between bg-light">
+                                      <small class="text-primary">@localizer.Get("VATPrice")</small>
+                                      <strong class="text-primary">@vat</strong>
+                                  </li>
                               </ul>
                           </div>
                       </div>
                   </div>
-                </div>
-                <div class="card-footer">
-                    <div class="col-12 col-md-6 offset-md-6 col-lg-4 offset-lg-8 text-right">
-                        <button type="submit" class="btn btn-success form-control">@localizer.Get("Pay")</button>
-                    </div>
                 </div>
                 <div class="card-footer">
                     <div class="col-12 col-md-6 offset-md-6 col-lg-4 offset-lg-8 text-right">

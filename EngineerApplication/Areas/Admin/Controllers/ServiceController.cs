@@ -105,6 +105,17 @@ namespace EngineerApplication.Areas.Admin.Controllers
         return View(ServiceVM);
       }
     }
+
+    [HttpPost]
+    public IActionResult Export(string GridHtml)
+    {
+      using (MemoryStream stream = new MemoryStream())
+      {
+        HtmlConverter.ConvertToPdf(GridHtml, stream);
+        return File(stream.ToArray(), "application/pdf", $"OrderData_{DateTime.UtcNow}.pdf", true);
+      }
+    }
+
     #region API Calls
     public async Task<IActionResult> GetAll()
     {

@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using EngineerApplication.ContextStructure.Data.Service.Interfaces;
 using EngineerApplication.Entities.ViewModels;
 using EngineerApplication.Helpers;
+using iText.Html2pdf;
 
 namespace EngineerApplication.Areas.Admin.Controllers
 {
@@ -63,6 +64,17 @@ namespace EngineerApplication.Areas.Admin.Controllers
 
       await _unitOfWork.OrderHeader.ChangeOrderStatusAsync(id, UsefulConsts.StatusRejected);
       return View(nameof(Index));
+    }
+
+
+    [HttpPost]
+    public IActionResult Export(string GridHtml)
+    {
+      using (MemoryStream stream = new MemoryStream())
+      {
+        HtmlConverter.ConvertToPdf(GridHtml, stream);
+        return File(stream.ToArray(), "application/pdf", $"OrderData_{DateTime.UtcNow}.pdf", true);
+      }
     }
     #region API Calls
 
