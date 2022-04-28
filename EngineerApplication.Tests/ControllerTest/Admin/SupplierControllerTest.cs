@@ -28,7 +28,9 @@ namespace EngineerApplication.Tests.ControllerTest.Admin
     {
       var supplierItem = new Supplier()
       {
-        Name = "Stol",
+        Name = "Ambro Express",
+        City = "Kalisz",
+        PhoneNumber = "509892812"
       };
       var supplier = await Client.PostAsJsonAsync("/Admin/Supplier", supplierItem);
       Assert.IsNotNull(supplier.RequestMessage);
@@ -65,6 +67,19 @@ namespace EngineerApplication.Tests.ControllerTest.Admin
     {
       var supplier = await Client.GetAsync("/Admin/Supplier");
       Assert.IsNotNull(supplier.Content);
+    }
+
+    [Test]
+    public async Task TestExportToPdfMethod()
+    {
+      var supplierItem = new Supplier()
+      {
+        Name = "Ambro Express",
+        City = "Kalisz",
+        PhoneNumber = "509892812"
+      };
+      var supplier = await Client.PostAsJsonAsync("/Admin/Supplier/export", supplierItem);
+      Assert.IsNotNull(supplier.RequestMessage);
     }
   }
 }

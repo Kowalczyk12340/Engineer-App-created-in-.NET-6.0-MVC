@@ -66,5 +66,16 @@ namespace EngineerApplication.Tests.ControllerTest.Admin
       var order = await Client.GetAsync("/Admin/Order");
       Assert.IsNotNull(order.Content);
     }
+
+    [Test]
+    public async Task TestExportToPdfMethod()
+    {
+      var orderItem = new OrderHeader()
+      {
+        Name = "Fantastic order for Tesco",
+      };
+      var order = await Client.PostAsJsonAsync("/Admin/Order/export", orderItem);
+      Assert.IsNotNull(order.RequestMessage);
+    }
   }
 }

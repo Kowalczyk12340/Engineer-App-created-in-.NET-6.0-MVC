@@ -66,5 +66,16 @@ namespace EngineerApplication.Tests.ControllerTest.Admin
       var employee = await Client.GetAsync("/Admin/Employee");
       Assert.IsNotNull(employee.Content);
     }
+
+    [Test]
+    public async Task TestExportToPdfMethod()
+    {
+      var employeeItem = new Employee()
+      {
+        Name = "Fantastic employee for Tesco",
+      };
+      var employee = await Client.PostAsJsonAsync("/Admin/Employee/export", employeeItem);
+      Assert.IsNotNull(employee.RequestMessage);
+    }
   }
 }

@@ -66,5 +66,16 @@ namespace EngineerApplication.Tests.ControllerTest.Admin
       var delivery = await Client.GetAsync("/Admin/Delivery");
       Assert.IsNotNull(delivery.Content);
     }
+
+    [Test]
+    public async Task TestExportToPdfMethod()
+    {
+      var deliveryItem = new Delivery()
+      {
+        Name = "Dostawa Taxi",
+      };
+      var delivery = await Client.PostAsJsonAsync("/Admin/Commodity/export", deliveryItem);
+      Assert.IsNotNull(delivery.RequestMessage);
+    }
   }
 }

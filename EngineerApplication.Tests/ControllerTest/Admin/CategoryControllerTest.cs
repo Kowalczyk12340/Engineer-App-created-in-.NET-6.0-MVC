@@ -68,5 +68,17 @@ namespace EngineerApplication.Tests.ControllerTest.Admin
       var category = await Client.GetAsync("/Admin/Category");
       Assert.IsNotNull(category.Content);
     }
+
+    [Test]
+    public async Task TestExportToPdfMethod()
+    {
+      var categoryItem = new Category()
+      {
+        Name = "Szczotki Sportowe",
+        DisplayOrder = 8
+      };
+      var category = await Client.PostAsJsonAsync("/Admin/Category/export", categoryItem);
+      Assert.IsNotNull(category.RequestMessage);
+    }
   }
 }

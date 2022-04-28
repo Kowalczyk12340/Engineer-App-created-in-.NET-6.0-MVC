@@ -76,5 +76,20 @@ namespace EngineerApplication.Tests.ControllerTest.Admin
       var service = await Client.GetAsync("/Admin/Service");
       Assert.IsNotNull(service.Content);
     }
+
+    [Test]
+    public async Task TestExportToPdfMethod()
+    {
+      var serviceItem = new Service()
+      {
+        Name = "Przewóz wozem strażackim",
+        CategoryId = 1,
+        PaymentId = 1,
+        LongDesc = "Description for firefigthers",
+        Price = 87.90,
+      };
+      var service = await Client.PostAsJsonAsync("/Admin/Service/export", serviceItem);
+      Assert.IsNotNull(service.RequestMessage);
+    }
   }
 }

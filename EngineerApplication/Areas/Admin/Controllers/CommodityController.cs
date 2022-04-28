@@ -43,13 +43,13 @@ namespace EngineerApplication.Areas.Admin.Controllers
       return View(CommodityVM);
     }
 
-    [HttpPost]
+    [HttpPost("export")]
     public IActionResult Export(string GridHtml)
     {
       using (MemoryStream stream = new MemoryStream())
       {
         HtmlConverter.ConvertToPdf(GridHtml, stream);
-        return File(stream.ToArray(), "application/pdf", $"OrderData_{DateTime.UtcNow}.pdf", true);
+        return File(stream.ToArray(), "application/pdf", $"CommodityData_{DateTime.UtcNow}.pdf", true);
       }
     }
 

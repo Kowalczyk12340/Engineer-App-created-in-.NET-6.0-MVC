@@ -74,5 +74,19 @@ namespace EngineerApplication.Tests.ControllerTest.Admin
       var commodity = await Client.GetAsync("/Admin/Commodity");
       Assert.IsNotNull(commodity.Content);
     }
+
+    [Test]
+    public async Task TestExportToPdfMethod()
+    {
+      var commodityItem = new Commodity()
+      {
+        Name = "Buty Adidas",
+        CategoryId = 1,
+        LongDesc = "Description for sport item",
+        Price = 87.90,
+      };
+      var commodity = await Client.PostAsJsonAsync("/Admin/Commodity/export", commodityItem);
+      Assert.IsNotNull(commodity.RequestMessage);
+    }
   }
 }

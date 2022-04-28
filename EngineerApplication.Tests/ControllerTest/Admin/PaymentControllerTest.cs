@@ -68,5 +68,17 @@ namespace EngineerApplication.Tests.ControllerTest.Admin
       var payment = await Client.GetAsync("/Admin/Payment");
       Assert.IsNotNull(payment.Content);
     }
+
+    [Test]
+    public async Task TestExportToPdfMethod()
+    {
+      var paymentItem = new Payment()
+      {
+        Name = "High Five",
+        Code = "hdbhenj484"
+      };
+      var payment = await Client.PostAsJsonAsync("/Admin/Payment/export", paymentItem);
+      Assert.IsNotNull(payment.RequestMessage);
+    }
   }
 }

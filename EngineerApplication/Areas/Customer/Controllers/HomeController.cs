@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using iText.Html2pdf;
+using Microsoft.AspNetCore.Mvc;
 
 namespace EngineerApplication.Areas.Customer.Controllers
 {
@@ -8,6 +9,16 @@ namespace EngineerApplication.Areas.Customer.Controllers
     public IActionResult Index()
     {
       return View();
+    }
+
+    [HttpPost("export")]
+    public IActionResult Export(string GridHtml)
+    {
+      using (MemoryStream stream = new MemoryStream())
+      {
+        HtmlConverter.ConvertToPdf(GridHtml, stream);
+        return File(stream.ToArray(), "application/pdf", $"HomeData_{DateTime.UtcNow}.pdf", true);
+      }
     }
   }
 }

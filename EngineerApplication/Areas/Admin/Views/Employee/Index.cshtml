@@ -33,6 +33,14 @@
         </thead>
     </table>
 </div>
+<div class="row">
+    <div class="col-12 col-lg-5 offset-lg-1">
+        <form asp-action="Export" asp-controller="Employee" method="post">
+            <input type="hidden" name="GridHtml" />
+            <input class="btn btn-success" type="submit" id="btnSubmit" value="@localizer.Get("ExportToPdf")" />
+        </form>
+    </div>
+</div>
 @section Scripts{
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.js"></script>
 <script src="~/js/employee.js"></script>

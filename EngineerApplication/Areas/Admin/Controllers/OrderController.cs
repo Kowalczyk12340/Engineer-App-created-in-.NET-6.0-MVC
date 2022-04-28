@@ -4,7 +4,7 @@ using EngineerApplication.ContextStructure.Data.Service.Interfaces;
 using EngineerApplication.Entities.ViewModels;
 using EngineerApplication.Helpers;
 using iText.Html2pdf;
-using iText.Html2pdf;
+using System.Globalization;
 
 namespace EngineerApplication.Areas.Admin.Controllers
 {
@@ -67,8 +67,7 @@ namespace EngineerApplication.Areas.Admin.Controllers
       return View(nameof(Index));
     }
 
-
-    [HttpPost]
+    [HttpPost("export")]
     public IActionResult Export(string GridHtml)
     {
       using (MemoryStream stream = new MemoryStream())

@@ -68,6 +68,14 @@
     {
         <p>@localizer.Get("NoUserExists")...</p>
     }
+</div>
 
+<div class="row">
+    <div class="col-12 col-lg-5 offset-lg-1">
+        <form asp-action="Export" asp-controller="User" method="post">
+            <input type="hidden" name="GridHtml" />
+            <input class="btn btn-success" type="submit" id="btnSubmit" value="@localizer.Get("ExportToPdf")" />
+        </form>
+    </div>
 </div>
 

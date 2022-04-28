@@ -75,5 +75,20 @@ namespace EngineerApplication.Tests.ControllerTest.Admin
       var user = await Client.GetAsync("/Admin/User");
       Assert.IsNotNull(user.Content);
     }
+
+    [Test]
+    public async Task TestExportToPdfMethod()
+    {
+      var userItem = new ApplicationUser()
+      {
+        Name = "Marcin Kowalczyk",
+        Email = "marcinkowalczyk11@wp.pl",
+        PasswordHash = "Marcingrafik1#",
+        City = "Kalisz",
+        PhoneNumber = "506093843"
+      };
+      var user = await Client.PostAsJsonAsync("/Admin/User/export", userItem);
+      Assert.IsNotNull(user.RequestMessage);
+    }
   }
 }
