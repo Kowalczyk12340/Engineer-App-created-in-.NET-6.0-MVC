@@ -40,7 +40,7 @@
                             <div class="col-12 col-md-5 row pt-3">
                                 <div class="col-6 text-md-right" style="padding-top:5px;">
                                     <h6><strong class="text-danger">@localizer.Get("Price"): @((Math.Round((item.Price * item.Amount), 2)).ToString("c")) brutto</strong></h6>
-                                    <h6><strong class="text-danger">@localizer.Get("VATPrice"): @((0.23 * (item.Price * item.Amount)))</strong></h6>
+                                    <h6><strong class="text-danger">@localizer.Get("VATPrice"): @((Math.Round((0.23 *(item.Price * item.Amount)), 2)).ToString("c"))</strong></h6>
                                 </div>
                                 <div class="col-6 text-right">
                                     <button type="submit" class="btn btn-outline-danger" asp-action="remove" asp-route-CommodityId="@item.Id">
