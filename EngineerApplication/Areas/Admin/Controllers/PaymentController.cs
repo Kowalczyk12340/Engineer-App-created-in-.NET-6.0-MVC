@@ -21,7 +21,7 @@ namespace EngineerApplication.Areas.Admin.Controllers
       return View();
     }
 
-    [HttpPost("export")]
+    [HttpPost("exportPayment")]
     public IActionResult Export(string GridHtml)
     {
       using (MemoryStream stream = new MemoryStream())

@@ -58,7 +58,7 @@ namespace EngineerApplication.Areas.Admin.Controllers
       return View(delivery);
     }
 
-    [HttpPost("export")]
+    [HttpPost("exportDelivery")]
     public IActionResult Export(string GridHtml)
     {
       using (MemoryStream stream = new MemoryStream())

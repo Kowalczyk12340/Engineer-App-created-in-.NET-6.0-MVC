@@ -25,7 +25,7 @@ namespace EngineerApplication.Areas.Admin.Controllers
       return View(await _unitOfWork.User.GetAllAsync(u => u.Id != claims.Value));
     }
 
-    [HttpPost("export")]
+    [HttpPost("exportUser")]
     public IActionResult Export(string GridHtml)
     {
       using (MemoryStream stream = new MemoryStream())

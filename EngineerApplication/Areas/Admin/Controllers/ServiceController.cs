@@ -107,7 +107,7 @@ namespace EngineerApplication.Areas.Admin.Controllers
       }
     }
 
-    [HttpPost("export")]
+    [HttpPost("exportService")]
     public IActionResult Export(string GridHtml)
     {
       using (MemoryStream stream = new MemoryStream())
