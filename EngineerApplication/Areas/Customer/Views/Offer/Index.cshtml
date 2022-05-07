@@ -3,7 +3,7 @@
 @model EngineerApplication.Entities.ViewModels.OfferViewModel
 
 <h1 class="text-success">@localizer.Get("Offer")</h1>
-
+<h3 class="text-success">@localizer.Get("Commodities")</h3>
 @foreach (var category in Model.CategoryList.OrderBy(o => o.DisplayOrder))
 {
     @if (Model.CommodityList.Where(c => c.CategoryId == category.Id).Count() > 0)
@@ -45,6 +45,11 @@
             </div>
         </div>
     }
+}
+
+<h3 class="text-success">@localizer.Get("Services")</h3>
+@foreach (var category in Model.CategoryList.OrderBy(o => o.DisplayOrder))
+{
     @if (Model.ServiceList.Where(c => c.CategoryId == category.Id).Count() > 0)
     {
         <div class="row container pb-3 backgroundWhite">

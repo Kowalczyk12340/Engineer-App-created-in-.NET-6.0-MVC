@@ -858,4 +858,7 @@
   <data name="VATPrice" xml:space="preserve">
     <value>VAT Preis</value>
   </data>
+  <data name="DescApp2" xml:space="preserve">
+    <value>Die Anwendung ist für Einzelkunden oder Unternehmen gedacht, die sich mit Industrieautomation, Robotik, Energie und verwandten Bereichen befassen. Privatkunden, aber auch Manager, Kaufleute, Ingenieure und Designer finden bei uns Zulieferungen. Für alles werden die gesamten BRUTTO-Beträge berechnet, inklusive Mehrwertsteuer. Die Anwendung bietet die Möglichkeit, Waren aus einer spezialisierten Branche ohne Lagerhaltung zu kaufen, sondern indem die vorgeschlagenen, spezialisierten Waren und Dienstleistungen für den Kunden in beliebigen Mengen bestellt werden, die der Kunde benötigt. Der Kunde hat das Recht, die Zahlungsmethode, die Liefermethode und einen bestimmten Lieferanten während des Warentransports zu wählen, und erhält auch Kontaktdaten von Mitarbeitern, die auf einen bestimmten Bereich spezialisiert sind.</value>
+  </data>
 </root>

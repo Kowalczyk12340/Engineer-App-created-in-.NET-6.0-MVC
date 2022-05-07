@@ -858,4 +858,7 @@
   <data name="VATPrice" xml:space="preserve">
     <value>VAT price</value>
   </data>
+  <data name="DescApp2" xml:space="preserve">
+    <value>The application is intended for individual customers or companies that deal with industrial automation, robotics, energy and related fields. Private clients, as well as managers, traders, engineers and designers can find supplies from us. For everything, the total GROSS amounts are calculated, including VAT. The application gives the opportunity to purchase goods from a specialized industry without keeping stock, but by ordering the proposed, specialized goods and services for the customer in any quantities needed by the customer. The customer has the right to choose the method of payment, delivery method, and a specific supplier during the transport of goods, and also has contact details provided to employees specialized in a given field.</value>
+  </data>
 </root>
