@@ -1,0 +1,8 @@
+version: '3.4'
+
+services:
+  engineerapplication:
+    image: ${DOCKER_REGISTRY-}engineerapplication
+    build:
+      context: .
+      dockerfile: EngineerApplication\Dockerfile
