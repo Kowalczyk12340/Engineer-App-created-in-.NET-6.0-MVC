@@ -32,7 +32,6 @@ namespace EngineerApplication.ContextStructure.Data.Repository
       {
         query = query.Where(filter);
       }
-      //include properties will be comma seperated
       if (includeProperties != null)
       {
         foreach (var includeProperty in includeProperties.Split(new char[] { ',' }, StringSplitOptions.RemoveEmptyEntries))
