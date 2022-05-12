@@ -8,7 +8,6 @@ using Microsoft.Extensions.Hosting;
 using NUnit.Framework;
 using System.Collections.Generic;
 using System.Net.Http;
-using Microsoft.EntityFrameworkCore;
 
 namespace EngineerApplication.Tests.ControllerTest
 {
@@ -40,7 +39,6 @@ namespace EngineerApplication.Tests.ControllerTest
       Client = webApplicationFactory.WithWebHostBuilder(builder
           => builder.ConfigureTestServices(services =>
           {
-            // allow anonymous access to bypass authorization
             services.AddMvc(opt => opt.Filters.Add(new AllowAnonymousFilter()));
           })).CreateClient();
     }

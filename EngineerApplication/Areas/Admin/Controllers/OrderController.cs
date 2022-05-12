@@ -4,7 +4,6 @@ using EngineerApplication.ContextStructure.Data.Service.Interfaces;
 using EngineerApplication.Entities.ViewModels;
 using EngineerApplication.Helpers;
 using iText.Html2pdf;
-using System.Globalization;
 
 namespace EngineerApplication.Areas.Admin.Controllers
 {
