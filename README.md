@@ -5,6 +5,8 @@ In this application is possible to manage wholesaler app.
 Abstract of thesis
 The main objective of the following thesis was the creation of a project and the implementation of a web application that deals with supporting the work of wholesale merchandise trade, typical for the employees of the company. The application has a user who can have administrator rights and an ordinary wholesaler. Their powers are similar. The application allows all CRUD operations (Create, Read, Update, Delete) for database entities such as Product Category, Frequency, Supplier, Delivery, Goods, Offer. The above project makes it possible to create an order made from a certain product, created in the system, which has a certain quantity based on the order of the customer to whom the order is addressed at a certain address. You have the option to accept, reject or have your order wait. The administrator has the right, unlike an ordinary employee, to register, block and unlock new users that are available in the system. The web application implemented in this project is a simple but extremely useful tool for the work of the wholesale trade. The project was implemented on . NET using the ASP . NET Core MVC Framework. This application was implemented in C# with . NET 6. 0. The entire code solution is created with Visual Studio Community 2022. The application also has a relational database in T-SQL that can be easily accessed with Microsoft SQL Server Management Studio 18.
 
+### Architectural pattern: repository and unit of work
+
 # Structure of project
 
 ### Description of the implementation
