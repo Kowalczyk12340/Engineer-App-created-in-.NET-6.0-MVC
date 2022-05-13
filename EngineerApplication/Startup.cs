@@ -31,7 +31,10 @@ namespace EngineerApplication
 
       services.AddDbContext<EngineerDbContext>(options =>
           options.UseSqlServer(
-              Configuration.GetConnectionString("Database")));
+              Configuration.GetConnectionString("Database")))
+        .AddDbContext<EngineerDbContext>(options =>
+          options.UseSqlServer(
+              Configuration.GetConnectionString("AzureDatabase")));
       services.AddIdentity<IdentityUser, IdentityRole>()
           .AddEntityFrameworkStores<EngineerDbContext>()
           .AddDefaultTokenProviders();
