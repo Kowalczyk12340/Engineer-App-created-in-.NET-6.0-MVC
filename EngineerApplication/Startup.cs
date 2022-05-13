@@ -22,21 +22,21 @@ namespace EngineerApplication
 
     public IConfiguration Configuration { get; }
 
-    public void ConfigureServices(IServiceCollection Services)
+    public void ConfigureServices(IServiceCollection services)
     {
-      Services.Configure<CookiePolicyOptions>(options =>
+      services.Configure<CookiePolicyOptions>(options =>
       {
         options.CheckConsentNeeded = context => true;
       });
 
-      Services.AddDbContext<EngineerDbContext>(options =>
+      services.AddDbContext<EngineerDbContext>(options =>
           options.UseSqlServer(
               Configuration.GetConnectionString("Database")));
-      Services.AddIdentity<IdentityUser, IdentityRole>()
+      services.AddIdentity<IdentityUser, IdentityRole>()
           .AddEntityFrameworkStores<EngineerDbContext>()
           .AddDefaultTokenProviders();
 
-      Services.Configure<RequestLocalizationOptions>(options =>
+      services.Configure<RequestLocalizationOptions>(options =>
       {
         var supportedCultures = new[]
         {
@@ -49,23 +49,23 @@ namespace EngineerApplication
         options.SupportedUICultures = supportedCultures;
       });
 
-      Services.AddSingleton<IEmailSender, EmailSender>();
-      Services.AddMvc().AddViewLocalization().AddRazorOptions(options =>
+      services.AddSingleton<IEmailSender, EmailSender>();
+      services.AddMvc().AddViewLocalization().AddRazorOptions(options =>
       {
         options.ViewLocationFormats.Add("/{0}.cshtml");
       });
-      Services.AddSingleton<CommonLocalizationService>();
-      Services.AddScoped<IUnitOfWork, UnitOfWork>();
-      Services.AddScoped<ISeederToDatabase, SeederToDatabase>();
-      Services.AddSession(options =>
+      services.AddSingleton<CommonLocalizationService>();
+      services.AddScoped<IUnitOfWork, UnitOfWork>();
+      services.AddScoped<ISeederToDatabase, SeederToDatabase>();
+      services.AddSession(options =>
       {
-        options.IdleTimeout = TimeSpan.FromMinutes(20);
+        options.IdleTimeout = TimeSpan.FromMinutes(30);
         options.Cookie.HttpOnly = true;
         options.Cookie.IsEssential = true;
       });
-      Services.AddLocalization(options => options.ResourcesPath = "Resources");
-      Services.AddControllersWithViews().AddNewtonsoftJson().AddRazorRuntimeCompilation();
-      Services.AddRazorPages();
+      services.AddLocalization(options => options.ResourcesPath = "Resources");
+      services.AddControllersWithViews().AddNewtonsoftJson().AddRazorRuntimeCompilation();
+      services.AddRazorPages();
     }
 
     public void Configure(IApplicationBuilder app, IWebHostEnvironment env, ISeederToDatabase seeder)
