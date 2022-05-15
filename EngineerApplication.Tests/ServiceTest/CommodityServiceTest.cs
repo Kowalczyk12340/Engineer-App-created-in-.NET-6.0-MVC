@@ -4,7 +4,6 @@ using EngineerApplication.Entities;
 using Microsoft.EntityFrameworkCore;
 using Moq;
 using NUnit.Framework;
-using System.Threading.Tasks;
 
 namespace EngineerApplication.Tests.ServiceTest
 {
