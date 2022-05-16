@@ -295,7 +295,7 @@
     <value>Dostawy</value>
   </data>
   <data name="DeliveryList" xml:space="preserve">
-    <value>Lista dostawców</value>
+    <value>Lista dostaw</value>
   </data>
   <data name="DeliveryName" xml:space="preserve">
     <value>Nazwa dostawcy</value>
