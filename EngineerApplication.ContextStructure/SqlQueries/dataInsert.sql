@@ -1,1 +1,1 @@
-﻿
+﻿INSERT INTO dbo.Category (Name, DisplayOrder) VALUES ('Złączki', 1);
