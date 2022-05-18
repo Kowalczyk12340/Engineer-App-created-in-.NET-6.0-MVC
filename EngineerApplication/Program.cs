@@ -138,3 +138,5 @@ void SeedDatabase()
   var dbSeeder = scope.ServiceProvider.GetRequiredService<ISeederToDatabase>();
   dbSeeder.HighlightDatabaseAsync();
 }
+
+public partial class Program { }

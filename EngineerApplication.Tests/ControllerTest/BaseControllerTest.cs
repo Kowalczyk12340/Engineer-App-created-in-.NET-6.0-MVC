@@ -26,7 +26,7 @@ namespace EngineerApplication.Tests.ControllerTest
           config.AddInMemoryCollection(new Dictionary<string, string>() { ["ConnectionStrings:Database"] = @"Data Source=DESKTOP-VPKE3ES\\SQLEXPRESS;Initial Catalog=EngineerDatabase;Integrated Security=True" });
           config.AddEnvironmentVariables();
         })
-        .ConfigureWebHostDefaults(webBuilder => { webBuilder.UseStartup<Startup>(); })
+        .ConfigureWebHostDefaults(webBuilder => { webBuilder.UseStartup<Program>(); })
         .ConfigureWebHost(webHost => { webHost.UseIISIntegration(); });
     }
 
