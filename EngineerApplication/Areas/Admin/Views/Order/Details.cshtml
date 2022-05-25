@@ -136,7 +136,7 @@
                                                 <h6 class="my-0">@details.CommodityName</h6>
                                                 <small class="text-muted">@localizer.Get("Price") : $@Math.Round(details.Price, 2)</small>
                                                 <small class="text-muted">@localizer.Get("VATPrive") : $(@Math.Round((0.23 * details.Price), 2))</small>
-                                                <small class="text-muted">@localizer.Get("NettoPrice") : ($@Math.Round(details.Price, 2) - $(@Math.Round((0.23 * details.Price), 2)))</small>
+                                                <small class="text-muted">@localizer.Get("NettoPrice") : ($(@Math.Round((0.77 * details.Price), 2)))</small>
                                             </div>
                                         </li>
                                     }
