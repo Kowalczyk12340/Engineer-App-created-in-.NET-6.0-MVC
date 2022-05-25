@@ -861,4 +861,7 @@
   <data name="DescApp2" xml:space="preserve">
     <value>Aplikacja jest przeznaczona dla klientów indywidualnych, bądź firm, które zajmują się automatyką przemysłową, robotyką, energetyką i pokrewnymi dziedzinami. Zaopatrzyć się u nas moga prywatni klienci, ale także menedżerowie, handlowcy, inżynierowie oraz projektanci. Na wszystko wyliczane są kwoty całkowite BRUTTO, wraz z VAT-em. Aplikacja daje możliwość zakupu towarów z wyspecjalizowanej branży, nie prowadząc stanu magazynowego, lecz zamawiając dla klienta proponowane, wyspecjalizowane towary i usługi w dowolnych ilościach, potrzebnych klientowi. Klient ma prawo wyboru sposobu płatności, sposobu dostawy, oraz konkretnego dostawcy podczas transportu towarów, a także ma podane dane kontaktowe do wyspecjalizowanych w danej dziedzinie pracowników.</value>
   </data>
+  <data name="NettoPrice" xml:space="preserve">
+    <value>Cena Netto</value>
+  </data>
 </root>

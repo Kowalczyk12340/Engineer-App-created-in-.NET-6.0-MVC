@@ -25,7 +25,10 @@
         <thead>
             <tr>
                 <th>@localizer.Get("Picture")</th>
-                <th></th>
+                @if (User.IsInRole(UsefulConsts.Admin))
+                {
+                    <th></th>
+                }
             </tr>
         </thead>
     </table>
