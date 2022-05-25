@@ -43,12 +43,10 @@
                 <div class="col-8 offset-4">
                     @if(Model.Id != 0)
                     {
-                        //Edit button and back to list
                         <partial name="_EditAndBackToListButton" model="Model.Id" />
                     }
                     else
                     {
-                        //Create button and back to list
                         <partial name="_CreateAndBackToListButton" />
                     }
                 </div>

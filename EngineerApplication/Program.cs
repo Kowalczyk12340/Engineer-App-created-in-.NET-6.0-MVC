@@ -119,7 +119,9 @@ app.UseRouting();
 app.UseAuthentication();
 app.UseAuthorization();
 
+#pragma warning disable CS8602 // Wy³uskanie odwo³ania, które mo¿e mieæ wartoœæ null.
 var localizationOptions = app.Services.GetService<IOptions<RequestLocalizationOptions>>().Value;
+#pragma warning restore CS8602 // Wy³uskanie odwo³ania, które mo¿e mieæ wartoœæ null.
 app.UseRequestLocalization(localizationOptions);
 
 app.UseEndpoints(endpoints =>
