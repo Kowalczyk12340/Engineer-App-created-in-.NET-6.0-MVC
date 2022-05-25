@@ -35,6 +35,14 @@ namespace EngineerApplication.Tests.ControllerTest.Admin
     }
 
     [Test]
+    public void ReturnSuitableViewNameForIndex()
+    {
+      var controller = new OrderController(_unitOfWork.Object);
+      var result = controller.Index() as ViewResult;
+      Assert.AreEqual("Index", result.ViewName);
+    }
+
+    [Test]
     public async Task TestPutOrderMethodForPage()
     {
       var orderItem = new OrderHeader()

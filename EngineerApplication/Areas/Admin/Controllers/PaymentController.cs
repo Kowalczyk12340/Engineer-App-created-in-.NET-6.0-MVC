@@ -18,7 +18,7 @@ namespace EngineerApplication.Areas.Admin.Controllers
     }
     public IActionResult Index()
     {
-      return View();
+      return View("Index");
     }
 
     [HttpPost("exportPayment")]

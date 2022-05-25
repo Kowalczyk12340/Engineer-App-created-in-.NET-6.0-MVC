@@ -38,7 +38,7 @@ namespace EngineerApplication.Areas.Customer.Controllers
           CartVM.DeliveryList = _unitOfWork.Delivery.GetDeliveryListForDropDown();
         }
       }
-      return View(CartVM);
+      return View("Index", CartVM);
     }
 
     public async Task<IActionResult> Summary()

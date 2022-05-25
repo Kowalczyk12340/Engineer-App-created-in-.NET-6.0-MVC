@@ -28,8 +28,10 @@ namespace EngineerApplication.Areas.Admin.Controllers
       WebImages imageObj = new();
 
       if (id is null)
+#pragma warning disable S108 // Nested blocks of code should not be left empty
       {
       }
+#pragma warning restore S108 // Nested blocks of code should not be left empty
       else
       {
         imageObj = await _db.WebImages.SingleOrDefaultAsync(m => m.Id == id);

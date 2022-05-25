@@ -22,7 +22,7 @@ namespace EngineerApplication.Areas.Admin.Controllers
       var claimsIdentity = (ClaimsIdentity) User.Identity;
       var claims = claimsIdentity.FindFirst(ClaimTypes.NameIdentifier);
 
-      return View(await _unitOfWork.User.GetAllAsync(u => u.Id != claims.Value));
+      return View("Index", await _unitOfWork.User.GetAllAsync(u => u.Id != claims.Value));
     }
 
     [HttpPost("exportUser")]

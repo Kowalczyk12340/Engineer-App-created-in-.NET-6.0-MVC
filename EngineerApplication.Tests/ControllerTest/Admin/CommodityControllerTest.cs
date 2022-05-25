@@ -40,6 +40,14 @@ namespace EngineerApplication.Tests.ControllerTest.Admin
     }
 
     [Test]
+    public void ReturnSuitableViewNameForIndex()
+    {
+      var controller = new CommodityController(_unitOfWork.Object, _hostEnvironment);
+      var result = controller.Index() as ViewResult;
+      Assert.AreEqual("Index", result.ViewName);
+    }
+
+    [Test]
     public async Task TestPutCommodityMethodForPage()
     {
       var commodityItem = new Commodity()

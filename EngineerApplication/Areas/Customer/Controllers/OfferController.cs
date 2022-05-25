@@ -32,7 +32,7 @@ namespace EngineerApplication.Areas.Customer.Controllers
         EmployeeList = await _unitOfWork.Employee.GetAllAsync(includeProperties: "Service"),
       };
 
-      return View(OfferVM);
+      return View("Index", OfferVM);
     }
 
     [HttpPost]

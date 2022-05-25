@@ -36,6 +36,14 @@ namespace EngineerApplication.Tests.ControllerTest.Admin
     }
 
     [Test]
+    public void ReturnSuitableViewNameForIndex()
+    {
+      var controller = new CategoryController(_unitOfWork.Object);
+      var result = controller.Index() as ViewResult;
+      Assert.AreEqual("Index", result.ViewName);
+    }
+
+    [Test]
     public async Task TestPutCategoryMethodForPage()
     {
       var categoryItem = new Category()

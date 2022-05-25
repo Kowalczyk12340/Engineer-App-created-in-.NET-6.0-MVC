@@ -41,6 +41,14 @@ namespace EngineerApplication.Tests.ControllerTest.Admin
     }
 
     [Test]
+    public void ReturnSuitableViewNameForIndex()
+    {
+      var controller = new ServiceController(_unitOfWork.Object, _hostEnvironment);
+      var result = controller.Index() as ViewResult;
+      Assert.AreEqual("Index", result.ViewName);
+    }
+
+    [Test]
     public async Task TestPutServiceMethodForPage()
     {
       var serviceItem = new Service()

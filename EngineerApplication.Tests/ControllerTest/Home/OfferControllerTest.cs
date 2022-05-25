@@ -1,10 +1,22 @@
-﻿using NUnit.Framework;
+﻿using EngineerApplication.Areas.Customer.Controllers;
+using EngineerApplication.ContextStructure.Data.Service.Interfaces;
+using Microsoft.AspNetCore.Mvc;
+using Moq;
+using NUnit.Framework;
 using System.Threading.Tasks;
 
 namespace EngineerApplication.Tests.ControllerTest.Offer
 {
   public class OfferControllerTest : BaseControllerTest
   {
+    private Mock<IUnitOfWork>? _unitOfWork;
+
+    [SetUp]
+    public void Setup()
+    {
+      _unitOfWork = new Mock<IUnitOfWork>();
+    }
+
     [Test]
     public async Task TestGetMethodForOfferPage()
     {
