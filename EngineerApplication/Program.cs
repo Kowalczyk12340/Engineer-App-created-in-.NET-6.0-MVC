@@ -17,7 +17,7 @@ var config = builder.Configuration;
 var services = builder.Services;
 
 #if DEBUG
-services.AddMvc(options => options.EnableEndpointRouting = false).AddRazorRuntimeCompilation();
+services.AddRazorPages().AddRazorRuntimeCompilation();
 #else
     services.AddMvc(options => options.EnableEndpointRouting = false);
 #endif
@@ -51,7 +51,7 @@ services.Configure<RequestLocalizationOptions>(options =>
 });
 
 services.AddSingleton<IEmailSender, EmailSender>();
-services.AddMvc().AddViewLocalization().AddRazorOptions(options =>
+services.AddRazorPages().AddViewLocalization().AddRazorOptions(options =>
 {
   options.ViewLocationFormats.Add("/{0}.cshtml");
 });

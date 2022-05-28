@@ -28,7 +28,7 @@ namespace EngineerApplication.Tests.ControllerTest.Admin
     {
       var categoryItem = new Category()
       {
-        Name = "Szczotki Sportowe",
+        Name = "Szczotki Druciane",
         DisplayOrder = 8
       };
       var category = await Client.PostAsJsonAsync("/Admin/Category", categoryItem);

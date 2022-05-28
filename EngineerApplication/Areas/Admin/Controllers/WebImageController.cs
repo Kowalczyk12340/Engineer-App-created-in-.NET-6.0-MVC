@@ -18,7 +18,7 @@ namespace EngineerApplication.Areas.Admin.Controllers
 
     public IActionResult Index()
     {
-      return View();
+      return View("Index");
     }
 
 
@@ -59,7 +59,7 @@ namespace EngineerApplication.Areas.Admin.Controllers
           using (var fs1 = files[0].OpenReadStream())
           {
             using var ms1 = new MemoryStream();
-            fs1.CopyTo(ms1);
+            await fs1.CopyToAsync(ms1);
             p1 = ms1.ToArray();
           }
           imageObj.Picture = p1;
@@ -104,7 +104,7 @@ namespace EngineerApplication.Areas.Admin.Controllers
       }
 
       _db.WebImages.Remove(objFromDb);
-      _db.SaveChanges();
+      await _db.SaveChangesAsync();
       return Json(new { success = true, message = "Delete successful." });
 
     }
