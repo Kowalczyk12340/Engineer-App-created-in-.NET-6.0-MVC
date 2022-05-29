@@ -14,15 +14,11 @@ namespace EngineerApplication.Tests.ControllerTest.Admin
   {
     private Mock<IUnitOfWork> _unitOfWork;
     private readonly IWebHostEnvironment _hostEnvironment;
-    private CommodityController _commodityController;
-    private ActionContext _context;
 
     [SetUp]
     public void Setup()
     {
       _unitOfWork = new Mock<IUnitOfWork>();
-      _commodityController = new CommodityController(_unitOfWork.Object, _hostEnvironment);
-      _context = new ActionContext();
     }
 
     [Test]
@@ -30,9 +26,9 @@ namespace EngineerApplication.Tests.ControllerTest.Admin
     {
       var commodityItem = new Commodity()
       {
-        Name = "Buty Adidas",
+        Name = "Złączka Wtykowa PTTV",
         CategoryId = 1,
-        LongDesc = "Description for sport item",
+        LongDesc = "Złączka wtykowa PTTV, która wspomaga podłączenie wężów do wody",
         Price = 87.90,
       };
       var commodity = await Client.PostAsJsonAsync("/Admin/Commodity", commodityItem);
@@ -52,9 +48,9 @@ namespace EngineerApplication.Tests.ControllerTest.Admin
     {
       var commodityItem = new Commodity()
       {
-        Name = "Buty Adidas",
+        Name = "Złączka Wtykowa PTTV",
         CategoryId = 1,
-        LongDesc = "Description for sport item",
+        LongDesc = "Złączka wtykowa PTTV, która wspomaga podłączenie wężów do wody",
         Price = 87.90,
       };
       var commodity = await Client.PostAsJsonAsync("/Admin/Commodity/1", commodityItem);
@@ -88,9 +84,9 @@ namespace EngineerApplication.Tests.ControllerTest.Admin
     {
       var commodityItem = new Commodity()
       {
-        Name = "Buty Adidas",
+        Name = "Złączka Wtykowa PTTV",
         CategoryId = 1,
-        LongDesc = "Description for sport item",
+        LongDesc = "Złączka wtykowa PTTV, która wspomaga podłączenie wężów do wody",
         Price = 87.90,
       };
       var commodity = await Client.PostAsJsonAsync("/Admin/Commodity/export", commodityItem);

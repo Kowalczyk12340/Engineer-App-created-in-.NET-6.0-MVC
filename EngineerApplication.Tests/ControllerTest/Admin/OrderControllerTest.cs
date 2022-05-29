@@ -12,15 +12,11 @@ namespace EngineerApplication.Tests.ControllerTest.Admin
   public class OrderControllerTest : BaseControllerTest
   {
     private Mock<IUnitOfWork>? _unitOfWork;
-    private OrderController? _orderController;
-    private ActionContext? _context;
 
     [SetUp]
     public void Setup()
     {
       _unitOfWork = new Mock<IUnitOfWork>();
-      _orderController = new OrderController(_unitOfWork.Object);
-      _context = new ActionContext();
     }
 
     [Test]
@@ -29,6 +25,8 @@ namespace EngineerApplication.Tests.ControllerTest.Admin
       var orderItem = new OrderHeader()
       {
         Name = "Fantastic order for Tesco",
+        Address = "Ziemięcin 24",
+        Phone = "512139685"
       };
       var order = await Client.PostAsJsonAsync("/Admin/Order", orderItem);
       Assert.IsNotNull(order.RequestMessage);
@@ -48,6 +46,8 @@ namespace EngineerApplication.Tests.ControllerTest.Admin
       var orderItem = new OrderHeader()
       {
         Name = "Fantastic order for Ambro",
+        Address = "Ziemięcin 24",
+        Phone = "512139685"
       };
       var order = await Client.PostAsJsonAsync("/Admin/Order/1", orderItem);
       Assert.IsNotNull(order.RequestMessage);
@@ -81,6 +81,8 @@ namespace EngineerApplication.Tests.ControllerTest.Admin
       var orderItem = new OrderHeader()
       {
         Name = "Fantastic order for Tesco",
+        Address = "Ziemięcin 24",
+        Phone = "512139685"
       };
       var order = await Client.PostAsJsonAsync("/Admin/Order/export", orderItem);
       Assert.IsNotNull(order.RequestMessage);

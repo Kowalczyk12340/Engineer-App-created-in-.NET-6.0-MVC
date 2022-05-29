@@ -25,7 +25,7 @@ namespace EngineerApplication.Tests.ServiceTest
     [TestCase(1)]
     public void TestGetByIdOrder(int id)
     {
-      var order1 = new OrderHeader { Name = "Order for Food" };
+      var order1 = new OrderHeader { Name = "Zamówienie złączek" };
       var resultService = _orderHeader.Setup(p => p.GetAsync(id).Result).Returns(order1);
       Assert.That(resultService != null);
     }
@@ -33,7 +33,7 @@ namespace EngineerApplication.Tests.ServiceTest
     [TestCase(1)]
     public void TestPostOrderMethodForPage(int id)
     {
-      var order1 = new OrderHeader { Name = "Order for Food" };
+      var order1 = new OrderHeader { Name = "Zamówienie złączek" };
       var addedOrder = _orderHeader.Setup(x => x.GetAsync(id).Result).Returns(order1);
       Assert.That(addedOrder != null);
     }
@@ -41,7 +41,7 @@ namespace EngineerApplication.Tests.ServiceTest
     [TestCase(1)]
     public void TestCheckOrderStatusMethodForPage(int id)
     {
-      var order1 = new OrderHeader { Name = "Order for Food" };
+      var order1 = new OrderHeader { Name = "Zamówienie złączek" };
       var addedOrder = Task.FromResult(_orderHeader.Setup(x => x.ChangeOrderStatusAsync(id, UsefulConsts.StatusApproved)));
       Assert.That(addedOrder != null);
     }
@@ -49,7 +49,7 @@ namespace EngineerApplication.Tests.ServiceTest
     [TestCase(1)]
     public void TestDeleteOrderMethodForPage(int id)
     {
-      var order1 = new OrderHeader { Name = "Order for Food" };
+      var order1 = new OrderHeader { Name = "Zamówienie złączek" };
       _orderHeader.Setup(x => x.Remove(order1)).Verifiable();
       var editedOrder = _orderHeader.Setup(x => x.GetAsync(id).Result).Returns(order1);
       Assert.IsNotNull(editedOrder);

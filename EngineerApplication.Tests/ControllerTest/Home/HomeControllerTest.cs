@@ -22,7 +22,7 @@ namespace EngineerApplication.Tests.ControllerTest.Home
     {
       var homeItem = new Delivery()
       {
-        Name = "Dostawa Taxi",
+        Name = "Dostawa Kurierska Pobraniowa",
       };
       var home = await Client.PostAsJsonAsync("/Customer/Home/export", homeItem);
       Assert.IsNotNull(home.RequestMessage);

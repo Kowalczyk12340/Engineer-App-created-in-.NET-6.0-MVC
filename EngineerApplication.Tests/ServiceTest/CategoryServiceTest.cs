@@ -23,7 +23,7 @@ namespace EngineerApplication.Tests.ServiceTest
     [TestCase(1)]
     public void TestGetByIdCategory(int id)
     {
-      var category = new Category { Name = "Sportowe Obuwie", DisplayOrder = 8 };
+      var category = new Category { Name = "Śruby Imbusowe", DisplayOrder = 8 };
       var resultService = _categoryService.Setup(p => p.GetAsync(id).Result).Returns(category);
       Assert.That(resultService != null);
     }
@@ -31,7 +31,7 @@ namespace EngineerApplication.Tests.ServiceTest
     [TestCase(1)]
     public void TestPostCategoryMethodForPage(int id)
     {
-      var category1 = new Category { Name = "Eleganckie Obuwie", DisplayOrder = 9 };
+      var category1 = new Category { Name = "Amortyzatory ssawek", DisplayOrder = 9 };
       _categoryService.Setup(x => x.AddAsync(category1)).Verifiable();
       var addedCategory = _categoryService.Setup(p => p.GetAsync(id).Result).Returns(category1);
       Assert.That(addedCategory != null);
@@ -40,7 +40,7 @@ namespace EngineerApplication.Tests.ServiceTest
     [TestCase(1)]
     public void TestPutCategoryMethodForPage(int id)
     {
-      var category1 = new Category { Name = "Eleganckie Obuwie", DisplayOrder = 9 };
+      var category1 = new Category { Name = "Amortyzatory ssawek", DisplayOrder = 9 };
       _categoryService.Setup(x => x.AddAsync(category1)).Verifiable();
       category1.Name = "Super Obuwie";
       _categoryService.Setup(x => x.UpdateAsync(category1)).Verifiable();
@@ -51,7 +51,7 @@ namespace EngineerApplication.Tests.ServiceTest
     [TestCase(1)]
     public void TestDeleteCategoryMethodForPage(int id)
     {
-      var category1 = new Category { Name = "Eleganckie Obuwie", DisplayOrder = 9 };
+      var category1 = new Category { Name = "Amortyzatory ssawek", DisplayOrder = 9 };
       _categoryService.Setup(x => x.AddAsync(category1)).Verifiable();
       _categoryService.Setup(x => x.Remove(category1)).Verifiable();
       var editedCategory = _categoryService.Setup(p => p.GetAsync(id).Result).Returns(category1);

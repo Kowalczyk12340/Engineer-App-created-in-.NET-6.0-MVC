@@ -12,15 +12,11 @@ namespace EngineerApplication.Tests.ControllerTest.Admin
   public class PaymentControllerTest : BaseControllerTest
   {
     private Mock<IUnitOfWork>? _unitOfWork;
-    private PaymentController? _paymentController;
-    private ActionContext? _context;
 
     [SetUp]
     public void Setup()
     {
       _unitOfWork = new Mock<IUnitOfWork>();
-      _paymentController = new PaymentController(_unitOfWork.Object);
-      _context = new ActionContext();
     }
 
     [Test]
@@ -28,7 +24,7 @@ namespace EngineerApplication.Tests.ControllerTest.Admin
     {
       var paymentItem = new Payment()
       {
-        Name = "High Five",
+        Name = "Płatność Kartą",
         Code = "hdbhenj484"
       };
       var payment = await Client.PostAsJsonAsync("/Admin/Payment", paymentItem);
@@ -48,8 +44,8 @@ namespace EngineerApplication.Tests.ControllerTest.Admin
     {
       var paymentItem = new Payment()
       {
-        Name = "Middle Five",
-        Code = "amslenj839"
+        Name = "Płatność Kartą",
+        Code = "hdbhenj484"
       };
       var payment = await Client.PostAsJsonAsync("/Admin/Payment/1", paymentItem);
       Assert.IsNotNull(payment.RequestMessage);
@@ -82,7 +78,7 @@ namespace EngineerApplication.Tests.ControllerTest.Admin
     {
       var paymentItem = new Payment()
       {
-        Name = "High Five",
+        Name = "Płatność Kartą",
         Code = "hdbhenj484"
       };
       var payment = await Client.PostAsJsonAsync("/Admin/Payment/export", paymentItem);

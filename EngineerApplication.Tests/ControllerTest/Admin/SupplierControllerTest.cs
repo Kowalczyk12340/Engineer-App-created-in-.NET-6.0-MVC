@@ -50,6 +50,8 @@ namespace EngineerApplication.Tests.ControllerTest.Admin
       var supplierItem = new Supplier()
       {
         Name = "Simar",
+        City = "Kalisz",
+        PhoneNumber = "509892812"
       };
       var supplier = await Client.PostAsJsonAsync("/Admin/Supplier/1", supplierItem);
       Assert.IsNotNull(supplier.RequestMessage);

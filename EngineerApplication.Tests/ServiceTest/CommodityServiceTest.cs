@@ -23,7 +23,7 @@ namespace EngineerApplication.Tests.ServiceTest
     [TestCase(1)]
     public void TestGetByIdCommodity(int id)
     {
-      var commodity = new Commodity { Name = "Sportowe Obuwie", Category = new Category { Name = "Super Kategoria", DisplayOrder = 3 } };
+      var commodity = new Commodity { Name = "Zaciski Montażowe", Category = new Category { Name = "Super Kategoria", DisplayOrder = 3 } };
       var resultService = _commodityService.Setup(p => p.GetAsync(id).Result).Returns(commodity);
       Assert.That(resultService != null);
     }
@@ -31,7 +31,7 @@ namespace EngineerApplication.Tests.ServiceTest
     [TestCase(1)]
     public void TestPostCommodityMethodForPage(int id)
     {
-      var commodity1 = new Commodity { Name = "Sportowe Obuwie", Category = new Category { Name = "Super Kategoria", DisplayOrder = 3 } };
+      var commodity1 = new Commodity { Name = "Zaciski Montażowe", Category = new Category { Name = "Super Kategoria", DisplayOrder = 3 } };
       _commodityService.Setup(x => x.AddAsync(commodity1)).Verifiable();
       var addedCommodity = _commodityService.Setup(x => x.GetAsync(id).Result).Returns(commodity1);
       Assert.That(addedCommodity != null);
@@ -40,7 +40,7 @@ namespace EngineerApplication.Tests.ServiceTest
     [TestCase(1)]
     public void TestPutCommodityMethodForPage(int id)
     {
-      var commodity1 = new Commodity { Name = "Sportowe Obuwie", Category = new Category { Name = "Super Kategoria", DisplayOrder = 3 } };
+      var commodity1 = new Commodity { Name = "Zaciski Montażowe", Category = new Category { Name = "Super Kategoria", DisplayOrder = 3 } };
       _commodityService.Setup(x => x.AddAsync(commodity1)).Verifiable();
       commodity1.Name = "Super Obuwie";
       _commodityService.Setup(x => x.UpdateAsync(commodity1)).Verifiable();
@@ -51,7 +51,7 @@ namespace EngineerApplication.Tests.ServiceTest
     [TestCase(1)]
     public void TestDeleteCommodityMethodForPage(int id)
     {
-      var commodity1 = new Commodity { Name = "Sportowe Obuwie", Category = new Category { Name = "Super Kategoria", DisplayOrder = 3 } };
+      var commodity1 = new Commodity { Name = "Zaciski Montażowe", Category = new Category { Name = "Super Kategoria", DisplayOrder = 3 } };
       _commodityService.Setup(x => x.AddAsync(commodity1)).Verifiable();
       _commodityService.Setup(x => x.Remove(commodity1)).Verifiable();
       var editedCommodity = _commodityService.Setup(x => x.GetAsync(id).Result).Returns(commodity1);

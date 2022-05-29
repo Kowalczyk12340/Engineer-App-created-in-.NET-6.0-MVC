@@ -12,15 +12,11 @@ namespace EngineerApplication.Tests.ControllerTest.Admin
   public class DeliveryControllerTest : BaseControllerTest
   {
     private Mock<IUnitOfWork>? _unitOfWork;
-    private DeliveryController? _deliveryController;
-    private ActionContext? _context;
 
     [SetUp]
     public void Setup()
     {
       _unitOfWork = new Mock<IUnitOfWork>();
-      _deliveryController = new DeliveryController(_unitOfWork.Object);
-      _context = new ActionContext();
     }
 
     [Test]
@@ -28,7 +24,7 @@ namespace EngineerApplication.Tests.ControllerTest.Admin
     {
       var deliveryItem = new Delivery()
       {
-        Name = "Dostawa Taxi",
+        Name = "Dostawa Kurierem Pobraniowa",
       };
       var delivery = await Client.PostAsJsonAsync("/Admin/Delivery", deliveryItem);
       Assert.IsNotNull(delivery.RequestMessage);
@@ -47,7 +43,7 @@ namespace EngineerApplication.Tests.ControllerTest.Admin
     {
       var deliveryItem = new Delivery()
       {
-        Name = "Dostawa Taxi",
+        Name = "Dostawa Kurierem Pobraniowa",
       };
       var delivery = await Client.PostAsJsonAsync("/Admin/Delivery/1", deliveryItem);
       Assert.IsNotNull(delivery.RequestMessage);
@@ -80,7 +76,7 @@ namespace EngineerApplication.Tests.ControllerTest.Admin
     {
       var deliveryItem = new Delivery()
       {
-        Name = "Dostawa Taxi",
+        Name = "Dostawa Kurierem Pobraniowa",
       };
       var delivery = await Client.PostAsJsonAsync("/Admin/Commodity/export", deliveryItem);
       Assert.IsNotNull(delivery.RequestMessage);

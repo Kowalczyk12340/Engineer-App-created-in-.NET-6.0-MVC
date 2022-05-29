@@ -12,15 +12,11 @@ namespace EngineerApplication.Tests.ControllerTest.Admin
   public class EmployeeControllerTest : BaseControllerTest
   {
     private Mock<IUnitOfWork>? _unitOfWork;
-    private EmployeeController? _employeeController;
-    private ActionContext? _context;
 
     [SetUp]
     public void Setup()
     {
       _unitOfWork = new Mock<IUnitOfWork>();
-      _employeeController = new EmployeeController(_unitOfWork.Object);
-      _context = new ActionContext();
     }
 
     [Test]
@@ -28,7 +24,11 @@ namespace EngineerApplication.Tests.ControllerTest.Admin
     {
       var employeeItem = new Employee()
       {
-        Name = "Fantastic employee for Tesco",
+        Name = "Marek Jurecki",
+        Service = new Service()
+        {
+          Name = "Wycinanie węży do wody na konkretne wymiary i podłączanie ich"
+        }
       };
       var employee = await Client.PostAsJsonAsync("/Admin/Employee", employeeItem);
       Assert.IsNotNull(employee.RequestMessage);
@@ -47,7 +47,11 @@ namespace EngineerApplication.Tests.ControllerTest.Admin
     {
       var employeeItem = new Employee()
       {
-        Name = "Fantastic employee for Ambro",
+        Name = "Marek Jurecki",
+        Service = new Service()
+        {
+          Name = "Wycinanie węży do wody na konkretne wymiary i podłączanie ich"
+        }
       };
       var employee = await Client.PostAsJsonAsync("/Admin/Employee/1", employeeItem);
       Assert.IsNotNull(employee.RequestMessage);
@@ -80,7 +84,11 @@ namespace EngineerApplication.Tests.ControllerTest.Admin
     {
       var employeeItem = new Employee()
       {
-        Name = "Fantastic employee for Tesco",
+        Name = "Marek Jurecki",
+        Service = new Service()
+        {
+          Name = "Wycinanie węży do wody na konkretne wymiary i podłączanie ich"
+        }
       };
       var employee = await Client.PostAsJsonAsync("/Admin/Employee/export", employeeItem);
       Assert.IsNotNull(employee.RequestMessage);

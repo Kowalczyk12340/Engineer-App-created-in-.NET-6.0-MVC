@@ -14,15 +14,11 @@ namespace EngineerApplication.Tests.ControllerTest.Admin
   {
     private Mock<IUnitOfWork>? _unitOfWork;
     private readonly IWebHostEnvironment? _hostEnvironment;
-    private ServiceController? _serviceController;
-    private ActionContext? _context;
 
     [SetUp]
     public void Setup()
     {
       _unitOfWork = new Mock<IUnitOfWork>();
-      _serviceController = new ServiceController(_unitOfWork.Object, _hostEnvironment);
-      _context = new ActionContext();
     }
 
     [Test]
@@ -30,10 +26,10 @@ namespace EngineerApplication.Tests.ControllerTest.Admin
     {
       var serviceItem = new Service()
       {
-        Name = "Przewóz wozem strażackim",
+        Name = "Skręcanie łap do robotów",
         CategoryId = 1,
         PaymentId = 1,
-        LongDesc = "Description for firefigthers",
+        LongDesc = "Skręcanie łap do robotów poprzez mechaniczne dostosowanie obiektu",
         Price = 87.90,
       };
       var service = await Client.PostAsJsonAsync("/Admin/Service", serviceItem);
@@ -53,10 +49,10 @@ namespace EngineerApplication.Tests.ControllerTest.Admin
     {
       var serviceItem = new Service()
       {
-        Name = "Buty Adidas",
+        Name = "Skręcanie łap do robotów",
         CategoryId = 1,
         PaymentId = 1,
-        LongDesc = "Description for sport item",
+        LongDesc = "Skręcanie łap do robotów poprzez mechaniczne dostosowanie obiektu",
         Price = 87.90,
       };
       var service = await Client.PostAsJsonAsync("/Admin/Service/1", serviceItem);
@@ -90,10 +86,10 @@ namespace EngineerApplication.Tests.ControllerTest.Admin
     {
       var serviceItem = new Service()
       {
-        Name = "Przewóz wozem strażackim",
+        Name = "Skręcanie łap do robotów",
         CategoryId = 1,
         PaymentId = 1,
-        LongDesc = "Description for firefigthers",
+        LongDesc = "Skręcanie łap do robotów poprzez mechaniczne dostosowanie obiektu",
         Price = 87.90,
       };
       var service = await Client.PostAsJsonAsync("/Admin/Service/export", serviceItem);
