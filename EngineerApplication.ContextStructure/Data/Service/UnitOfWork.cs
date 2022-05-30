@@ -31,7 +31,7 @@ namespace EngineerApplication.ContextStructure.Data.Service
     public IOrderHeaderService OrderHeader { get; private set; }
     public IOrderDetailsService OrderDetails { get; private set; }
     public IUserService User { get; private set; }
-    public ISP_Call SP_Call { get; private set; }
+    public ISPCall SP_Call { get; private set; }
     public IDeliveryService Delivery { get; private set; }
 
     public void Dispose()
