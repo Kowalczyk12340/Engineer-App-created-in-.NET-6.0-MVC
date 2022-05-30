@@ -2,7 +2,7 @@
 
 namespace EngineerApplication.ContextStructure.Data.Service.Interfaces
 {
-  public interface ISP_Call : IDisposable
+  public interface ISPCall : IDisposable
   {
     Task<IEnumerable<T>> ReturnListAsync<T>(string procedureName, DynamicParameters? param = null);
 

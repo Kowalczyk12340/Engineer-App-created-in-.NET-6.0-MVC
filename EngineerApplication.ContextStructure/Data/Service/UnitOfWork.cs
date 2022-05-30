@@ -1,5 +1,4 @@
 ﻿using EngineerApplication.ContextStructure.Data.Service.Interfaces;
-using Microsoft.EntityFrameworkCore;
 
 namespace EngineerApplication.ContextStructure.Data.Service
 {
@@ -20,7 +19,7 @@ namespace EngineerApplication.ContextStructure.Data.Service
       OrderHeader = new OrderHeaderService(_db);
       OrderDetails = new OrderDetailsService(_db);
       User = new UserService(_db);
-      SP_Call = new SP_Call(_db);
+      SP_Call = new SPCall(_db);
     }
 
     public ICategoryService Category { get; private set; }

@@ -5,12 +5,12 @@ using EngineerApplication.ContextStructure.Data.Service.Interfaces;
 
 namespace EngineerApplication.ContextStructure.Data.Service
 {
-  public class SP_Call : ISP_Call
+  public class SPCall : ISPCall
   {
     private readonly EngineerDbContext _db;
     private static string? ConnectionString = "";
 
-    public SP_Call(EngineerDbContext db)
+    public SPCall(EngineerDbContext db)
     {
       _db = db;
       ConnectionString = db.Database.GetDbConnection().ConnectionString;

@@ -16,11 +16,13 @@ namespace EngineerApplication.ContextStructure.Data.Service
 
     public IEnumerable<SelectListItem> GetCategoryListForDropDown()
     {
-      return _db.Category.Select(i => new SelectListItem()
+      var result = _db.Category.Select(i => new SelectListItem()
       {
         Text = i.Name,
         Value = i.Id.ToString()
       });
+
+      return result;
     }
 
     public async Task UpdateAsync(Category category)

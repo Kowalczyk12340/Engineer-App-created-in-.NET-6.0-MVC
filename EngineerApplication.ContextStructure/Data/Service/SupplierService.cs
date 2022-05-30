@@ -36,7 +36,6 @@ namespace EngineerApplication.ContextStructure.Data.Service
       objFromDb.PostalCode = supplier.PostalCode;
 
       await _db.SaveChangesAsync();
-
     }
   }
 }

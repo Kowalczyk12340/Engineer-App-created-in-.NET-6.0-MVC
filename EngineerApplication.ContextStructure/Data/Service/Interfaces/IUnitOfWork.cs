@@ -11,7 +11,7 @@
     ICommodityService Commodity { get; }
     IOrderHeaderService OrderHeader { get; }
     IOrderDetailsService OrderDetails { get; }
-    ISP_Call SP_Call { get; }
+    ISPCall SP_Call { get; }
     IUserService User { get; }
     Task SaveAsync();
   }

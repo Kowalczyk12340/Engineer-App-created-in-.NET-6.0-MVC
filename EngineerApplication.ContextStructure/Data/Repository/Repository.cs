@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿#nullable disable
+using Microsoft.EntityFrameworkCore;
 using System.Linq.Expressions;
 
 namespace EngineerApplication.ContextStructure.Data.Repository
@@ -21,10 +22,11 @@ namespace EngineerApplication.ContextStructure.Data.Repository
 
     public async Task<T> GetAsync(int id)
     {
-      return await dbSet.FindAsync(id);
+      var result = await dbSet.FindAsync(id);
+      return result;
     }
 
-    public async Task<IEnumerable<T>?> GetAllAsync(Expression<Func<T, bool>>? filter = null, Func<IQueryable<T>, IOrderedQueryable<T>>? orderBy = null, string? includeProperties = null)
+    public async Task<IEnumerable<T>> GetAllAsync(Expression<Func<T, bool>> filter = null, Func<IQueryable<T>, IOrderedQueryable<T>> orderBy = null, string includeProperties = null)
     {
       IQueryable<T> query = dbSet;
 
@@ -47,7 +49,7 @@ namespace EngineerApplication.ContextStructure.Data.Repository
       return await query.ToListAsync();
     }
 
-    public async Task<T?> GetFirstOrDefaultAsync(Expression<Func<T, bool>>? filter = null, string? includeProperties = null)
+    public async Task<T> GetFirstOrDefaultAsync(Expression<Func<T, bool>> filter = null, string includeProperties = null)
     {
       IQueryable<T> query = dbSet;
 

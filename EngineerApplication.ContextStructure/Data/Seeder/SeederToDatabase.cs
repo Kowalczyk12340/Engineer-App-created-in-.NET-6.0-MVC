@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Identity;
+﻿#nullable disable
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using EngineerApplication.Entities;
 using EngineerApplication.Helpers;
@@ -29,7 +30,7 @@ namespace EngineerApplication.ContextStructure.Data.Initializer
       }
       catch (Exception)
       {
-        throw new Exception();
+        throw new Exception("The migration can not be done");
       }
 
       if (await _db.Roles.AnyAsync(r => r.Name == UsefulConsts.Admin)) return;
@@ -55,10 +56,10 @@ namespace EngineerApplication.ContextStructure.Data.Initializer
 
       }, "Marcingrafik1#").GetAwaiter().GetResult();
 
-      ApplicationUser? user = await _db.ApplicationUser?.Where(u => u.Email == "marcinkowalczyk24.7@gmail.com").FirstOrDefaultAsync();
+      var user = await _db.ApplicationUser?.Where(u => u.Email == "marcinkowalczyk24.7@gmail.com").FirstOrDefaultAsync();
       _userManager.AddToRoleAsync(user, UsefulConsts.Admin).GetAwaiter().GetResult();
 
-      ApplicationUser? user1 = await _db.ApplicationUser?.Where(u => u.Email == "marcinkowalczyk24.5@wp.pl").FirstOrDefaultAsync();
+      var user1 = await _db.ApplicationUser?.Where(u => u.Email == "marcinkowalczyk24.5@wp.pl").FirstOrDefaultAsync();
       _userManager.AddToRoleAsync(user1, UsefulConsts.Customer).GetAwaiter().GetResult();
     }
   }
