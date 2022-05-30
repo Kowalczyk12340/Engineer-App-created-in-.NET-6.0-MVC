@@ -24,15 +24,15 @@ namespace EngineerApplication.ContextStructure.Data.Service
       });
     }
 
-    public async Task UpdateAsync(Commodity Commodity)
+    public async Task UpdateAsync(Commodity commodity)
     {
-      var objFromDb = await _db.Commodity.FirstOrDefaultAsync(s => s.Id == Commodity.Id);
+      var objFromDb = await _db.Commodity.FirstOrDefaultAsync(s => s.Id == commodity.Id);
 
-      objFromDb.Name = Commodity.Name;
-      objFromDb.LongDesc = Commodity.LongDesc;
-      objFromDb.Price = Commodity.Price;
-      objFromDb.ImageUrl = Commodity.ImageUrl;
-      objFromDb.CategoryId = Commodity.CategoryId;
+      objFromDb.Name = commodity.Name;
+      objFromDb.LongDesc = commodity.LongDesc;
+      objFromDb.Price = commodity.Price;
+      objFromDb.ImageUrl = commodity.ImageUrl;
+      objFromDb.CategoryId = commodity.CategoryId;
 
       await _db.SaveChangesAsync();
     }
