@@ -1,4 +1,4 @@
-# Engineer-App-created-in-.NET-6.0-MVC
+# Engineer Application created-in ASP .NET 6.0 MVC - (Model View Controller)
 Engineer App created in .NET 6.0 MVC. The topic of the work is Wholesaler Application which offers wide range of products and similar app could be used by logistic companies which are able to sending chosen commodities to the dedicated customers.
 In this application is possible to manage wholesaler app.
 # Abstract of Thesis in this application
