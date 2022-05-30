@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Authorization;
+﻿#nullable disable
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using EngineerApplication.ContextStructure.Data.Service.Interfaces;
 using EngineerApplication.Entities.ViewModels;
@@ -37,7 +38,8 @@ namespace EngineerApplication.Areas.Admin.Controllers
       };
       if (id != null)
       {
-        CommodityVM.Commodity = await _unitOfWork.Commodity.GetAsync(id.GetValueOrDefault());
+        CommodityVM.Commodity = await _unitOfWork.Commodity
+          .GetAsync(id.GetValueOrDefault());
       }
 
       return View(CommodityVM);
@@ -63,7 +65,6 @@ namespace EngineerApplication.Areas.Admin.Controllers
         var files = HttpContext.Request.Form.Files;
         if (CommodityVM.Commodity.Id == 0)
         {
-          //New Commodity
           string fileName = Guid.NewGuid().ToString();
           var uploads = Path.Combine(webRootPath, @"images\Services");
           var extension = Path.GetExtension(files[0].FileName);
@@ -78,7 +79,6 @@ namespace EngineerApplication.Areas.Admin.Controllers
         }
         else
         {
-          //Edit Commodity
           var CommodityFromDb = await _unitOfWork.Commodity.GetAsync(CommodityVM.Commodity.Id);
           if (files.Count > 0)
           {
@@ -125,7 +125,8 @@ namespace EngineerApplication.Areas.Admin.Controllers
     {
       var CommodityFromDb = await _unitOfWork.Commodity.GetAsync(id);
       string webRootPath = _hostEnvironment.WebRootPath;
-      var imagePath = Path.Combine(webRootPath, CommodityFromDb.ImageUrl.TrimStart('\\'));
+      var imagePath = Path.Combine(webRootPath,
+        CommodityFromDb.ImageUrl.TrimStart('\\'));
       if (System.IO.File.Exists(imagePath))
       {
         System.IO.File.Delete(imagePath);
@@ -133,7 +134,8 @@ namespace EngineerApplication.Areas.Admin.Controllers
 
       if (CommodityFromDb is null)
       {
-        return Json(new { success = false, message = "Error while deleting." });
+        return Json(new { success = false,
+          message = "Error while deleting." });
       }
 
       _unitOfWork.Commodity.Remove(CommodityFromDb);

@@ -1,4 +1,5 @@
-﻿using EngineerApplication.Entities;
+﻿#nullable disable
+using EngineerApplication.Entities;
 using EngineerApplication.ContextStructure.Data.Repository;
 using EngineerApplication.ContextStructure.Data.Service.Interfaces;
 using Microsoft.AspNetCore.Mvc.Rendering;
@@ -26,7 +27,8 @@ namespace EngineerApplication.ContextStructure.Data.Service
 
     public async Task UpdateAsync(Commodity commodity)
     {
-      var objFromDb = await _db.Commodity.FirstOrDefaultAsync(s => s.Id == commodity.Id);
+      var objFromDb = await _db.Commodity
+        .FirstOrDefaultAsync(s => s.Id == commodity.Id);
 
       objFromDb.Name = commodity.Name;
       objFromDb.LongDesc = commodity.LongDesc;

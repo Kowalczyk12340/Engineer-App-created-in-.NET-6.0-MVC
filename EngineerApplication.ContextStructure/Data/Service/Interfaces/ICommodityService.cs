@@ -10,6 +10,6 @@ namespace EngineerApplication.ContextStructure.Data.Service.Interfaces
   public interface ICommodityService : IRepository<Commodity>
   {
     IEnumerable<SelectListItem> GetCommodityListForDropDown();
-    Task UpdateAsync(Commodity Commodity);
+    Task UpdateAsync(Commodity commodity);
   }
 }
