@@ -23,7 +23,7 @@ jobs:
     steps:
       - uses: kolpav/purge-artifacts-action@v1
         with:
-          token: $
+          token: ${{ secrets.GITHUB_TOKEN }}
           expire-in: 0days
   build-and-deploy:
     runs-on: windows-latest
