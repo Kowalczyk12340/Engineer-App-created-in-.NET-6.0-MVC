@@ -1,5 +1,12 @@
-name: Build and deploy .NET Core app
+# ASP.NET
+# Build and test ASP.NET projects.
+# Add steps that publish symbols, save build artifacts, deploy, and more:
+# https://docs.microsoft.com/azure/devops/pipelines/apps/aspnet/build-aspnet-4
+
+name: $(Date:yyyy.MM.dd)$(Rev:.r)
 on:
+  schedule:
+    - cron: '0 1 * * *' # every night at 1 am UTC
   push:
     branches:
     - main
@@ -11,6 +18,13 @@ env:
   DOTNET_CORE_VERSION: 6.0.x
   WORKING_DIRECTORY: EngineerApplication
 jobs:
+  delete-artifacts:
+    runs-on: windows-latest
+    steps:
+      - uses: kolpav/purge-artifacts-action@v1
+        with:
+          token: $
+          expire-in: 0days
   build-and-deploy:
     runs-on: windows-latest
     steps:
