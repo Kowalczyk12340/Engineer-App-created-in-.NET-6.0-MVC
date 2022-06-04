@@ -3,81 +3,44 @@
 # Add steps that publish symbols, save build artifacts, deploy, and more:
 # https://docs.microsoft.com/azure/devops/pipelines/apps/aspnet/build-aspnet-4
 
-name: $(Date:yyyy.MM.dd)$(Rev:.r)
-
-trigger:
-  batch: true
-  branches:
-    include:
+name: Build and deploy .NET Core EngineerApp $(Date:yyyy.MM.dd)$(Rev:.r)
+on:
+  push:
+    branches:
     - main
-  paths:
-    include:
-    - 'EngineerApplication'
+env:
+  AZURE_WEBAPP_NAME: EngineerApplication20220513120425
+  AZURE_WEBAPP_PACKAGE_PATH: EngineerApplication/publish
+  AZURE_WEBAPP_PUBLISH_PROFILE: ${{ secrets.EngineerApplication20220513120425_dcb5 }}
+  CONFIGURATION: Release
+  DOTNET_CORE_VERSION: 6.0.x
+  WORKING_DIRECTORY: EngineerApplication
+jobs:
+  build-and-deploy:
+    runs-on: windows-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: Setup .NET Core
+      uses: actions/setup-dotnet@v1
+      with:
+        dotnet-version: ${{ env.DOTNET_CORE_VERSION }}
+    - name: Restore
+      run: dotnet restore "${{ env.WORKING_DIRECTORY }}"
+    - name: Build
+      run: dotnet build "${{ env.WORKING_DIRECTORY }}" --configuration ${{ env.CONFIGURATION }} --no-restore
+    - name: Test
+      run: dotnet test "${{ env.WORKING_DIRECTORY }}" --no-build
+    - name: Publish
+      run: dotnet publish "${{ env.WORKING_DIRECTORY }}" --configuration ${{ env.CONFIGURATION }} --no-build --output "${{ env.AZURE_WEBAPP_PACKAGE_PATH }}"
+    - name: Deploy to Azure WebApp
+      uses: azure/webapps-deploy@v2
+      with:
+        app-name: ${{ env.AZURE_WEBAPP_NAME }}
+        package: ${{ env.AZURE_WEBAPP_PACKAGE_PATH }}
+        publish-profile: ${{ env.AZURE_WEBAPP_PUBLISH_PROFILE }}
+    - name: Publish Artifacts
+      uses: actions/upload-artifact@v1.0.0
+      with:
+        name: webapp
+        path: ${{ env.AZURE_WEBAPP_PACKAGE_PATH }}
 
-
-variables:
-  solution: '**/*.sln'
-  buildPlatform: 'Any CPU'
-  buildConfiguration: 'Release'
-
-stages:
-  - stage: 'CI'
-    jobs:
-    - job: Build
-      pool:
-        vmImage: 'windows-latest'
-
-steps:
-- task: UseDotNet@2
-  inputs:
-    packageType: 'sdk'
-    version: '6.0.x'
-
-- task: NuGetToolInstaller@1
-  displayName: Install NuGet
-
-- task: NuGetCommand@2
-  inputs:
-    restoreSolution: '$(solution)'
-
-- task: VSBuild@1
-  inputs:
-    solution: '$(solution)'
-    command: build
-    projects: '${{ parameters.EngineerApplication}}'
-    arguments: '--configuration ${{ parameters.buildConfiguration }'
-    msbuildArgs: '/p:DeployOnBuild=true /p:WebPublishMethod=Package /p:PackageAsSingleFile=true /p:SkipInvalidConfigurations=true /p:PackageLocation="$(build.artifactStagingDirectory)"'
-    platform: '$(buildPlatform)'
-    configuration: '$(buildConfiguration)'
-
-- task: DotNetCoreCLI@2
-  inputs:
-    command: 'build'
-    projects: '$(buildProject)'
-    workingDirectory: 'EngineerApplication/'
-
-- task: DotNetCoreCLI@2
-  displayName: Test
-  inputs:
-    command: test
-    projects: '${{ parameters.EngineerApplication.Tests}}'
-    arguments: '--configuration Debug'
-
-- task: PublishCodeCoverageResults@1
-  inputs:
-    codeCoverageTool: 'Cobertura'
-    summaryFileLocation: '$(Agent.TempDirectory)/**/coverage.cobertura.xml'
-
-- task: DotNetCoreCLI@2
-  inputs:
-    command: 'publish'
-    publishWebProjects: false
-    projects: '$(buildProject)'
-    arguments: '--configuration $(buildConfiguration) --output $(Build.ArtifactStagingDirectory)'
-    workingDirectory: 'source/'
-
-- task: PublishBuildArtifacts@1
-  inputs:
-    PathtoPublish: '$(Build.ArtifactStagingDirectory)'
-    ArtifactName: 'drop'
-    publishLocation: 'Container'
