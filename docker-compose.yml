@@ -6,12 +6,3 @@ services:
     build:
       context: .
       dockerfile: EngineerApplication\Dockerfile
-
-  data:
-    container_name: sqlserver
-
-  watchdog:
-    container_name: watchdog
-
-  identity:
-    container_name: identity
