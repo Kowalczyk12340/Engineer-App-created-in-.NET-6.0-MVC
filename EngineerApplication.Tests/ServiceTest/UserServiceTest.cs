@@ -1,4 +1,5 @@
-﻿using EngineerApplication.ContextStructure.Data;
+﻿#nullable disable
+using EngineerApplication.ContextStructure.Data;
 using EngineerApplication.ContextStructure.Data.Service.Interfaces;
 using EngineerApplication.Entities;
 using Microsoft.EntityFrameworkCore;
@@ -9,9 +10,9 @@ namespace EngineerApplication.Tests.ServiceTest
 {
   public class UserServiceTest
   {
-    private readonly DbContextOptionsBuilder<EngineerDbContext>? _optionsBuilder = new DbContextOptionsBuilder<EngineerDbContext>();
-    private Mock<IUserService>? _userService;
-    private DbContextOptions<EngineerDbContext>? _options;
+    private readonly DbContextOptionsBuilder<EngineerDbContext> _optionsBuilder = new();
+    private Mock<IUserService> _userService;
+    private DbContextOptions<EngineerDbContext> _options;
 
     [SetUp]
     public void Setup()

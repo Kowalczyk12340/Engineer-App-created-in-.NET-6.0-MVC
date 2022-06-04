@@ -1,4 +1,5 @@
-﻿using EngineerApplication.Areas.Admin.Controllers;
+﻿#nullable disable
+using EngineerApplication.Areas.Admin.Controllers;
 using EngineerApplication.ContextStructure.Data.Service.Interfaces;
 using EngineerApplication.Entities;
 using Microsoft.AspNetCore.Mvc;
@@ -11,9 +12,9 @@ namespace EngineerApplication.Tests.ControllerTest.Admin
 {
   public class CategoryControllerTest : BaseControllerTest
   {
-    private Mock<IUnitOfWork>? _unitOfWork;
-    private CategoryController? _categoryController;
-    private ActionContext? _context;
+    private Mock<IUnitOfWork> _unitOfWork;
+    private CategoryController _categoryController;
+    private ActionContext _context;
 
     [SetUp]
     public void Setup()

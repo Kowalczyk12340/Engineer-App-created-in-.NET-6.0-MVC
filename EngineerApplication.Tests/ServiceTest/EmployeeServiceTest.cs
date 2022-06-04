@@ -1,4 +1,5 @@
-﻿using EngineerApplication.ContextStructure.Data;
+﻿#nullable disable
+using EngineerApplication.ContextStructure.Data;
 using EngineerApplication.ContextStructure.Data.Service.Interfaces;
 using EngineerApplication.Entities;
 using Microsoft.EntityFrameworkCore;
@@ -10,17 +11,15 @@ namespace EngineerApplication.Tests.ServiceTest
 {
   public class EmployeeServiceTest
   {
-    private readonly DbContextOptionsBuilder<EngineerDbContext>? _optionsBuilder = new();
-    private Mock<IEmployeeService>? _employeeService;
-    private DbContextOptions<EngineerDbContext>? _options;
+    private readonly DbContextOptionsBuilder<EngineerDbContext> _optionsBuilder = new();
+    private Mock<IEmployeeService> _employeeService;
+    private DbContextOptions<EngineerDbContext> _options;
 
     [SetUp]
     public void Setup()
     {
       _employeeService = new Mock<IEmployeeService>();
-#pragma warning disable CS8604 // Możliwy argument odwołania o wartości null.
       _options = _optionsBuilder.UseSqlServer(@"Data Source=DESKTOP-VPKE3ES\\SQLEXPRESS;Initial Catalog=EngineerDatabase;Integrated Security=True;").Options;
-#pragma warning restore CS8604 // Możliwy argument odwołania o wartości null.
     }
 
     [TestCase(1)]

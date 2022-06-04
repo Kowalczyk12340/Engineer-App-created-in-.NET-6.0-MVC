@@ -1,4 +1,5 @@
-﻿using EngineerApplication.ContextStructure.Data;
+﻿#nullable disable
+using EngineerApplication.ContextStructure.Data;
 using EngineerApplication.ContextStructure.Data.Service.Interfaces;
 using EngineerApplication.Entities;
 using EngineerApplication.Helpers;
@@ -11,9 +12,9 @@ namespace EngineerApplication.Tests.ServiceTest
 {
   public class OrderServiceTest
   {
-    private readonly DbContextOptionsBuilder<EngineerDbContext>? _optionsBuilder = new();
-    private Mock<IOrderHeaderService>? _orderHeader;
-    private DbContextOptions<EngineerDbContext>? _options;
+    private readonly DbContextOptionsBuilder<EngineerDbContext> _optionsBuilder = new();
+    private Mock<IOrderHeaderService> _orderHeader;
+    private DbContextOptions<EngineerDbContext> _options;
 
     [SetUp]
     public void Setup()
