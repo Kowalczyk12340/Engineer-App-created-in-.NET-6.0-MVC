@@ -7,12 +7,14 @@
 		<UserSecretsId>513df0d9-e8b4-4dba-88a8-a3d377f0d686</UserSecretsId>
 		<DockerDefaultTargetOS>Windows</DockerDefaultTargetOS>
 		<DockerComposeProjectPath>..\docker-compose.dcproj</DockerComposeProjectPath>
+		<ApplicationInsightsResourceId>/subscriptions/646e583f-db91-4577-b3b6-286767cd6d8c/resourceGroups/EngineerWebPage/providers/microsoft.insights/components/engineerwebsite</ApplicationInsightsResourceId>
 	</PropertyGroup>
 
 	<ItemGroup>
 		<PackageReference Include="Dapper" Version="2.0.123" />
 		<PackageReference Include="itext7" Version="7.2.2" />
 		<PackageReference Include="itext7.pdfhtml" Version="4.0.2" />
+		<PackageReference Include="Microsoft.ApplicationInsights.AspNetCore" Version="2.15.0" />
 		<PackageReference Include="Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore" Version="6.0.5" />
 		<PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="6.0.5" />
 		<PackageReference Include="Microsoft.AspNetCore.Identity.UI" Version="6.0.5" />
@@ -26,6 +28,12 @@
 		</PackageReference>
 		<PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="6.0.0" />
 		<PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.15.1" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<Content Include="..\EngineerApplication\appsettings.json" Link="appsettings.json">
+			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</Content>
 	</ItemGroup>
 
 	<ItemGroup>

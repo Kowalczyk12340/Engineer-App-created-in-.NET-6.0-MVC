@@ -1,4 +1,4 @@
-name: Build and deploy .NET Core app to Windows WebApp EngineerApplication20220513120425
+name: Build and deploy .NET Core app
 on:
   push:
     branches:
