@@ -62,11 +62,9 @@ namespace EngineerApplication.Areas.Admin.Controllers
     [HttpPost("exportCategory")]
     public IActionResult Export(string GridHtml)
     {
-      using (MemoryStream stream = new MemoryStream())
-      {
-        HtmlConverter.ConvertToPdf(GridHtml, stream);
-        return File(stream.ToArray(), "application/pdf", $"CategoryData_{DateTime.UtcNow}.pdf", true);
-      }
+      using MemoryStream stream = new();
+      HtmlConverter.ConvertToPdf(GridHtml, stream);
+      return File(stream.ToArray(), "application/pdf", $"CategoryData_{DateTime.UtcNow}.pdf", true);
     }
 
     #region API CALLS

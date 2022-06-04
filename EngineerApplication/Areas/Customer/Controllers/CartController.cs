@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿#nullable disable
+using Microsoft.AspNetCore.Mvc;
 using EngineerApplication.Extensions;
 using EngineerApplication.Entities;
 using EngineerApplication.Entities.ViewModels;

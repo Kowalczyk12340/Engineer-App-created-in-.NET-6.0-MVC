@@ -66,11 +66,9 @@ namespace EngineerApplication.Areas.Admin.Controllers
     [HttpPost("exportSupplier")]
     public IActionResult Export(string GridHtml)
     {
-      using (MemoryStream stream = new MemoryStream())
-      {
-        HtmlConverter.ConvertToPdf(GridHtml, stream);
-        return File(stream.ToArray(), "application/pdf", $"SupplierData_{DateTime.UtcNow}.pdf", true);
-      }
+      using MemoryStream stream = new();
+      HtmlConverter.ConvertToPdf(GridHtml, stream);
+      return File(stream.ToArray(), "application/pdf", $"SupplierData_{DateTime.UtcNow}.pdf", true);
     }
 
     #region API CALLS
@@ -78,7 +76,6 @@ namespace EngineerApplication.Areas.Admin.Controllers
     public async Task<IActionResult> GetAll()
     {
       return Json(new { data = await _unitOfWork.Supplier.GetAllAsync() });
-      //return Json(new { data = _unitOfWork.SP_Call.ReturnList<Supplier>(UsefulConsts.usp_GetAllSupplier,null)  });
     }
 
     [HttpDelete]

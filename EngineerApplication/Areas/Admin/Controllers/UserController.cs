@@ -1,4 +1,5 @@
-﻿using System.Security.Claims;
+﻿#nullable disable
+using System.Security.Claims;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using EngineerApplication.ContextStructure.Data.Service.Interfaces;
@@ -28,11 +29,9 @@ namespace EngineerApplication.Areas.Admin.Controllers
     [HttpPost("exportUser")]
     public IActionResult Export(string GridHtml)
     {
-      using (MemoryStream stream = new MemoryStream())
-      {
-        HtmlConverter.ConvertToPdf(GridHtml, stream);
-        return File(stream.ToArray(), "application/pdf", $"UserData_{DateTime.UtcNow}.pdf", true);
-      }
+      using MemoryStream stream = new MemoryStream();
+      HtmlConverter.ConvertToPdf(GridHtml, stream);
+      return File(stream.ToArray(), "application/pdf", $"UserData_{DateTime.UtcNow}.pdf", true);
     }
 
     public async Task<IActionResult> Lock(string id)

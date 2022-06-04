@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Authorization;
+﻿#nullable disable
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using EngineerApplication.ContextStructure.Data.Service.Interfaces;
 using EngineerApplication.Entities.ViewModels;
@@ -54,7 +55,6 @@ namespace EngineerApplication.Areas.Admin.Controllers
         var files = HttpContext.Request.Form.Files;
         if (ServiceVM.Service.Id == 0)
         {
-          //New Service
           string fileName = Guid.NewGuid().ToString();
           var uploads = Path.Combine(webRootPath, @"images\Services");
           var extension = Path.GetExtension(files[0].FileName);
@@ -110,11 +110,9 @@ namespace EngineerApplication.Areas.Admin.Controllers
     [HttpPost("exportService")]
     public IActionResult Export(string GridHtml)
     {
-      using (MemoryStream stream = new MemoryStream())
-      {
-        HtmlConverter.ConvertToPdf(GridHtml, stream);
-        return File(stream.ToArray(), "application/pdf", $"ServiceData_{DateTime.UtcNow}.pdf", true);
-      }
+      using MemoryStream stream = new();
+      HtmlConverter.ConvertToPdf(GridHtml, stream);
+      return File(stream.ToArray(), "application/pdf", $"ServiceData_{DateTime.UtcNow}.pdf", true);
     }
 
     #region API Calls

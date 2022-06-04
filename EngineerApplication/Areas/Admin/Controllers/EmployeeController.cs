@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Authorization;
+﻿#nullable disable
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using EngineerApplication.ContextStructure.Data.Service.Interfaces;
 using EngineerApplication.Entities.ViewModels;
@@ -69,11 +70,9 @@ namespace EngineerApplication.Areas.Admin.Controllers
     [HttpPost("exportEmployee")]
     public IActionResult Export(string GridHtml)
     {
-      using (MemoryStream stream = new MemoryStream())
-      {
-        HtmlConverter.ConvertToPdf(GridHtml, stream);
-        return File(stream.ToArray(), "application/pdf", $"EmployeeData_{DateTime.UtcNow}.pdf", true);
-      }
+      using MemoryStream stream = new();
+      HtmlConverter.ConvertToPdf(GridHtml, stream);
+      return File(stream.ToArray(), "application/pdf", $"EmployeeData_{DateTime.UtcNow}.pdf", true);
     }
 
     #region API Calls

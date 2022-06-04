@@ -1,4 +1,5 @@
-﻿using System.Diagnostics;
+﻿#nullable disable
+using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
 using EngineerApplication.Extensions;
 using EngineerApplication.Entities;

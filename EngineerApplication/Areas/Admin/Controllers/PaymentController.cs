@@ -24,11 +24,9 @@ namespace EngineerApplication.Areas.Admin.Controllers
     [HttpPost("exportPayment")]
     public IActionResult Export(string GridHtml)
     {
-      using (MemoryStream stream = new MemoryStream())
-      {
-        HtmlConverter.ConvertToPdf(GridHtml, stream);
-        return File(stream.ToArray(), "application/pdf", $"PaymentData_{DateTime.UtcNow}.pdf", true);
-      }
+      using MemoryStream stream = new();
+      HtmlConverter.ConvertToPdf(GridHtml, stream);
+      return File(stream.ToArray(), "application/pdf", $"PaymentData_{DateTime.UtcNow}.pdf", true);
     }
 
     public async Task<IActionResult> Upsert(int? id)

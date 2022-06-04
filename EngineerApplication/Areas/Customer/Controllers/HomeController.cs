@@ -14,11 +14,9 @@ namespace EngineerApplication.Areas.Customer.Controllers
     [HttpPost("exportHome")]
     public IActionResult Export(string GridHtml)
     {
-      using (MemoryStream stream = new MemoryStream())
-      {
-        HtmlConverter.ConvertToPdf(GridHtml, stream);
-        return File(stream.ToArray(), "application/pdf", $"HomeData_{DateTime.UtcNow}.pdf", true);
-      }
+      using MemoryStream stream = new();
+      HtmlConverter.ConvertToPdf(GridHtml, stream);
+      return File(stream.ToArray(), "application/pdf", $"HomeData_{DateTime.UtcNow}.pdf", true);
     }
   }
 }

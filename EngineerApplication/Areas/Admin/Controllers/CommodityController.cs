@@ -48,11 +48,9 @@ namespace EngineerApplication.Areas.Admin.Controllers
     [HttpPost("exportCommodity")]
     public IActionResult Export(string GridHtml)
     {
-      using (MemoryStream stream = new MemoryStream())
-      {
-        HtmlConverter.ConvertToPdf(GridHtml, stream);
-        return File(stream.ToArray(), "application/pdf", $"CommodityData_{DateTime.UtcNow}.pdf", true);
-      }
+      using MemoryStream stream = new MemoryStream();
+      HtmlConverter.ConvertToPdf(GridHtml, stream);
+      return File(stream.ToArray(), "application/pdf", $"CommodityData_{DateTime.UtcNow}.pdf", true);
     }
 
     [HttpPost]

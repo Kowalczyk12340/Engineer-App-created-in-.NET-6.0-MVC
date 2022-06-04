@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Authorization;
+﻿#nullable disable
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using EngineerApplication.ContextStructure.Data;
 using EngineerApplication.Entities;
@@ -55,7 +56,7 @@ namespace EngineerApplication.Areas.Admin.Controllers
         var files = HttpContext.Request.Form.Files;
         if (files.Count > 0)
         {
-          byte[]? p1 = null;
+          byte[] p1 = null;
           using (var fs1 = files[0].OpenReadStream())
           {
             using var ms1 = new MemoryStream();
