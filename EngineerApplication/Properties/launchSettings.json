@@ -12,7 +12,9 @@
       "commandName": "Project",
       "launchBrowser": true,
       "environmentVariables": {
-        "ASPNETCORE_ENVIRONMENT": "Development"
+        "ASPNETCORE_ENVIRONMENT": "Development",
+        "VaultUri": "https://engineerapplicationvault.vault.azure.net/",
+        "AZURE_USERNAME": "29863@akademiakaliska.edu.pl"
       },
       "applicationUrl": "https://localhost:7215;http://localhost:5215",
       "dotnetRunMessages": true
@@ -21,7 +23,9 @@
       "commandName": "IISExpress",
       "launchBrowser": true,
       "environmentVariables": {
-        "ASPNETCORE_ENVIRONMENT": "Development"
+        "ASPNETCORE_ENVIRONMENT": "Development",
+        "VaultUri": "https://engineerapplicationvault.vault.azure.net/",
+        "AZURE_USERNAME": "29863@akademiakaliska.edu.pl"
       }
     },
     "Docker": {
@@ -29,7 +33,11 @@
       "launchBrowser": true,
       "launchUrl": "{Scheme}://{CommodityHost}:{CommodityPort}",
       "publishAllPorts": true,
-      "useSSL": true
+      "useSSL": true,
+      "environmentVariables": {
+        "VaultUri": "https://engineerapplicationvault.vault.azure.net/",
+        "AZURE_USERNAME": "29863@akademiakaliska.edu.pl"
+      }
     }
   }
 }
