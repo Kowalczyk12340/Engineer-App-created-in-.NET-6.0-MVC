@@ -26,8 +26,9 @@
       "connectionId": "VaultUri"
     },
     "secrets2": {
-      "ignored": "true",
-      "type": "secrets",
+      "secretStore": "AzureAppSettings",
+      "resourceId": "/subscriptions/[parameters('subscriptionId')]/resourceGroups/[parameters('resourceGroupName')]/providers/Microsoft.KeyVault/vaults/EngineerApplicationvault",
+      "type": "secrets.keyVault",
       "connectionId": "VaultUri",
       "dynamicId": null
     }
