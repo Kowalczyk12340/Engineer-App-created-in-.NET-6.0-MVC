@@ -30,11 +30,14 @@ namespace EngineerApplication.Areas.Admin.Controllers
       {
         return View(delivery);
       }
+
       delivery = await _unitOfWork.Delivery.GetAsync(id.GetValueOrDefault());
+
       if (delivery == null)
       {
         return NotFound();
       }
+
       return View(delivery);
     }
 
@@ -52,6 +55,7 @@ namespace EngineerApplication.Areas.Admin.Controllers
         {
           await _unitOfWork.Delivery.UpdateAsync(delivery);
         }
+
         await _unitOfWork.SaveAsync();
         return RedirectToAction(nameof(Index));
       }
@@ -61,7 +65,7 @@ namespace EngineerApplication.Areas.Admin.Controllers
     [HttpPost("exportDelivery")]
     public IActionResult Export(string GridHtml)
     {
-      using MemoryStream stream = new MemoryStream();
+      using MemoryStream stream = new();
       HtmlConverter.ConvertToPdf(GridHtml, stream);
       return File(stream.ToArray(), "application/pdf", $"DeliveryData_{DateTime.UtcNow}.pdf", true);
     }

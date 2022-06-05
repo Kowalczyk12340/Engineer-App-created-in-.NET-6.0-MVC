@@ -23,7 +23,7 @@ var services = builder.Services;
 #if DEBUG
 services.AddRazorPages().AddRazorRuntimeCompilation();
 #else
-    services.AddMvc(options => options.EnableEndpointRouting = false);
+    services.AddRazorPages(options => options.EnableEndpointRouting = false);
 #endif
 
 services.Configure<CookiePolicyOptions>(options =>

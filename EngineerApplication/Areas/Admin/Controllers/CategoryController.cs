@@ -32,10 +32,12 @@ namespace EngineerApplication.Areas.Admin.Controllers
         return View(category);
       }
       category = await _unitOfWork.Category.GetAsync(id.GetValueOrDefault());
+
       if (category == null)
       {
         return NotFound();
       }
+
       return View(category);
     }
 
@@ -53,6 +55,7 @@ namespace EngineerApplication.Areas.Admin.Controllers
         {
           await _unitOfWork.Category.UpdateAsync(category);
         }
+
         await _unitOfWork.SaveAsync();
         return RedirectToAction(nameof(Index));
       }
