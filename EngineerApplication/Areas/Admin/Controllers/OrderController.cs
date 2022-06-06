@@ -31,7 +31,7 @@ namespace EngineerApplication.Areas.Admin.Controllers
         OrderDetails = await _unitOfWork.OrderDetails.GetAllAsync(filter: o => o.OrderHeaderId == id),
       };
       orderVM.TimeToOrder = (await _unitOfWork.OrderHeader.GetAsync(id)).TimeToOrder.ToUniversalTime();
-      orderVM.TimeToOrder = (await _unitOfWork.OrderHeader.GetAsync(id)).TimeToRealisation.ToUniversalTime();
+      orderVM.TimeToRealisation = (await _unitOfWork.OrderHeader.GetAsync(id)).TimeToRealisation.ToUniversalTime();
       orderVM.Supplier = await _unitOfWork.Supplier.GetFirstOrDefaultAsync(filter: o => o.Id == orderVM.OrderHeader.SupplierId);
       orderVM.Delivery = await _unitOfWork.Delivery.GetFirstOrDefaultAsync(filter: o => o.Id == orderVM.OrderHeader.DeliveryId);
       orderVM.Payment = await _unitOfWork.Payment.GetFirstOrDefaultAsync(filter: o => o.Id == orderVM.OrderHeader.PaymentId);
