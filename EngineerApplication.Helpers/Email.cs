@@ -25,7 +25,7 @@ namespace EngineerApplication.Helpers
 
     public void Send()
     {
-      MailMessage message = new MailMessage();
+      MailMessage message = new();
 
       foreach (var x in To)
       {
