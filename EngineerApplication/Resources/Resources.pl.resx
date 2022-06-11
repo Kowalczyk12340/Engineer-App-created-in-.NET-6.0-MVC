@@ -864,4 +864,7 @@
   <data name="NettoPrice" xml:space="preserve">
     <value>Cena Netto</value>
   </data>
+  <data name="SearchInOffers" xml:space="preserve">
+    <value>Szukaj w ofercie</value>
+  </data>
 </root>
