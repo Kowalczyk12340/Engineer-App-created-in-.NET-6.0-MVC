@@ -1,8 +1,11 @@
-﻿using EngineerApplication.ContextStructure.Data.Service.Interfaces;
+﻿#nullable disable
+using EngineerApplication.ContextStructure.Data.Service.Interfaces;
 
 namespace EngineerApplication.ContextStructure.Data.Service
 {
+#pragma warning disable S3881 // "IDisposable" should be implemented correctly
   public class UnitOfWork : IUnitOfWork
+#pragma warning restore S3881 // "IDisposable" should be implemented correctly
   {
     private readonly EngineerDbContext _db;
 

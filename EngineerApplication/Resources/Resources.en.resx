@@ -715,10 +715,10 @@
     <value>To enable QR code generation please read our</value>
   </data>
   <data name="Total" xml:space="preserve">
-    <value>Total</value>
+    <value>Total brutto cost</value>
   </data>
   <data name="TotalUSD" xml:space="preserve">
-    <value>Total (USD)</value>
+    <value>Total (PLN)</value>
   </data>
   <data name="ToUseAnAuthenticator" xml:space="preserve">
     <value>To use an authenticator app go through the following steps</value>

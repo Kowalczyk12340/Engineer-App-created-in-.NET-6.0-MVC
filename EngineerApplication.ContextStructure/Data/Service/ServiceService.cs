@@ -1,4 +1,5 @@
-﻿using EngineerApplication.ContextStructure.Data.Repository;
+﻿#nullable disable
+using EngineerApplication.ContextStructure.Data.Repository;
 using EngineerApplication.ContextStructure.Data.Service.Interfaces;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;

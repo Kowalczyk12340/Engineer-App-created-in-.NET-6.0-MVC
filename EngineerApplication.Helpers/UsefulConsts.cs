@@ -2,10 +2,10 @@
 {
   public static class UsefulConsts
   {
-    public const string SessionCart = "Cart";
-    public const string StatusSubmitted = "Submitted";
-    public const string StatusApproved = "Approved";
-    public const string StatusRejected = "Rejected";
+    public const string SessionCart = "Karta";
+    public const string StatusSubmitted = "Oczekujące";
+    public const string StatusApproved = "Zatwierdzone";
+    public const string StatusRejected = "Odrzucone";
 
     public const string Admin = "Admin";
     public const string Customer = "Customer";

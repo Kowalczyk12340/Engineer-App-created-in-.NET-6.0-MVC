@@ -715,10 +715,10 @@
     <value>Aby włączyć generowanie kodów QR, przeczytaj nasze</value>
   </data>
   <data name="Total" xml:space="preserve">
-    <value>Całkowity</value>
+    <value>Całkowity koszt</value>
   </data>
   <data name="TotalUSD" xml:space="preserve">
-    <value>Całkowity (USD)</value>
+    <value>Całkowity (PLN)</value>
   </data>
   <data name="ToUseAnAuthenticator" xml:space="preserve">
     <value>Aby użyć aplikacji uwierzytelniającej, wykonaj następujące kroki</value>
@@ -855,7 +855,7 @@
   <data name="ExportToPdf" xml:space="preserve">
     <value>Eksportuj jako PDF</value>
   </data>
-  <data name="VATPrive" xml:space="preserve">
+  <data name="VATPrice" xml:space="preserve">
     <value>Cena VAT</value>
   </data>
   <data name="DescApp2" xml:space="preserve">

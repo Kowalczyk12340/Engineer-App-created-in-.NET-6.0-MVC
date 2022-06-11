@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc.Rendering;
+﻿#nullable disable
+using Microsoft.AspNetCore.Mvc.Rendering;
 using EngineerApplication.Entities;
 using EngineerApplication.ContextStructure.Data.Repository;
 using EngineerApplication.ContextStructure.Data.Service.Interfaces;
@@ -33,7 +34,6 @@ namespace EngineerApplication.ContextStructure.Data.Service
       objFromDb.DisplayOrder = category.DisplayOrder;
 
       await _db.SaveChangesAsync();
-
     }
   }
 }

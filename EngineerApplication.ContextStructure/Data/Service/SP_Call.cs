@@ -1,4 +1,5 @@
-﻿using System.Data.SqlClient;
+﻿#nullable disable
+using System.Data.SqlClient;
 using Dapper;
 using Microsoft.EntityFrameworkCore;
 using EngineerApplication.ContextStructure.Data.Service.Interfaces;
