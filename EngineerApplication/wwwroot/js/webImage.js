@@ -24,11 +24,11 @@ function loadDataTable() {
                 "render": function (data) {
                     return `<div class="text-center">
                                 <a href="/Admin/webimage/Upsert/${data}" class='btn btn-success text-white' style='cursor:pointer; width:100px;'>
-                                    <i class='far fa-edit'></i> Edit
+                                    <i class='far fa-edit'></i> Edytuj
                                 </a>
                                 &nbsp;
                                 <a onclick=Delete("/Admin/webimage/Delete/${data}") class='btn btn-danger text-white' style='cursor:pointer; width:100px;'>
-                                    <i class='far fa-trash-alt'></i> Delete
+                                    <i class='far fa-trash-alt'></i> Usuń
                                 </a>
                             </div>
                             `;
@@ -44,12 +44,12 @@ function loadDataTable() {
 
 function Delete(url) {
     swal({
-        title: "Are you sure you want to delete?",
-        text: "You will not be able to restore the content!",
+        title: "Czy na pewno chcesz usunąć to zdjęcie?",
+        text: "Po usunięciu nie możesz przywrócić tej zawartości!",
         type: "warning",
         showCancelButton: true,
         confirmButtonColor: "#DE3M39",
-        confirmButtonText: "Yes, delete it!",
+        confirmButtonText: "Tak, usuń to!",
         closeOnconfirm: true
     }, function () {
         $.ajax({

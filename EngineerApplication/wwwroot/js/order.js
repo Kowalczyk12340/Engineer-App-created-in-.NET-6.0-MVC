@@ -46,7 +46,7 @@ function loadDataTable(url) {
                 "render": function (data) {
                     return `<div class="text-center">
                                 <a href="/Admin/order/Details/${data}" class='btn btn-success text-white' style='cursor:pointer; width:100px;'>
-                                    <i class='far fa-edit'></i> Details
+                                    <i class='far fa-edit'></i> Szczegóły
                                 </a>
                             </div>
                             `;

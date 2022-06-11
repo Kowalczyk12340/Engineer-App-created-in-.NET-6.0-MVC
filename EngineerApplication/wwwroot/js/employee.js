@@ -29,11 +29,11 @@ function loadDataTable() {
 
                     return `<div class="text-center">
                             <a href="/Admin/Employee/Upsert/${data}" class='btn btn-success text-white' style='cursor:pointer; width:100px;' >
-                                <i class='far fa-edit'></i> Edit
+                                <i class='far fa-edit'></i> Edytuj
                             </a>
                             &nbsp;
                             <a class='btn btn-danger text-white' style='cursor:pointer; width:100px;' onclick=Delete('/admin/Employee/Delete/'+${data})>
-                               <i class='far fa-trash-alt'></i> Delete
+                               <i class='far fa-trash-alt'></i> Usuń
                             </a></div>
                         `;
                 }, "width": "25%"
@@ -48,12 +48,12 @@ function loadDataTable() {
 
 function Delete(url) {
     swal({
-        title: "Are you sure want to Delete?",
-        text: "You will not be able to restore the file!",
+        title: "Czy na pewno chcesz usunąć tego pracownika?",
+        text: "Po usunięciu nie możesz przywrócić tej zawartości!",
         type: "warning",
         showCancelButton: true,
         confirmButtonColor: "#DE3M39",
-        confirmButtonText: "Yes, delete it!",
+        confirmButtonText: "Tak, usuń to!",
         closeOnConfirm: true
     }, function () {
         $.ajax({
