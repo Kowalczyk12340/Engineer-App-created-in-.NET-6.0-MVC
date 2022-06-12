@@ -1,0 +1,8 @@
+﻿@using EngineerApplication.Resources
+@inject CommonLocalizationService localizer
+@{
+    ViewData["Title"] = @localizer.Get("PrivacyPolicy");
+}
+<h1>@ViewData["Title"]</h1>
+
+<p>@localizer.Get("UseThisPageTo").</p>

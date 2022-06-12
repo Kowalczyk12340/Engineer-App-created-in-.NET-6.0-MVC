@@ -1,0 +1,65 @@
+﻿@using EngineerApplication.Resources
+@inject CommonLocalizationService localizer
+@model EngineerApplication.Entities.ViewModels.OfferServiceViewModel
+
+<h1 class="text-success">@localizer.Get("OfferService")</h1>
+<form asp-controller="OfferService" asp-action="SearchServices" method="get">
+    <p>
+        <input type="text" name="SearchBox" />
+        <input type="submit" value="Filter" />
+    </p>
+</form>
+
+    @foreach (var category in Model.CategoryList.OrderBy(o => o.Name))
+    {
+        @if (Model.ServiceList.Where(c => c.CategoryId == category.Id).Count() > 0)
+        {
+            <div class="row container pb-3 backgroundWhite">
+                <h1 class="text-success">@localizer.Get("Services")</h1>
+                <div class="col-12">
+                    <div class="row">
+                        <h2 class="text-success"><b>@category.Name</b></h2>
+                        <div class="col-12">
+                            <div class="row my-3">
+                                @foreach (var Service in Model.ServiceList.Where(c => c.CategoryId == category.Id))
+                                {
+                                    <div class="col-lg-4 col-xl-3 col-md-6 pb-4">
+                                        <div class="card" style="border:2px solid #43ac6a;border-radius:5px; backgroundcolor: #fffeee">
+                                            <div class="pl-3 pt-1 text-center">
+                                                <h3 id="chosenName" class="card-title text-primary"><b>@Service.Name</b></h3>
+                                            </div>
+                                            <div class="d-flex justify-content-between ">
+                                                <div class="pl-1 text-muted">@localizer.Get("Price") @localizer.Get("PerCommodity")</div>
+                                                <div class="pr-1 text-danger h5">$@Service.Price</div>
+                                            </div>
+                                            <img src="@Service.ImageUrl" class="card-img-top p-2 rounded" />
+
+                                            <div class="text-muted text-center pb-2">@Service.Payment.Name</div>
+                                            <div class="pl-3 pt-1 text-center">
+                                                @foreach (var Employee in Model.EmployeeList.Where(c => c.ServiceId == Service.Id))
+                                                {
+                                                    <div class="pl-3 pt-1 text-center">
+                                                        <h2 class="card-title text-primary"><b>@Employee.Name</b></h2>
+                                                    </div>
+                                                    <div class="pl-3 pt-1 text-center">
+                                                        <h2 class="card-title text-primary"><b>@Employee.PhoneNumber</b></h2>
+                                                    </div>
+                                                    <div class="pt-1 text-center">
+                                                        <h7 class="card-title text-primary"><b>@Employee.EmailAddress</b></h7>
+                                                    </div>
+                                                }
+                                            </div>
+                                        </div>
+                                    </div>
+                                }
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+    }
+
+@section Scripts{
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.js"></script>
+}

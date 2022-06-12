@@ -867,4 +867,13 @@
   <data name="SearchInOffers" xml:space="preserve">
     <value>Search in offer</value>
   </data>
+  <data name="OfferCommodity" xml:space="preserve">
+    <value>Commodities Offer</value>
+  </data>
+  <data name="OfferService" xml:space="preserve">
+    <value>Services Offer</value>
+  </data>
+  <data name="MeetOffer" xml:space="preserve">
+    <value>See our unique offer for individual goods presented as part of our business, as well as the offer of interesting services offered in our company.</value>
+  </data>
 </root>

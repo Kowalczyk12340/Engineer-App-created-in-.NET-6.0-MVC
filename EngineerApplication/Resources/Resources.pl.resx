@@ -867,4 +867,13 @@
   <data name="SearchInOffers" xml:space="preserve">
     <value>Szukaj w ofercie</value>
   </data>
+  <data name="OfferCommodity" xml:space="preserve">
+    <value>Oferta Towarów</value>
+  </data>
+  <data name="OfferService" xml:space="preserve">
+    <value>Oferta Usług</value>
+  </data>
+  <data name="MeetOffer" xml:space="preserve">
+    <value>Zapoznaj się z naszą wyjątkową ofertą dla poszczególnych towarów prezentowanych w ramach naszej działalności, a także z ofertą ciekawych usług oferowanych w naszej firmie.</value>
+  </data>
 </root>
