@@ -14,6 +14,7 @@ namespace EngineerApplication.Areas.Customer.Controllers
   {
     private readonly IUnitOfWork _unitOfWork;
     private OfferCommodityViewModel OfferCommodityVM;
+    private OfferCommodityViewModel OfferCommodityVMWithFilter;
 
     [BindProperty]
     public CommodityVM CommodityVM { get; set; }
@@ -34,21 +35,27 @@ namespace EngineerApplication.Areas.Customer.Controllers
       return View("OfferCommodity", OfferCommodityVM);
     }
 
-    [HttpGet("{SearchBox}")]
-    public IActionResult SearchCommodities(string SearchBox)
+    [HttpGet("SearchString")]
+    public async Task<IActionResult> OfferCommodityWithFilter(string searchString)
     {
-      var commodities = from s in (_unitOfWork.Commodity.GetAllAsync().Result)
-                        select s;
-
-      if (!string.IsNullOrEmpty(SearchBox))
+      OfferCommodityVMWithFilter = new OfferCommodityViewModel()
       {
-        commodities = commodities.Where(s => s.Name!.Contains(SearchBox));
-      }
+        CategoryList = await _unitOfWork.Category.GetAllAsync(),
+        CommodityList = await _unitOfWork.Commodity.GetAllAsync(includeProperties: "Category"),
+      };
 
-      return View(commodities.ToList());
+      var resultCommodities = OfferCommodityVMWithFilter.CommodityList.Where(x => x.Name.ToLower().Contains(searchString));
+
+      var result = new OfferCommodityViewModel()
+      {
+        CategoryList = await _unitOfWork.Category.GetAllAsync(),
+        CommodityList = resultCommodities
+      };
+
+      return View("OfferCommodityWithFilter", result);
     }
 
-      [HttpPost]
+    [HttpPost]
     public async Task<IActionResult> UpdateAmount(int id, int amount)
     {
       var objFromDb = await _unitOfWork.Commodity.GetFirstOrDefaultAsync(includeProperties: "Category", filter: c => c.Id == id);

@@ -3,12 +3,7 @@
 @model EngineerApplication.Entities.ViewModels.OfferCommodityViewModel
 
 <h1 class="text-success">@localizer.Get("OfferCommodity")</h1>
-<form asp-controller="OfferCommodity" asp-action="OfferCommodityWithFilter" method="get">
-    <p>
-        <input type="text" id="searchString" name="searchString" />
-        <input type="submit" value="Filter" />
-    </p>
-</form>
+    <a class="nav-link" asp-area="Customer" style="font-size: 16px; align-items: center; text-decoration: none; height: 48px; width: 186px; color: white; background-color: #32CD32; margin: 0 auto; float: center; color: white; font-weigt: bold; text-decoration: none;" asp-controller="OfferCommodity" asp-action="OfferCommodity">@localizer.Get("OfferCommodity")</a>
     @foreach (var category in Model.CategoryList.OrderBy(o => o.Name))
     {
         @if (Model.CommodityList.Where(c => c.CategoryId == category.Id).Count() > 0)
