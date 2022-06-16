@@ -12,6 +12,7 @@ namespace EngineerApplication.Areas.Customer.Controllers
   {
     private readonly IUnitOfWork _unitOfWork;
     private OfferServiceViewModel OfferServiceVM;
+    private OfferServiceViewModel OfferServiceVMWithFilter;
 
     [BindProperty]
     public CommodityVM CommodityVM { get; set; }
@@ -33,18 +34,26 @@ namespace EngineerApplication.Areas.Customer.Controllers
       return View("OfferService", OfferServiceVM);
     }
 
-    [HttpGet("{SearchBox}")]
-    public IActionResult SearchServices(string SearchBox)
+    [HttpGet("SearchStringService")]
+    public async Task<IActionResult> OfferServiceWithFilter(string SearchStringService)
     {
-      var services = from s in (_unitOfWork.Service.GetAllAsync().Result)
-                        select s;
-
-      if (!string.IsNullOrEmpty(SearchBox))
+      OfferServiceVMWithFilter = new OfferServiceViewModel()
       {
-        services = services.Where(s => s.Name!.Contains(SearchBox));
-      }
+        CategoryList = await _unitOfWork.Category.GetAllAsync(),
+        ServiceList = await _unitOfWork.Service.GetAllAsync(includeProperties: "Category,Payment"),
+        EmployeeList = await _unitOfWork.Employee.GetAllAsync(includeProperties: "Service"),
+      };
 
-      return View(services.ToList());
+      var resultServices = OfferServiceVMWithFilter.ServiceList.Where(x => x.Name.ToLower().Contains(SearchStringService));
+
+      var result = new OfferServiceViewModel()
+      {
+        CategoryList = await _unitOfWork.Category.GetAllAsync(),
+        ServiceList = resultServices,
+        EmployeeList = await _unitOfWork.Employee.GetAllAsync(includeProperties: "Service"),
+      };
+
+      return View("OfferServiceWithFilter", result);
     }
 
     [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

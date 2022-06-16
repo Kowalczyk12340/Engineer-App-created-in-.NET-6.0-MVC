@@ -36,7 +36,7 @@ namespace EngineerApplication.Areas.Customer.Controllers
     }
 
     [HttpGet("SearchString")]
-    public async Task<IActionResult> OfferCommodityWithFilter(string searchString)
+    public async Task<IActionResult> OfferCommodityWithFilter(string SearchString)
     {
       OfferCommodityVMWithFilter = new OfferCommodityViewModel()
       {
@@ -44,7 +44,7 @@ namespace EngineerApplication.Areas.Customer.Controllers
         CommodityList = await _unitOfWork.Commodity.GetAllAsync(includeProperties: "Category"),
       };
 
-      var resultCommodities = OfferCommodityVMWithFilter.CommodityList.Where(x => x.Name.ToLower().Contains(searchString));
+      var resultCommodities = OfferCommodityVMWithFilter.CommodityList.Where(x => x.Name.ToLower().Contains(SearchString));
 
       var result = new OfferCommodityViewModel()
       {
@@ -63,6 +63,7 @@ namespace EngineerApplication.Areas.Customer.Controllers
       objFromDb.Amount = amount;
 
       await _unitOfWork.SaveAsync();
+
       return RedirectToAction(nameof(OfferCommodity));
     }
 
