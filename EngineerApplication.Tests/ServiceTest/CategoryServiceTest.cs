@@ -26,7 +26,7 @@ namespace EngineerApplication.Tests.ServiceTest
     {
       var category = new Category { Name = "Śruby Imbusowe", DisplayOrder = 8 };
       var resultService = _categoryService.Setup(p => p.GetAsync(id).Result).Returns(category);
-      Assert.That(resultService != null);
+      Assert.IsNotNull(resultService);
     }
 
     [TestCase(1)]
@@ -35,7 +35,7 @@ namespace EngineerApplication.Tests.ServiceTest
       var category1 = new Category { Name = "Amortyzatory ssawek", DisplayOrder = 9 };
       _categoryService.Setup(x => x.AddAsync(category1)).Verifiable();
       var addedCategory = _categoryService.Setup(p => p.GetAsync(id).Result).Returns(category1);
-      Assert.That(addedCategory != null);
+      Assert.IsNotNull(addedCategory);
     }
 
     [TestCase(1)]
@@ -46,7 +46,7 @@ namespace EngineerApplication.Tests.ServiceTest
       category1.Name = "Super Obuwie";
       _categoryService.Setup(x => x.UpdateAsync(category1)).Verifiable();
       var editedCategory = _categoryService.Setup(p => p.GetAsync(id).Result).Returns(category1);
-      Assert.That(editedCategory != null);
+      Assert.IsNotNull(editedCategory);
     }
 
     [TestCase(1)]
