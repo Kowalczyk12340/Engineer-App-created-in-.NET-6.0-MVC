@@ -124,20 +124,20 @@ namespace EngineerApplication.Areas.Admin.Controllers
     [HttpDelete]
     public async Task<IActionResult> Delete(int id)
     {
-      var ServiceFromDb = await _unitOfWork.Service.GetAsync(id);
+      var serviceFromDb = await _unitOfWork.Service.GetAsync(id);
       string webRootPath = _hostEnvironment.WebRootPath;
-      var imagePath = Path.Combine(webRootPath, ServiceFromDb.ImageUrl.TrimStart('\\'));
+      var imagePath = Path.Combine(webRootPath, serviceFromDb.ImageUrl.TrimStart('\\'));
       if (System.IO.File.Exists(imagePath))
       {
         System.IO.File.Delete(imagePath);
       }
 
-      if (ServiceFromDb is null)
+      if (serviceFromDb is null)
       {
         return Json(new { success = false, message = "Error while deleting." });
       }
 
-      _unitOfWork.Service.Remove(ServiceFromDb);
+      _unitOfWork.Service.Remove(serviceFromDb);
       await _unitOfWork.SaveAsync();
       return Json(new { success = true, message = "Deleted Successfully." });
     }

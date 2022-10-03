@@ -22,7 +22,6 @@ namespace EngineerApplication.Areas.Admin.Controllers
       return View("Index");
     }
 
-
     public async Task<IActionResult> Upsert(int? id)
     {
       Delivery delivery = new();

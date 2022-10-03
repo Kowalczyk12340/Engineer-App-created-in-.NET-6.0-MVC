@@ -26,12 +26,15 @@ namespace EngineerApplication.Tests.ControllerTest.Admin
     {
       var serviceItem = new Service()
       {
+        Id = 1,
         Name = "Skręcanie łap do robotów",
         CategoryId = 1,
         PaymentId = 1,
         LongDesc = "Skręcanie łap do robotów poprzez mechaniczne dostosowanie obiektu",
         Price = 87.90,
       };
+
+      _ = _unitOfWork.Setup(x => x.Service.GetAsync(serviceItem.Id).Result).Returns(serviceItem);
       var service = await Client.PostAsJsonAsync("/Admin/Service", serviceItem);
       Assert.IsNotNull(service.RequestMessage);
     }
