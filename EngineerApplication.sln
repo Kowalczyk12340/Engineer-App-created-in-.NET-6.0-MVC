@@ -20,6 +20,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "build", "build", "{889541D6
 		ci-cd.yaml = ci-cd.yaml
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EngineerApplication.SmokeTests", "..\EngineerApplication.SmokeTests\EngineerApplication.SmokeTests.csproj", "{1DA62BC4-04CB-47F5-A21C-28E7AAF6025B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -50,6 +52,10 @@ Global
 		{ACBF510A-99B8-430B-A18C-CB94D7AE0D63}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{ACBF510A-99B8-430B-A18C-CB94D7AE0D63}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{ACBF510A-99B8-430B-A18C-CB94D7AE0D63}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1DA62BC4-04CB-47F5-A21C-28E7AAF6025B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1DA62BC4-04CB-47F5-A21C-28E7AAF6025B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1DA62BC4-04CB-47F5-A21C-28E7AAF6025B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1DA62BC4-04CB-47F5-A21C-28E7AAF6025B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
