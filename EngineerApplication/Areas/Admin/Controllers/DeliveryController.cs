@@ -25,14 +25,14 @@ namespace EngineerApplication.Areas.Admin.Controllers
     public async Task<IActionResult> Upsert(int? id)
     {
       Delivery delivery = new();
-      if (id == null)
+      if (id is null)
       {
         return View(delivery);
       }
 
       delivery = await _unitOfWork.Delivery.GetAsync(id.GetValueOrDefault());
 
-      if (delivery == null)
+      if (delivery is null)
       {
         return NotFound();
       }

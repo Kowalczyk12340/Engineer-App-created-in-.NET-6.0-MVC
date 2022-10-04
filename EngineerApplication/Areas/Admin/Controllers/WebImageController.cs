@@ -99,7 +99,7 @@ namespace EngineerApplication.Areas.Admin.Controllers
     public async Task<IActionResult> Delete(int id)
     {
       var objFromDb = await _db.WebImages.FindAsync(id);
-      if (objFromDb == null)
+      if (objFromDb is null)
       {
         return Json(new { success = false, message = "Error while deleting." });
       }
@@ -109,8 +109,6 @@ namespace EngineerApplication.Areas.Admin.Controllers
       return Json(new { success = true, message = "Delete successful." });
 
     }
-
-
     #endregion
   }
 }

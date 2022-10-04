@@ -26,13 +26,13 @@ namespace EngineerApplication.Areas.Admin.Controllers
     public async Task<IActionResult> Upsert(int? id)
     {
       Category category = new();
-      if (id == null)
+      if (id is null)
       {
         return View(category);
       }
       category = await _unitOfWork.Category.GetAsync(id.GetValueOrDefault());
 
-      if (category == null)
+      if (category is null)
       {
         return NotFound();
       }

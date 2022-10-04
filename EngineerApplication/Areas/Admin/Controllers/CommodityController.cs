@@ -77,14 +77,14 @@ namespace EngineerApplication.Areas.Admin.Controllers
         }
         else
         {
-          var CommodityFromDb = await _unitOfWork.Commodity.GetAsync(CommodityVM.Commodity.Id);
+          var commodityFromDb = await _unitOfWork.Commodity.GetAsync(CommodityVM.Commodity.Id);
           if (files.Count > 0)
           {
             string fileName = Guid.NewGuid().ToString();
             var uploads = Path.Combine(webRootPath, @"images\Services");
             var extension_new = Path.GetExtension(files[0].FileName);
 
-            var imagePath = Path.Combine(webRootPath, CommodityFromDb.ImageUrl.TrimStart('\\'));
+            var imagePath = Path.Combine(webRootPath, commodityFromDb.ImageUrl.TrimStart('\\'));
             if (System.IO.File.Exists(imagePath))
             {
               System.IO.File.Delete(imagePath);
@@ -98,7 +98,7 @@ namespace EngineerApplication.Areas.Admin.Controllers
           }
           else
           {
-            CommodityVM.Commodity.ImageUrl = CommodityFromDb.ImageUrl;
+            CommodityVM.Commodity.ImageUrl = commodityFromDb.ImageUrl;
           }
 
           await _unitOfWork.Commodity.UpdateAsync(CommodityVM.Commodity);
@@ -121,22 +121,22 @@ namespace EngineerApplication.Areas.Admin.Controllers
     [HttpDelete]
     public async Task<IActionResult> Delete(int id)
     {
-      var CommodityFromDb = await _unitOfWork.Commodity.GetAsync(id);
+      var commodityFromDb = await _unitOfWork.Commodity.GetAsync(id);
       string webRootPath = _hostEnvironment.WebRootPath;
       var imagePath = Path.Combine(webRootPath,
-        CommodityFromDb.ImageUrl.TrimStart('\\'));
+        commodityFromDb.ImageUrl.TrimStart('\\'));
       if (System.IO.File.Exists(imagePath))
       {
         System.IO.File.Delete(imagePath);
       }
 
-      if (CommodityFromDb is null)
+      if (commodityFromDb is null)
       {
         return Json(new { success = false,
           message = "Error while deleting." });
       }
 
-      _unitOfWork.Commodity.Remove(CommodityFromDb);
+      _unitOfWork.Commodity.Remove(commodityFromDb);
       await _unitOfWork.SaveAsync();
       return Json(new { success = true, message = "Deleted Successfully." });
     }

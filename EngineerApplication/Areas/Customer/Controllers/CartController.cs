@@ -30,7 +30,7 @@ namespace EngineerApplication.Areas.Customer.Controllers
     {
       if (HttpContext.Session.GetObject<List<int>>(UsefulConsts.SessionCart) != null)
       {
-        List<int> sessionList = HttpContext.Session.GetObject<List<int>>(UsefulConsts.SessionCart);
+        var sessionList = HttpContext.Session.GetObject<List<int>>(UsefulConsts.SessionCart);
         foreach (int CommodityId in sessionList)
         {
           CartVM.CommodityList.Add(await _unitOfWork.Commodity.GetFirstOrDefaultAsync(u => u.Id == CommodityId, includeProperties: "Category"));
@@ -67,15 +67,15 @@ namespace EngineerApplication.Areas.Customer.Controllers
     {
       if (HttpContext.Session.GetObject<List<int>>(UsefulConsts.SessionCart) != null)
       {
-        List<int> sessionList = HttpContext.Session.GetObject<List<int>>(UsefulConsts.SessionCart);
+        var sessionList = HttpContext.Session.GetObject<List<int>>(UsefulConsts.SessionCart);
         CartVM.CommodityList = new List<Commodity>();
-        foreach (int CommodityId in sessionList)
+        foreach (int commodityId in sessionList)
         {
-          CartVM.CommodityList.Add(await _unitOfWork.Commodity.GetAsync(CommodityId));
+          CartVM.CommodityList.Add(await _unitOfWork.Commodity.GetAsync(commodityId));
           CartVM.SupplierList = _unitOfWork.Supplier.GetSupplierListForDropDown();
           CartVM.PaymentList = _unitOfWork.Payment.GetPaymentListForDropDown();
           CartVM.DeliveryList = _unitOfWork.Delivery.GetDeliveryListForDropDown();
-          CartVM.Amount = (await _unitOfWork.Commodity.GetFirstOrDefaultAsync(u => u.Id == CommodityId, includeProperties: "Category")).Amount;
+          CartVM.Amount = (await _unitOfWork.Commodity.GetFirstOrDefaultAsync(u => u.Id == commodityId, includeProperties: "Category")).Amount;
         }
       }
 
@@ -116,7 +116,7 @@ namespace EngineerApplication.Areas.Customer.Controllers
 
     public IActionResult Remove(int CommodityId)
     {
-      List<int> sessionList = HttpContext.Session.GetObject<List<int>>(UsefulConsts.SessionCart);
+      var sessionList = HttpContext.Session.GetObject<List<int>>(UsefulConsts.SessionCart);
       sessionList.Remove(CommodityId);
       HttpContext.Session.SetObject(UsefulConsts.SessionCart, sessionList);
 
