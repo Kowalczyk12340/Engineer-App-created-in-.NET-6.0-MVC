@@ -46,7 +46,7 @@ namespace EngineerApplication.Areas.Customer.Controllers
 
       var resultCommodities = OfferCommodityVMWithFilter.CommodityList.Where(x => x.Name.ToLower().Contains(SearchString));
 
-      var result = new()
+      var result = new OfferCommodityViewModel()
       {
         CategoryList = await _unitOfWork.Category.GetAllAsync(),
         CommodityList = resultCommodities
