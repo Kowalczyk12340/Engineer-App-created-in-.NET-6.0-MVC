@@ -20,7 +20,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "build", "build", "{889541D6
 		ci-cd.yaml = ci-cd.yaml
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EngineerApplication.SmokeTests", "..\EngineerApplication.SmokeTests\EngineerApplication.SmokeTests.csproj", "{1DA62BC4-04CB-47F5-A21C-28E7AAF6025B}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EngineerApplication.SmokeTests", "EngineerApplication.SmokeTests\EngineerApplication.SmokeTests.csproj", "{1DA62BC4-04CB-47F5-A21C-28E7AAF6025B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -73,20 +73,20 @@ namespace EngineerApplication.Areas.Customer.Controllers
       return View(CommodityFromDb);
     }
 
-    public IActionResult AddToCart(int CommodityId)
+    public IActionResult AddToCart(int commodityId)
     {
       List<int> sessionList = new();
       if (string.IsNullOrEmpty(HttpContext.Session.GetString(UsefulConsts.SessionCart)))
       {
-        sessionList.Add(CommodityId);
+        sessionList.Add(commodityId);
         HttpContext.Session.SetObject(UsefulConsts.SessionCart, sessionList);
       }
       else
       {
         sessionList = HttpContext.Session.GetObject<List<int>>(UsefulConsts.SessionCart);
-        if (!sessionList.Contains(CommodityId))
+        if (!sessionList.Contains(commodityId))
         {
-          sessionList.Add(CommodityId);
+          sessionList.Add(commodityId);
           HttpContext.Session.SetObject(UsefulConsts.SessionCart, sessionList);
         }
       }
