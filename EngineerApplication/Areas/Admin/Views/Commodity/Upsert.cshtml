@@ -6,7 +6,7 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<form method="post" asp-action="Upsert" enctype="multipart/form-data">
+<form id="commodityForm_" method="post" asp-action="Upsert" enctype="multipart/form-data">
 
     <div class="row px-2 mx-2 backgroundWhite border">
         <div asp-validation-summary="ModelOnly" class="text-danger"></div>
@@ -26,7 +26,7 @@
                     <label asp-for="Commodity.Name"></label>
                 </div>
                 <div class="col-8">
-                    <input asp-for="Commodity.Name" class="form-control" />
+                    <input id="commodityName_" asp-for="Commodity.Name" class="form-control" />
                     <span asp-validation-for="Commodity.Name" class="text-danger"></span>
                 </div>
             </div>
@@ -35,7 +35,7 @@
                     <label asp-for="Commodity.Price"></label>
                 </div>
                 <div class="col-8">
-                    <input asp-for="Commodity.Price" id="txtPrice" class="form-control" />
+                    <input id="commodityPrice_" asp-for="Commodity.Price" id="txtPrice" class="form-control" />
                     <span asp-validation-for="Commodity.Price" class="text-danger"></span>
                 </div>
             </div>
@@ -44,7 +44,7 @@
                     <label asp-for="Commodity.LongDesc"></label>
                 </div>
                 <div class="col-8">
-                    <textarea asp-for="Commodity.LongDesc" class="form-control" style="height:300px;"></textarea>
+                    <textarea id="commodityDesc_" asp-for="Commodity.LongDesc" class="form-control" style="height:300px;"></textarea>
                     <span asp-validation-for="Commodity.LongDesc" class="text-danger"></span>
                 </div>
             </div>
@@ -53,7 +53,7 @@
                     <label asp-for="Commodity.ImageUrl"></label>
                 </div>
                 <div class="col-8">
-                    <input type="file" name="files" id="uploadBox" multiple class="form-control" />
+                    <input id="commodityImg_" type="file" name="files" id="uploadBox" multiple class="form-control" />
                 </div>
             </div>
             <div class="form-group row">
@@ -62,7 +62,7 @@
                 </div>
                 <div class="col-8">
                     @Html.DropDownListFor(m => m.Commodity.CategoryId, Model.CategoryList,
-                                            @localizer.Get("PleaseSelectACategory"), new { @class = "form-control" })
+                                            @localizer.Get("PleaseSelectACategory"), new { @class = "form-control", @id = "Select-List" })
                 </div>
             </div>
             <div class="form-group row">

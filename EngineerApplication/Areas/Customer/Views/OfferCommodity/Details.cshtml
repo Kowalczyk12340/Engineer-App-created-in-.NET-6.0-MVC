@@ -45,7 +45,7 @@
         <div class="card-footer">
             <div class="row">
                 <div class="col-12 col-md-6 pb-1">
-                    <a asp-action="Index" class="btn btn-success form-control  btn-square btn-lg" style="height:50px;">@localizer.Get("BackToList")</a>
+                    <a id="returnToList_" asp-action="Index" class="btn btn-success form-control  btn-square btn-lg" style="height:50px;">@localizer.Get("BackToList")</a>
                 </div>
                 <div class="col-12 col-md-6 pb-1">
                     @{
@@ -63,11 +63,11 @@
 
                     @if (AddToCartEnabled)
                     {
-                        <a asp-action="AddToCart" asp-route-CommodityId="@Model.Id" class="btn btn-primary btn-square form-control btn-lg" style="height:50px;">@localizer.Get("AddToCart")</a>
+                        <a id="addToCart_" asp-action="AddToCart" asp-route-CommodityId="@Model.Id" class="btn btn-primary btn-square form-control btn-lg" style="height:50px;">@localizer.Get("AddToCart")</a>
                     }
                     else
                     {
-                        <button class="btn btn-primary btn-square form-control btn-lg" style="height:50px;" disabled>@localizer.Get("ItemInCart")</button>
+                        <button id="getItemInCart_" class="btn btn-primary btn-square form-control btn-lg" style="height:50px;" disabled>@localizer.Get("ItemInCart")</button>
                     }
                 </div>
             </div>

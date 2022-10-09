@@ -6,7 +6,7 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<form method="post" asp-action="Upsert">
+<form id="categoryForm_" method="post" asp-action="Upsert">
 
     <div class="row px-2 mx-2 backgroundWhite border">
         <div asp-validation-summary="ModelOnly" class="text-danger"></div>
@@ -26,7 +26,7 @@
                     <label asp-for="Name"></label>
                 </div>
                 <div class="col-8">
-                    <input asp-for="Name" class="form-control" />
+                    <input id="categoryName_" asp-for="Name" class="form-control" />
                     <span asp-validation-for="Name" class="text-danger"></span>
                 </div>
             </div>
@@ -35,7 +35,7 @@
                     <label asp-for="DisplayOrder"></label>
                 </div>
                 <div class="col-8">
-                    <input asp-for="DisplayOrder" class="form-control" />
+                    <input id="categoryOrder_" asp-for="DisplayOrder" class="form-control" />
                     <span asp-validation-for="DisplayOrder" class="text-danger"></span>
                 </div>
             </div>

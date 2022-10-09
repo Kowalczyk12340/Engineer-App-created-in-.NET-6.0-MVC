@@ -21,7 +21,7 @@ namespace U4.DevOps.Dashboard.UnitTests.UITests.Helpers
       var passwordInputId = "Input_Password";
       var loginButtonId = "_loginButton";
 
-      WebDriverWait wait = new WebDriverWait(driver, TimeSpan.FromSeconds(10));
+      WebDriverWait wait = new WebDriverWait(driver, TimeSpan.FromSeconds(5));
       driver.Navigate().GoToUrl(AppUrl + "Identity/Account/Login");
       wait.Until(drv => drv.TryFindElement(By.Id(loginInputId)));
       driver.FindElement(By.Id(loginInputId)).SendKeys(TestAccountLogin);

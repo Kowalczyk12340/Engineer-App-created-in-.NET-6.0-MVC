@@ -15,7 +15,7 @@
             <h2 class="text-primary">@localizer.Get("CategoryList")</h2>
         </div>
         <div class="col-6 text-right">
-            <a asp-action="Upsert" class="btn btn-primary"><i class="fas fa-plus"></i> &nbsp; @localizer.Get("CreateNewCategory")</a>
+            <a id="createCategory_" asp-action="Upsert" class="btn btn-primary"><i class="fas fa-plus"></i> &nbsp; @localizer.Get("CreateNewCategory")</a>
         </div>
     </div>
     <br />
@@ -35,7 +35,7 @@
     <div class="col-12 col-lg-5 offset-lg-1">
         <form asp-action="Export" asp-controller="Category" method="post">
             <input type="hidden" name="GridHtml" />
-            <input class="btn btn-success" type="submit" id="btnSubmit" value="@localizer.Get("ExportToPdf")" />
+            <input id="exportCategoryPdf_" class="btn btn-success" type="submit" id="btnSubmit" value="@localizer.Get("ExportToPdf")" />
         </form>
     </div>
 </div>
