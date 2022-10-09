@@ -72,8 +72,6 @@ namespace U4.DevOps.Dashboard.UnitTests.UITests
 
       wait.Until(ExpectedConditions.ElementToBeClickable(By.Id("refreshDataButton")));
 
-      StampControllerActions.CreateNewStamp(driver, stampName);
-
       wait.Until(ExpectedConditions.ElementToBeClickable(By.Id("refreshDataButton")));
 
       Assert.IsTrue(driver.PageSource.Contains(serviceName), $"Service {serviceName} should be visible on the dashboard after being created.");
@@ -85,10 +83,6 @@ namespace U4.DevOps.Dashboard.UnitTests.UITests
       wait.Until(ExpectedConditions.ElementToBeClickable(By.Id("refreshDataButton")));
 
       Assert.IsTrue(driver.PageSource.Contains(stampName), $"Stamp {stampName} should be visible on the dashboard after being created.");
-
-      Assert.IsTrue(StampControllerActions.CheckIfStampExist(driver, stampName));
-
-      StampControllerActions.DeleteStamp(driver, stampName);
 
       wait.Until(ExpectedConditions.ElementToBeClickable(By.Id("refreshDataButton")));
 
