@@ -14,6 +14,9 @@ namespace U4.DevOps.Dashboard.UnitTests.UITests
   {
     private static string categoryName = "CategoryTest";
     private static string commodityName = "CommodityTest";
+    private static string employeeName = "EmployeeTest";
+    private static string employeeNumber = "693 456 232";
+    private static string employeeEmail = "marcinkowalczyk24.7@gmail.com";
     private static string appName = "Aplikacja Dropshipping";
     private static int categoryOrder = 99;
     private static int commodityPrice = 243;
@@ -29,7 +32,6 @@ namespace U4.DevOps.Dashboard.UnitTests.UITests
         new DriverManager().SetUpDriver(new ChromeConfig(), VersionResolveStrategy.MatchingBrowser);
         using IWebDriver driver = new ChromeDriver();
         LoginHelper.LoginToApplication(driver, TestContext);
-        DeleteService(driver, categoryName);
       }
       catch (Exception ex)
       {
@@ -43,8 +45,44 @@ namespace U4.DevOps.Dashboard.UnitTests.UITests
       var ChromeService = ChromeDriverService.CreateDefaultService();
 
       using IWebDriver driver = new ChromeDriver(ChromeService, new ChromeOptions { }, TimeSpan.FromSeconds(5));
-      WebDriverWait wait = new WebDriverWait(driver, TimeSpan.FromSeconds(5));
+      WebDriverWait wait = new WebDriverWait(driver, TimeSpan.FromSeconds(15));
       LoginHelper.LoginToApplication(driver, TestContext);
+
+      ApplicationCommodityTests(driver);
+
+      Assert.IsTrue(driver.PageSource.Contains(appName), $"App {appName} should be visible on screen after being created.");
+
+      Thread.Sleep(1000);
+
+      ApplicationDeliveryTests(driver);
+
+      Assert.IsTrue(driver.PageSource.Contains(appName), $"App {appName} should be visible on screen after being created.");
+
+      Thread.Sleep(1000);
+
+      ApplicationEmployeeTests(driver);
+
+      Assert.IsTrue(driver.PageSource.Contains(appName), $"App {appName} should be visible on screen after being created.");
+
+      Thread.Sleep(1000);
+
+      ApplicationOrderTests(driver);
+
+      Assert.IsTrue(driver.PageSource.Contains(appName), $"App {appName} should be visible on screen after being created.");
+
+      Thread.Sleep(1000);
+
+      ApplicationUsersTests(driver);
+
+      Assert.IsTrue(driver.PageSource.Contains(appName), $"App {appName} should be visible on screen after being created.");
+
+      Thread.Sleep(1000);
+
+      ApplicationOfferTests(driver);
+
+      Assert.IsTrue(driver.PageSource.Contains(appName), $"App {appName} should be visible on screen after being created.");
+
+      Thread.Sleep(1000);
 
       ApplicationCategoryTests(driver);
 
@@ -52,9 +90,7 @@ namespace U4.DevOps.Dashboard.UnitTests.UITests
 
       Assert.IsTrue(driver.PageSource.Contains(appName), $"App {appName} should be visible on screen after being created.");
 
-      ApplicationCommodityTests(driver);
-
-      Assert.IsTrue(driver.PageSource.Contains(appName), $"App {appName} should be visible on screen after being created.");
+      Thread.Sleep(1000);
     }
 
     internal static void ApplicationCategoryTests(IWebDriver driver)
@@ -77,6 +113,60 @@ namespace U4.DevOps.Dashboard.UnitTests.UITests
       driver.FindElement(By.Id("goHome_")).Click();
     }
 
+    internal static void ApplicationOrderTests(IWebDriver driver)
+    {
+      WebDriverWait wait = new WebDriverWait(driver, TimeSpan.FromSeconds(30));
+      wait.Until(drv => drv.TryFindElement(By.Id("orderItem_")));
+      driver.FindElement(By.Id("orderItem_")).Click();
+
+      wait.Until(drv => drv.TryFindElement(By.Id("pending_")));
+      driver.FindElement(By.Id("pending_")).Click();
+
+      wait.Until(drv => drv.TryFindElement(By.Id("approved_")));
+      driver.FindElement(By.Id("approved_")).Click();
+
+      wait.Until(drv => drv.TryFindElement(By.Id("all_")));
+      driver.FindElement(By.Id("all_")).Click();
+
+      wait.Until(drv => drv.TryFindElement(By.Id("orderDetails_")));
+      driver.FindElement(By.Id("orderDetails_")).Click();
+
+      wait.Until(drv => drv.TryFindElement(By.Id("backToOrders_")));
+      driver.FindElement(By.Id("backToOrders_")).Click();
+    }
+
+    internal static void ApplicationUsersTests(IWebDriver driver)
+    {
+      WebDriverWait wait = new WebDriverWait(driver, TimeSpan.FromSeconds(30));
+      wait.Until(drv => drv.TryFindElement(By.Id("userItem_")));
+      driver.FindElement(By.Id("userItem_")).Click();
+
+      wait.Until(drv => drv.TryFindElement(By.Id("lock_")));
+      driver.FindElement(By.Id("lock_")).Click();
+
+      Thread.Sleep(2000);
+
+      wait.Until(drv => drv.TryFindElement(By.Id("unlock_")));
+      driver.FindElement(By.Id("unlock_")).Click();
+    }
+
+    internal static void ApplicationOfferTests(IWebDriver driver)
+    {
+      WebDriverWait wait = new WebDriverWait(driver, TimeSpan.FromSeconds(30));
+
+      wait.Until(drv => drv.TryFindElement(By.Id("offer_")));
+      driver.FindElement(By.Id("offer_")).Click();
+
+      wait.Until(drv => drv.TryFindElement(By.Id("offerCommodity_")));
+      driver.FindElement(By.Id("offerCommodity_")).Click();
+
+      wait.Until(drv => drv.TryFindElement(By.Id("backToOffer_")));
+      driver.FindElement(By.Id("backToOffer_")).Click();
+
+      wait.Until(drv => drv.TryFindElement(By.Id("offerService_")));
+      driver.FindElement(By.Id("offerService_")).Click();
+    }
+
     internal static void ApplicationCommodityTests(IWebDriver driver)
     {
       WebDriverWait wait = new WebDriverWait(driver, TimeSpan.FromSeconds(30));
@@ -97,21 +187,49 @@ namespace U4.DevOps.Dashboard.UnitTests.UITests
       driver.FindElement(By.Id("commodityDesc_")).SendKeys(commodityDesc);
     }
 
+    internal static void ApplicationDeliveryTests(IWebDriver driver)
+    {
+      WebDriverWait wait = new WebDriverWait(driver, TimeSpan.FromSeconds(30));
+      wait.Until(drv => drv.TryFindElement(By.Id("navbarDropDown")));
+      driver.FindElement(By.Id("navbarDropDown")).Click();
+      wait.Until(drv => drv.TryFindElement(By.Id("deliveryItem_")));
+      driver.FindElement(By.Id("deliveryItem_")).Click();
+      wait.Until(drv => drv.TryFindElement(By.Id("createDelivery_")));
+      driver.FindElement(By.Id("createDelivery_")).Click();
+
+      wait.Until(drv => drv.TryFindElement(By.Id("deliveryName_")));
+      driver.FindElement(By.Id("deliveryName_")).SendKeys(commodityName);
+
+      wait.Until(drv => drv.TryFindElement(By.Id("deliveryDesc_")));
+      driver.FindElement(By.Id("deliveryDesc_")).SendKeys(commodityDesc);
+    }
+
+    internal static void ApplicationEmployeeTests(IWebDriver driver)
+    {
+      WebDriverWait wait = new WebDriverWait(driver, TimeSpan.FromSeconds(30));
+      wait.Until(drv => drv.TryFindElement(By.Id("navbarDropDown")));
+      driver.FindElement(By.Id("navbarDropDown")).Click();
+      wait.Until(drv => drv.TryFindElement(By.Id("employeeItem_")));
+      driver.FindElement(By.Id("employeeItem_")).Click();
+      wait.Until(drv => drv.TryFindElement(By.Id("createEmployee_")));
+      driver.FindElement(By.Id("createEmployee_")).Click();
+
+      wait.Until(drv => drv.TryFindElement(By.Id("employeeName_")));
+      driver.FindElement(By.Id("employeeName_")).SendKeys(employeeName);
+
+      wait.Until(drv => drv.TryFindElement(By.Id("employeeNumber_")));
+      driver.FindElement(By.Id("employeeNumber_")).SendKeys(employeeNumber);
+
+      wait.Until(drv => drv.TryFindElement(By.Id("employeeEmail_")));
+      driver.FindElement(By.Id("employeeEmail_")).SendKeys(employeeEmail);
+
+      wait.Until(drv => drv.TryFindElement(By.Id("employeeDesc_")));
+      driver.FindElement(By.Id("employeeDesc_")).SendKeys(commodityDesc);
+    }
+
     internal static void CreateNewService(IWebDriver driver, string serviceName)
     {
       WebDriverWait wait = new WebDriverWait(driver, TimeSpan.FromSeconds(30));
-      wait.Until(drv => drv.TryFindElement(By.Id("topbar__toolbar")));
-      driver.FindElement(By.Id("topbar__toolbar")).Click();
-      wait.Until(drv => drv.TryFindElement(By.Id("manageServices")));
-      driver.FindElement(By.Id("manageServices")).Click();
-      wait.Until(drv => drv.TryFindElement(By.Id("add-service-button")));
-      driver.FindElement(By.Id("add-service-button")).Click();
-
-      driver.FindElement(By.Id("name")).SendKeys(serviceName);
-
-      driver.FindElement(By.Id("projectId")).Click();
-
-      SelectClick(driver, "projectId");
 
       driver.FindElement(By.Id("serviceType")).Click();
 
@@ -121,18 +239,7 @@ namespace U4.DevOps.Dashboard.UnitTests.UITests
 
       SelectClick(driver, "engineeringAreaId");
 
-      //Quarter Scope
-      driver.FindElement(By.CssSelector("[for='isCurrentDevelopment']")).Click();
-
-      driver.FindElement(By.CssSelector("[for='isCurrentDevelopmentCompleted']")).Click();
-
       driver.FindElement(By.CssSelector("[for='plannedForNextQuarterDevelopment']")).Click();
-
-      //Technical Details
-
-      driver.FindElement(By.Id("branchingStrategy")).Click();
-
-      SelectClick(driver, "branchingStrategy");
 
       driver.FindElement(By.Id("masterBranchLink")).SendKeys("https://www.google.com");
 
@@ -140,12 +247,8 @@ namespace U4.DevOps.Dashboard.UnitTests.UITests
 
       driver.FindElement(By.Id("nonProdSupport")).SendKeys("Non prod support");
 
-      driver.FindElement(By.Id("prodSupport")).SendKeys("Prod support");
-
       //Pipelines
       driver.FindElement(By.Id("addPipeline")).Click();
-
-      driver.FindElement(By.Id("pipelines[0].pipelineName")).SendKeys("TestPipeline");
 
       driver.FindElement(By.Id("pipelines[0].pipelineUri")).SendKeys("https://www.google.com/unit4-global/U4ERP/_test?definitionId=375");
 
@@ -167,70 +270,7 @@ namespace U4.DevOps.Dashboard.UnitTests.UITests
       SelectClick(driver, "productManager");
 
       driver.FindElement(By.Id("saveService")).Click();
-
-      wait.Until(drv => drv.TryFindElement(By.Id("add-service-button")));
-      driver.FindElement(By.Id("goToDashboard")).Click();
-
     }
-
-    internal static void EditServiceCriteria(IWebDriver driver, string serviceName)
-    {
-      WebDriverWait wait = new WebDriverWait(driver, TimeSpan.FromSeconds(30));
-      wait.Until(drv => drv.TryFindElement(By.Id("topbar__toolbar")));
-      driver.FindElement(By.Id("topbar__toolbar")).Click();
-      wait.Until(drv => drv.TryFindElement(By.Id("manageServices")));
-      driver.FindElement(By.Id("manageServices")).Click();
-      wait.Until(drv => drv.TryFindElement(By.Id("add-service-button")));
-
-      var element = driver.FindElements(By.ClassName("table__row")).First(x => x.Text.Contains(serviceName));
-      element.FindElement(By.CssSelector("[id*='edit-criterias']")).Click();
-      wait.Until(drv => drv.TryFindElement(By.Id("definedCriteria[0].value")));
-
-      driver.FindElement(By.Id("definedCriteria[0].value")).SendKeys("https://www.google.com");
-      driver.FindElement(By.Id("definedCriteria[1].value")).SendKeys("https://www.google.com");
-      driver.FindElement(By.Id("definedCriteria[2].value")).SendKeys("https://www.google.com");
-      driver.FindElement(By.Id("definedCriteria[3].value")).SendKeys("https://www.google.com");
-      driver.FindElement(By.Id("definedCriteria[4].value")).SendKeys("https://www.google.com");
-      driver.FindElement(By.Id("definedCriteria[5].value")).SendKeys("https://www.google.com");
-
-      driver.FindElement(By.CssSelector("[for='definedCriteria[6].value']")).Click();
-      driver.FindElement(By.CssSelector("[for='definedCriteria[7].value']")).Click();
-      driver.FindElement(By.CssSelector("[for='definedCriteria[8].value']")).Click();
-      driver.FindElement(By.CssSelector("[for='definedCriteria[9].value']")).Click();
-      driver.FindElement(By.CssSelector("[for='definedCriteria[10].value']")).Click();
-      driver.FindElement(By.CssSelector("[for='definedCriteria[11].value']")).Click();
-      driver.FindElement(By.CssSelector("[for='definedCriteria[12].value']")).Click();
-      driver.FindElement(By.CssSelector("[for='definedCriteria[13].value']")).Click();
-      driver.FindElement(By.CssSelector("[for='definedCriteria[14].value']")).Click();
-
-      driver.FindElement(By.Id("saveCriteria")).Click();
-      wait.Until(drv => drv.TryFindElement(By.Id("add-service-button")));
-      driver.FindElement(By.Id("goToDashboard")).Click();
-
-    }
-    internal static void DeleteService(IWebDriver driver, string serviceName)
-    {
-      WebDriverWait wait = new WebDriverWait(driver, TimeSpan.FromSeconds(30));
-      wait.Until(drv => drv.TryFindElement(By.Id("topbar__toolbar")));
-      driver.FindElement(By.Id("topbar__toolbar")).Click();
-      wait.Until(drv => drv.TryFindElement(By.Id("manageServices")));
-      driver.FindElement(By.Id("manageServices")).Click();
-      wait.Until(drv => drv.TryFindElement(By.Id("add-service-button")));
-
-      var element = driver.FindElements(By.ClassName("table__row")).First(x => x.Text.Contains(serviceName));
-      if (element != null)
-      {
-        element.FindElement(By.Id("deleteService")).Click();
-        driver.FindElement(By.Id("deleteConfirm")).Click();
-      }
-
-      Thread.Sleep(1000);
-
-      wait.Until(drv => drv.ElementDoesNotExists(By.Id("deleteConfirm")));
-      wait.Until(drv => drv.TryFindElement(By.Id("goToDashboard")));
-      driver.FindElement(By.Id("goToDashboard")).Click();
-    }
-
 
     private static void SelectClick(IWebDriver driver, string selectName)
     {

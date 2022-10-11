@@ -876,4 +876,7 @@
   <data name="MeetOffer" xml:space="preserve">
     <value>Sehen Sie sich unser einzigartiges Angebot an einzelnen Waren an, die im Rahmen unseres Geschäfts präsentiert werden, sowie das Angebot an interessanten Dienstleistungen, die in unserem Unternehmen angeboten werden.</value>
   </data>
+  <data name="BackToOffer" xml:space="preserve">
+    <value>Zuruck zu Angebot</value>
+  </data>
 </root>

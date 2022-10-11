@@ -47,15 +47,15 @@
 
                     <ul class="navbar-nav mr-auto">
                         <li class="nav-item">
-                            <a class="nav-link" asp-area="Customer" asp-controller="Home" asp-action="Index">@localizer.Get("Home")</a>
+                            <a id="home" class="nav-link" asp-area="Customer" asp-controller="Home" asp-action="Index">@localizer.Get("Home")</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" asp-area="Customer" asp-controller="Offer" asp-action="Index">@localizer.Get("Offer")</a>
+                            <a id="offer_" class="nav-link" asp-area="Customer" asp-controller="Offer" asp-action="Index">@localizer.Get("Offer")</a>
                         </li>
                         @if (User.IsInRole(UsefulConsts.Admin))
                         {
                             <li class="nav-item">
-                                <a class="nav-link" asp-area="Admin" asp-controller="Order" asp-action="Index">@localizer.Get("Orders")</a>
+                                <a id="orderItem_" class="nav-link" asp-area="Admin" asp-controller="Order" asp-action="Index">@localizer.Get("Orders")</a>
                             </li>
                         }
                         @if (User.IsInRole(UsefulConsts.Admin))

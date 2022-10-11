@@ -26,7 +26,7 @@
                     <label asp-for="Employee.Name"></label>
                 </div>
                 <div class="col-8">
-                    <input asp-for="Employee.Name" class="form-control" />
+                    <input id="employeeName_" asp-for="Employee.Name" class="form-control" />
                     <span asp-validation-for="Employee.Name" class="text-danger"></span>
                 </div>
             </div>
@@ -35,7 +35,7 @@
                     <label asp-for="Employee.PhoneNumber"></label>
                 </div>
                 <div class="col-8">
-                    <input asp-for="Employee.PhoneNumber" id="txtPrice" class="form-control" />
+                    <input id="employeeNumber_" asp-for="Employee.PhoneNumber" id="txtPrice" class="form-control" />
                     <span asp-validation-for="Employee.PhoneNumber" class="text-danger"></span>
                 </div>
             </div>
@@ -44,7 +44,7 @@
                     <label asp-for="Employee.EmailAddress"></label>
                 </div>
                 <div class="col-8">
-                    <input asp-for="Employee.EmailAddress" id="txtPrice" class="form-control" />
+                    <input id="employeeEmail_" asp-for="Employee.EmailAddress" id="txtPrice" class="form-control" />
                     <span asp-validation-for="Employee.EmailAddress" class="text-danger"></span>
                 </div>
             </div>
@@ -53,7 +53,7 @@
                     <label asp-for="Employee.EmployeeDesc"></label>
                 </div>
                 <div class="col-8">
-                    <textarea asp-for="Employee.EmployeeDesc" class="form-control" style="height:300px;"></textarea>
+                    <textarea id="employeeDesc_" asp-for="Employee.EmployeeDesc" class="form-control" style="height:300px;"></textarea>
                     <span asp-validation-for="Employee.EmployeeDesc" class="text-danger"></span>
                 </div>
             </div>
