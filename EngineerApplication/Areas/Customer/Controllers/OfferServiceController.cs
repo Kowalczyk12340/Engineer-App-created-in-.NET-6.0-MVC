@@ -44,7 +44,16 @@ namespace EngineerApplication.Areas.Customer.Controllers
         EmployeeList = await _unitOfWork.Employee.GetAllAsync(includeProperties: "Service"),
       };
 
-      var resultServices = OfferServiceVMWithFilter.ServiceList.Where(x => x.Name.ToLower().Contains(SearchStringService));
+      var resultServices = new List<Service>();
+
+      if (SearchStringService == null)
+      {
+        resultServices = OfferServiceVMWithFilter.ServiceList.ToList();
+      }
+      else
+      {
+        resultServices = OfferServiceVMWithFilter.ServiceList.Where(x => x.Name.ToLower().Contains(SearchStringService)).ToList();
+      }
 
       var result = new OfferServiceViewModel()
       {

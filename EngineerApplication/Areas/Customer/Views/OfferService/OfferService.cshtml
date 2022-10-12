@@ -7,6 +7,11 @@
     <p>
         <input type="text" id="SearchStringService" name="SearchStringService" />
         <input type="submit" value="Filter" />
+        <ul style="position: relative; display: block; margin: 0 auto; text-align: center; text-decoration: none; width: 90%; padding: 0;">
+            <li class="nav-item" style="font-size: 22px; align-items: center; text-decoration: none; height: 48px; width: 186px; color: white; background-color: #32CD32; margin: 0 auto;">
+                <a style="float: center; color: white; font-weigt: bold; text-decoration: none;" id="backToOffer_" asp-action="Index" asp-controller="Offer" asp-area="Customer">@localizer.Get("BackToOffer")</a>
+            </li>
+        </ul>
     </p>
 </form>
 
@@ -16,11 +21,6 @@
         {
             <div class="row container pb-3 backgroundWhite">
                 <h1 class="text-success">@localizer.Get("Services")</h1>
-                <ul style="position: relative; display: block; margin: 0 auto; text-align: center; text-decoration: none; width: 90%; padding: 0;">
-                    <li class="nav-item" style="font-size: 22px; align-items: center; text-decoration: none; height: 48px; width: 186px; color: white; background-color: #32CD32; margin: 0 auto;">
-                        <a style="float: center; color: white; font-weigt: bold; text-decoration: none;" id="backToOffer_" asp-action="Index" asp-controller="Offer" asp-area="Customer">@localizer.Get("BackToOffer")</a>
-                    </li>
-                </ul>
                 <div class="col-12">
                     <div class="row">
                         <h2 class="text-success"><b>@category.Name</b></h2>

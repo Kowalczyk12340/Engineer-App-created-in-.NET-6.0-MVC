@@ -166,7 +166,7 @@
     <value>Wróć do karty</value>
   </data>
   <data name="BackToList" xml:space="preserve">
-    <value>Wróc do listy</value>
+    <value>Wróć do listy</value>
   </data>
   <data name="BackToOrders" xml:space="preserve">
     <value>Wróć do zamówień</value>
@@ -877,6 +877,6 @@
     <value>Zapoznaj się z naszą wyjątkową ofertą dla poszczególnych towarów prezentowanych w ramach naszej działalności, a także z ofertą ciekawych usług oferowanych w naszej firmie.</value>
   </data>
   <data name="BackToOffer" xml:space="preserve">
-    <value>Wróc do oferty</value>
+    <value>Wróć do oferty</value>
   </data>
 </root>
