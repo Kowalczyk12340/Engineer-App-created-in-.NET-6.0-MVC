@@ -56,20 +56,15 @@ namespace EngineerApplication.Areas.Customer.Controllers
     }
 
     [HttpPost]
-    public async Task<IActionResult> UpdateAmount(int id, int amount)
+    [ValidateAntiForgeryToken]
+    public async Task<IActionResult> Details(int id, int amount)
     {
-      var objFromDb = await _unitOfWork.Commodity.GetFirstOrDefaultAsync(includeProperties: "Category", filter: c => c.Id == id);
+      var CommodityFromDb = await _unitOfWork.Commodity.GetFirstOrDefaultAsync(includeProperties: "Category", filter: c => c.Id == id);
 
-      objFromDb.Amount = amount;
+      CommodityFromDb.Amount = amount;
 
       await _unitOfWork.SaveAsync();
 
-      return RedirectToAction(nameof(OfferCommodity));
-    }
-
-    public async Task<IActionResult> Details(int id)
-    {
-      var CommodityFromDb = await _unitOfWork.Commodity.GetFirstOrDefaultAsync(includeProperties: "Category", filter: c => c.Id == id);
       return View(CommodityFromDb);
     }
 

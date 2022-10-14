@@ -38,13 +38,12 @@
                                             </div>
                                             <img src="@commodity.ImageUrl" class="card-img-top p-2 rounded" />
                                             <div class="col-9">
-                                                @using (Html.BeginForm("UpdateAmount", "OfferCommodity", new { id = commodity.Id}, FormMethod.Post))
+                                                @using (Html.BeginForm("Details", "OfferCommodity", new { id = commodity.Id}, FormMethod.Post))
                                                 {
-                                                   <input type="number" name="amount" id="amount" min="1" max="150" value="@commodity.Amount"/>
-                                                   <input style="margin-bottom: 2px; margin-top: 2px;" class="btn btn-success" type="submit" value="@localizer.Get("ChangeAmount")" />
-                                               }
+                                                   <input type="number" name="amount" id="amount" min="1" max="150" value="@commodity.Amount" /><br />
+                                                   <input style="border-radius:2px;" class="btn btn-success" type="submit" value="@localizer.Get("Buy")" />
+                                                }
                                             </div>
-                                            <a asp-action="Details" class="btn btn-success" style="border-radius:2px;" asp-route-id="@commodity.Id">@localizer.Get("Buy")</a>
                                         </div>
                                     </div>
                                 }
