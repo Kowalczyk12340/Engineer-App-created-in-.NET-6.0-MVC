@@ -879,4 +879,10 @@
   <data name="BackToOffer" xml:space="preserve">
     <value>Back to offer</value>
   </data>
+  <data name="AmountInOrder" xml:space="preserve">
+    <value>Amount in order</value>
+  </data>
+  <data name="PriceUnit" xml:space="preserve">
+    <value>Unit price</value>
+  </data>
 </root>

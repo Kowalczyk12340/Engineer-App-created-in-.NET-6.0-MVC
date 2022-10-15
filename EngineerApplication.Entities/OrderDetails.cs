@@ -6,8 +6,12 @@ namespace EngineerApplication.Entities
   public class OrderDetails
   {
     public int Id { get; set; }
+
     [Required]
     public double Price { get; set; }
+
+    [Required]
+    public int AmountInOrder { get; set; }
 
     [Required]
     public int OrderHeaderId { get; set; }

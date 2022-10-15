@@ -32,6 +32,13 @@ namespace EngineerApplication.Areas.Customer.Controllers
         CommodityList = await _unitOfWork.Commodity.GetAllAsync(includeProperties: "Category"),
       };
 
+      var commodities = OfferCommodityVM.CommodityList.ToList();
+
+      foreach (var commodity in commodities)
+      {
+        commodity.Amount = 1;
+      }
+
       return View("OfferCommodity", OfferCommodityVM);
     }
 
@@ -41,10 +48,18 @@ namespace EngineerApplication.Areas.Customer.Controllers
       OfferCommodityVMWithFilter = new()
       {
         CategoryList = await _unitOfWork.Category.GetAllAsync(),
-        CommodityList = await _unitOfWork.Commodity.GetAllAsync(includeProperties: "Category"),
+        CommodityList = await _unitOfWork.Commodity
+          .GetAllAsync(includeProperties: "Category"),
       };
 
-      var resultCommodities = OfferCommodityVMWithFilter.CommodityList.Where(x => x.Name.ToLower().Contains(SearchString));
+      var resultCommodities = OfferCommodityVMWithFilter.CommodityList
+        .Where(x => x.Name.ToLower()
+        .Contains(SearchString, StringComparison.OrdinalIgnoreCase));
+
+      foreach (var resultCommodity in resultCommodities)
+      {
+        resultCommodity.Amount = 1;
+      }
 
       var result = new OfferCommodityViewModel()
       {

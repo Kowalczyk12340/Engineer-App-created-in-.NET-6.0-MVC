@@ -879,4 +879,10 @@
   <data name="BackToOffer" xml:space="preserve">
     <value>Zuruck zu Angebot</value>
   </data>
+  <data name="AmountInOrder" xml:space="preserve">
+    <value>Menge in der Bestellung</value>
+  </data>
+  <data name="PriceUnit" xml:space="preserve">
+    <value>Stückpreis</value>
+  </data>
 </root>

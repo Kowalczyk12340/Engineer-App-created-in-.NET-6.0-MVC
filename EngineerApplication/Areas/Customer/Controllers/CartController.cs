@@ -97,7 +97,8 @@ namespace EngineerApplication.Areas.Customer.Controllers
             CommodityId = item.Id,
             OrderHeaderId = CartVM.OrderHeader.Id,
             CommodityName = item.Name,
-            Price = item.Price
+            Price = item.Price,
+            AmountInOrder = item.Amount
           };
 
           await _unitOfWork.OrderDetails.AddAsync(orderDetails);
