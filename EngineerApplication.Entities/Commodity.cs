@@ -9,23 +9,25 @@ namespace EngineerApplication.Entities
     public int Id { get; set; }
 
     [Required]
-    [Display(Name = "Commodity Name")]
+    [Display(Name = "Nazwa towaru")]
     public string? Name { get; set; }
 
     [Required]
+    [Display(Name = "Cena")]
     public double Price { get; set; }
 
-    [Display(Name = "Description")]
+    [Display(Name = "Opis")]
     public string? LongDesc { get; set; }
 
-    [Display(Name = "Amount")]
+    [Display(Name = "Ilość")]
     public int Amount { get; set; } = 1;
 
     [DataType(DataType.ImageUrl)]
-    [Display(Name = "Image")]
+    [Display(Name = "Zdjęcie")]
     public string? ImageUrl { get; set; }
 
     [Required]
+    [Display(Name = "Wybierz kategorie")]
     public int CategoryId { get; set; }
 
     [ForeignKey("CategoryId")]

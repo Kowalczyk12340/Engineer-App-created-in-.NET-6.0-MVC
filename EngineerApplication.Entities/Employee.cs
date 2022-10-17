@@ -9,19 +9,19 @@ namespace EngineerApplication.Entities
     public int Id { get; set; }
 
     [Required]
-    [Display(Name = "Employee Name")]
+    [Display(Name = "Imię i nazwisko")]
     public string? Name { get; set; }
 
     [Required]
-    [Display(Name = "Phone Number")]
+    [Display(Name = "Numer telefonu")]
     public string? PhoneNumber { get; set; }
 
     [Required]
-    [Display(Name = "Email Address")]
+    [Display(Name = "Adres email")]
     public string? EmailAddress { get; set; }
 
     [Required]
-    [Display(Name = "Employee Description")]
+    [Display(Name = "Opis pracownika")]
     public string? EmployeeDesc { get; set; }
 
     [Required]

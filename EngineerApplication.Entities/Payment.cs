@@ -8,11 +8,11 @@ namespace EngineerApplication.Entities
     public int Id { get; set; }
 
     [Required]
-    [Display(Name = "Payment Name")]
+    [Display(Name = "Nazwa płatności")]
     public string? Name { get; set; }
 
     [Required]
-    [Display(Name = "Payment Code")]
+    [Display(Name = "Kod płatności")]
     public string? Code { get; set; }
   }
 }

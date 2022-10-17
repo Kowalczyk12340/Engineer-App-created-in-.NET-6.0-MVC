@@ -8,11 +8,11 @@ namespace EngineerApplication.Entities
     public int Id { get; set; }
 
     [Required]
-    [Display(Name = "Category Name")]
+    [Display(Name = "Nazwa kategorii")]
     public string? Name { get; set; }
 
     [Required]
-    [Display(Name = "Display Order")]
+    [Display(Name = "Kolejność wyświetlania")]
     public int DisplayOrder { get; set; }
   }
 }

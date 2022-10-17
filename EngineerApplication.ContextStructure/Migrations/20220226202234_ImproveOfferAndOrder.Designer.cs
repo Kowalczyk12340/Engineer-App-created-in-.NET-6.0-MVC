@@ -538,13 +538,13 @@ namespace EngineerApplication.ContextStructure.Migrations
                     b.HasOne("EngineerApplication.Entities.Commodity", "Commodity")
                         .WithMany()
                         .HasForeignKey("CommodityId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.NoAction)
                         .IsRequired();
 
                     b.HasOne("EngineerApplication.Entities.OrderHeader", "OrderHeader")
                         .WithMany()
                         .HasForeignKey("OrderHeaderId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.NoAction)
                         .IsRequired();
 
                     b.Navigation("Commodity");

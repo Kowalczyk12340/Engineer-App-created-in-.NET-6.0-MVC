@@ -8,25 +8,25 @@ namespace EngineerApplication.Entities
     public int Id { get; set; }
 
     [Required]
-    [Display(Name = "Supplier Name")]
+    [Display(Name = "Nazwa dostawcy")]
     public string? Name { get; set; }
 
     [Required]
-    [Display(Name = "City")]
+    [Display(Name = "Miejscowość")]
     public string? City { get; set; }
 
-    [Display(Name = "Street")]
+    [Display(Name = "Ulica")]
     public string? Street { get; set; }
 
-    [Display(Name = "Postal Code")]
+    [Display(Name = "Kod pocztowy")]
     public string? PostalCode { get; set; }
 
     [Required]
-    [Display(Name = "Phone Number")]
+    [Display(Name = "Numer telefonu")]
     public string? PhoneNumber { get; set; }
 
     [Required]
-    [Display(Name = "Email Address")]
+    [Display(Name = "Adres Email")]
     public string? EmailAddress { get; set; }
   }
 }

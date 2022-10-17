@@ -8,11 +8,11 @@ namespace EngineerApplication.Entities
     public int Id { get; set; }
 
     [Required]
-    [Display(Name = "Delivery Name")]
+    [Display(Name = "Nazwa dostawy")]
     public string? Name { get; set; }
 
     [Required]
-    [Display(Name = "Delivery Description")]
+    [Display(Name = "Opis dostawy")]
     public string? DeliveryDesc { get; set; }
   }
 }

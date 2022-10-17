@@ -93,7 +93,7 @@ services.ConfigureApplicationCookie(options =>
 services.AddLocalization(options => options.ResourcesPath = "Resources");
 services.AddControllersWithViews().AddNewtonsoftJson().AddRazorRuntimeCompilation();
 services.AddRazorPages();
-builder.Services.AddApplicationInsightsTelemetry(builder.Configuration["APPLICATIONINSIGHTS_CONNECTION_STRING"]);
+services.AddApplicationInsightsTelemetry(builder.Configuration["APPLICATIONINSIGHTS_CONNECTION_STRING"]);
 
 var app = builder.Build();
 
@@ -109,7 +109,7 @@ else
   app.UseHttpsRedirection();
 }
 
-SeedDatabase();
+await SeedDatabase();
 
 app.UseHttpsRedirection();
 app.UseStaticFiles();
@@ -135,11 +135,11 @@ app.UseEndpoints(endpoints =>
 
 app.Run();
 
-void SeedDatabase()
+async Task SeedDatabase()
 {
   using var scope = app.Services.CreateScope();
   var dbSeeder = scope.ServiceProvider.GetRequiredService<ISeederToDatabase>();
-  dbSeeder.HighlightDatabaseAsync();
+  await dbSeeder.HighlightDatabaseAsync();
 }
 
 #pragma warning disable S1118 // Utility classes should not have public constructors
