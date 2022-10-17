@@ -126,21 +126,21 @@
                                           <div>
                                               <input type="hidden" asp-for="@details.Id" />
                                               <h6 class="my-0">@details.Name</h6>
-                                              <small class="text-muted">@localizer.Get("Count") : @details.Amount</small>
+                                              <small class="text-muted">@localizer.Get("AmountInOrder") : @details.Amount</small>
                                           </div>
-                                          <span class="text-muted">$@(Math.Round((details.Price * details.Amount), 2))</span>
+                                          <span class="text-muted">@(Math.Round((details.Price * details.Amount), 2).ToString("c"))</span>
                                           @{ total += (details.Price * details.Amount);}
                                       </li>
                                   }
 
                                   <li class="list-group-item d-flex justify-content-between bg-light">
                                       <small class="text-primary">@localizer.Get("TotalUSD") brutto</small>
-                                      <strong class="text-primary">$@Math.Round(total, 2)</strong>
+                                      <strong class="text-primary">$@(Math.Round(total, 2).ToString("c"))</strong>
                                   </li>
                                   @{ var vat = 0.23 * total; }
                                   <li class="list-group-item d-flex justify-content-between bg-light">
                                       <small class="text-primary">@localizer.Get("VATPrice")</small>
-                                      <strong class="text-primary">$@Math.Round(vat, 2)</strong>
+                                      <strong class="text-primary">$@(Math.Round(vat, 2).ToString("c"))</strong>
                                   </li>
                               </ul>
                           </div>

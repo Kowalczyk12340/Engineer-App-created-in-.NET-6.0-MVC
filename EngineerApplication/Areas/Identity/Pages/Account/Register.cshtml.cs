@@ -94,19 +94,19 @@ namespace EngineerApplication.Areas.Identity.Pages.Account
         var result = await _userManager.CreateAsync(user, Input.Password);
         if (result.Succeeded)
         {
-
-
           string role = Request.Form["rdUserRole"].ToString();
 
           if (role == UsefulConsts.Admin)
           {
             await _userManager.AddToRoleAsync(user, UsefulConsts.Admin);
+            user.RoleName = UsefulConsts.Admin;
           }
           else
           {
             if (role == UsefulConsts.Customer)
             {
               await _userManager.AddToRoleAsync(user, UsefulConsts.Customer);
+              user.RoleName = UsefulConsts.Customer;
             }
           }
 

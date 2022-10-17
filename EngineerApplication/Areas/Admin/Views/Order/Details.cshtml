@@ -133,12 +133,12 @@
                                         <li class="list-group-item d-flex justify-content-between">
                                             <div>
                                                 <input type="hidden" asp-for="@details.Id" />
-                                                <h6 class="my-0">@details.CommodityName</h6>
-                                                <small class="text-muted">@localizer.Get("AmountInOrder") : @details.AmountInOrder</small>
-                                                <small class="text-muted">@localizer.Get("PriceUnit") :  $(@Math.Round((details.Price), 2) )</small>
-                                                <small class="text-muted">@localizer.Get("Price") : $(@Math.Round((details.Price * @details.AmountInOrder), 2))</small>
-                                                <small class="text-muted">@localizer.Get("VATPrice") : $(@Math.Round((0.23 * (details.Price * @details.AmountInOrder)), 2)</small>
-                                                <small class="text-muted">@localizer.Get("NettoPrice") : ($(@Math.Round((0.77 * (details.Price * @details.AmountInOrder)), 2)))</small>
+                                                <h5 class="my-0">@details.CommodityName</h5><br/>
+                                                <h7 class="text-muted">@localizer.Get("AmountInOrder") : @details.AmountInOrder</h7><br/>
+                                                <h7 class="text-muted">@localizer.Get("PriceUnit") :  @(Math.Round(details.Price, 2).ToString("c")) PLN</h7><br/>
+                                                <h7 class="text-muted">@localizer.Get("Price") : @(Math.Round((details.Price * @details.AmountInOrder), 2).ToString("c")) PLN</h7><br/>
+                                                <h7 class="text-muted">@localizer.Get("VATPrice") : @(Math.Round((0.23 * (details.Price * @details.AmountInOrder)), 2).ToString("c")) PLN</h7><br/>
+                                                <h7 class="text-muted">@localizer.Get("NettoPrice") : @(Math.Round((0.77 * (details.Price * @details.AmountInOrder)), 2).ToString("c")) PLN</h7>
                                             </div>
                                         </li>
                                     }
