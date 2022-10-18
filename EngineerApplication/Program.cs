@@ -93,6 +93,7 @@ services.ConfigureApplicationCookie(options =>
 services.AddLocalization(options => options.ResourcesPath = "Resources");
 services.AddControllersWithViews().AddNewtonsoftJson().AddRazorRuntimeCompilation();
 services.AddRazorPages();
+
 services.AddApplicationInsightsTelemetry(builder.Configuration["APPLICATIONINSIGHTS_CONNECTION_STRING"]);
 
 var app = builder.Build();

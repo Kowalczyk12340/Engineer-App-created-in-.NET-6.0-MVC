@@ -61,6 +61,63 @@ namespace EngineerApplication.ContextStructure.Data.Initializer
 
       var user1 = await _db.ApplicationUser?.Where(u => u.Email == "marcinkowalczyk24.5@wp.pl").FirstOrDefaultAsync();
       _userManager.AddToRoleAsync(user1, UsefulConsts.Customer).GetAwaiter().GetResult();
+
+      await _db.Delivery.AddAsync(new Delivery() { Name = "Przesyłka kurierska pobraniowa", DeliveryDesc = "Przesyłka, w której klient odbiera" +
+        " przesyłkę w określonym terminie, płacąc za nią przy odbiorze" });
+
+      await _db.Commodity.AddAsync(new Commodity
+      {
+        Name = "Ssawka okrągła FI6",
+        Category = new Category() { Name = "Śruby filcowe", DisplayOrder = 0 },
+        Amount = 7,
+        ImageUrl = "url",
+        LongDesc = "Niesamowita ssawka do chwytania części chropowatych poprzez swoją gąbkę",
+        Price = 89,
+      });
+
+      await _db.Supplier.AddAsync(new Supplier
+      {
+        Name = "Ambro Express",
+        City = "Przykona",
+        PostalCode = "62-700 Turek",
+        EmailAddress = "ambro-express@ambro.com",
+        PhoneNumber = "512334092",
+        Street = "Kaliska 11A"
+      });
+
+      await _db.WebImages.AddAsync(new WebImages
+      {
+        Name = "Foto Ssawki FI6",
+        Picture = null
+      });
+
+      await _db.Employee.AddAsync(
+        new Employee()
+        {
+          Name = "Jarosław Krzak",
+          EmailAddress = "jaroslaw.krzak@wp.pl",
+          EmployeeDesc = "Jarosław to fantastyczny pracownik, który zajmuje się skrawaniem materiałów metalowych na skrawarce",
+          PhoneNumber = "500222185",
+          Service = new Entities.Service()
+          {
+            Name = "Skrawanie metali",
+            Category = new Category()
+            {
+              Name = "Skrawanie",
+              DisplayOrder = 1
+            },
+            ImageUrl = "url",
+            Price = 345,
+            Payment = new Payment
+            {
+              Name = "Płatność przelewem tradycyjnym",
+              Code = "JDHDFJNDCKF3535"
+            },
+            LongDesc = "Usługa skrawania metali, do wszelkich różnych, niesamowitych rzeczy",
+          }
+        });
+
+      await _db.SaveChangesAsync();
     }
   }
 }
