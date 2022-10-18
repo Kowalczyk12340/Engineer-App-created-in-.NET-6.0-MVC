@@ -23,7 +23,7 @@
         <div class="col-10">
             <div class="form-group row">
                 <div class="col-4">
-                    <label asp-for="Commodity.Name"></label>
+                    <label>@localizer.Get("CommodityName")</label>
                 </div>
                 <div class="col-8">
                     <input id="commodityName_" asp-for="Commodity.Name" class="form-control" />
@@ -32,7 +32,7 @@
             </div>
             <div class="form-group row">
                 <div class="col-4">
-                    <label asp-for="Commodity.Price"></label>
+                    <label>@localizer.Get("Price")</label>
                 </div>
                 <div class="col-8">
                     <input id="commodityPrice_" asp-for="Commodity.Price" id="txtPrice" class="form-control" />
@@ -41,7 +41,7 @@
             </div>
             <div class="form-group row">
                 <div class="col-4">
-                    <label asp-for="Commodity.LongDesc"></label>
+                    <label>@localizer.Get("Description")</label>
                 </div>
                 <div class="col-8">
                     <textarea id="commodityDesc_" asp-for="Commodity.LongDesc" class="form-control" style="height:300px;"></textarea>
@@ -50,7 +50,7 @@
             </div>
             <div class="form-group row">
                 <div class="col-4">
-                    <label asp-for="Commodity.ImageUrl"></label>
+                    <label>@localizer.Get("Image")</label>
                 </div>
                 <div class="col-8">
                     <input id="commodityImg_" type="file" name="files" id="uploadBox" multiple class="form-control" />

@@ -22,7 +22,7 @@
         <div class="col-8">
             <div class="form-group row">
                 <div class="col-4">
-                    <label asp-for="Name"></label>
+                    <label>@localizer.Get("PaymentName")</label>
                 </div>
                 <div class="col-8">
                     <input asp-for="Name" class="form-control" />
@@ -32,7 +32,7 @@
             </div>
             <div class="form-group row">
                 <div class="col-4">
-                    <label asp-for="Code"></label>
+                    <label>@localizer.Get("Code")</label>
                 </div>
                 <div class="col-8">
                     <input asp-for="Code" class="form-control" />

@@ -23,7 +23,7 @@
         <div class="col-8">
             <div class="form-group row">
                 <div class="col-4">
-                    <label asp-for="Name"></label>
+                    <label>@localizer.Get("CategoryName")</label>
                 </div>
                 <div class="col-8">
                     <input id="categoryName_" asp-for="Name" class="form-control" />
@@ -32,7 +32,7 @@
             </div>
             <div class="form-group row">
                 <div class="col-4">
-                    <label asp-for="DisplayOrder"></label>
+                    <label>@localizer.Get("DisplayOrder")</label>
                 </div>
                 <div class="col-8">
                     <input id="categoryOrder_" asp-for="DisplayOrder" class="form-control" />

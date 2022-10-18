@@ -23,7 +23,7 @@
         <div class="col-10">
             <div class="form-group row">
                 <div class="col-4">
-                    <label asp-for="Employee.Name"></label>
+                    <label>@localizer.Get("EmployeeName")</label>
                 </div>
                 <div class="col-8">
                     <input id="employeeName_" asp-for="Employee.Name" class="form-control" />
@@ -32,7 +32,7 @@
             </div>
             <div class="form-group row">
                 <div class="col-4">
-                    <label asp-for="Employee.PhoneNumber"></label>
+                    <label>@localizer.Get("PhoneNumber")</label>
                 </div>
                 <div class="col-8">
                     <input id="employeeNumber_" asp-for="Employee.PhoneNumber" id="txtPrice" class="form-control" />
@@ -41,7 +41,7 @@
             </div>
             <div class="form-group row">
                 <div class="col-4">
-                    <label asp-for="Employee.EmailAddress"></label>
+                    <label>@localizer.Get("EmailAddress")</label>
                 </div>
                 <div class="col-8">
                     <input id="employeeEmail_" asp-for="Employee.EmailAddress" id="txtPrice" class="form-control" />
@@ -50,7 +50,7 @@
             </div>
             <div class="form-group row">
                 <div class="col-4">
-                    <label asp-for="Employee.EmployeeDesc"></label>
+                    <label>@localizer.Get("Description")</label>
                 </div>
                 <div class="col-8">
                     <textarea id="employeeDesc_" asp-for="Employee.EmployeeDesc" class="form-control" style="height:300px;"></textarea>

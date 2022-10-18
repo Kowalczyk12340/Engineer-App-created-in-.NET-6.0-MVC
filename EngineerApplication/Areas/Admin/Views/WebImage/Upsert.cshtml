@@ -23,7 +23,7 @@
         <div class="col-8">
             <div class="form-group row">
                 <div class="col-4">
-                    <label asp-for="Name"></label>
+                    @localizer.Get("Name")
                 </div>
                 <div class="col-8">
                     <input asp-for="Name" class="form-control" />
@@ -32,7 +32,7 @@
             </div>
             <div class="form-group row">
                 <div class="col-4">
-                    <label asp-for="Picture"></label>
+                    @localizer.Get("Picture")
                 </div>
                 <div class="col-8">
                     <input type="file" id="projectImage" name="files" multiple class="form-control" />
