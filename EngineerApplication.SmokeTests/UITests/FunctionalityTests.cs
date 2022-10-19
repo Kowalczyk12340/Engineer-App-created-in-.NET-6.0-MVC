@@ -14,6 +14,7 @@ namespace U4.DevOps.Dashboard.UnitTests.UITests
   {
     private static string categoryName = "CategoryTest";
     private static string commodityName = "CommodityTest";
+    private static string filterName = "chwytak";
     private static string employeeName = "EmployeeTest";
     private static string employeeNumber = "693 456 232";
     private static string employeeEmail = "marcinkowalczyk24.7@gmail.com";
@@ -52,37 +53,43 @@ namespace U4.DevOps.Dashboard.UnitTests.UITests
 
       Assert.IsTrue(driver.PageSource.Contains(appName), $"App {appName} should be visible on screen after being created.");
 
-      Thread.Sleep(1000);
+      Thread.Sleep(500);
 
       ApplicationDeliveryTests(driver);
 
       Assert.IsTrue(driver.PageSource.Contains(appName), $"App {appName} should be visible on screen after being created.");
 
-      Thread.Sleep(1000);
+      Thread.Sleep(500);
 
       ApplicationEmployeeTests(driver);
 
       Assert.IsTrue(driver.PageSource.Contains(appName), $"App {appName} should be visible on screen after being created.");
 
-      Thread.Sleep(1000);
+      Thread.Sleep(500);
 
       ApplicationOrderTests(driver);
 
       Assert.IsTrue(driver.PageSource.Contains(appName), $"App {appName} should be visible on screen after being created.");
 
-      Thread.Sleep(1000);
+      Thread.Sleep(500);
 
       ApplicationUsersTests(driver);
 
       Assert.IsTrue(driver.PageSource.Contains(appName), $"App {appName} should be visible on screen after being created.");
 
-      Thread.Sleep(1000);
+      Thread.Sleep(500);
 
       ApplicationOfferTests(driver);
 
       Assert.IsTrue(driver.PageSource.Contains(appName), $"App {appName} should be visible on screen after being created.");
 
-      Thread.Sleep(1000);
+      Thread.Sleep(500);
+
+      ApplicationOfferFilterTests(driver);
+
+      Assert.IsTrue(driver.PageSource.Contains(appName), $"App {appName} should be visible on screen after being created.");
+
+      Thread.Sleep(500);
 
       ApplicationCategoryTests(driver);
 
@@ -90,7 +97,7 @@ namespace U4.DevOps.Dashboard.UnitTests.UITests
 
       Assert.IsTrue(driver.PageSource.Contains(appName), $"App {appName} should be visible on screen after being created.");
 
-      Thread.Sleep(1000);
+      Thread.Sleep(500);
     }
 
     internal static void ApplicationCategoryTests(IWebDriver driver)
@@ -165,6 +172,28 @@ namespace U4.DevOps.Dashboard.UnitTests.UITests
 
       wait.Until(drv => drv.TryFindElement(By.Id("offerService_")));
       driver.FindElement(By.Id("offerService_")).Click();
+    }
+
+    internal static void ApplicationOfferFilterTests(IWebDriver driver)
+    {
+      WebDriverWait wait = new WebDriverWait(driver, TimeSpan.FromSeconds(30));
+
+      wait.Until(drv => drv.TryFindElement(By.Id("offer_")));
+      driver.FindElement(By.Id("offer_")).Click();
+
+      wait.Until(drv => drv.TryFindElement(By.Id("offerCommodity_")));
+      driver.FindElement(By.Id("offerCommodity_")).Click();
+
+      wait.Until(drv => drv.TryFindElement(By.Id("searchString")));
+      driver.FindElement(By.Id("searchString")).SendKeys(filterName);
+
+      wait.Until(drv => drv.TryFindElement(By.Id("searchButton_")));
+      driver.FindElement(By.Id("searchButton_")).Click();
+
+      Thread.Sleep(500);
+
+      wait.Until(drv => drv.TryFindElement(By.Id("returnOffer_")));
+      driver.FindElement(By.Id("returnOffer_")).Click();
     }
 
     internal static void ApplicationCommodityTests(IWebDriver driver)
