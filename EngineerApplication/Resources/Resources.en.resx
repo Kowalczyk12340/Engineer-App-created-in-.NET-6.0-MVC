@@ -885,4 +885,7 @@
   <data name="PriceUnit" xml:space="preserve">
     <value>Unit price</value>
   </data>
+  <data name="DependencyTo" xml:space="preserve">
+    <value>Dependency to</value>
+  </data>
 </root>

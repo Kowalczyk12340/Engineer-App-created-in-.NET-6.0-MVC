@@ -29,12 +29,12 @@ namespace EngineerApplication.Areas.Admin.Controllers
       return View("Index");
     }
 
-    public async Task<IActionResult> Upsert(int? id)
+    public async Task<IActionResult> AddOrUpdate(int? id)
     {
       CommodityVM = new CommodityVM()
       {
         Commodity = new Commodity(),
-        CategoryList = _unitOfWork.Category.GetCategoryListForDropDown(),
+        CategoryList = _unitOfWork.Category.GetCategoryForCommodityListForDropDown(),
       };
       if (id != null)
       {
@@ -55,7 +55,7 @@ namespace EngineerApplication.Areas.Admin.Controllers
 
     [HttpPost]
     [ValidateAntiForgeryToken]
-    public async Task<IActionResult> Upsert()
+    public async Task<IActionResult> AddOrUpdate()
     {
       if (ModelState.IsValid)
       {
@@ -108,7 +108,7 @@ namespace EngineerApplication.Areas.Admin.Controllers
       }
       else
       {
-        CommodityVM.CategoryList = _unitOfWork.Category.GetCategoryListForDropDown();
+        CommodityVM.CategoryList = _unitOfWork.Category.GetCategoryForCommodityListForDropDown();
         return View(CommodityVM);
       }
     }

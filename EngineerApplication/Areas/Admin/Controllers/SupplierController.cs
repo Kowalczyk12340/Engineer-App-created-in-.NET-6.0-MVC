@@ -22,7 +22,7 @@ namespace EngineerApplication.Areas.Admin.Controllers
       return View("Index");
     }
 
-    public async Task<IActionResult> Upsert(int? id)
+    public async Task<IActionResult> AddOrUpdate(int? id)
     {
       Supplier supplier = new();
 
@@ -43,7 +43,7 @@ namespace EngineerApplication.Areas.Admin.Controllers
 
     [HttpPost]
     [ValidateAntiForgeryToken]
-    public async Task<IActionResult> Upsert(Supplier supplier)
+    public async Task<IActionResult> AddOrUpdate(Supplier supplier)
     {
       if (ModelState.IsValid)
       {

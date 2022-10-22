@@ -1,19 +1,19 @@
 ﻿@inject CommonLocalizationService localizer
-@model EngineerApplication.Entities.ViewModels.ServiceVM
+@model EngineerApplication.Entities.ViewModels.EmployeeVM
 
 @{
-    var title = @localizer.Get("CreateService");
+    var title = @localizer.Get("CreateEmployee");
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<form method="post" asp-action="Upsert" enctype="multipart/form-data">
+<form method="post" asp-action="AddOrUpdate" enctype="multipart/form-data">
 
     <div class="row px-2 mx-2 backgroundWhite border">
         <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-        @if (Model.Service.Id != 0)
+        @if (Model.Employee.Id != 0)
         {
-            <input type="hidden" asp-for="Service.Id" />
-            title = @localizer.Get("EditService");
+            <input type="hidden" asp-for="Employee.Id" />
+            title = @localizer.Get("EditEmployee");
         }
 
         <div class="col-12">
@@ -23,20 +23,29 @@
         <div class="col-10">
             <div class="form-group row">
                 <div class="col-4">
-                    <label>@localizer.Get("ServiceName")</label>
+                    <label>@localizer.Get("EmployeeName")</label>
                 </div>
                 <div class="col-8">
-                    <input asp-for="Service.Name" class="form-control" />
-                    <span asp-validation-for="Service.Name" class="text-danger"></span>
+                    <input id="employeeName_" asp-for="Employee.Name" class="form-control" />
+                    <span asp-validation-for="Employee.Name" class="text-danger"></span>
                 </div>
             </div>
             <div class="form-group row">
                 <div class="col-4">
-                    <label>@localizer.Get("Price")</label>
+                    <label>@localizer.Get("PhoneNumber")</label>
                 </div>
                 <div class="col-8">
-                    <input asp-for="Service.Price" id="txtPrice" class="form-control" />
-                    <span asp-validation-for="Service.Price" class="text-danger"></span>
+                    <input id="employeeNumber_" asp-for="Employee.PhoneNumber" id="txtPrice" class="form-control" />
+                    <span asp-validation-for="Employee.PhoneNumber" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="form-group row">
+                <div class="col-4">
+                    <label>@localizer.Get("EmailAddress")</label>
+                </div>
+                <div class="col-8">
+                    <input id="employeeEmail_" asp-for="Employee.EmailAddress" id="txtPrice" class="form-control" />
+                    <span asp-validation-for="Employee.EmailAddress" class="text-danger"></span>
                 </div>
             </div>
             <div class="form-group row">
@@ -44,42 +53,25 @@
                     <label>@localizer.Get("Description")</label>
                 </div>
                 <div class="col-8">
-                    <textarea asp-for="Service.LongDesc" class="form-control" style="height:300px;"></textarea>
-                    <span asp-validation-for="Service.LongDesc" class="text-danger"></span>
+                    <textarea id="employeeDesc_" asp-for="Employee.EmployeeDesc" class="form-control" style="height:300px;"></textarea>
+                    <span asp-validation-for="Employee.EmployeeDesc" class="text-danger"></span>
                 </div>
             </div>
             <div class="form-group row">
                 <div class="col-4">
-                    <label>@localizer.Get("Description")</label>
+                    <label asp-for="Employee.ServiceId"></label>
                 </div>
                 <div class="col-8">
-                    <input type="file" name="files" id="uploadBox" multiple class="form-control" />
-                </div>
-            </div>
-            <div class="form-group row">
-                <div class="col-4">
-                    <label asp-for="Service.PaymentId"></label>
-                </div>
-                <div class="col-8">
-                    @Html.DropDownListFor(m => m.Service.PaymentId, Model.PaymentList,
-                                            @localizer.Get("PleaseSelectAPayment"), new { @class = "form-control" })
-                </div>
-            </div>
-            <div class="form-group row">
-                <div class="col-4">
-                    <label asp-for="Service.CategoryId"></label>
-                </div>
-                <div class="col-8">
-                    @Html.DropDownListFor(m => m.Service.CategoryId, Model.CategoryList,
-                                            @localizer.Get("PleaseSelectACategory"), new { @class = "form-control" })
+                    @Html.DropDownListFor(m => m.Employee.ServiceId, Model.ServiceList,
+                                            @localizer.Get("PleaseSelectAService"), new { @class = "form-control" })
                 </div>
             </div>
             <div class="form-group row">
                 <div class="col-8 offset-4">
-                    @if (Model.Service.Id != 0)
+                    @if (Model.Employee.Id != 0)
                     {
                         //Edit button and back to list
-                        <partial name="_EditAndBackToListButton" model="Model.Service.Id" />
+                        <partial name="_EditAndBackToListButton" model="Model.Employee.Id" />
                     }
                     else
                     {
@@ -95,14 +87,7 @@
                 </div>
             </div>
         </div>
-        @if (Model.Service.Id != 0)
-        {
-            <div class="col-3">
-                <img src="@Model.Service.ImageUrl" width="100%" style="border-radius:5px; border:1px solid #bbb9b9" />
-            </div>
-        }
     </div>
-
 </form>
 
 @section Scripts{

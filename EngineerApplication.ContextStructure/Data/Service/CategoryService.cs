@@ -15,9 +15,20 @@ namespace EngineerApplication.ContextStructure.Data.Service
       _db = db;
     }
 
-    public IEnumerable<SelectListItem> GetCategoryListForDropDown()
+    public IEnumerable<SelectListItem> GetCategoryForCommodityListForDropDown()
     {
-      var result = _db.Category.Select(i => new SelectListItem()
+      var result = _db.Category.Where(x => x.IsForCommodity).Select(i => new SelectListItem()
+      {
+        Text = i.Name,
+        Value = i.Id.ToString()
+      });
+
+      return result;
+    }
+
+    public IEnumerable<SelectListItem> GetCategoryForServiceListForDropDown()
+    {
+      var result = _db.Category.Where(x => !x.IsForCommodity).Select(i => new SelectListItem()
       {
         Text = i.Name,
         Value = i.Id.ToString()

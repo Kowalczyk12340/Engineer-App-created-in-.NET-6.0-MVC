@@ -29,7 +29,7 @@ function loadDataTable() {
                 "render": function (data) {
 
                     return `<div class="text-center">
-                            <a href="/Admin/Service/Upsert/${data}" class='btn btn-success text-white' style='cursor:pointer; width:100px;' >
+                            <a href="/Admin/Service/AddOrUpdate/${data}" class='btn btn-success text-white' style='cursor:pointer; width:100px;' >
                                 <i class='far fa-edit'></i> Edytuj
                             </a>
                             &nbsp;

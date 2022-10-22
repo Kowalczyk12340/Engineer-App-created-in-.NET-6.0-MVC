@@ -28,12 +28,12 @@ namespace EngineerApplication.Areas.Admin.Controllers
       return View("Index");
     }
 
-    public async Task<IActionResult> Upsert(int? id)
+    public async Task<IActionResult> AddOrUpdate(int? id)
     {
       ServiceVM = new ServiceVM()
       {
         Service = new Entities.Service(),
-        CategoryList = _unitOfWork.Category.GetCategoryListForDropDown(),
+        CategoryList = _unitOfWork.Category.GetCategoryForServiceListForDropDown(),
         PaymentList = _unitOfWork.Payment.GetPaymentListForDropDown(),
       };
 
@@ -47,7 +47,7 @@ namespace EngineerApplication.Areas.Admin.Controllers
 
     [HttpPost]
     [ValidateAntiForgeryToken]
-    public async Task<IActionResult> Upsert()
+    public async Task<IActionResult> AddOrUpdate()
     {
       if (ModelState.IsValid)
       {
@@ -101,7 +101,7 @@ namespace EngineerApplication.Areas.Admin.Controllers
       }
       else
       {
-        ServiceVM.CategoryList = _unitOfWork.Category.GetCategoryListForDropDown();
+        ServiceVM.CategoryList = _unitOfWork.Category.GetCategoryForServiceListForDropDown();
         ServiceVM.PaymentList = _unitOfWork.Payment.GetPaymentListForDropDown();
         return View(ServiceVM);
       }

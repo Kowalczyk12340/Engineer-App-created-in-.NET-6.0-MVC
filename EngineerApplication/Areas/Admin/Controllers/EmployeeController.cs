@@ -26,7 +26,7 @@ namespace EngineerApplication.Areas.Admin.Controllers
       return View("Index");
     }
 
-    public async Task<IActionResult> Upsert(int? id)
+    public async Task<IActionResult> AddOrUpdate(int? id)
     {
       EmployeeVM = new EmployeeVM()
       {
@@ -44,7 +44,7 @@ namespace EngineerApplication.Areas.Admin.Controllers
 
     [HttpPost]
     [ValidateAntiForgeryToken]
-    public async Task<IActionResult> Upsert()
+    public async Task<IActionResult> AddOrUpdate()
     {
       if (ModelState.IsValid)
       {

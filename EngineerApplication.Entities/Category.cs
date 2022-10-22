@@ -14,5 +14,7 @@ namespace EngineerApplication.Entities
     [Required]
     [Display(Name = "Kolejność wyświetlania")]
     public int DisplayOrder { get; set; }
+
+    public bool IsForCommodity { get; set; }
   }
 }

@@ -23,7 +23,7 @@ namespace EngineerApplication.Areas.Admin.Controllers
       return View("Index");
     }
 
-    public async Task<IActionResult> Upsert(int? id)
+    public async Task<IActionResult> AddOrUpdate(int? id)
     {
       Category category = new();
       if (id is null)
@@ -42,7 +42,7 @@ namespace EngineerApplication.Areas.Admin.Controllers
 
     [HttpPost]
     [ValidateAntiForgeryToken]
-    public async Task<IActionResult> Upsert(Category category)
+    public async Task<IActionResult> AddOrUpdate(Category category)
     {
       if (ModelState.IsValid)
       {

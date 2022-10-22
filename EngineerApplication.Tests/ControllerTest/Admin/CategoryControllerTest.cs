@@ -30,7 +30,8 @@ namespace EngineerApplication.Tests.ControllerTest.Admin
       var categoryItem = new Category()
       {
         Name = "Szczotki Druciane",
-        DisplayOrder = 8
+        DisplayOrder = 8,
+        IsForCommodity = true
       };
       var category = await Client.PostAsJsonAsync("/Admin/Category", categoryItem);
       Assert.IsNotNull(category.RequestMessage);
@@ -50,7 +51,8 @@ namespace EngineerApplication.Tests.ControllerTest.Admin
       var categoryItem = new Category()
       {
         Name = "Złączki Okrągłe",
-        DisplayOrder = 9
+        DisplayOrder = 9,
+        IsForCommodity = false
       };
       var category = await Client.PostAsJsonAsync("/Admin/Category/1", categoryItem);
       Assert.IsNotNull(category.RequestMessage);
@@ -84,7 +86,8 @@ namespace EngineerApplication.Tests.ControllerTest.Admin
       var categoryItem = new Category()
       {
         Name = "Szczotki Druciane",
-        DisplayOrder = 8
+        DisplayOrder = 8,
+        IsForCommodity = true
       };
       var category = await Client.PostAsJsonAsync("/Admin/Category/export", categoryItem);
       Assert.IsNotNull(category.RequestMessage);

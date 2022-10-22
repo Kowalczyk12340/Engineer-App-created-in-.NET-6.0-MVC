@@ -29,7 +29,7 @@ namespace EngineerApplication.Areas.Admin.Controllers
       return File(stream.ToArray(), "application/pdf", $"PaymentData_{DateTime.UtcNow}.pdf", true);
     }
 
-    public async Task<IActionResult> Upsert(int? id)
+    public async Task<IActionResult> AddOrUpdate(int? id)
     {
       Payment payment = new();
 
@@ -49,7 +49,7 @@ namespace EngineerApplication.Areas.Admin.Controllers
 
     [HttpPost]
     [ValidateAntiForgeryToken]
-    public async Task<IActionResult> Upsert(Payment payment)
+    public async Task<IActionResult> AddOrUpdate(Payment payment)
     {
 
       if (ModelState.IsValid)

@@ -6,7 +6,9 @@ namespace EngineerApplication.ContextStructure.Data.Service.Interfaces
 {
   public interface ICategoryService : IRepository<Category>
   {
-    IEnumerable<SelectListItem> GetCategoryListForDropDown();
+    IEnumerable<SelectListItem> GetCategoryForCommodityListForDropDown();
+
+    IEnumerable<SelectListItem> GetCategoryForServiceListForDropDown();
 
     Task UpdateAsync(Category category);
   }

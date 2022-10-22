@@ -24,7 +24,7 @@ namespace EngineerApplication.Areas.Admin.Controllers
 
 
     [Authorize]
-    public async Task<IActionResult> Upsert(int? id)
+    public async Task<IActionResult> AddOrUpdate(int? id)
     {
       WebImages imageObj = new();
 
@@ -49,7 +49,7 @@ namespace EngineerApplication.Areas.Admin.Controllers
     [Authorize]
     [HttpPost]
     [ValidateAntiForgeryToken]
-    public async Task<IActionResult> Upsert(int id, WebImages imageObj)
+    public async Task<IActionResult> AddOrUpdate(int id, WebImages imageObj)
     {
       if (ModelState.IsValid)
       {

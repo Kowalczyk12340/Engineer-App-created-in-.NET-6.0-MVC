@@ -1,19 +1,19 @@
-﻿@inject CommonLocalizationService localizer
-@model EngineerApplication.Entities.WebImages
+﻿@model EngineerApplication.Entities.Category
+@inject CommonLocalizationService localizer
 
 @{
-    var title = @localizer.Get("CreateImage");
+    var title = @localizer.Get("CreateCategory");
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<form method="post" asp-action="Upsert" enctype="multipart/form-data">
+<form id="categoryForm_" method="post" asp-action="AddOrUpdate">
 
     <div class="row px-2 mx-2 backgroundWhite border">
         <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-        @if (Model.Id != 0)
+        @if(Model.Id != 0)
         {
             <input type="hidden" asp-for="Id" />
-            title = @localizer.Get("EditImage");
+            title = @localizer.Get("EditCategory");
         }
 
         <div class="col-12">
@@ -23,45 +23,43 @@
         <div class="col-8">
             <div class="form-group row">
                 <div class="col-4">
-                    @localizer.Get("Name")
+                    <label>@localizer.Get("CategoryName")</label>
                 </div>
                 <div class="col-8">
-                    <input asp-for="Name" class="form-control" />
+                    <input id="categoryName_" asp-for="Name" class="form-control" />
                     <span asp-validation-for="Name" class="text-danger"></span>
                 </div>
             </div>
             <div class="form-group row">
                 <div class="col-4">
-                    @localizer.Get("Picture")
+                    <label>@localizer.Get("DisplayOrder")</label>
                 </div>
                 <div class="col-8">
-                    <input type="file" id="projectImage" name="files" multiple class="form-control" />
+                    <input id="categoryOrder_" asp-for="DisplayOrder" class="form-control" />
+                    <span asp-validation-for="DisplayOrder" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="form-group row">
+                <div class="col-4">
+                    <label>@localizer.Get("DependencyTo")</label>
+                </div>
+                <div class="col-8">
+                    <input type="checkbox" id="isForCommodity_" asp-for="IsForCommodity" class="form-control" />
+                    <span asp-validation-for="DisplayOrder" class="text-danger"></span>
                 </div>
             </div>
             <div class="form-group row">
                 <div class="col-8 offset-4">
-                    @if (Model.Id != 0)
+                    @if(Model.Id != 0)
                     {
-                        //Edit button and back to list
                         <partial name="_EditAndBackToListButton" model="Model.Id" />
                     }
                     else
                     {
-                        //Create button and back to list
                         <partial name="_CreateAndBackToListButton" />
                     }
                 </div>
             </div>
         </div>
-        @if (Model.Picture != null)
-        {         <div class="col-4">
-        @{
-            var base64 = Convert.ToBase64String(Model.Picture);
-            var imgSrc = string.Format("data:image/jpg;base64,{0}", base64);
-        }
-        <img src="@imgSrc" height="100%" width="100%" />
-        </div>
-        }
     </div>
-
 </form>

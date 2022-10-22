@@ -1,48 +1,46 @@
 ﻿@inject CommonLocalizationService localizer
-@model EngineerApplication.Entities.Payment
+@model EngineerApplication.Entities.Delivery
+
 @{
-    var title = @localizer.Get("CreatePayment");
+    var title = @localizer.Get("CreateDelivery");
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<form method="post" asp-action="Upsert">
-
+<form method="post" asp-action="AddOrUpdate">
     <div class="row px-2 mx-2 backgroundWhite border">
         <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-        @if (Model.Id != 0)
+        @if(Model.Id != 0)
         {
             <input type="hidden" asp-for="Id" />
-            title = @localizer.Get("EditPayment");
+            title = @localizer.Get("EditDelivery");
         }
-        <div class="col-12">
 
+        <div class="col-12">
             <h2 class="text-primary">@title</h2>
             <br />
         </div>
         <div class="col-8">
             <div class="form-group row">
                 <div class="col-4">
-                    <label>@localizer.Get("PaymentName")</label>
+                    <label>@localizer.Get("DeliveryName")</label>
                 </div>
                 <div class="col-8">
-                    <input asp-for="Name" class="form-control" />
+                    <input id="deliveryName_" asp-for="Name" class="form-control" />
                     <span asp-validation-for="Name" class="text-danger"></span>
-
                 </div>
             </div>
             <div class="form-group row">
                 <div class="col-4">
-                    <label>@localizer.Get("Code")</label>
+                    <label>@localizer.Get("Description")</label>
                 </div>
                 <div class="col-8">
-                    <input asp-for="Code" class="form-control" />
-                    <span asp-validation-for="Code" class="text-danger"></span>
-
+                    <input id="deliveryDesc_" asp-for="DeliveryDesc" class="form-control" />
+                    <span asp-validation-for="DeliveryDesc" class="text-danger"></span>
                 </div>
             </div>
             <div class="form-group row">
                 <div class="col-8 offset-4">
-                    @if (Model.Id != 0)
+                    @if(Model.Id != 0)
                     {
                         <partial name="_EditAndBackToListButton" model="Model.Id" />
                     }
@@ -55,4 +53,3 @@
         </div>
     </div>
 </form>
-

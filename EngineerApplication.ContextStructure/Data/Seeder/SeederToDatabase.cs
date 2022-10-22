@@ -62,13 +62,17 @@ namespace EngineerApplication.ContextStructure.Data.Initializer
       var user1 = await _db.ApplicationUser?.Where(u => u.Email == "marcinkowalczyk24.5@wp.pl").FirstOrDefaultAsync();
       _userManager.AddToRoleAsync(user1, UsefulConsts.Customer).GetAwaiter().GetResult();
 
-      await _db.Delivery.AddAsync(new Delivery() { Name = "Przesyłka kurierska pobraniowa", DeliveryDesc = "Przesyłka, w której klient odbiera" +
-        " przesyłkę w określonym terminie, płacąc za nią przy odbiorze" });
+      await _db.Delivery.AddAsync(new Delivery()
+      {
+        Name = "Przesyłka kurierska pobraniowa",
+        DeliveryDesc = "Przesyłka, w której klient odbiera" +
+        " przesyłkę w określonym terminie, płacąc za nią przy odbiorze"
+      });
 
       await _db.Commodity.AddAsync(new Commodity
       {
         Name = "Ssawka okrągła FI6",
-        Category = new Category() { Name = "Śruby filcowe", DisplayOrder = 0 },
+        Category = new Category() { Name = "Śruby filcowe", DisplayOrder = 0, IsForCommodity = true },
         Amount = 7,
         ImageUrl = "url",
         LongDesc = "Niesamowita ssawka do chwytania części chropowatych poprzez swoją gąbkę",
@@ -85,37 +89,67 @@ namespace EngineerApplication.ContextStructure.Data.Initializer
         Street = "Kaliska 11A"
       });
 
-      await _db.WebImages.AddAsync(new WebImages
+      await _db.WebImages.AddRangeAsync(new WebImages
       {
         Name = "Foto Ssawki FI6",
         Picture = null
       });
 
-      await _db.Employee.AddAsync(
-        new Employee()
+      await _db.Employee.AddRangeAsync(
+        new List<Employee>
         {
-          Name = "Jarosław Krzak",
-          EmailAddress = "jaroslaw.krzak@wp.pl",
-          EmployeeDesc = "Jarosław to fantastyczny pracownik, który zajmuje się skrawaniem materiałów metalowych na skrawarce",
-          PhoneNumber = "500222185",
-          Service = new Entities.Service()
+          new Employee()
           {
-            Name = "Skrawanie metali",
-            Category = new Category()
+            Name = "Jarosław Krzak",
+            EmailAddress = "jaroslaw.krzak@wp.pl",
+            EmployeeDesc = "Jarosław to fantastyczny pracownik, który zajmuje się skrawaniem materiałów metalowych na skrawarce",
+            PhoneNumber = "500222185",
+            Service = new Entities.Service()
             {
-              Name = "Skrawanie",
-              DisplayOrder = 1
-            },
-            ImageUrl = "url",
-            Price = 345,
-            Payment = new Payment
+              Name = "Skrawanie metali",
+              Category = new Category()
+              {
+                Name = "Skrawanie",
+                DisplayOrder = 1,
+                IsForCommodity = false
+              },
+              ImageUrl = "url",
+              Price = 345,
+              Payment = new Payment
+              {
+                Name = "Płatność przelewem tradycyjnym",
+                Code = "JDHDFJNDCKF3535"
+              },
+              LongDesc = "Usługa skrawania metali, do wszelkich różnych, niesamowitych rzeczy",
+            }
+          },
+          new Employee
+          {
+            Name = "Wojciech Majchrzak",
+            EmailAddress = "wojciech.majchrzak@wp.pl",
+            EmployeeDesc = "Wojciech to fantastyczny pracownik, który zajmuje się przetwarzaniem materiałów gumowych i tworzyw sztucznych pod ssawki",
+            PhoneNumber = "500222185",
+            Service = new Entities.Service()
             {
-              Name = "Płatność przelewem tradycyjnym",
-              Code = "JDHDFJNDCKF3535"
-            },
-            LongDesc = "Usługa skrawania metali, do wszelkich różnych, niesamowitych rzeczy",
+              Name = "Produkcja ssawek na zamówienie",
+              Category = new Category()
+              {
+                Name = "Produkcja ssawek",
+                DisplayOrder = 1,
+                IsForCommodity = false
+              },
+              ImageUrl = "url",
+              Price = 345,
+              Payment = new Payment
+              {
+                Name = "Płatność przelewem tradycyjnym",
+                Code = "JDHDFJNDCKF3535"
+              },
+              LongDesc = "Usługa skrawania metali, do wszelkich różnych, niesamowitych rzeczy",
+            }
           }
-        });
+        }
+      );
 
       await _db.SaveChangesAsync();
     }

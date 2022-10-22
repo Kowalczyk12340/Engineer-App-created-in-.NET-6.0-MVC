@@ -22,7 +22,7 @@ namespace EngineerApplication.Areas.Admin.Controllers
       return View("Index");
     }
 
-    public async Task<IActionResult> Upsert(int? id)
+    public async Task<IActionResult> AddOrUpdate(int? id)
     {
       Delivery delivery = new();
       if (id is null)
@@ -42,7 +42,7 @@ namespace EngineerApplication.Areas.Admin.Controllers
 
     [HttpPost]
     [ValidateAntiForgeryToken]
-    public async Task<IActionResult> Upsert(Delivery delivery)
+    public async Task<IActionResult> AddOrUpdate(Delivery delivery)
     {
       if (ModelState.IsValid)
       {

@@ -10,7 +10,7 @@
             <h2 class="text-primary">@localizer.Get("DeliveryList")</h2>
         </div>
         <div class="col-6 text-right">
-            <a id="createDelivery_" asp-action="Upsert" class="btn btn-primary"><i class="fas fa-plus"></i> &nbsp; @localizer.Get("CreateNewDelivery")</a>
+            <a id="createDelivery_" asp-action="AddOrUpdate" class="btn btn-primary"><i class="fas fa-plus"></i> &nbsp; @localizer.Get("CreateNewDelivery")</a>
         </div>
     </div>
     <br />
@@ -36,5 +36,5 @@
 </div>
 
 @section Scripts{
-    <script src="~/js/delivery.js"></script>
+    <script src="~/javascript/delivery.js"></script>
 }
