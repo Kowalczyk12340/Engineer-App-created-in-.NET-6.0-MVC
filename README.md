@@ -83,9 +83,21 @@ The customer has the option to buy goods using the basket that is present in the
 
 ## Interface prototype
 
-![image](https://user-images.githubusercontent.com/63118798/197338692-624b06a6-9474-4130-8d17-78e6f2697fd5.png)
+![image](https://user-images.githubusercontent.com/63118798/197338759-240e973a-4037-40a7-8ca5-2e350a211506.png)
+![image](https://user-images.githubusercontent.com/63118798/197338765-44a0b6b0-5451-4a36-94f3-b98e4480c4c8.png)
+![image](https://user-images.githubusercontent.com/63118798/197338769-8f3f5bc1-004a-499c-a74f-7f0264b44ac4.png)
+![image](https://user-images.githubusercontent.com/63118798/197338776-f6025e5e-932f-47eb-93db-f27a65fb5247.png)
+![image](https://user-images.githubusercontent.com/63118798/197338783-55a463d4-d683-4786-ad17-05c69ed6c9af.png)
+![image](https://user-images.githubusercontent.com/63118798/197338793-33a41fa5-fcf6-432a-b805-c4955271487c.png)
+![image](https://user-images.githubusercontent.com/63118798/197338801-156269a0-f119-493c-b20c-5220a408a884.png)
+![image](https://user-images.githubusercontent.com/63118798/197338803-4a4eb928-808e-4475-a53e-d0e80bc7a775.png)
+![image](https://user-images.githubusercontent.com/63118798/197338807-51fd4bdb-62d7-47e0-918a-67f0a0c1c651.png)
+![image](https://user-images.githubusercontent.com/63118798/197338809-a48789c3-e9c4-43fd-ae13-33250e8f8660.png)
+![image](https://user-images.githubusercontent.com/63118798/197338812-8633025f-6269-46ae-a669-8a79b3322cfb.png)
+![image](https://user-images.githubusercontent.com/63118798/197338815-e388ea03-dd95-430a-9c43-819fe977e174.png)
+![image](https://user-images.githubusercontent.com/63118798/197338828-35774cd5-7bcf-4393-9d36-4c21c1021695.png)
 
-
+  
 ## Summary
 
 The system created as part of this diploma thesis is a web application, also available on mobile devices, which allows you to manage the turnover of goods and services in a logistics company managed by the methodology of Dropshipping-style operation, i.e. the so-called quick sale. The system is designed for a specific, specialized industry of automation and robotics, but could also be easily adapted to the needs of other logistics companies.
