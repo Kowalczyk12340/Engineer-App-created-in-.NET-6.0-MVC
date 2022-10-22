@@ -81,6 +81,11 @@ The system administrator can manage data that will be presented to the customer 
 The system administrator can manage a photo gallery and assign specific employees to specific services offered by the company, and manage orders by assigning them rejected and completed statuses, as well as continuous observation of order details, which are recorded on an ongoing basis and the administrator always has the ability to preview them. Another important task of a user with this role is user management, as well as the ability to register new users with any role, and even block users and unblock them when needed. Another important task of the administrator is the ability to constantly edit data or delete them if necessary, as well as the ability to monitor and manage the status of the order by accepting or rejecting orders that are pending by default. The administrator adds new goods and services to the system, which are then displayed in the offer for the customer who can buy any number of such goods. The administrator also manages the categories of goods and services, as well as employees in the system, shipment suppliers, and even the methods of delivery and payment available in the system.
 The customer has the option to buy goods using the basket that is present in the application, and to obtain information about services by contacting employees assigned to the services. It is also important that the customer may be a person who is not logged in, because the system assumes that customers who want to buy something at one time and do not want to register may also want to order something, which generates additional profit for the company using the application.
 
+## Interface prototype
+
+![image](https://user-images.githubusercontent.com/63118798/197338692-624b06a6-9474-4130-8d17-78e6f2697fd5.png)
+
+
 ## Summary
 
 The system created as part of this diploma thesis is a web application, also available on mobile devices, which allows you to manage the turnover of goods and services in a logistics company managed by the methodology of Dropshipping-style operation, i.e. the so-called quick sale. The system is designed for a specific, specialized industry of automation and robotics, but could also be easily adapted to the needs of other logistics companies.
