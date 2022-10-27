@@ -888,4 +888,10 @@
   <data name="DependencyTo" xml:space="preserve">
     <value>Abhängigkeit von</value>
   </data>
+  <data name="MyOrders" xml:space="preserve">
+    <value>Meine Bestellungen</value>
+  </data>
+  <data name="NoOrderExists" xml:space="preserve">
+    <value>Sie haben im Moment keine Bestellungen</value>
+  </data>
 </root>

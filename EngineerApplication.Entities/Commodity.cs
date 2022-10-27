@@ -20,7 +20,7 @@ namespace EngineerApplication.Entities
     public string? LongDesc { get; set; }
 
     [Display(Name = "Ilość")]
-    public int Amount { get; set; } = 1;
+    public int Amount { get; set; }
 
     [DataType(DataType.ImageUrl)]
     [Display(Name = "Zdjęcie")]

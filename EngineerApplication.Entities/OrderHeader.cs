@@ -10,20 +10,31 @@ namespace EngineerApplication.Entities
 
     [Required]
     public string? Name { get; set; }
+
     [Required]
     public string? Phone { get; set; }
+
     [Required]
+    [DataType(DataType.EmailAddress)]
     public string? Email { get; set; }
+
     [Required]
     public string? Address { get; set; }
+
     [Required]
     public string? City { get; set; }
+
     [Required]
+    [DataType(DataType.PostalCode)]
     public string? ZipCode { get; set; }
+
     public DateTime OrderDate { get; set; }
     public string? Status { get; set; }
+
     public string? Comments { get; set; }
+
     public int CommodityCount { get; set; }
+
     [Required]
     public int PaymentId { get; set; }
 
@@ -43,9 +54,11 @@ namespace EngineerApplication.Entities
     public Supplier? Supplier { get; set; }
 
     [Required]
+    [DataType(DataType.DateTime)]
     public DateTime TimeToOrder { get; set; } = DateTime.UtcNow;
 
     [Required]
+    [DataType(DataType.EmailAddress)]
     public DateTime TimeToRealisation { get; set; } = DateTime.UtcNow.AddDays(14);
 
     public string? InfoToPdf { get; set; }

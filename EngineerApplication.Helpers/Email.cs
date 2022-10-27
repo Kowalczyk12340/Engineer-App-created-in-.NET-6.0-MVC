@@ -1,55 +1,62 @@
-﻿using System.Net.Mail;
+﻿using System.Net;
+using System.Net.Mail;
+using System.Text;
+using System.Threading.Tasks;
 
 namespace EngineerApplication.Helpers
 {
   public class Email
   {
-    private const string HtmlEmailHeader = "<html><head><title></title></head><body style='font-family:arial; font-size:14px;'>";
-    private const string HtmlEmailFooter = "</body></html>";
+    private SmtpClient _smtp;
+    private MailMessage _mail;
 
-    public List<string> To { get; set; }
-    public List<string> CC { get; set; }
-    public List<string> BCC { get; set; }
-    public string From { get; set; }
-    public string Subject { get; set; }
-    public string Body { get; set; }
+    private string _hostSmtp;
+    private bool _enableSsl;
+    private int _port;
+    private string _senderEmail;
+    private string _senderEmailPassword;
+    private string _senderName;
 
-#pragma warning disable CS8618 // Pole niedopuszczające wartości null musi zawierać wartość inną niż null podczas kończenia działania konstruktora. Rozważ zadeklarowanie pola jako dopuszczającego wartość null.
-    public Email()
-#pragma warning restore CS8618 // Pole niedopuszczające wartości null musi zawierać wartość inną niż null podczas kończenia działania konstruktora. Rozważ zadeklarowanie pola jako dopuszczającego wartość null.
+    public Email(EmailParams emailParams)
     {
-      To = new List<string>();
-      CC = new List<string>();
-      BCC = new List<string>();
+      _hostSmtp = emailParams.HostSmtp;
+      _enableSsl = emailParams.EnableSsl;
+      _port = emailParams.Port;
+      _senderEmail = emailParams.SenderEmail;
+      _senderEmailPassword = emailParams.SenderEmailPassword;
+      _senderName = emailParams.SenderName;
     }
 
-    public void Send()
+    public async Task Send(string subject, string body, string to)
     {
-      MailMessage message = new();
+      _mail = new MailMessage();
+      _mail.From = new MailAddress(_senderEmail, _senderName);
+      _mail.To.Add(new MailAddress(to));
+      _mail.IsBodyHtml = true;
+      _mail.Subject = subject;
+      _mail.BodyEncoding = Encoding.UTF8;
+      _mail.SubjectEncoding = Encoding.UTF8;
+      _mail.Body = body;
 
-      foreach (var x in To)
+      _smtp = new SmtpClient
       {
-        message.To.Add(x);
-      }
-      foreach (var x in CC)
-      {
-        message.CC.Add(x);
-      }
-      foreach (var x in BCC)
-      {
-        message.Bcc.Add(x);
-      }
+        Host = _hostSmtp,
+        EnableSsl = _enableSsl,
+        Port = _port,
+        DeliveryMethod = SmtpDeliveryMethod.Network,
+        UseDefaultCredentials = false,
+        Credentials = new NetworkCredential(_senderEmail, _senderEmailPassword)
+      };
 
-      message.Subject = Subject;
-      message.Body = string.Concat(HtmlEmailHeader, Body, HtmlEmailFooter);
-      message.BodyEncoding = System.Text.Encoding.UTF8;
-      message.From = new MailAddress(From);
-      message.SubjectEncoding = System.Text.Encoding.UTF8;
-      message.IsBodyHtml = true;
+      _smtp.SendCompleted += OnSendCompleted;
 
-      SmtpClient client = new SmtpClient("relay.mail.server");
+      await _smtp.SendMailAsync(_mail);
+    }
 
-      new Thread(() => { client.Send(message); }).Start();
+    private void OnSendCompleted(object sender, System.ComponentModel.AsyncCompletedEventArgs e)
+    {
+      _smtp.Dispose();
+      _mail.Dispose();
     }
   }
 }

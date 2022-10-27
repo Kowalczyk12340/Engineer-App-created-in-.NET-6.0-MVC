@@ -9,6 +9,7 @@
 
     public const string Admin = "Admin";
     public const string Customer = "Customer";
+    public const string LoggedEmail = "Email";
     public const string usp_GetAllCategory = "usp_GetAllCategory";
     public const string usp_GetAllCommodity = "usp_GetAllCommodity";
   }

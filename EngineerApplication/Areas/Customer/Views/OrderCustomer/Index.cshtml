@@ -1,0 +1,128 @@
+﻿@using EngineerApplication.Extensions
+@using EngineerApplication.Helpers
+@using Microsoft.AspNetCore.Http
+@using EngineerApplication.Entities
+@using EngineerApplication.Resources
+@addTagHelper*, Microsoft.AspNetCore.Mvc.TagHelpers
+@using EngineerApplication.Helpers
+@inject CommonLocalizationService localizer
+@model IEnumerable<OrderHeader>
+
+@{
+    ViewData["Title"] = @localizer.Get("Index");
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+    var status = Context.Request.Query["status"];
+
+    var approved = "text-primary";
+    var pending = "text-primary";
+    var all = "text-primary";
+
+    if (status == "approved")
+    {
+        approved = "active text-white";
+    }
+    else
+    {
+        if (status == "pending")
+        {
+            pending = "active text-white";
+        }
+        else
+        {
+            all = "active text-white";
+        }
+    }
+}
+
+<div class="border backgroundWhite p-3">
+    <div class="d-flex justify-content-between mb-3">
+        <div class="p-2">
+            <h2 class="text-primary">@localizer.Get("OrdersList")</h2>
+        </div>
+        <div class="p-2">
+            <ul class="list-group list-group-horizontal-sm">
+                <a id="pending_" style="text-decoration:none" asp-controller="OrderCustomer" asp-route-status="pending" asp-action="Index">
+                <li class="list-group-item @pending">@localizer.Get("Pending")</li>
+                </a>
+                <a id="approved_" style="text-decoration:none" asp-controller="OrderCustomer" asp-route-status="approved" asp-action="Index">
+                <li class="list-group-item @approved">@localizer.Get("Approved")</li>
+                </a>
+                <a id="all_" style="text-decoration:none" asp-controller="OrderCustomer" asp-route-status="all" asp-action="Index">
+                <li class="list-group-item @all">@localizer.Get("All")</li>
+                </a>
+            </ul>
+        </div>
+    </div>
+
+    <br />
+    @if (Model.Count() > 0)
+    {
+        <table class="table table-striped border">
+            <tr class="table-secondary">
+                <th>
+                    @localizer.Get("Name")
+                </th>
+                <th>
+                    @localizer.Get("Phone")
+                </th>
+                <th>
+                    @localizer.Get("Email")
+                </th>
+                <th>
+                    @localizer.Get("Status")
+                </th>
+                <th>
+                    @localizer.Get("TimeToOrder")
+                </th>
+                <th>
+                    @localizer.Get("TimeToRealisation")
+                </th>
+                <th></th>
+            </tr>
+            @foreach(var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(m => item.Name)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(m => item.Phone)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(m => item.Email)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(m => item.Status)
+                    </td>
+                    <th>
+                        @Html.DisplayFor(m => item.TimeToOrder)
+                    </th>
+                    <th>
+                        @Html.DisplayFor(m => item.TimeToRealisation)
+                    </th>
+                    <td>
+                        <div class="text-center">
+                            <a id="orderDetails_" href="/Customer/OrderCustomer/Details/@(item.Id)" class='btn btn-success text-white' style='cursor:pointer; width:100px;'>
+                                <i class='far fa-edit'></i> @localizer.Get("Details")
+                            </a>
+                        </div>
+                    </td>
+                </tr>
+            }
+        </table>
+    }
+    else
+    {
+        <p>@localizer.Get("NoOrderExists")...</p>
+    }
+</div>
+
+<div class="row">
+    <div class="col-12 col-lg-5 offset-lg-1">
+        <form asp-action="Export" asp-controller="User" method="post">
+            <input type="hidden" name="GridHtml" />
+            <input class="btn btn-success" type="submit" id="btnSubmit" value="@localizer.Get("ExportToPdf")" />
+        </form>
+    </div>
+</div>

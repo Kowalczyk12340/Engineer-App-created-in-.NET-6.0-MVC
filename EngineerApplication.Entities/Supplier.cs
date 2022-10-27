@@ -19,14 +19,17 @@ namespace EngineerApplication.Entities
     public string? Street { get; set; }
 
     [Display(Name = "Kod pocztowy")]
+    [DataType(DataType.PostalCode)]
     public string? PostalCode { get; set; }
 
     [Required]
     [Display(Name = "Numer telefonu")]
+    [DataType(DataType.PhoneNumber)]
     public string? PhoneNumber { get; set; }
 
     [Required]
     [Display(Name = "Adres Email")]
+    [DataType(DataType.EmailAddress)]
     public string? EmailAddress { get; set; }
   }
 }

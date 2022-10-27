@@ -52,6 +52,12 @@
                         <li class="nav-item">
                             <a id="offer_" class="nav-link" asp-area="Customer" asp-controller="Offer" asp-action="Index">@localizer.Get("Offer")</a>
                         </li>
+                        @if (User.IsInRole(UsefulConsts.Customer))
+                        {
+                            <li class="nav-item">
+                                <a id="myOrderItem_" class="nav-link" asp-area="Customer" asp-controller="OrderCustomer" asp-action="Index">@localizer.Get("MyOrders")</a>
+                            </li>
+                        }
                         @if (User.IsInRole(UsefulConsts.Admin))
                         {
                             <li class="nav-item">

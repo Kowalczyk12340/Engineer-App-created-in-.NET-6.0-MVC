@@ -10,6 +10,8 @@ using EngineerApplication.Resources;
 using System.Globalization;
 using Microsoft.AspNetCore.Localization;
 using Microsoft.Extensions.Options;
+using System.Security.Principal;
+using EngineerApplication.Entities;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -33,9 +35,12 @@ services.AddDbContext<EngineerDbContext>(options =>
   .AddDbContext<EngineerDbContext>(options =>
     options.UseSqlServer(
         config.GetConnectionString("AzureDatabase")));
-services.AddIdentity<IdentityUser, IdentityRole>()
-    .AddEntityFrameworkStores<EngineerDbContext>()
-    .AddDefaultTokenProviders();
+
+services.AddIdentity<IdentityUser, IdentityRole>(options =>
+{
+  options.User.RequireUniqueEmail = false;
+}).AddEntityFrameworkStores<EngineerDbContext>()
+  .AddDefaultTokenProviders();
 
 services.Configure<RequestLocalizationOptions>(options =>
 {
@@ -57,6 +62,9 @@ services.AddRazorPages().AddViewLocalization().AddRazorOptions(options =>
 });
 services.AddSingleton<CommonLocalizationService>();
 services.AddScoped<IUnitOfWork, UnitOfWork>();
+// Inject IPrincipal
+services.AddHttpContextAccessor();
+services.AddTransient<IPrincipal>(provider => provider.GetService<IHttpContextAccessor>().HttpContext.User);
 services.AddScoped<ISeederToDatabase, SeederToDatabase>();
 services.AddSession(options =>
 {

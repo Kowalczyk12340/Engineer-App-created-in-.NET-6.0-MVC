@@ -14,10 +14,12 @@ namespace EngineerApplication.Entities
 
     [Required]
     [Display(Name = "Numer telefonu")]
+    [DataType(DataType.PhoneNumber)]
     public string? PhoneNumber { get; set; }
 
     [Required]
     [Display(Name = "Adres email")]
+    [DataType(DataType.EmailAddress)]
     public string? EmailAddress { get; set; }
 
     [Required]

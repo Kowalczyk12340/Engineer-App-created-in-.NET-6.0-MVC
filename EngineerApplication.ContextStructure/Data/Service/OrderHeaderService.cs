@@ -3,6 +3,7 @@ using EngineerApplication.Entities;
 using EngineerApplication.ContextStructure.Data.Repository;
 using EngineerApplication.ContextStructure.Data.Service.Interfaces;
 using Microsoft.EntityFrameworkCore;
+using EngineerApplication.Helpers;
 
 namespace EngineerApplication.ContextStructure.Data.Service
 {
@@ -20,6 +21,23 @@ namespace EngineerApplication.ContextStructure.Data.Service
       var orderFromDb = await _db.OrderHeader.FirstOrDefaultAsync(o => o.Id == orderHeaderId);
       orderFromDb.Status = status;
       await _db.SaveChangesAsync();
+
+      var emailReceiver = (await _db.OrderHeader.FirstOrDefaultAsync(o => o.Id == orderHeaderId)).Email;
+
+      var email = new Email(new EmailParams
+      {
+        HostSmtp = "smtp.gmail.com",
+        Port = 587,
+        EnableSsl = true,
+        SenderName = "Administrator",
+        SenderEmail = "marcinkowalczyk24.7@gmail.com",
+        SenderEmailPassword = "vkaqksszjcxkhkym"
+      });
+
+      await email.Send(
+                $"E'mail z potwierdzeniem zmiany statusu zamówienia na {status}",
+                $"Wysłano z aplikacji Application Dropshipping w celu potwierdzenia zmiany statusu zamówienia na {status}, dnia {DateTime.UtcNow}",
+                emailReceiver);
     }
   }
 }

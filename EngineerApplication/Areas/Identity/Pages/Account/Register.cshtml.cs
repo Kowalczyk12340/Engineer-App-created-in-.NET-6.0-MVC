@@ -112,23 +112,45 @@ namespace EngineerApplication.Areas.Identity.Pages.Account
 
           _logger.LogInformation("User created a new account with password.");
 
-          //var code = await _userManager.GenerateEmailConfirmationTokenAsync(user);
-          //var callbackUrl = Url.Page(
-          //    "/Account/ConfirmEmail",
-          //    pageHandler: null,
-          //    values: new { userId = user.Id, code = code },
-          //    protocol: Request.Scheme);
-
-          //await _emailSender.SendEmailAsync(Input.Email, "Confirm your email",
-          //    $"Please confirm your account by <a href='{HtmlEncoder.Default.Encode(callbackUrl)}'>clicking here</a>.");
-
           if (_userManager.Options.SignIn.RequireConfirmedAccount)
           {
+            var emailReceiver = user.Email;
+
+            var email = new Email(new EmailParams
+            {
+              HostSmtp = "smtp.gmail.com",
+              Port = 587,
+              EnableSsl = true,
+              SenderName = "Administrator",
+              SenderEmail = "marcinkowalczyk24.7@gmail.com",
+              SenderEmailPassword = "vkaqksszjcxkhkym"
+            });
+
+            await email.Send(
+                      $"E'mail z potwierdzeniem założenia konta dla użytkownika {user.Name}",
+                      $"Wysłano z aplikacji Application Dropshipping w celu potwierdzenia założenia konta dla użytkownika {user.Name}, dnia {DateTime.UtcNow}",
+                      emailReceiver);
+
             return RedirectToPage("RegisterConfirmation", new { email = Input.Email });
           }
           else
           {
-            //await _signInManager.SignInAsync(user, isPersistent: false);
+            var emailReceiver = user.Email;
+
+            var email = new Email(new EmailParams
+            {
+              HostSmtp = "smtp.gmail.com",
+              Port = 587,
+              EnableSsl = true,
+              SenderName = "Administrator",
+              SenderEmail = "marcinkowalczyk24.7@gmail.com",
+              SenderEmailPassword = "vkaqksszjcxkhkym"
+            });
+
+            await email.Send(
+                      $"E'mail z potwierdzeniem założenia konta dla użytkownika {user.Name}",
+                      $"Wysłano z aplikacji Application Dropshipping w celu potwierdzenia założenia konta dla użytkownika {user.Name}, dnia {DateTime.UtcNow}",
+                      emailReceiver);
             return LocalRedirect(returnUrl);
           }
         }
