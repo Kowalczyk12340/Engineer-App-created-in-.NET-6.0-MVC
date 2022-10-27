@@ -63,7 +63,9 @@ services.AddSingleton<CommonLocalizationService>();
 services.AddScoped<IUnitOfWork, UnitOfWork>();
 // Inject IPrincipal
 services.AddHttpContextAccessor();
+#pragma warning disable CS8602 // Wy³uskanie odwo³ania, które mo¿e mieæ wartoœæ null.
 services.AddTransient<IPrincipal>(provider => provider.GetService<IHttpContextAccessor>().HttpContext.User);
+#pragma warning restore CS8602 // Wy³uskanie odwo³ania, które mo¿e mieæ wartoœæ null.
 services.AddScoped<ISeederToDatabase, SeederToDatabase>();
 services.AddSession(options =>
 {
@@ -101,7 +103,9 @@ services.AddLocalization(options => options.ResourcesPath = "Resources");
 services.AddControllersWithViews().AddNewtonsoftJson().AddRazorRuntimeCompilation();
 services.AddRazorPages();
 
+#pragma warning disable CS0618 // Typ lub sk³adowa jest przestarza³a
 services.AddApplicationInsightsTelemetry(builder.Configuration["APPLICATIONINSIGHTS_CONNECTION_STRING"]);
+#pragma warning restore CS0618 // Typ lub sk³adowa jest przestarza³a
 
 var app = builder.Build();
 
@@ -151,9 +155,7 @@ async Task SeedDatabase()
 }
 
 #pragma warning disable S1118 // Utility classes should not have public constructors
-#pragma warning disable S3903 // Types should be defined in named namespaces
 #pragma warning disable CA1050 // Zadeklaruj typy w przestrzeniach nazw
 public partial class Program { }
 #pragma warning restore CA1050 // Zadeklaruj typy w przestrzeniach nazw
-#pragma warning restore S3903 // Types should be defined in named namespaces
 #pragma warning restore S1118 // Utility classes should not have public constructors
