@@ -36,7 +36,7 @@ namespace EngineerApplication.Tests.ControllerTest
     public void StartApplication()
     {
       var webApplicationFactory = new WebApplicationFactory<Program>();
-      TestServer testServer = webApplicationFactory.Server;
+      var testServer = webApplicationFactory.Server;
       Client = webApplicationFactory.WithWebHostBuilder(builder
           => builder.ConfigureTestServices(services =>
           {
