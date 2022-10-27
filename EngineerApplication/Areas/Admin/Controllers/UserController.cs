@@ -1,10 +1,10 @@
 ﻿#nullable disable
 using System.Security.Claims;
-using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Mvc;
 using EngineerApplication.ContextStructure.Data.Service.Interfaces;
 using EngineerApplication.Helpers;
 using iText.Html2pdf;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 
 namespace EngineerApplication.Areas.Admin.Controllers
 {
@@ -20,7 +20,7 @@ namespace EngineerApplication.Areas.Admin.Controllers
 
     public async Task<IActionResult> Index()
     {
-      var claimsIdentity = (ClaimsIdentity) User.Identity;
+      var claimsIdentity = (ClaimsIdentity)User.Identity;
       var claims = claimsIdentity.FindFirst(ClaimTypes.NameIdentifier);
 
       return View("Index", await _unitOfWork.User.GetAllAsync(u => u.Id != claims.Value));

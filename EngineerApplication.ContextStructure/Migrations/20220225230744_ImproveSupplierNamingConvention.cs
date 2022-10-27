@@ -4,22 +4,22 @@
 
 namespace EngineerApplication.ContextStructure.Migrations
 {
-    public partial class ImproveSupplierNamingConvention : Migration
+  public partial class ImproveSupplierNamingConvention : Migration
+  {
+    protected override void Up(MigrationBuilder migrationBuilder)
     {
-        protected override void Up(MigrationBuilder migrationBuilder)
-        {
-            migrationBuilder.RenameColumn(
-                name: "PhoneNumer",
-                table: "Supplier",
-                newName: "PhoneNumber");
-        }
-
-        protected override void Down(MigrationBuilder migrationBuilder)
-        {
-            migrationBuilder.RenameColumn(
-                name: "PhoneNumber",
-                table: "Supplier",
-                newName: "PhoneNumer");
-        }
+      migrationBuilder.RenameColumn(
+          name: "PhoneNumer",
+          table: "Supplier",
+          newName: "PhoneNumber");
     }
+
+    protected override void Down(MigrationBuilder migrationBuilder)
+    {
+      migrationBuilder.RenameColumn(
+          name: "PhoneNumber",
+          table: "Supplier",
+          newName: "PhoneNumer");
+    }
+  }
 }

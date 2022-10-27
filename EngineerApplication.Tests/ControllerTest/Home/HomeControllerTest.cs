@@ -1,7 +1,7 @@
-﻿using EngineerApplication.Entities;
-using NUnit.Framework;
-using System.Net.Http.Json;
+﻿using System.Net.Http.Json;
 using System.Threading.Tasks;
+using EngineerApplication.Entities;
+using NUnit.Framework;
 
 namespace EngineerApplication.Tests.ControllerTest.Home
 {

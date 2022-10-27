@@ -1,5 +1,4 @@
 ﻿using EngineerApplication.ContextStructure.Data.Service.Interfaces;
-using EngineerApplication.Entities;
 using EngineerApplication.Entities.ViewModels;
 using EngineerApplication.Helpers;
 using iText.Html2pdf;

@@ -1,8 +1,8 @@
 ﻿#nullable disable
-using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Mvc;
 using EngineerApplication.ContextStructure.Data;
 using EngineerApplication.Entities;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
 namespace EngineerApplication.Areas.Admin.Controllers

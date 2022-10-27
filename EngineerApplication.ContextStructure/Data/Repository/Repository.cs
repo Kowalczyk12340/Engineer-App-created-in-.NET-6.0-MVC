@@ -1,6 +1,6 @@
 ﻿#nullable disable
-using Microsoft.EntityFrameworkCore;
 using System.Linq.Expressions;
+using Microsoft.EntityFrameworkCore;
 
 namespace EngineerApplication.ContextStructure.Data.Repository
 {
@@ -12,7 +12,7 @@ namespace EngineerApplication.ContextStructure.Data.Repository
     public Repository(DbContext context)
     {
       Context = context;
-      this.dbSet = context.Set<T>();
+      dbSet = context.Set<T>();
     }
 
     public async Task AddAsync(T entity)

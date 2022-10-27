@@ -1,4 +1,5 @@
-﻿using EngineerApplication.Entities;
+﻿using System.ComponentModel.DataAnnotations;
+using EngineerApplication.Entities;
 using EngineerApplication.Helpers;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authorization;
@@ -6,7 +7,6 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using System.ComponentModel.DataAnnotations;
 
 namespace EngineerApplication.Areas.Identity.Pages.Account
 {

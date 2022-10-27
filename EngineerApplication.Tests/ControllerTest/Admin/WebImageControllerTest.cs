@@ -1,10 +1,7 @@
 ﻿using EngineerApplication.Areas.Admin.Controllers;
 using EngineerApplication.ContextStructure.Data;
-using EngineerApplication.ContextStructure.Data.Service.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Configuration;
-using Moq;
 using NUnit.Framework;
 
 namespace EngineerApplication.Tests.ControllerTest.Admin

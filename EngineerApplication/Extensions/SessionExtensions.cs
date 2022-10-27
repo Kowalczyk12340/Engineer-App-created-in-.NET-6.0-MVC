@@ -13,11 +13,5 @@ namespace EngineerApplication.Extensions
       var value = session.GetString(key);
       return value is null ? default : JsonConvert.DeserializeObject<T>(value);
     }
-
-    public static string GetUserEmail(this ISession session, string key)
-    {
-      var value = session.GetString(key);
-      return value is null ? default : value;
-    }
   }
 }

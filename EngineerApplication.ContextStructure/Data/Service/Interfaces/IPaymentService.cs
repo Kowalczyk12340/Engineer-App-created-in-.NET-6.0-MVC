@@ -1,9 +1,6 @@
-﻿using Microsoft.AspNetCore.Mvc.Rendering;
-using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using EngineerApplication.ContextStructure.Data.Repository;
 using EngineerApplication.Entities;
-using EngineerApplication.ContextStructure.Data.Repository;
+using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace EngineerApplication.ContextStructure.Data.Service.Interfaces
 {

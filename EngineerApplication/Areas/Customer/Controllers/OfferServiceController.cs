@@ -1,9 +1,9 @@
 ﻿#nullable disable
-using Microsoft.AspNetCore.Mvc;
-using EngineerApplication.Entities.ViewModels;
+using System.Diagnostics;
 using EngineerApplication.ContextStructure.Data.Service.Interfaces;
 using EngineerApplication.Entities;
-using System.Diagnostics;
+using EngineerApplication.Entities.ViewModels;
+using Microsoft.AspNetCore.Mvc;
 
 namespace EngineerApplication.Areas.Customer.Controllers
 {

@@ -1,10 +1,10 @@
 ﻿#nullable disable
+using EngineerApplication.ContextStructure.Data.Service.Interfaces;
+using EngineerApplication.Entities;
+using EngineerApplication.Entities.ViewModels;
+using iText.Html2pdf;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using EngineerApplication.ContextStructure.Data.Service.Interfaces;
-using EngineerApplication.Entities.ViewModels;
-using EngineerApplication.Entities;
-using iText.Html2pdf;
 
 namespace EngineerApplication.Areas.Admin.Controllers
 {
@@ -132,8 +132,11 @@ namespace EngineerApplication.Areas.Admin.Controllers
 
       if (commodityFromDb is null)
       {
-        return Json(new { success = false,
-          message = "Error while deleting." });
+        return Json(new
+        {
+          success = false,
+          message = "Error while deleting."
+        });
       }
 
       _unitOfWork.Commodity.Remove(commodityFromDb);

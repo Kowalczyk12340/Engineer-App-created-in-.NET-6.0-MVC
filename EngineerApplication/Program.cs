@@ -1,17 +1,16 @@
-using Microsoft.AspNetCore.Identity;
-using Microsoft.EntityFrameworkCore;
+using System.Globalization;
+using System.Security.Principal;
 using EngineerApplication.ContextStructure.Data;
 using EngineerApplication.ContextStructure.Data.Initializer;
-using Microsoft.AspNetCore.Identity.UI.Services;
-using EngineerApplication.Helpers;
-using EngineerApplication.ContextStructure.Data.Service.Interfaces;
 using EngineerApplication.ContextStructure.Data.Service;
+using EngineerApplication.ContextStructure.Data.Service.Interfaces;
+using EngineerApplication.Helpers;
 using EngineerApplication.Resources;
-using System.Globalization;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.AspNetCore.Localization;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Options;
-using System.Security.Principal;
-using EngineerApplication.Entities;
 
 var builder = WebApplication.CreateBuilder(args);
 

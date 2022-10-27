@@ -1,4 +1,5 @@
 ﻿#nullable disable
+using System.Threading.Tasks;
 using EngineerApplication.ContextStructure.Data;
 using EngineerApplication.ContextStructure.Data.Service.Interfaces;
 using EngineerApplication.Entities;
@@ -6,7 +7,6 @@ using EngineerApplication.Helpers;
 using Microsoft.EntityFrameworkCore;
 using Moq;
 using NUnit.Framework;
-using System.Threading.Tasks;
 
 namespace EngineerApplication.Tests.ServiceTest
 {

@@ -1,8 +1,8 @@
 ﻿#nullable disable
-using Microsoft.AspNetCore.Identity;
-using Microsoft.EntityFrameworkCore;
 using EngineerApplication.Entities;
 using EngineerApplication.Helpers;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
 
 namespace EngineerApplication.ContextStructure.Data.Initializer
 {

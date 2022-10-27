@@ -1,12 +1,12 @@
 ﻿#nullable disable
+using System.Net.Http.Json;
+using System.Threading.Tasks;
 using EngineerApplication.Areas.Admin.Controllers;
 using EngineerApplication.ContextStructure.Data.Service.Interfaces;
 using EngineerApplication.Entities;
 using Microsoft.AspNetCore.Mvc;
 using Moq;
 using NUnit.Framework;
-using System.Net.Http.Json;
-using System.Threading.Tasks;
 
 namespace EngineerApplication.Tests.ControllerTest.Admin
 {

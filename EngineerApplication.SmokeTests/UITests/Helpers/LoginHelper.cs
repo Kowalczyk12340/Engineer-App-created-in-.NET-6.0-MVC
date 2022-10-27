@@ -12,7 +12,7 @@ namespace U4.DevOps.Dashboard.UnitTests.UITests.Helpers
 
     public static void LoginToApplication(IWebDriver driver, TestContext context)
     {
-        LoginLocalhost(driver);
+      LoginLocalhost(driver);
     }
 
     private static void LoginLocalhost(IWebDriver driver)

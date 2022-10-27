@@ -1,12 +1,12 @@
 ﻿using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium.Support.UI;
-using U4.DevOps.Dashboard.UnitTests.UITests.Helpers;
 using SeleniumExtras.WaitHelpers;
+using U4.DevOps.Dashboard.UnitTests.UITests.Helpers;
+using U4.DevOps.Dashboard.UnitTests.UITests.SeleniumExtensions;
+using WebDriverManager;
 using WebDriverManager.DriverConfigs.Impl;
 using WebDriverManager.Helpers;
-using WebDriverManager;
-using U4.DevOps.Dashboard.UnitTests.UITests.SeleniumExtensions;
 
 namespace U4.DevOps.Dashboard.UnitTests.UITests
 {

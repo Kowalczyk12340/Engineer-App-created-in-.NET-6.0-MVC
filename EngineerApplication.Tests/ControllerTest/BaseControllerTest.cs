@@ -1,4 +1,6 @@
 ﻿#nullable disable
+using System.Collections.Generic;
+using System.Net.Http;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc.Authorization;
 using Microsoft.AspNetCore.Mvc.Testing;
@@ -7,8 +9,6 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using NUnit.Framework;
-using System.Collections.Generic;
-using System.Net.Http;
 
 namespace EngineerApplication.Tests.ControllerTest
 {

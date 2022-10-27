@@ -1,13 +1,11 @@
 using System.ComponentModel.DataAnnotations;
+using EngineerApplication.Entities;
+using EngineerApplication.Helpers;
 using Microsoft.AspNetCore.Authentication;
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using Microsoft.Extensions.Logging;
-using EngineerApplication.Entities;
-using EngineerApplication.Helpers;
 
 namespace EngineerApplication.Areas.Identity.Pages.Account
 {

@@ -1,9 +1,9 @@
-﻿using EngineerApplication.Areas.Customer.Controllers;
+﻿using System.Threading.Tasks;
+using EngineerApplication.Areas.Customer.Controllers;
 using EngineerApplication.ContextStructure.Data.Service.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 using Moq;
 using NUnit.Framework;
-using System.Threading.Tasks;
 
 namespace EngineerApplication.Tests.ControllerTest.Offer
 {

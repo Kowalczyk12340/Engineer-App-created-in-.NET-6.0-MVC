@@ -1,6 +1,6 @@
-﻿using EngineerApplication.Entities;
-using EngineerApplication.ContextStructure.Data.Repository;
+﻿using EngineerApplication.ContextStructure.Data.Repository;
 using EngineerApplication.ContextStructure.Data.Service.Interfaces;
+using EngineerApplication.Entities;
 
 namespace EngineerApplication.ContextStructure.Data.Service
 {

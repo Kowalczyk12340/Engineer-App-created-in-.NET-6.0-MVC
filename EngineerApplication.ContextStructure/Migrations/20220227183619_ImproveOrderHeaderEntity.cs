@@ -4,22 +4,22 @@
 
 namespace EngineerApplication.ContextStructure.Migrations
 {
-    public partial class ImproveOrderHeaderEntity : Migration
+  public partial class ImproveOrderHeaderEntity : Migration
+  {
+    protected override void Up(MigrationBuilder migrationBuilder)
     {
-        protected override void Up(MigrationBuilder migrationBuilder)
-        {
-            migrationBuilder.RenameColumn(
-                name: "Count",
-                table: "OrderHeader",
-                newName: "CommodityCount");
-        }
-
-        protected override void Down(MigrationBuilder migrationBuilder)
-        {
-            migrationBuilder.RenameColumn(
-                name: "CommodityCount",
-                table: "OrderHeader",
-                newName: "Count");
-        }
+      migrationBuilder.RenameColumn(
+          name: "Count",
+          table: "OrderHeader",
+          newName: "CommodityCount");
     }
+
+    protected override void Down(MigrationBuilder migrationBuilder)
+    {
+      migrationBuilder.RenameColumn(
+          name: "CommodityCount",
+          table: "OrderHeader",
+          newName: "Count");
+    }
+  }
 }
