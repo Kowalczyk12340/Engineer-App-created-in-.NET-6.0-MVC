@@ -894,4 +894,13 @@
   <data name="NoOrderExists" xml:space="preserve">
     <value>Sie haben im Moment keine Bestellungen</value>
   </data>
+  <data name="BruttoPrice" xml:space="preserve">
+    <value>Bruttowert</value>
+  </data>
+  <data name="MailSend" xml:space="preserve">
+    <value>Eine Bestätigungs-E-Mail wurde an Ihre E-Mail-Adresse gesendet</value>
+  </data>
+  <data name="Commodityy" xml:space="preserve">
+    <value>War</value>
+  </data>
 </root>

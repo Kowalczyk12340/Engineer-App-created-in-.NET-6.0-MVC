@@ -128,19 +128,19 @@
                                               <h6 class="my-0">@details.Name</h6>
                                               <small class="text-muted">@localizer.Get("AmountInOrder") : @details.Amount</small>
                                           </div>
-                                          <span class="text-muted">@(Math.Round((details.Price * details.Amount), 2).ToString("c"))</span>
+                                          <span class="text-muted">@(Math.Round((details.Price * details.Amount), 2).ToString("c")) PLN</span>
                                           @{ total += (details.Price * details.Amount);}
                                       </li>
                                   }
 
                                   <li class="list-group-item d-flex justify-content-between bg-light">
                                       <small class="text-primary">@localizer.Get("TotalUSD") brutto</small>
-                                      <strong class="text-primary">$@(Math.Round(total, 2).ToString("c"))</strong>
+                                      <strong class="text-primary">@(Math.Round(total, 2).ToString("c")) PLN</strong>
                                   </li>
                                   @{ var vat = 0.23 * total; }
                                   <li class="list-group-item d-flex justify-content-between bg-light">
                                       <small class="text-primary">@localizer.Get("VATPrice")</small>
-                                      <strong class="text-primary">$@(Math.Round(vat, 2).ToString("c"))</strong>
+                                      <strong class="text-primary">@(Math.Round(vat, 2).ToString("c")) PLN</strong>
                                   </li>
                               </ul>
                           </div>
@@ -160,4 +160,3 @@
         <div class="backgroundWhite"> @localizer.Get("NoItemsAddedToTheShoppingCart")...</div>
     }
 </form>
-

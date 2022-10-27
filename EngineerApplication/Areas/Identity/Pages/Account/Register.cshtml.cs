@@ -127,7 +127,7 @@ namespace EngineerApplication.Areas.Identity.Pages.Account
             });
 
             await email.Send(
-                      $"E'mail z potwierdzeniem założenia konta dla użytkownika {user.Name}",
+                      $"E'mail z potwierdzeniem założenia konta dla użytkownika {user.Name} z rolą {user.RoleName}",
                       $"Wysłano z aplikacji Application Dropshipping w celu potwierdzenia założenia konta dla użytkownika {user.Name}, dnia {DateTime.UtcNow}",
                       emailReceiver);
 
@@ -148,7 +148,7 @@ namespace EngineerApplication.Areas.Identity.Pages.Account
             });
 
             await email.Send(
-                      $"E'mail z potwierdzeniem założenia konta dla użytkownika {user.Name}",
+                      $"E'mail z potwierdzeniem założenia konta dla użytkownika {user.Name} z rolą {user.RoleName}",
                       $"Wysłano z aplikacji Application Dropshipping w celu potwierdzenia założenia konta dla użytkownika {user.Name}, dnia {DateTime.UtcNow}",
                       emailReceiver);
             return LocalRedirect(returnUrl);

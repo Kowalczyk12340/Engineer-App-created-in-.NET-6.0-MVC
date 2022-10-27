@@ -34,16 +34,16 @@
                             </div>
                             <div class="col-12 col-md-5 text-md-left pt-3">
                                 <h5><strong class="text-primary">@item.Name</strong></h5>
-                                <h5 class="text-secondary">$@item.Price @localizer.Get("PerCommodity")</h5>
+                                <h5 class="text-secondary">@Math.Round(item.Price, 2).ToString("c") PLN @localizer.Get("PerCommodity")</h5>
                                 <h5 class="text-secondary"><small>@localizer.Get("AmountInOrder"): @item.Amount</small></h5>
                             </div>
                             <div class="col-12 col-md-5 row pt-3">
-                                <div class="col-6 text-md-right" style="padding-top:5px;">
-                                    <h6><strong class="text-danger">@localizer.Get("Price"): @((Math.Round((item.Price * item.Amount), 2)).ToString("c"))</strong></h6>
-                                    <h6><strong class="text-danger">@localizer.Get("NettoPrice"): @((Math.Round((0.77 *(item.Price * item.Amount)), 2)).ToString("c"))</strong></h6>
-                                    <h6><strong class="text-danger">@localizer.Get("VATPrice"): @((Math.Round((0.23 *(item.Price * item.Amount)), 2)).ToString("c"))</strong></h6>
+                                <div class="col-7 text-md-right" style="padding-top:5px;">
+                                    <h6><strong class="text-danger">@localizer.Get("BruttoPrice"): @((Math.Round((item.Price * item.Amount), 2)).ToString("c")) PLN</strong></h6>
+                                    <h6><strong class="text-danger">@localizer.Get("NettoPrice"): @((Math.Round((0.77 *(item.Price * item.Amount)), 2)).ToString("c"))PLN </strong></h6>
+                                    <h6><strong class="text-danger">@localizer.Get("VATPrice"): @((Math.Round((0.23 *(item.Price * item.Amount)), 2)).ToString("c")) PLN</strong></h6>
                                 </div>
-                                <div class="col-6 text-right">
+                                <div class="col-5 text-right">
                                     <button type="submit" class="btn btn-outline-danger" asp-action="remove" asp-route-CommodityId="@item.Id">
                                         <i class="fas fa-trash"></i>
                                     </button>
@@ -55,7 +55,7 @@
 
                     <div class="row">
                         <div class="col-12 text-right pr-4">
-                            <p class="text-success h5">@localizer.Get("TotalUSD"): &nbsp;&nbsp; $@Math.Round(orderTotal, 2)</p>
+                            <p class="text-success h5">@localizer.Get("TotalUSD"): &nbsp;&nbsp; @Math.Round(orderTotal, 2).ToString("c") PLN</p>
                         </div>
                     </div>
                 </div>

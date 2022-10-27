@@ -35,7 +35,7 @@
                                             </div>
                                             <div class="d-flex justify-content-between ">
                                                 <div class="pl-1 text-muted">@localizer.Get("Price") @localizer.Get("PerCommodity")</div>
-                                                <div class="pr-1 text-danger h5">$@Service.Price</div>
+                                                <div class="pr-1 text-danger h5">@Math.Round(Service.Price, 2).ToString("c")</div>
                                             </div>
                                             <img src="@Service.ImageUrl" class="card-img-top p-2 rounded" />
 
