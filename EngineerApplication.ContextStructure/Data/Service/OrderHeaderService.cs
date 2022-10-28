@@ -29,14 +29,14 @@ namespace EngineerApplication.ContextStructure.Data.Service
         HostSmtp = "smtp.gmail.com",
         Port = 587,
         EnableSsl = true,
-        SenderName = "Administrator",
+        SenderName = "Administrator Dropshipping Application",
         SenderEmail = "marcinkowalczyk24.7@gmail.com",
         SenderEmailPassword = "vkaqksszjcxkhkym"
       });
 
       await email.Send(
                 $"E'mail z potwierdzeniem zmiany statusu zamówienia na {status}",
-                $"Wysłano z aplikacji Application Dropshipping w celu potwierdzenia zmiany statusu zamówienia na {status}, dnia {DateTime.UtcNow}",
+                $"Wysłano z aplikacji Application Dropshipping w celu potwierdzenia zmiany statusu zamówienia na {status}, dnia {DateTime.UtcNow}. W sprawie kontaktu z administratorem prosimy o kontakt mailowy.",
                 emailReceiver);
     }
   }
