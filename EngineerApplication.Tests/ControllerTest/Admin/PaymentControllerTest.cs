@@ -79,7 +79,7 @@ namespace EngineerApplication.Tests.ControllerTest.Admin
       var paymentItem = new Payment()
       {
         Name = "Płatność Kartą",
-        Code = "hdbhenj484"
+        Code = "hdbhenj482"
       };
       var payment = await Client.PostAsJsonAsync("/Admin/Payment/export", paymentItem);
       Assert.IsNotNull(payment.RequestMessage);
