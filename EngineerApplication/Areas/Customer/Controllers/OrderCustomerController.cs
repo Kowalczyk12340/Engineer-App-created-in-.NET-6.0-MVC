@@ -46,14 +46,6 @@ namespace EngineerApplication.Areas.Customer.Controllers
       return View(orderVM);
     }
 
-    [HttpPost("exportOrderCustomer")]
-    public IActionResult Export(string GridHtml)
-    {
-      using MemoryStream stream = new();
-      HtmlConverter.ConvertToPdf(GridHtml, stream);
-      return File(stream.ToArray(), "application/pdf", $"OrderData_{DateTime.Now}.pdf", true);
-    }
-
     public async Task<IActionResult> GetAllOrders()
     {
       return Json(new { data = await _unitOfWork.OrderHeader.GetAllAsync() });

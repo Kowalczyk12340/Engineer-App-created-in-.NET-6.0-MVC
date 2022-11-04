@@ -1,8 +1,9 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.Text.Encodings.Web;
+using EngineerApplication.ContextStructure.Data;
+using EngineerApplication.Helpers;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
@@ -12,12 +13,12 @@ namespace EngineerApplication.Areas.Identity.Pages.Account
   public class ForgotPasswordModel : PageModel
   {
     private readonly UserManager<IdentityUser> _userManager;
-    private readonly IEmailSender _emailSender;
+    private readonly EngineerDbContext _db;
 
-    public ForgotPasswordModel(UserManager<IdentityUser> userManager, IEmailSender emailSender)
+    public ForgotPasswordModel(UserManager<IdentityUser> userManager, EngineerDbContext db)
     {
       _userManager = userManager;
-      _emailSender = emailSender;
+      _db = db;
     }
 
     [BindProperty]
@@ -41,19 +42,22 @@ namespace EngineerApplication.Areas.Identity.Pages.Account
           return RedirectToPage("./ForgotPasswordConfirmation");
         }
 
-        // For more information on how to enable account confirmation and password reset please
-        // visit https://go.microsoft.com/fwlink/?LinkID=532713
-        var code = await _userManager.GeneratePasswordResetTokenAsync(user);
-        var callbackUrl = Url.Page(
-            "/Account/ResetPassword",
-            pageHandler: null,
-            values: new { code },
-            protocol: Request.Scheme);
+        var emailReceiver = user.Email;
 
-        await _emailSender.SendEmailAsync(
-            Input.Email,
-            "Reset Password",
-            $"Please reset your password by <a href='{HtmlEncoder.Default.Encode(callbackUrl)}'>clicking here</a>.");
+        var email = new Email(new EmailParams
+        {
+          HostSmtp = "smtp.gmail.com",
+          Port = 587,
+          EnableSsl = true,
+          SenderName = "Administrator Dropshipping Application",
+          SenderEmail = "marcinkowalczyk24.7@gmail.com",
+          SenderEmailPassword = "vkaqksszjcxkhkym"
+        });
+
+        await email.Send(
+                  $"E'mail ze zmianą hasła",
+                  $"Wysłano z aplikacji Application Dropshipping w celu potwierdzenia podania hasła: {user.PasswordHash}, dnia {DateTime.Now}. W sprawie kontaktu z administratorem prosimy o kontakt mailowy.",
+                  emailReceiver);
 
         return RedirectToPage("./ForgotPasswordConfirmation");
       }

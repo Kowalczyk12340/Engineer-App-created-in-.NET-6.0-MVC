@@ -26,14 +26,6 @@ namespace EngineerApplication.Areas.Admin.Controllers
       return View("Index", await _unitOfWork.User.GetAllAsync(u => u.Id != claims.Value));
     }
 
-    [HttpPost("exportUser")]
-    public IActionResult Export(string GridHtml)
-    {
-      using MemoryStream stream = new();
-      HtmlConverter.ConvertToPdf(GridHtml, stream);
-      return File(stream.ToArray(), "application/pdf", $"UserData_{DateTime.Now}.pdf", true);
-    }
-
     public async Task<IActionResult> Lock(string id)
     {
       if (id is null)

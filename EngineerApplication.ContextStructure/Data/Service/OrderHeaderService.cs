@@ -36,7 +36,9 @@ namespace EngineerApplication.ContextStructure.Data.Service
 
       await email.Send(
                 $"E'mail z potwierdzeniem zmiany statusu zamówienia na {status}",
-                $"Wysłano z aplikacji Application Dropshipping w celu potwierdzenia zmiany statusu zamówienia na {status}, dnia {DateTime.Now}. W sprawie kontaktu z administratorem prosimy o kontakt mailowy.",
+                $"Wysłano z aplikacji Application Dropshipping w celu " +
+                $"potwierdzenia zmiany statusu zamówienia na {status}," +
+                $" dnia {DateTime.Now}. W sprawie kontaktu z administratorem prosimy o kontakt mailowy.",
                 emailReceiver);
     }
   }

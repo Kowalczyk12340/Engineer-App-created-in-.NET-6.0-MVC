@@ -26,7 +26,8 @@ namespace EngineerApplication.ContextStructure.Data.Repository
       return result;
     }
 
-    public async Task<IEnumerable<T>> GetAllAsync(Expression<Func<T, bool>> filter = null, Func<IQueryable<T>, IOrderedQueryable<T>> orderBy = null, string includeProperties = null)
+    public async Task<IEnumerable<T>> GetAllAsync(Expression<Func<T, bool>> filter = null,
+      Func<IQueryable<T>, IOrderedQueryable<T>> orderBy = null, string includeProperties = null)
     {
       IQueryable<T> query = dbSet;
 
@@ -36,7 +37,8 @@ namespace EngineerApplication.ContextStructure.Data.Repository
       }
       if (includeProperties != null)
       {
-        foreach (var includeProperty in includeProperties.Split(new char[] { ',' }, StringSplitOptions.RemoveEmptyEntries))
+        foreach (var includeProperty in includeProperties.Split(new char[] { ',' },
+          StringSplitOptions.RemoveEmptyEntries))
         {
           query = query.Include(includeProperty);
         }
