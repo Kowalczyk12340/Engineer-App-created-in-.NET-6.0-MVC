@@ -903,4 +903,7 @@
   <data name="Commodityy" xml:space="preserve">
     <value>War</value>
   </data>
+  <data name="Rejected" xml:space="preserve">
+    <value>Abgelehnt</value>
+  </data>
 </root>

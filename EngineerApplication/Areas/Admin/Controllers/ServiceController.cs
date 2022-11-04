@@ -112,7 +112,7 @@ namespace EngineerApplication.Areas.Admin.Controllers
     {
       using MemoryStream stream = new();
       HtmlConverter.ConvertToPdf(GridHtml, stream);
-      return File(stream.ToArray(), "application/pdf", $"ServiceData_{DateTime.UtcNow}.pdf", true);
+      return File(stream.ToArray(), "application/pdf", $"ServiceData_{DateTime.Now}.pdf", true);
     }
 
     #region API Calls

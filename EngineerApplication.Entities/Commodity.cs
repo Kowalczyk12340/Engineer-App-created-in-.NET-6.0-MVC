@@ -13,6 +13,7 @@ namespace EngineerApplication.Entities
     public string? Name { get; set; }
 
     [Required]
+    [DataType(DataType.Currency)]
     [Display(Name = "Cena")]
     public double Price { get; set; }
 

@@ -2,38 +2,37 @@
 
 $(document).ready(function () {
     loadDataTable();
-
-    $(function () {
-        $("#btnSubmit").click(function () {
-            $("input[name='GridHtml']").val($("#tblData").html());
-        });
-    });
 });
 
 function loadDataTable() {
     dataTable = $('#tblData').DataTable({
         "ajax": {
-            "url": "/admin/delivery/GetAll",
+            "url": "/admin/webimage/GetAll",
             "type": "GET",
             "datatype": "json"
         },
         "columns": [
-            { "data": "name", "width": "50%" },
-            { "data": "deliveryDesc", "width": "20%" },
+            {
+                "data": "picture",
+                "render": function (data) {
+                    var img = 'data:image/png;base64,' + data;
+                    return '<img src="' + img + '" alt="' + img + '"width="336px" height="fitcontent"/>';
+                }, "width": "65%"
+            },
             {
                 "data": "id",
                 "render": function (data) {
                     return `<div class="text-center">
-                                <a href="/Admin/delivery/AddOrUpdate/${data}" class='btn btn-success text-white' style='cursor:pointer; width:100px;'>
+                                <a href="/Admin/webimage/AddOrUpdate/${data}" class='btn btn-success text-white' style='cursor:pointer; width:100px;'>
                                     <i class='far fa-edit'></i> Edytuj
                                 </a>
                                 &nbsp;
-                                <a onclick=Delete("/Admin/delivery/Delete/${data}") class='btn btn-danger text-white' style='cursor:pointer; width:100px;'>
+                                <a onclick=Delete("/Admin/webimage/Delete/${data}") class='btn btn-danger text-white' style='cursor:pointer; width:100px;'>
                                     <i class='far fa-trash-alt'></i> Usuń
                                 </a>
                             </div>
                             `;
-                }, "width": "30%"
+                }, "width": "35%"
             }
         ],
         "language": {
@@ -45,7 +44,7 @@ function loadDataTable() {
 
 function Delete(url) {
     swal({
-        title: "Czy na pewno chcesz usunąć tą dostawę?",
+        title: "Czy na pewno chcesz usunąć to zdjęcie?",
         text: "Po usunięciu nie możesz przywrócić tej zawartości!",
         type: "warning",
         showCancelButton: true,

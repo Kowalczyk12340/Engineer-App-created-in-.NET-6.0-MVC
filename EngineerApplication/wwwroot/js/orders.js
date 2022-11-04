@@ -13,6 +13,9 @@ $(document).ready(function ()
         {
             loadDataTable("GetAllPendingOrders");
         }
+        else if (url.includes("rejected")) {
+            loadDataTable("GetAllRejectedOrders");
+        }
         else
         {
             loadDataTable("GetAllOrders");
@@ -38,8 +41,20 @@ function loadDataTable(url) {
             { "data": "phone", "width": "15%" },
             { "data": "email", "width": "20%" },
             { "data": "status", "width": "15%" },
-            { "data": "timeToOrder", "width": "10%" },
-            { "data": "timeToRealisation", "width": "10%" },
+            {
+                "data": "timeToOrder",
+                "render": function (date) {
+                    return `<b><h6>${new Date(date).toLocaleDateString('pl')}</h6></b>`
+                },
+                "width": "10%"
+            },
+            {
+                "data": "timeToRealisation",
+                "render": function (date) {
+                    return `<b><h6>${new Date(date).toLocaleDateString('pl')}</h6></b>`
+                },
+                "width": "10%"
+            },
             {
                 "data": "id",
                 "render": function (data) {

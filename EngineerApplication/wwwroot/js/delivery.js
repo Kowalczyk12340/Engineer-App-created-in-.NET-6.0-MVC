@@ -13,39 +13,39 @@ $(document).ready(function () {
 function loadDataTable() {
     dataTable = $('#tblData').DataTable({
         "ajax": {
-            "url": "/admin/category/GetAll",
+            "url": "/admin/delivery/GetAll",
             "type": "GET",
             "datatype": "json"
         },
         "columns": [
-            { "data": "name", "width": "50%" },
-            { "data": "displayOrder", "width": "20%" },
+            { "data": "name", "width": "40%" },
+            { "data": "deliveryDesc", "width": "20%" },
             {
                 "data": "id",
                 "render": function (data) {
                     return `<div class="text-center">
-                                <a href="/Admin/category/AddOrUpdate/${data}" class='btn btn-success text-white' style='cursor:pointer; width:100px;'>
+                                <a href="/Admin/delivery/AddOrUpdate/${data}" class='btn btn-success text-white' style='cursor:pointer; width:100px;'>
                                     <i class='far fa-edit'></i> Edytuj
                                 </a>
                                 &nbsp;
-                                <a onclick=Delete("/Admin/category/Delete/${data}") class='btn btn-danger text-white' style='cursor:pointer; width:100px;'>
+                                <a onclick=Delete("/Admin/delivery/Delete/${data}") class='btn btn-danger text-white' style='cursor:pointer; width:100px;'>
                                     <i class='far fa-trash-alt'></i> Usuń
                                 </a>
                             </div>
                             `;
-                }, "width": "30%"
+                }, "width": "40%"
             }
         ],
         "language": {
-            "emptyTable":"No records found."
+            "emptyTable": "No records found."
         },
-        "width":"100%"
+        "width": "100%"
     });
 }
 
 function Delete(url) {
     swal({
-        title: "Czy na pewno chcesz usunąć tą kategorię?",
+        title: "Czy na pewno chcesz usunąć tą dostawę?",
         text: "Po usunięciu nie możesz przywrócić tej zawartości!",
         type: "warning",
         showCancelButton: true,

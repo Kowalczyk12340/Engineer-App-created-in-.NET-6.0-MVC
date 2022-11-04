@@ -55,11 +55,11 @@ namespace EngineerApplication.Entities
 
     [Required]
     [DataType(DataType.DateTime)]
-    public DateTime TimeToOrder { get; set; } = DateTime.UtcNow;
+    public DateTime TimeToOrder { get; set; } = DateTime.Now;
 
     [Required]
     [DataType(DataType.EmailAddress)]
-    public DateTime TimeToRealisation { get; set; } = DateTime.UtcNow.AddDays(14);
+    public DateTime TimeToRealisation { get; set; } = DateTime.Now.AddDays(14);
 
     public string? InfoToPdf { get; set; }
   }

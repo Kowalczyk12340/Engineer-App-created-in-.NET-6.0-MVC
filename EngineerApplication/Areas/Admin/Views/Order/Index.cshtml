@@ -7,6 +7,7 @@
 
     var approved = "text-primary";
     var pending = "text-primary";
+    var rejected = "text-primary";
     var all = "text-primary";
 
     if (status == "approved")
@@ -18,6 +19,10 @@
         if (status == "pending")
         {
             pending = "active text-white";
+        }
+        else if (status == "rejected")
+        {
+            rejected = "active text-white";
         }
         else
         {
@@ -38,6 +43,9 @@
                 </a>
                 <a id="approved_" style="text-decoration:none" asp-controller="Order" asp-route-status="approved" asp-action="Index">
                 <li class="list-group-item @approved">@localizer.Get("Approved")</li>
+                </a>
+                <a id="rejected_" style="text-decoration:none" asp-controller="Order" asp-route-status="rejected" asp-action="Index">
+                <li class="list-group-item @rejected">@localizer.Get("Rejected")</li>
                 </a>
                 <a id="all_" style="text-decoration:none" asp-controller="Order" asp-route-status="all" asp-action="Index">
                 <li class="list-group-item @all">@localizer.Get("All")</li>
@@ -71,5 +79,5 @@
     </div>
 </div>
 @section Scripts{
-<script src="~/javascript/order.js"></script>
+    <script src="~/js/orders.js"></script>
 }

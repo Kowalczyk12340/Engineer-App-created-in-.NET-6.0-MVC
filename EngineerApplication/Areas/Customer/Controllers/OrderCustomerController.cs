@@ -37,8 +37,8 @@ namespace EngineerApplication.Areas.Customer.Controllers
         OrderHeader = await _unitOfWork.OrderHeader.GetAsync(id),
         OrderDetails = await _unitOfWork.OrderDetails.GetAllAsync(filter: o => o.OrderHeaderId == id),
       };
-      orderVM.TimeToOrder = (await _unitOfWork.OrderHeader.GetAsync(id)).TimeToOrder.ToString("yyyy-MM-dd HH:mm:ss");
-      orderVM.TimeToRealisation = (await _unitOfWork.OrderHeader.GetAsync(id)).TimeToRealisation.ToString("yyyy-MM-dd HH:mm:ss");
+      orderVM.TimeToOrder = (await _unitOfWork.OrderHeader.GetAsync(id)).TimeToOrder;
+      orderVM.TimeToRealisation = (await _unitOfWork.OrderHeader.GetAsync(id)).TimeToRealisation;
       orderVM.Supplier = await _unitOfWork.Supplier.GetFirstOrDefaultAsync(filter: o => o.Id == orderVM.OrderHeader.SupplierId);
       orderVM.Delivery = await _unitOfWork.Delivery.GetFirstOrDefaultAsync(filter: o => o.Id == orderVM.OrderHeader.DeliveryId);
       orderVM.Payment = await _unitOfWork.Payment.GetFirstOrDefaultAsync(filter: o => o.Id == orderVM.OrderHeader.PaymentId);
@@ -51,7 +51,22 @@ namespace EngineerApplication.Areas.Customer.Controllers
     {
       using MemoryStream stream = new();
       HtmlConverter.ConvertToPdf(GridHtml, stream);
-      return File(stream.ToArray(), "application/pdf", $"OrderData_{DateTime.UtcNow}.pdf", true);
+      return File(stream.ToArray(), "application/pdf", $"OrderData_{DateTime.Now}.pdf", true);
+    }
+
+    public async Task<IActionResult> GetAllOrders()
+    {
+      return Json(new { data = await _unitOfWork.OrderHeader.GetAllAsync() });
+    }
+
+    public async Task<IActionResult> GetAllPendingOrders()
+    {
+      return Json(new { data = await _unitOfWork.OrderHeader.GetAllAsync(filter: o => o.Status == UsefulConsts.StatusSubmitted) });
+    }
+
+    public async Task<IActionResult> GetAllApprovedOrders()
+    {
+      return Json(new { data = await _unitOfWork.OrderHeader.GetAllAsync(filter: o => o.Status == UsefulConsts.StatusApproved) });
     }
 
     private async Task<IdentityUser> GetCurrentUser()

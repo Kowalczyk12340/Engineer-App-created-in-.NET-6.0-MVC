@@ -46,7 +46,7 @@ namespace EngineerApplication.Areas.Customer.Controllers
     {
       if (HttpContext.Session.GetObject<List<int>>(UsefulConsts.SessionCart) != null)
       {
-        List<int> sessionList = HttpContext.Session.GetObject<List<int>>(UsefulConsts.SessionCart);
+        var sessionList = HttpContext.Session.GetObject<List<int>>(UsefulConsts.SessionCart);
         foreach (int CommodityId in sessionList)
         {
           CartVM.CommodityList.Add(await _unitOfWork.Commodity.GetFirstOrDefaultAsync(u => u.Id == CommodityId, includeProperties: "Category"));
@@ -106,6 +106,22 @@ namespace EngineerApplication.Areas.Customer.Controllers
         }
         await _unitOfWork.SaveAsync();
         HttpContext.Session.SetObject(UsefulConsts.SessionCart, new List<int>());
+
+        var emailReceiver = (await _unitOfWork.OrderHeader.GetFirstOrDefaultAsync(o => o.Id == CartVM.OrderHeader.Id)).Email;
+        var email = new Email(new EmailParams
+        {
+          HostSmtp = "smtp.gmail.com",
+          Port = 587,
+          EnableSsl = true,
+          SenderName = "Administrator Dropshipping Application",
+          SenderEmail = "marcinkowalczyk24.7@gmail.com",
+          SenderEmailPassword = "vkaqksszjcxkhkym"
+        });
+
+        await email.Send(
+                  $"E'mail z potwierdzeniem dokonania zakupu i zmiany statusu zamówienia na {CartVM.OrderHeader.Status}",
+                  $"Wysłano z aplikacji Application Dropshipping w celu potwierdzenia dokonania zakupu i zmiany statusu zamówienia na {CartVM.OrderHeader.Status}, dnia {DateTime.Now}. W sprawie kontaktu z administratorem prosimy o kontakt mailowy.",
+                  emailReceiver);
         return RedirectToAction("OrderConfirmation", "Cart", new { id = CartVM.OrderHeader.Id });
       }
     }

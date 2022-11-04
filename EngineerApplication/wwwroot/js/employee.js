@@ -20,7 +20,7 @@ function loadDataTable() {
         "columns": [
             { "data": "name", "width": "15%" },
             { "data": "service.name", "width": "15%" },
-            { "data": "phoneNumber", "width": "15%" },
+            { "data": "phoneNumber", "width": "10%" },
             { "data": "emailAddress", "width": "15%" },
             { "data": "employeeDesc", "width": "15%" },
             {
@@ -36,7 +36,7 @@ function loadDataTable() {
                                <i class='far fa-trash-alt'></i> Usuń
                             </a></div>
                         `;
-                }, "width": "25%"
+                }, "width": "30%"
             }
         ],
         "language": {

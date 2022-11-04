@@ -10,32 +10,34 @@ $(document).ready(function () {
     });
 });
 
+
 function loadDataTable() {
     dataTable = $('#tblData').DataTable({
         "ajax": {
-            "url": "/admin/Commodity/GetAll",
+            "url": "/admin/Service/GetAll",
             "type": "GET",
             "datatype": "json"
         },
         "columns": [
-            { "data": "name", "width": "20%" },
-            { "data": "category.name", "width": "20%" },
-            { "data": "price", "width": "15%" },
-            { "data": "longDesc", "width": "25%" },
+            { "data": "name", "width": "15%" },
+            { "data": "category.name", "width": "15%" },
+            { "data": "price", "width": "10%" },
+            { "data": "payment.name", "width": "15%" },
+            { "data": "longDesc", "width": "15%" },
             {
                 "data": "id",
                 "render": function (data) {
 
                     return `<div class="text-center">
-                            <a href="/Admin/Commodity/AddOrUpdate/${data}" class='btn btn-success text-white' style='cursor:pointer; width:100px;' >
+                            <a href="/Admin/Service/AddOrUpdate/${data}" class='btn btn-success text-white' style='cursor:pointer; width:100px;' >
                                 <i class='far fa-edit'></i> Edytuj
                             </a>
                             &nbsp;
-                            <a class='btn btn-danger text-white' style='cursor:pointer; width:100px;' onclick=Delete('/admin/Commodity/Delete/'+${data})>
+                            <a class='btn btn-danger text-white' style='cursor:pointer; width:100px;' onclick=Delete('/admin/Service/Delete/'+${data})>
                                <i class='far fa-trash-alt'></i> Usuń
                             </a></div>
                         `;
-                }, "width": "20%"
+                }, "width": "30%"
             }
 
 
@@ -49,12 +51,13 @@ function loadDataTable() {
 
 function Delete(url) {
     swal({
-        title: "Czy na pewno chcesz usunąć ten towar?",
+        title: "Czy na pewno chcesz usunąć tą usługę?",
         text: "Po usunięciu nie możesz przywrócić tej zawartości!",
         type: "warning",
         showCancelButton: true,
         confirmButtonColor: "#DE3M39",
         confirmButtonText: "Tak, usuń to!",
+        closeOnConfirm: true
     }, function () {
         $.ajax({
             type: 'DELETE',
@@ -63,6 +66,7 @@ function Delete(url) {
                 if (data.success) {
                     toastr.success(data.message);
                     dataTable.ajax.reload();
+
                 }
                 else {
                     toastr.error(data.message);

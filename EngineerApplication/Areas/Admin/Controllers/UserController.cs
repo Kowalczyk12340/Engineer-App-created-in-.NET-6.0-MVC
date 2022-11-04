@@ -31,7 +31,7 @@ namespace EngineerApplication.Areas.Admin.Controllers
     {
       using MemoryStream stream = new();
       HtmlConverter.ConvertToPdf(GridHtml, stream);
-      return File(stream.ToArray(), "application/pdf", $"UserData_{DateTime.UtcNow}.pdf", true);
+      return File(stream.ToArray(), "application/pdf", $"UserData_{DateTime.Now}.pdf", true);
     }
 
     public async Task<IActionResult> Lock(string id)
