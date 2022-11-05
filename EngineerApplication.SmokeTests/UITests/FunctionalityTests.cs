@@ -36,7 +36,7 @@ namespace U4.DevOps.Dashboard.UnitTests.UITests
       }
       catch (Exception ex)
       {
-        Console.WriteLine($"Error occured: {ex.Message}");
+        Console.WriteLine($"Wystąpił błąd zbyt długiego łączenia z localhostem: {ex.Message}");
       }
     }
 
@@ -45,8 +45,8 @@ namespace U4.DevOps.Dashboard.UnitTests.UITests
     {
       var ChromeService = ChromeDriverService.CreateDefaultService();
 
-      using IWebDriver driver = new ChromeDriver(ChromeService, new ChromeOptions { }, TimeSpan.FromSeconds(5));
-      WebDriverWait wait = new WebDriverWait(driver, TimeSpan.FromSeconds(15));
+      using IWebDriver driver = new ChromeDriver(ChromeService, new ChromeOptions { }, TimeSpan.FromSeconds(15));
+      var wait = new WebDriverWait(driver, TimeSpan.FromSeconds(10));
       LoginHelper.LoginToApplication(driver, TestContext);
 
       ApplicationCommodityTests(driver);
@@ -129,11 +129,22 @@ namespace U4.DevOps.Dashboard.UnitTests.UITests
       wait.Until(drv => drv.TryFindElement(By.Id("pending_")));
       driver.FindElement(By.Id("pending_")).Click();
 
+      Thread.Sleep(500);
+
       wait.Until(drv => drv.TryFindElement(By.Id("approved_")));
       driver.FindElement(By.Id("approved_")).Click();
 
+      Thread.Sleep(500);
+
+      wait.Until(drv => drv.TryFindElement(By.Id("rejected_")));
+      driver.FindElement(By.Id("rejected_")).Click();
+
+      Thread.Sleep(500);
+
       wait.Until(drv => drv.TryFindElement(By.Id("all_")));
       driver.FindElement(By.Id("all_")).Click();
+
+      Thread.Sleep(500);
 
       wait.Until(drv => drv.TryFindElement(By.Id("orderDetails_")));
       driver.FindElement(By.Id("orderDetails_")).Click();
@@ -258,7 +269,7 @@ namespace U4.DevOps.Dashboard.UnitTests.UITests
 
     internal static void CreateNewService(IWebDriver driver, string serviceName)
     {
-      WebDriverWait wait = new WebDriverWait(driver, TimeSpan.FromSeconds(30));
+      var wait = new WebDriverWait(driver, TimeSpan.FromSeconds(30));
 
       driver.FindElement(By.Id("serviceType")).Click();
 

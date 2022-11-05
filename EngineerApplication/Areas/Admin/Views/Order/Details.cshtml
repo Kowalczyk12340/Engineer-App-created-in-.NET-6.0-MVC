@@ -135,16 +135,16 @@
                                                 <input type="hidden" asp-for="@details.Id" />
                                                 <h5 class="my-0">@details.CommodityName</h5><br/>
                                                 <h7 class="text-muted">@localizer.Get("AmountInOrder") : @details.AmountInOrder</h7><br/>
-                                                <h7 class="text-muted">@localizer.Get("PriceUnit") :  @(Math.Round(details.Price, 2).ToString("c")) PLN</h7><br/>
-                                                <h7 class="text-muted">@localizer.Get("Price") : @(Math.Round((details.Price * @details.AmountInOrder), 2).ToString("c")) PLN</h7><br/>
-                                                <h7 class="text-muted">@localizer.Get("VATPrice") : @(Math.Round((0.23 * (details.Price * @details.AmountInOrder)), 2).ToString("c")) PLN</h7><br/>
-                                                <h7 class="text-muted">@localizer.Get("NettoPrice") : @(Math.Round((0.77 * (details.Price * @details.AmountInOrder)), 2).ToString("c")) PLN</h7>
+                                                <h7 class="text-muted">@localizer.Get("PriceUnit") :  @(Math.Round(details.Price, 2).ToString("C", new CultureInfo("pl-PL")))</h7><br/>
+                                                <h7 class="text-muted">@localizer.Get("Price") : @(Math.Round((details.Price * @details.AmountInOrder), 2).ToString("C", new CultureInfo("pl-PL")))</h7><br/>
+                                                <h7 class="text-muted">@localizer.Get("VATPrice") : @(Math.Round((0.23 * (details.Price * @details.AmountInOrder)), 2).ToString("C", new CultureInfo("pl-PL")))</h7><br/>
+                                                <h7 class="text-muted">@localizer.Get("NettoPrice") : @(Math.Round((0.77 * (details.Price * @details.AmountInOrder)), 2).ToString("C", new CultureInfo("pl-PL")))</h7>
                                             </div>
                                         </li>
                                     }
                                     <li class="list-group-item d-flex justify-content-between">
                                             <div>
-                                                <h7 class="text-muted">@localizer.Get("OrderSummary") :  @(Math.Round(Model.OrderDetails.Sum(x => (x.Price * x.AmountInOrder)), 2).ToString("c")) PLN</h7><br/>
+                                                <h7 class="text-muted">@localizer.Get("OrderSummary") :  @(Math.Round(Model.OrderDetails.Sum(x => (x.Price * x.AmountInOrder)), 2).ToString("C", new CultureInfo("pl-PL")))</h7><br/>
                                                 <h7 class="text-muted">@localizer.Get("TimeToRealisation") :  @(Model.TimeToRealisation)</h7>
                                             </div>
                                     </li>
