@@ -21,7 +21,13 @@ function loadDataTable() {
         "columns": [
             { "data": "name", "width": "15%" },
             { "data": "category.name", "width": "15%" },
-            { "data": "price", "width": "10%" },
+            {
+                "data": "price",
+                "render": function (data) {
+                    return `<b><h6>${data.toLocaleString('pl-PL', { style: 'currency', currency: 'PLN' })}</h6></b>`
+                },
+                "width": "10%"
+            },
             { "data": "payment.name", "width": "15%" },
             { "data": "longDesc", "width": "15%" },
             {

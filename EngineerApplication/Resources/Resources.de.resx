@@ -906,4 +906,28 @@
   <data name="Rejected" xml:space="preserve">
     <value>Abgelehnt</value>
   </data>
+  <data name="Category" xml:space="preserve">
+    <value>Kategorie</value>
+  </data>
+  <data name="Photo" xml:space="preserve">
+    <value>Foto</value>
+  </data>
+  <data name="EmployeeName" xml:space="preserve">
+    <value>Name des Mitarbeiters</value>
+  </data>
+  <data name="Code" xml:space="preserve">
+    <value>Kode</value>
+  </data>
+  <data name="PaymentName" xml:space="preserve">
+    <value>Zahlung</value>
+  </data>
+  <data name="SelectService" xml:space="preserve">
+    <value>Wähle Dienst</value>
+  </data>
+  <data name="CommodityName" xml:space="preserve">
+    <value>Warenname</value>
+  </data>
+  <data name="Search" xml:space="preserve">
+    <value>Suche</value>
+  </data>
 </root>

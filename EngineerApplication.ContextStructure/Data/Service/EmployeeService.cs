@@ -23,6 +23,7 @@ namespace EngineerApplication.ContextStructure.Data.Service
       objFromDb.PhoneNumber = employee.PhoneNumber;
       objFromDb.EmailAddress = employee.EmailAddress;
       objFromDb.EmployeeDesc = employee.EmployeeDesc;
+      objFromDb.ServiceId = employee.ServiceId;
 
       await _db.SaveChangesAsync();
     }
