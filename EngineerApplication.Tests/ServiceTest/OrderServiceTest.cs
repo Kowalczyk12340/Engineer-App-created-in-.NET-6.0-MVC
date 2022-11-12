@@ -42,7 +42,7 @@ namespace EngineerApplication.Tests.ServiceTest
     [TestCase(1)]
     public void TestCheckOrderStatusMethodForPage(int id)
     {
-      var order1 = new OrderHeader { Name = "Zamówienie złączek" };
+      var order1 = new OrderHeader { Name = "Zamówienie złączek", City = "Kalisz" };
       var addedOrder = Task.FromResult(_orderHeader.Setup(x => x.ChangeOrderStatusAsync(id, UsefulConsts.StatusApproved)));
       Assert.That(addedOrder != null);
     }
