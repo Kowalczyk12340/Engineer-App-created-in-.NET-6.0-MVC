@@ -1,32 +1,18 @@
-# ASP.NET
-# Build and test ASP.NET projects.
-# Add steps that publish symbols, save build artifacts, deploy, and more:
-# https://docs.microsoft.com/azure/devops/pipelines/apps/aspnet/build-aspnet-4
-
-name: $(Date:yyyy.MM.dd)$(Rev:.r)
+name: Build and deploy .NET Core app to Linux WebApp engineerwebsitemarket
 on:
-  schedule:
-    - cron: '0 1 * * *' # every night at 1 am UTC
   push:
     branches:
     - main
 env:
-  AZURE_WEBAPP_NAME: EngineerApplication20220513120425
+  AZURE_WEBAPP_NAME: engineerwebsitemarket
   AZURE_WEBAPP_PACKAGE_PATH: EngineerApplication/publish
-  AZURE_WEBAPP_PUBLISH_PROFILE: ${{ secrets.EngineerApplication20220513120425_dcb5 }}
+  AZURE_WEBAPP_PUBLISH_PROFILE: ${{ secrets.engineerwebsitemarket_9b8d }}
   CONFIGURATION: Release
   DOTNET_CORE_VERSION: 6.0.x
   WORKING_DIRECTORY: EngineerApplication
 jobs:
-  delete-artifacts:
-    runs-on: windows-latest
-    steps:
-      - uses: kolpav/purge-artifacts-action@v1
-        with:
-          token: ${{ secrets.GITHUB_TOKEN }}
-          expire-in: 7days
   build-and-deploy:
-    runs-on: windows-latest
+    runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
     - name: Setup .NET Core
@@ -47,3 +33,8 @@ jobs:
         app-name: ${{ env.AZURE_WEBAPP_NAME }}
         package: ${{ env.AZURE_WEBAPP_PACKAGE_PATH }}
         publish-profile: ${{ env.AZURE_WEBAPP_PUBLISH_PROFILE }}
+    - name: Publish Artifacts
+      uses: actions/upload-artifact@v1.0.0
+      with:
+        name: webapp
+        path: ${{ env.AZURE_WEBAPP_PACKAGE_PATH }}

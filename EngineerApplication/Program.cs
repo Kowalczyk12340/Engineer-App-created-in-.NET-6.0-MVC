@@ -103,9 +103,9 @@ services.AddLocalization(options => options.ResourcesPath = "Resources");
 services.AddControllersWithViews().AddNewtonsoftJson().AddRazorRuntimeCompilation();
 services.AddRazorPages();
 
-#pragma warning disable CS0618 // Typ lub sk³adowa jest przestarza³a
-services.AddApplicationInsightsTelemetry(builder.Configuration["APPLICATIONINSIGHTS_CONNECTION_STRING"]);
-#pragma warning restore CS0618 // Typ lub sk³adowa jest przestarza³a
+#pragma warning disable CS0618
+//services.AddApplicationInsightsTelemetry(builder.Configuration["APPLICATIONINSIGHTS_CONNECTION_STRING"]);
+#pragma warning restore CS0618
 
 var app = builder.Build();
 
@@ -154,8 +154,8 @@ async Task SeedDatabase()
   await dbSeeder.HighlightDatabaseAsync();
 }
 
-#pragma warning disable S1118 // Utility classes should not have public constructors
-#pragma warning disable CA1050 // Zadeklaruj typy w przestrzeniach nazw
+#pragma warning disable S1118
+#pragma warning disable CA1050
 public partial class Program { }
-#pragma warning restore CA1050 // Zadeklaruj typy w przestrzeniach nazw
-#pragma warning restore S1118 // Utility classes should not have public constructors
+#pragma warning restore CA1050
+#pragma warning restore S1118
