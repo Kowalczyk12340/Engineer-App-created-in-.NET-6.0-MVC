@@ -104,7 +104,7 @@ services.AddControllersWithViews().AddNewtonsoftJson().AddRazorRuntimeCompilatio
 services.AddRazorPages();
 
 #pragma warning disable CS0618
-//services.AddApplicationInsightsTelemetry(builder.Configuration["APPLICATIONINSIGHTS_CONNECTION_STRING"]);
+services.AddApplicationInsightsTelemetry(builder.Configuration["APPLICATIONINSIGHTS_CONNECTION_STRING"]);
 #pragma warning restore CS0618
 
 var app = builder.Build();
