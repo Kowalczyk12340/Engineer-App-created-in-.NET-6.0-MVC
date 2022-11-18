@@ -136,7 +136,7 @@
                                                 <h5 class="my-0">@details.CommodityName</h5><br/>
                                                 <h7 class="text-muted">@localizer.Get("AmountInOrder") : @details.AmountInOrder</h7><br/>
                                                 <h7 class="text-muted">@localizer.Get("PriceUnit") :  @(Math.Round(details.Price, 2).ToString("C", new CultureInfo("pl-PL")))</h7><br/>
-                                                <h7 class="text-muted">@localizer.Get("Price") : @(Math.Round((details.Price * @details.AmountInOrder), 2).ToString("C", new CultureInfo("pl-PL")))</h7><br/>
+                                                <h7 class="text-muted">@localizer.Get("BruttoPrice") : @(Math.Round((details.Price * @details.AmountInOrder), 2).ToString("C", new CultureInfo("pl-PL")))</h7><br/>
                                                 <h7 class="text-muted">@localizer.Get("VATPrice") : @(Math.Round((0.23 * (details.Price * @details.AmountInOrder)), 2).ToString("C", new CultureInfo("pl-PL")))</h7><br/>
                                                 <h7 class="text-muted">@localizer.Get("NettoPrice") : @(Math.Round((0.77 * (details.Price * @details.AmountInOrder)), 2).ToString("C", new CultureInfo("pl-PL")))</h7>
                                             </div>
