@@ -30,13 +30,13 @@
                                     <div class="col-lg-4 col-xl-3 col-md-6 pb-4">
                                         <div class="card" style="border:2px solid #43ac6a;border-radius:5px; backgroundcolor: #fffeee">
                                             <div class="pl-3 pt-1 text-center">
-                                                <h3 id="chosenName" class="card-title text-primary"><b>@commodity.Name</b></h3>
+                                                <h5 id="chosenName" class="card-title text-primary"><b>@commodity.Name</b></h5>
                                             </div>
                                             <div class="d-flex justify-content-between">
                                                 <div class="pl-1 text-muted">@localizer.Get("Price") @localizer.Get("PerCommodity")</div>
                                                 <div class="pr-1 text-danger h5">@(Math.Round(commodity.Price, 2).ToString("C", new CultureInfo("pl-PL")))</div>
                                             </div>
-                                            <img src="@commodity.ImageUrl" class="card-img-top p-2 rounded" />
+                                            <img src="@commodity.ImageUrl" class="card-img-top p-2 rounded" width="297" height="245"/>
                                             <div class="col-12">
                                                 @using (Html.BeginForm("Details", "OfferCommodity", new { id = commodity.Id}, FormMethod.Post))
                                                 {
@@ -50,7 +50,6 @@
                             </div>
                         </div>
                     </div>
-
                 </div>
             </div>
         }
