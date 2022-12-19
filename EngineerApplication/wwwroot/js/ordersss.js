@@ -9,15 +9,16 @@ $(document).ready(function ()
     }
     else
     {
-        if (url.includes("pending"))
-        {
+        if (url.includes("pending")) {
             loadDataTable("GetAllPendingOrders");
+        }
+        else if (url.includes("accepted")) {
+            loadDataTable("GetAllAcceptedOrders");
         }
         else if (url.includes("rejected")) {
             loadDataTable("GetAllRejectedOrders");
         }
-        else
-        {
+        else {
             loadDataTable("GetAllOrders");
         }
     }
@@ -44,14 +45,14 @@ function loadDataTable(url) {
             {
                 "data": "timeToOrder",
                 "render": function (date) {
-                    return `<b><h6>${new Date(date).toLocaleDateString('pl')}</h6></b>`
+                    return `<b><h6>${new Date(date).toLocaleString('sv')}</h6></b>`
                 },
                 "width": "10%"
             },
             {
                 "data": "timeToRealisation",
                 "render": function (date) {
-                    return `<b><h6>${new Date(date).toLocaleDateString('pl')}</h6></b>`
+                    return `<b><h6>${new Date(date).toLocaleString('sv')}</h6></b>`
                 },
                 "width": "10%"
             },

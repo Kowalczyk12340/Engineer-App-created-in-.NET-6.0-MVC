@@ -6,6 +6,7 @@
     var status = Context.Request.Query["status"];
 
     var approved = "text-primary";
+    var accepted = "text-primary";
     var pending = "text-primary";
     var rejected = "text-primary";
     var all = "text-primary";
@@ -19,6 +20,10 @@
         if (status == "pending")
         {
             pending = "active text-white";
+        }
+        else if (status == "accepted")
+        {
+            accepted = "active text-white";
         }
         else if (status == "rejected")
         {
@@ -40,6 +45,9 @@
             <ul class="list-group list-group-horizontal-sm">
                 <a id="pending_" style="text-decoration:none" asp-controller="Order" asp-route-status="pending" asp-action="Index">
                 <li class="list-group-item @pending">@localizer.Get("Pending")</li>
+                </a>
+                <a id="accepted_" style="text-decoration:none" asp-controller="Order" asp-route-status="accepted" asp-action="Index">
+                <li class="list-group-item @accepted">@localizer.Get("Accepted")</li>
                 </a>
                 <a id="approved_" style="text-decoration:none" asp-controller="Order" asp-route-status="approved" asp-action="Index">
                 <li class="list-group-item @approved">@localizer.Get("Approved")</li>
@@ -79,5 +87,5 @@
     </div>
 </div>
 @section Scripts{
-    <script src="~/js/orders.js"></script>
+    <script src="~/js/ordersss.js"></script>
 }

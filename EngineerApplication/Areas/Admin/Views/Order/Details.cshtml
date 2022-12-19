@@ -149,7 +149,7 @@
                                             </div>
                                     </li>
                                 </ul>
-                                @if (Model.OrderHeader.Status != UsefulConsts.StatusSubmitted)
+                                @if (Model.OrderHeader.Status != UsefulConsts.StatusSubmitted && Model.OrderHeader.Status != UsefulConsts.StatusAccepted)
                                 {
                                     <div class="col-12">
                                         <button class="btn btn-outline-success disabled form-control" disabled>@Model.OrderHeader.Status</button>
@@ -161,13 +161,23 @@
                 </div>
                 <div class="card-footer">
                     <div class="row">
-                        @if (Model.OrderHeader.Status != UsefulConsts.StatusApproved && Model.OrderHeader.Status != UsefulConsts.StatusRejected)
+                        @if (Model.OrderHeader.Status == UsefulConsts.StatusSubmitted)
+                        {
+                            <div class="col-6 offset-md-4 col-md-4 col-lg-2 offset-lg-8">
+                                <a asp-action="Accept" asp-route-id="@Model.OrderHeader.Id" class="btn btn-success form-control">@localizer.Get("Accept")</a>
+                            </div>
+                        }
+                    </div>
+                </div>
+                <div class="card-footer">
+                    <div class="row">
+                        @if (Model.OrderHeader.Status == UsefulConsts.StatusAccepted)
                         {
                             <div class="col-6 offset-md-4 col-md-4 col-lg-2 offset-lg-8">
                                 <a asp-action="Approve" asp-route-id="@Model.OrderHeader.Id" class="btn btn-success form-control">@localizer.Get("Approve")</a>
                             </div>
                             <div class="col-6 col-md-4 col-lg-2">
-                                <a asp-action="reject" asp-route-id="@Model.OrderHeader.Id" class="btn btn-danger form-control">@localizer.Get("Reject")</a>
+                                <a asp-action="Reject" asp-route-id="@Model.OrderHeader.Id" class="btn btn-danger form-control">@localizer.Get("Reject")</a>
                             </div>
                         }
                     </div>

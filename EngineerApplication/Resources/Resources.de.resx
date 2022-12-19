@@ -930,4 +930,7 @@
   <data name="Search" xml:space="preserve">
     <value>Suche</value>
   </data>
+  <data name="Accepted" xml:space="preserve">
+    <value>Annehmen</value>
+  </data>
 </root>

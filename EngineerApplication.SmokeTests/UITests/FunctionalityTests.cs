@@ -131,6 +131,11 @@ namespace U4.DevOps.Dashboard.UnitTests.UITests
 
       Thread.Sleep(500);
 
+      wait.Until(drv => drv.TryFindElement(By.Id("accepted_")));
+      driver.FindElement(By.Id("accepted_")).Click();
+
+      Thread.Sleep(500);
+
       wait.Until(drv => drv.TryFindElement(By.Id("approved_")));
       driver.FindElement(By.Id("approved_")).Click();
 

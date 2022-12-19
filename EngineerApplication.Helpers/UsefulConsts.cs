@@ -4,7 +4,8 @@
   {
     public const string SessionCart = "Karta";
     public const string StatusSubmitted = "Oczekujące";
-    public const string StatusApproved = "Zatwierdzone";
+    public const string StatusAccepted = "Przyjęte";
+    public const string StatusApproved = "Zakończone";
     public const string StatusRejected = "Odrzucone";
 
     public const string Admin = "Admin";

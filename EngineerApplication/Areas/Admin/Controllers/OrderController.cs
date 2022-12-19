@@ -40,6 +40,20 @@ namespace EngineerApplication.Areas.Admin.Controllers
     }
 
     [Authorize(Roles = UsefulConsts.Admin)]
+    public async Task<IActionResult> Accept(int id)
+    {
+      var orderFromDb = await _unitOfWork.OrderHeader.GetAsync(id);
+
+      if (orderFromDb is null)
+      {
+        return NotFound();
+      }
+
+      await _unitOfWork.OrderHeader.ChangeOrderStatusAsync(id, UsefulConsts.StatusAccepted);
+      return View(nameof(Index));
+    }
+
+    [Authorize(Roles = UsefulConsts.Admin)]
     public async Task<IActionResult> Approve(int id)
     {
       var orderFromDb = await _unitOfWork.OrderHeader.GetAsync(id);
@@ -84,6 +98,11 @@ namespace EngineerApplication.Areas.Admin.Controllers
     public async Task<IActionResult> GetAllPendingOrders()
     {
       return Json(new { data = await _unitOfWork.OrderHeader.GetAllAsync(filter: o => o.Status == UsefulConsts.StatusSubmitted) });
+    }
+
+    public async Task<IActionResult> GetAllAcceptedOrders()
+    {
+      return Json(new { data = await _unitOfWork.OrderHeader.GetAllAsync(filter: o => o.Status == UsefulConsts.StatusAccepted) });
     }
 
     public async Task<IActionResult> GetAllRejectedOrders()
