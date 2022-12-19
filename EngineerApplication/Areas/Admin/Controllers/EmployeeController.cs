@@ -93,7 +93,7 @@ namespace EngineerApplication.Areas.Admin.Controllers
 
       _unitOfWork.Employee.Remove(EmployeeFromDb);
       await _unitOfWork.SaveAsync();
-      return Json(new { success = true, message = "Deleted Successfully." });
+      return Json(new { success = true, message = "Usunięto prawdiłowo." });
     }
     #endregion
   }
